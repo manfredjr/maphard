@@ -39,12 +39,12 @@ jobs:
         run: dotnet test maphard.sln -c Release --no-build
 
       - name: Gerar o .exe
-        if: hashFiles('maphard.sln') != ''
+        if: hashFiles('src/maphard/maphard.csproj') != ''
         run: dotnet publish src/maphard/maphard.csproj -c Release -o publicar
 
       # O .sha256.txt deixa quem baixou conferir que o .exe chegou igual ao publicado.
       - name: Calcular o SHA-256
-        if: hashFiles('maphard.sln') != ''
+        if: hashFiles('src/maphard/maphard.csproj') != ''
         shell: pwsh
         run: |
           $hash = (Get-FileHash publicar/maphard.exe -Algorithm SHA256).Hash
@@ -52,7 +52,7 @@ jobs:
           Get-Content publicar/maphard.exe.sha256.txt
 
       - name: Guardar o .exe
-        if: hashFiles('maphard.sln') != ''
+        if: hashFiles('src/maphard/maphard.csproj') != ''
         uses: actions/upload-artifact@v4
         with:
           name: maphard-${{ github.sha }}
