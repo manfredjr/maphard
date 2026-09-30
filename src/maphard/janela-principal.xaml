@@ -1,0 +1,130 @@
+<Window x:Class="MapHard.JanelaPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource JanelaMT}"
+        Title="MapHard - MT" Width="1100" Height="760" MinWidth="760" MinHeight="480"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Item da navegacao a esquerda -->
+        <Style x:Key="ItemNavegacao" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Padding" Value="14,9" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Fundo" Background="Transparent" Padding="{TemplateBinding Padding}" CornerRadius="8" Margin="8,2">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Fundo" Property="Background" Value="{StaticResource PincelVerdeFundo}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Fundo" Property="Background" Value="{StaticResource PincelVerde}" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Valor de uma linha: cinza quando o campo nao foi lido, com a dica da fonte -->
+        <Style x:Key="ValorLinha" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource ValorInfo}">
+            <Setter Property="ToolTip" Value="{Binding Dica}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Lido}" Value="False">
+                    <Setter Property="Foreground" Value="{StaticResource PincelTextoSuave}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="FontStyle" Value="Italic" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <!-- Faixa do topo: nome, comandos e a marca da MT -->
+        <Border DockPanel.Dock="Top" Background="{StaticResource GradienteFaixa}" Padding="14,10">
+            <DockPanel>
+                <!-- Selo do MapHard: so o nome, ate chegar a arte do simbolo (pendencia) -->
+                <Border DockPanel.Dock="Left" Background="White" CornerRadius="8" Padding="12,5"
+                        VerticalAlignment="Center" Margin="0,0,18,0">
+                    <TextBlock Text="MapHard" Foreground="{StaticResource PincelVerdeEscuro}" FontSize="20"
+                               FontWeight="ExtraBold" VerticalAlignment="Center" />
+                </Border>
+                <Border DockPanel.Dock="Right" Background="White" CornerRadius="8" Padding="6,2" VerticalAlignment="Center" Margin="12,0,0,0">
+                    <Button Style="{StaticResource BotaoMarca}" Click="AoClicarLogo"
+                            AutomationProperties.Name="MT - Manfred Tecnologia"
+                            ToolTip="MT - Manfred Tecnologia: abre o site www.manfred.com.br no navegador">
+                        <Image Source="pack://application:,,,/maphard;component/recursos/mt-logo.png"
+                               Height="34" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Button>
+                </Border>
+                <Button DockPanel.Dock="Right" Content="Sobre" Style="{StaticResource BotaoFaixaContorno}" Click="AoAbrirSobre"
+                        VerticalAlignment="Center" ToolTip="Versão, autoria, licença e onde baixar" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="Atualizar" Style="{StaticResource BotaoFaixa}" Click="AoAtualizar"
+                            IsEnabled="{Binding PodeAtualizar}" ToolTip="Lê o computador de novo" />
+                    <Button Content="Salvar JSON..." Style="{StaticResource BotaoFaixaContorno}" Click="AoSalvarJson"
+                            IsEnabled="{Binding PodeSalvar}" ToolTip="Grava a coleta completa num arquivo JSON" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <Border DockPanel.Dock="Top" Height="3" Background="{StaticResource GradienteLinha}" />
+
+        <!-- Barra de status -->
+        <Border DockPanel.Dock="Bottom" Background="{StaticResource PincelGrafite}" Padding="12,6">
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar Style="{StaticResource ProgressoMT}" Width="120" Margin="0,0,12,0" IsIndeterminate="True"
+                             VerticalAlignment="Center" Visibility="{Binding Coletando, Converter={StaticResource VisivelSe}}" />
+                <TextBlock Text="{Binding TextoStatus}" Style="{StaticResource TextoEstado}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Navegacao entre as secoes -->
+        <Border DockPanel.Dock="Left" Width="220" Background="White" BorderBrush="{StaticResource PincelBorda}" BorderThickness="0,0,1,0">
+            <ListBox x:Name="Navegacao" ItemsSource="{Binding Secoes}" SelectionChanged="AoEscolherSecao" ItemContainerStyle="{StaticResource ItemNavegacao}"
+                     BorderThickness="0" Background="Transparent" Padding="0,10" FontWeight="SemiBold" FontSize="13"
+                     AutomationProperties.Name="Seções">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Titulo}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+
+        <!-- Cartoes da secao escolhida -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16,14">
+            <ItemsControl ItemsSource="{Binding SelectedItem.Cartoes, ElementName=Navegacao}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource Cartao}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <Border Style="{StaticResource BarraTitulo}" />
+                                    <TextBlock Text="{Binding Titulo}" Style="{StaticResource TituloCartao}" />
+                                </StackPanel>
+                                <ItemsControl ItemsSource="{Binding Linhas}" Grid.IsSharedSizeScope="True">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0,3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="Rotulo" MinWidth="200" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding Rotulo}" Foreground="{StaticResource PincelTextoSuave}" Margin="0,0,16,0" />
+                                                <TextBlock Grid.Column="1" Text="{Binding Texto}" Style="{StaticResource ValorLinha}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

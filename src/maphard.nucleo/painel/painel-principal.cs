@@ -58,6 +58,10 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
 
     public bool PodeSalvar => Estado == EstadoPainel.Pronto;
 
+    public bool Coletando => Estado == EstadoPainel.Coletando;
+
+    public bool PodeAtualizar => !Coletando && !Demonstracao;
+
     public async Task AtualizarAsync(CancellationToken cancelar = default)
     {
         Estado = EstadoPainel.Coletando;
