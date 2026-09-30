@@ -34,7 +34,8 @@ O fluxo de trabalho que o programa atende:
 | Entrega | `.exe` único, autocontido, `win-x64`, sem instalador | Rodar de pendrive ou de pasta de rede na máquina do cliente |
 | Interface | Janela WPF e linha de comando no mesmo `.exe` | Mesmo padrão do MapDisk, com o tema `tema-mt.xaml`, a fonte Montserrat e o logo da MT reaproveitados |
 | Visual | Faixa verde no topo com o símbolo do MapHard e o logo da MT, cartões brancos, botões em pílula, linha em gradiente acima da barra de status | Mesmas características visuais do MapNet e do MapDisk, pedido do Manfred |
-| Driver de kernel | Nenhum | Ver seção 4. É a decisão que mais pesa no que o programa consegue ou não mostrar |
+| Driver de kernel | Nenhum na versão 1 | Ver seção 4. É a decisão que mais pesa no que o programa consegue ou não mostrar |
+| Sensores | Módulo opcional depois da versão 1, com a biblioteca LibreHardwareMonitor e o driver PawnIO | Decisão do Manfred em 30/09/2026. Ver seção 14 |
 | Permissão | Abre como usuário comum. O botão "Ler como administrador" reabre o programa elevado | Regra do MapDisk. Sem administrador já sai a maior parte das informações. SMART, TPM e BitLocker pedem elevação, e a tela diz isso em vez de esconder **[DECIDIR]** |
 | Só leitura | O MapHard não altera nada na máquina | Programa de diagnóstico. Nenhuma configuração, driver ou firmware é mudado |
 | Internet | Nenhum acesso | Mesma regra dos outros dois. Tabelas de fabricantes e de processadores vão embutidas no `.exe` |
@@ -43,7 +44,7 @@ O fluxo de trabalho que o programa atende:
 
 Os programas de referência leem parte das informações com um driver de kernel próprio, que acessa diretamente os registradores do processador e o barramento SMBus das memórias. Um driver desses precisa de assinatura de código da Microsoft, costuma ser barrado por antivírus e, quando tem falha, abre uma porta de ataque na máquina do cliente. Um driver livre muito usado por programas de monitoramento passou a ser detectado como ferramenta de ataque pelo Microsoft Defender em 2025, por causa de uma falha conhecida.
 
-Por isso a versão 1 não usa driver. O quadro mostra o efeito prático:
+Por isso a versão 1 não usa driver. O que depende dele vai para o módulo Sensores, depois da versão 1 (seção 14). O quadro mostra o efeito prático:
 
 | Informação | Sem driver | Como |
 |---|---|---|
@@ -293,6 +294,12 @@ Valores iniciais, a confirmar com o Manfred no plano da fatia de discos. Cada re
 | 6 | Resumo com os cartões e as regras da seção 8 (R1) |
 | 7 | Relatório HTML com a marca da MT, CSV, copiar seção, página `public/` (R37, R38, R40, R41 completo) |
 
+Depois da versão 1:
+
+| Fatia | Conteúdo |
+|---|---|
+| 8 | Módulo Sensores, opcional (seção 14) |
+
 A ordem das fatias 2 a 7 pode mudar por decisão do Manfred. O Resumo fica para a fatia 6 porque depende de todas as áreas lidas.
 
 ## 13. Prioridade dos testes
@@ -309,13 +316,23 @@ Teste manual antes de cada versão: um desktop e um notebook, um com HDD e um co
 
 ## 14. Fora da versão 1
 
-- Driver de kernel e tudo o que depende dele: temperatura e voltagem do processador, rotação de ventoinhas, timings da memória e SPD.
+- Driver de kernel e tudo o que depende dele: temperatura e voltagem do processador, rotação de ventoinhas, timings da memória e SPD. Vão para o módulo Sensores, descrito abaixo.
 - Benchmark de processador e de disco.
 - Teste de memória pelo próprio programa. O MapHard só mostra o resultado do Diagnóstico de Memória do Windows.
 - Coleta de outra máquina pela rede.
 - Histórico e comparação entre coletas na janela. O JSON já guarda o que for preciso para isso.
 - Consulta de garantia no site do fabricante, que exigiria internet.
 - Windows de 32 bits e Windows em processador ARM.
+
+### Módulo Sensores (fatia 8, depois da versão 1)
+
+Decisão do Manfred em 30/09/2026: a versão 1 sai sem driver, e as leituras que exigem driver entram depois, num módulo opcional.
+
+- **O que mostra:** temperatura, clock real e voltagem por núcleo do processador, voltagens e ventoinhas da placa-mãe, conteúdo do SPD de cada pente (timings de fábrica, perfis XMP e EXPO) e os timings em uso.
+- **Como lê:** pela biblioteca LibreHardwareMonitor (C#, licença MPL-2.0, compatível com a GPL-3.0), que acessa o hardware pelo driver PawnIO. Os módulos do PawnIO que a biblioteca carrega têm licença LGPL-2.1. Conferido no código da biblioteca em 30/09/2026, na versão de 29/09/2026.
+- **O PawnIO é instalado no Windows,** com instalador próprio. A biblioteca só usa o driver quando ele já está instalado, e o programa de exemplo da biblioteca oferece o instalador quando falta. Isso conflita com a regra "sem instalar nada" do MapHard. Pendência para o desenho da fatia 8: o MapHard só usa o PawnIO já instalado, ou oferece a instalação com confirmação do técnico e aviso ao cliente.
+- **Quando carrega:** só quando o técnico abre a seção Sensores, com administrador. Sem o PawnIO, ou com o driver bloqueado pelo Windows (Integridade da memória, antivírus), a seção diz o motivo e o restante do programa segue igual.
+- **Referência de leitura:** o código do CrystalDiskInfo (licença MIT) serve de consulta para a fatia de discos, principalmente pontes USB e atributos de cada fabricante. Código aproveitado de lá leva o aviso de licença original junto.
 
 ## 15. Perguntas em aberto
 

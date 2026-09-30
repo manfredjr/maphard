@@ -94,7 +94,7 @@ Valem para toda fatia. Mudar qualquer uma é decisão do Manfred.
 
 1. **Só leitura.** O MapHard não altera nada na máquina: configuração, driver, firmware, registro ou arquivo do usuário.
 2. **Nunca mostrar 0 ou vazio onde não houve leitura.** Todo campo tem um dos estados da seção 6 do desenho: lido, não informado, requer administrador, não suportado ou erro de leitura. Dado errado leva o técnico a trocar a peça errada.
-3. **Sem driver de kernel.** Tudo sai de APIs do Windows, da instrução CPUID, da tabela SMBIOS e dos comandos SMART. O que exigir driver fica fora.
+3. **Sem driver de kernel na versão 1.** Tudo sai de APIs do Windows, da instrução CPUID, da tabela SMBIOS e dos comandos SMART. O que exigir driver vai para o módulo Sensores, depois da versão 1, decidido pelo Manfred em 30/09/2026. O driver de programa de código fechado nunca é usado.
 4. **Administrador.** Abertura como usuário comum ou já elevada: decisão pendente do Manfred (pergunta 2 do desenho). Até lá, o código não pressupõe elevação e mostra "requer administrador" onde ela faltar.
 5. **Sem instalar nada.** Um `.exe` só, autocontido, que roda de pendrive ou de pasta de rede.
 6. **Sem internet.** O programa não envia nada para fora da máquina. Tabelas de fabricantes e de processadores vão embutidas.
