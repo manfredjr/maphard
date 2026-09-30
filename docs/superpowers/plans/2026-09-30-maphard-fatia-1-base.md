@@ -40,7 +40,7 @@ A máquina da nuvem é Linux. O núcleo é `net8.0-windows`, mas não usa WPF, e
 
 ## Ajuste no desenho
 
-O chipset (parte do R16) sai pelo identificador PCI da ponte do sistema, lido pela SetupAPI, que é a mesma leitura dos dispositivos com problema. Proposta: o chipset passa para a fatia 5, junto com os dispositivos. O PR do plano pede a concordância do Manfred e, com ela, a seção 12 do desenho é ajustada no mesmo PR.
+O chipset (parte do R16) sai pelo identificador PCI da ponte do sistema, lido pela SetupAPI, que é a mesma leitura dos dispositivos com problema. Aprovado pelo Manfred em 30/09/2026: o chipset passa para a fatia dos dispositivos. A proposta dizia fatia 5, mas os dispositivos com problema (R30) estão na fatia 4 do desenho, e é lá que o chipset entra. Seção 12 do desenho ajustada no mesmo PR.
 
 ## Mapa de arquivos
 
@@ -376,7 +376,7 @@ Sem nome depois de `--json`, o arquivo recebe o nome padrão na pasta atual. Có
 
 - [ ] **Passo 1:** `ferramentas/publicar.cmd` copiado do MapDisk, com os nomes trocados.
 - [ ] **Passo 2:** README com o "Uso" desta fatia e a linha da fatia 1 na "Situação do projeto".
-- [ ] **Passo 3:** `pendencias.md` atualizado (ícone, chipset na fatia 5 se aprovado, o que o CI apontar).
+- [ ] **Passo 3:** `pendencias.md` atualizado (ícone, o que o CI apontar).
 - [ ] **Passo 4:** portões do `AGENTS.md`, envio, Pull Request do código com "O que muda", "Como testar" e `Autores: Manfred Heil Junior`.
 - [ ] **Passo 5:** ler o CI do PR até ficar verde. Só então pedir o teste do Manfred.
 
