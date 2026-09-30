@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ADBF76A4-152F-431D-96B2-5E1FBBE4F949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maphard.nucleo", "src\maphard.nucleo\maphard.nucleo.csproj", "{155EE826-C298-49D5-9A83-6E068D1E7B46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testes", "testes", "{EF1DD0B8-663B-461D-A63B-6C9B9DBE390A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maphard.testes", "testes\maphard.testes\maphard.testes.csproj", "{AA48172F-E9C6-4315-B6E5-1E391B227738}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{155EE826-C298-49D5-9A83-6E068D1E7B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155EE826-C298-49D5-9A83-6E068D1E7B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155EE826-C298-49D5-9A83-6E068D1E7B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155EE826-C298-49D5-9A83-6E068D1E7B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA48172F-E9C6-4315-B6E5-1E391B227738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA48172F-E9C6-4315-B6E5-1E391B227738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA48172F-E9C6-4315-B6E5-1E391B227738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA48172F-E9C6-4315-B6E5-1E391B227738}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{155EE826-C298-49D5-9A83-6E068D1E7B46} = {ADBF76A4-152F-431D-96B2-5E1FBBE4F949}
+		{AA48172F-E9C6-4315-B6E5-1E391B227738} = {EF1DD0B8-663B-461D-A63B-6C9B9DBE390A}
+	EndGlobalSection
+EndGlobal
