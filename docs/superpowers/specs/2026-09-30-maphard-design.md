@@ -286,10 +286,10 @@ Valores iniciais, a confirmar com o Manfred no plano da fatia de discos. Cada re
 
 | Fatia | Conteúdo |
 |---|---|
-| 1 | Base: solução, tema da MT, janela com faixa e navegação, estados de campo, CPUID e SMBIOS, seções Processador e Placa-mãe e firmware, JSON e linha de comando `coletar --json` (R2 a R8, R16 a R19, R39, R41 parcial, R42) |
+| 1 | Base: solução, tema da MT, janela com faixa e navegação, estados de campo, CPUID e SMBIOS, seções Processador e Placa-mãe e firmware, JSON e linha de comando `coletar --json` (R2 a R8, R16 sem o chipset, R17 a R19, R39, R41 parcial, R42) |
 | 2 | Memória completa com os alertas (R9 a R14) |
 | 3 | Discos: lista, volumes, SMART ATA e NVMe, regras de saúde, "Ler como administrador" (R20 a R26) |
-| 4 | Estabilidade, erros de memória e dispositivos com problema (R15, R27 a R30) |
+| 4 | Estabilidade, erros de memória, dispositivos com problema e chipset (R15, R27 a R30, chipset do R16) |
 | 5 | Vídeo, monitores, bateria, rede, Windows e verificação do Windows 11 (R31 a R36) |
 | 6 | Resumo com os cartões e as regras da seção 8 (R1) |
 | 7 | Relatório HTML com a marca da MT, CSV, copiar seção, página `public/` (R37, R38, R40, R41 completo) |
@@ -300,7 +300,7 @@ Depois da versão 1:
 |---|---|
 | 8 | Módulo Sensores, opcional (seção 14) |
 
-A ordem das fatias 2 a 7 pode mudar por decisão do Manfred. O Resumo fica para a fatia 6 porque depende de todas as áreas lidas.
+A ordem das fatias 2 a 7 pode mudar por decisão do Manfred. Em 30/09/2026, o Manfred aprovou passar o chipset da fatia 1 para a fatia dos dispositivos, porque os dois saem da mesma leitura (SetupAPI). O Resumo fica para a fatia 6 porque depende de todas as áreas lidas.
 
 ## 13. Prioridade dos testes
 
