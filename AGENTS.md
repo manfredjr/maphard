@@ -33,7 +33,7 @@ Na fase de nuvem:
 - O programa é WPF e os testes do núcleo dependem de APIs do Windows. O teste que vale é o CI do GitHub Actions em Windows, lido pelo agente depois de cada envio. Nunca afirmar que passou sem ler o resultado do CI.
 - A sessão trabalha no ramo que recebe ao abrir. O ramo por fatia, com nome em português, passa a valer quando a sessão permitir criar ramos.
 
-Na fase desktop, a pasta do projeto é `C:\COWORK\CODE\MAPHARD-MT` [CONFERIR], e valem as regras de "Onde ler e gravar".
+Na fase desktop, a pasta do projeto é `C:\COWORK\CODE\MAPHARD-MT`, confirmada pelo Manfred em 30/09/2026, e valem as regras de "Onde ler e gravar".
 
 ## Autoria
 
