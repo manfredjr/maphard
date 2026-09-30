@@ -1,0 +1,99 @@
+# Tabela de processadores do MapHard. Uma linha por fabricante, familia e faixa de modelo, em hexadecimal como no CPUID.
+# revisoes vazia vale para todas; com valor, lista ou faixa (9 ou 10-13 ou 11,12). A linha com revisoes tem prioridade.
+# Linha sem fonte nao entra (regra do AGENTS.md). litografia vazia vira nao informado ate haver fonte.
+fabricante;familia;modelo_inicial;modelo_final;revisoes;nome;litografia;fonte
+GenuineIntel;6;0F;0F;;Core 2 (Merom);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;17;17;;Core 2 (Penryn);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;1A;1A;;Nehalem-EP;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;1E;1E;;Nehalem;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;1F;1F;;Nehalem (Auburndale, Havendale);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;2E;2E;;Nehalem-EX;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;25;25;;Westmere;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;2C;2C;;Westmere-EP;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;2F;2F;;Westmere-EX;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;2A;2A;;Sandy Bridge;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;2D;2D;;Sandy Bridge-X;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;3A;3A;;Ivy Bridge;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;3E;3E;;Ivy Bridge-X;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;3C;3C;;Haswell;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;3F;3F;;Haswell-X;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;45;45;;Haswell;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;46;46;;Haswell;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;3D;3D;;Broadwell;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;47;47;;Broadwell;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;4F;4F;;Broadwell-X;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;56;56;;Broadwell-D;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;4E;4E;;Skylake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;5E;5E;;Skylake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;55;55;7;Cascade Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;55;55;11;Cooper Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8E;8E;9;Kaby Lake ou Amber Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8E;8E;10;Coffee Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8E;8E;11,12;Whiskey Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;9E;9E;9;Kaby Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;9E;9E;10-13;Coffee Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;A5;A5;;Comet Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;A6;A6;;Comet Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;66;66;;Cannon Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;6A;6A;;Ice Lake-X;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;6C;6C;;Ice Lake-D;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;7D;7D;;Ice Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;7E;7E;;Ice Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;A7;A7;;Rocket Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8C;8C;;Tiger Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8D;8D;;Tiger Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8F;8F;;Sapphire Rapids;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;CF;CF;;Emerald Rapids;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;AD;AD;;Granite Rapids;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;AE;AE;;Granite Rapids-D;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;D7;D7;;Bartlett Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;8A;8A;;Lakefield;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;97;97;;Alder Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;9A;9A;;Alder Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;B7;B7;;Raptor Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;BA;BA;;Raptor Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;BF;BF;;Raptor Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;AC;AC;;Meteor Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;AA;AA;;Meteor Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;C5;C5;;Arrow Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;C6;C6;;Arrow Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;B5;B5;;Arrow Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;BD;BD;;Lunar Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;CC;CC;;Panther Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;E5;E5;;Panther Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;D5;D5;;Wildcat Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;1C;1C;;Atom (Bonnell);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;36;36;;Atom (Cedarview);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;37;37;;Atom (Bay Trail);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;4C;4C;;Atom (Cherry Trail, Braswell);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;5C;5C;;Atom (Apollo Lake);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;5F;5F;;Atom (Denverton);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;7A;7A;;Atom (Gemini Lake);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;86;86;;Atom (Jacobsville);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;96;96;;Atom (Elkhart Lake);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;9C;9C;;Atom (Jasper Lake);;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;BE;BE;;Alder Lake-N;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;AF;AF;;Sierra Forest;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;B6;B6;;Grand Ridge;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;6;DD;DD;;Clearwater Forest;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;12;01;01;;Nova Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;12;03;03;;Nova Lake;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+GenuineIntel;13;01;01;;Diamond Rapids;;Linux arch/x86/include/asm/intel-family.h https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/intel-family.h
+AuthenticAMD;17;00;2F;;Zen (inclui Zen+);;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;17;50;5F;;Zen (inclui Zen+);;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;17;30;4F;;Zen 2;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;17;60;7F;;Zen 2;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;17;90;91;;Zen 2;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;17;A0;AF;;Zen 2;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;19;00;0F;;Zen 3;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;19;20;5F;;Zen 3;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;19;10;1F;;Zen 4;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;19;60;AF;;Zen 4;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;00;2F;;Zen 5;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;40;4F;;Zen 5;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;60;7F;;Zen 5;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;D0;D7;;Zen 5;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;50;5F;;Zen 6;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;80;AF;;Zen 6;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;C0;CF;;Zen 6;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c
+AuthenticAMD;1A;D8;EF;;Zen 6;;Linux arch/x86/kernel/cpu/amd.c (bsp_init_amd) https://github.com/torvalds/linux/blob/master/arch/x86/kernel/cpu/amd.c

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AssemblyName>maphard.nucleo</AssemblyName>
+    <RootNamespace>MapHard.Nucleo</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Description>Nucleo do MapHard - MT: leitura do hardware, interpretacao, coleta e relatorios.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="maphard.testes" />
+  </ItemGroup>
+
+  <!-- A licença vai dentro do programa, para a janela Sobre mostrá-la sem internet -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\LICENSE" LogicalName="licenca.txt" />
+    <EmbeddedResource Include="tabelas\processadores.csv" LogicalName="processadores.csv" />
+  </ItemGroup>
+
+</Project>

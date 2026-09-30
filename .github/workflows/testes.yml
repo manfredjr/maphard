@@ -1,0 +1,82 @@
+# CI do MapHard - MT: compila, roda os testes e gera o .exe em todo Pull Request
+# e em todo push no main. O .exe fica disponivel para baixar na execucao, em Artifacts.
+#
+# Quando uma marca de versao (v0.1.0, por exemplo) chega ao GitHub, o mesmo
+# fluxo publica a Release com o maphard.exe anexado. E dessa Release que a
+# pagina maphard.manfred.com.br baixa o programa.
+name: testes
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    env:
+      DOTNET_NOLOGO: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Compilar
+        if: hashFiles('maphard.sln') != ''
+        run: dotnet build maphard.sln -c Release
+
+      - name: Testar
+        if: hashFiles('maphard.sln') != ''
+        run: dotnet test maphard.sln -c Release --no-build
+
+      - name: Gerar o .exe
+        if: hashFiles('src/maphard/maphard.csproj') != ''
+        run: dotnet publish src/maphard/maphard.csproj -c Release -o publicar
+
+      # O .sha256.txt deixa quem baixou conferir que o .exe chegou igual ao publicado.
+      - name: Calcular o SHA-256
+        if: hashFiles('src/maphard/maphard.csproj') != ''
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash publicar/maphard.exe -Algorithm SHA256).Hash
+          Set-Content -Path publicar/maphard.exe.sha256.txt -Value "$hash  maphard.exe" -Encoding ascii
+          Get-Content publicar/maphard.exe.sha256.txt
+
+      - name: Guardar o .exe
+        if: hashFiles('src/maphard/maphard.csproj') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: maphard-${{ github.sha }}
+          path: |
+            publicar/maphard.exe
+            publicar/maphard.exe.sha256.txt
+          retention-days: 14
+
+      - name: Conferir a versao da marca
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $versao = ([xml](Get-Content Directory.Build.props)).Project.PropertyGroup[0].Version
+          $marca = "${{ github.ref_name }}".TrimStart('v')
+          if ($versao -ne $marca) {
+            throw "A marca $marca nao bate com a versao $versao do Directory.Build.props."
+          }
+
+      - name: Publicar a Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: MapHard - MT ${{ github.ref_name }}
+          files: |
+            publicar/maphard.exe
+            publicar/maphard.exe.sha256.txt
+          generate_release_notes: true
