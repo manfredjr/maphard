@@ -87,7 +87,7 @@ internal static class FontesSimuladas
     }
 
     public static IFonteCpuid Cpuid() =>
-        CpuidSimulado.Base(maiorBasica: 0x16).Com(0x16, 3600, 4700).NomeComercial("Processador de Teste 3.60GHz").Bit(1, 'c', 5);
+        CpuidSimulado.Base(maiorBasica: 0x16).Com(0x16, 3600, 4700).NomeComercial("Processador de Teste 3.60GHz").Bit(1, 'c', 5).Bit(0x80000001, 'd', 29);
 
     public static FontesColeta Completas(
         IFonteSmbios? smbios = null,
