@@ -1,0 +1,16 @@
+#!/bin/sh
+# Envia ao GitHub o ramo atual logo depois de cada commit.
+# Ligar na pasta do projeto, uma vez por clone: git config core.hooksPath .githooks
+
+ramo=$(git symbolic-ref --short -q HEAD) || exit 0
+
+if ! git remote get-url origin >/dev/null 2>&1; then
+    echo "Aviso: o repositorio nao tem o remoto origin. O commit ficou so nesta maquina."
+    exit 0
+fi
+
+if ! git push -q -u origin "$ramo"; then
+    echo "Aviso: o commit nao chegou ao GitHub. Envie a mao quando a rede voltar:"
+    echo "  git push -u origin $ramo"
+fi
+exit 0

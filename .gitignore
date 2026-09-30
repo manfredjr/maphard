@@ -1,0 +1,23 @@
+# Saidas de compilacao
+bin/
+obj/
+publicar/
+*.user
+.vs/
+.vscode/
+TestResults/
+
+# Coletas e relatorios gerados em maquina de cliente nunca vao para o repositorio
+/relatorios/
+/coletas/
+maphard-*.html
+maphard-*.json
+maphard-*.csv
+
+# Programas de terceiros usados como referencia
+*.exe
+*.msi
+*.zip
+
+# Rascunhos locais
+.superpowers/
