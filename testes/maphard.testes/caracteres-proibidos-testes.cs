@@ -35,7 +35,7 @@ public class CaracteresProibidosTestes
     // A busca pula o que não consegue ler, para uma pasta sem permissão não derrubar o teste.
     private static readonly EnumerationOptions _todasAsPastas = new() { RecurseSubdirectories = true, IgnoreInaccessible = true };
 
-    private static readonly string[] _extensoes = [".cs", ".md", ".csproj", ".props", ".json", ".manifest", ".ps1", ".cmd", ".txt", ".html", ".yml", ".xaml"];
+    private static readonly string[] _extensoes = [".cs", ".md", ".csproj", ".props", ".json", ".manifest", ".ps1", ".cmd", ".txt", ".html", ".yml", ".xaml", ".csv"];
 
     [Fact]
     public void Codigo_e_documentacao_nao_tem_caractere_proibido()

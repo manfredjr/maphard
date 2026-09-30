@@ -12,6 +12,13 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Verificação jurídica | Enquadramento pela LGPD (nome do computador, números de série, usuário) e texto de uso autorizado | `legal-br`, no formato das verificações do MapNet e do MapDisk, antes da primeira versão pública |
 | Arte do MapHard | Não há símbolo nem logo do MapHard | Arte do Manfred, no estilo dos símbolos do MapNet e do MapDisk |
 
+## Fatia 1
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Litografia do processador | A tabela de processadores só aceita linha com fonte. O kernel Linux, usado para os codinomes da Intel e as microarquiteturas da AMD, não traz a litografia. As páginas da Intel e da AMD estão fora do alcance da sessão na nuvem | Preencher a coluna `litografia` de `tabelas/processadores.csv` com a página de especificação do fabricante como fonte, na fase desktop ou com o acesso liberado |
+| Site da DMTF e documentação da Microsoft fora do alcance | A rede da sessão bloqueia `dmtf.org` e `learn.microsoft.com`. A documentação da Microsoft foi lida pelo repositório `MicrosoftDocs/sdk-api` no GitHub, e os deslocamentos do SMBIOS pelo `dmidecode` | Liberar os dois domínios nas configurações de rede do ambiente, ou conferir na fase desktop |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |
