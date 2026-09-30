@@ -17,6 +17,7 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Item | Motivo | O que fecha |
 |---|---|---|
 | Litografia do processador | A tabela de processadores só aceita linha com fonte. O kernel Linux, usado para os codinomes da Intel e as microarquiteturas da AMD, não traz a litografia. As páginas da Intel e da AMD estão fora do alcance da sessão na nuvem | Preencher a coluna `litografia` de `tabelas/processadores.csv` com a página de especificação do fabricante como fonte, na fase desktop ou com o acesso liberado |
+| Constantes de firmware sem documentação lida | Os valores TPM_VERSION_12 = 1 e TPM_VERSION_20 = 2 do tbs.h, a chave `UEFISecureBootEnabled` do Secure Boot e o formato do valor `Update Revision` (microcódigo) não estão na documentação que a sessão conseguiu ler. Estão marcados com [CONFERIR] em `firmware/leitor-firmware.cs` | Conferir na documentação da Microsoft e no teste da fase desktop, comparando com o que o Windows mostra |
 | Site da DMTF e documentação da Microsoft fora do alcance | A rede da sessão bloqueia `dmtf.org` e `learn.microsoft.com`. A documentação da Microsoft foi lida pelo repositório `MicrosoftDocs/sdk-api` no GitHub, e os deslocamentos do SMBIOS pelo `dmidecode` | Liberar os dois domínios nas configurações de rede do ambiente, ou conferir na fase desktop |
 
 ## Depois da versão 1
