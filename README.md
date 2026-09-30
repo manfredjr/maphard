@@ -35,4 +35,4 @@ Sem nome depois de `--json`, o arquivo recebe o nome do computador e a data. No 
 | Fatia | Conteúdo | Ramo | Pull Request | Situação |
 |---|---|---|---|---|
 | 0 | Regras, licença, desenho da versão 1 | Ramo da sessão na nuvem | Direto no `main`, com autorização | Concluída em 30/09/2026 |
-| 1 | Base, processador, placa-mãe e firmware, JSON e linha de comando | Ramo da sessão na nuvem | Plano em [#1](https://github.com/manfredjr/maphard/pull/1), código em [#2](https://github.com/manfredjr/maphard/pull/2) | Código em revisão |
+| 1 | Base, processador, placa-mãe e firmware, JSON e linha de comando | Ramo da sessão na nuvem | Plano em [#1](https://github.com/manfredjr/maphard/pull/1), código em [#2](https://github.com/manfredjr/maphard/pull/2) | Concluída em 30/09/2026 |
