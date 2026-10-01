@@ -149,6 +149,44 @@ public class PainelTestes
     }
 
     [Fact]
+    public async Task Botao_de_administrador_aparece_depois_da_coleta_como_usuario_comum()
+    {
+        var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
+        Assert.False(painel.PodeElevar);
+
+        await painel.AtualizarAsync();
+
+        Assert.True(painel.PodeElevar);
+        Assert.Contains("usuário comum", painel.TextoStatus, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Botao_de_administrador_some_quando_ja_elevado_e_na_demonstracao()
+    {
+        var elevado = new PainelPrincipal(async c => (await Coletar(c)) with { Administrador = true }, hoje: () => Hoje);
+        await elevado.AtualizarAsync();
+        var demonstracao = PainelPrincipal.ComDemonstracao();
+        await demonstracao.AtualizarAsync();
+
+        Assert.False(elevado.PodeElevar);
+        Assert.Contains("administrador", elevado.TextoStatus, StringComparison.Ordinal);
+        Assert.False(demonstracao.PodeElevar);
+    }
+
+    [Fact]
+    public async Task Elevacao_cancelada_vai_para_o_status_e_sai_na_proxima_coleta()
+    {
+        var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
+        await painel.AtualizarAsync();
+
+        painel.AvisarElevacaoCancelada();
+        Assert.EndsWith("leitura como administrador cancelada", painel.TextoStatus, StringComparison.Ordinal);
+
+        await painel.AtualizarAsync();
+        Assert.DoesNotContain("cancelada", painel.TextoStatus, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task Falha_da_coleta_vai_para_o_status()
     {
         var painel = new PainelPrincipal(_ => throw new InvalidOperationException("sem acesso"));

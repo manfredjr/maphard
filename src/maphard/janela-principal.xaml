@@ -68,6 +68,9 @@
                             IsEnabled="{Binding PodeAtualizar}" ToolTip="Lê o computador de novo" />
                     <Button Content="Salvar JSON..." Style="{StaticResource BotaoFaixaContorno}" Click="AoSalvarJson"
                             IsEnabled="{Binding PodeSalvar}" ToolTip="Grava a coleta completa num arquivo JSON" />
+                    <Button Content="Ler como administrador" Style="{StaticResource BotaoFaixaContorno}" Click="AoLerComoAdministrador"
+                            Visibility="{Binding PodeElevar, Converter={StaticResource VisivelSe}}"
+                            ToolTip="Reabre o MapHard como administrador, para ler o SMART dos discos SATA e o BitLocker. O Windows pede a confirmação" />
                 </StackPanel>
             </DockPanel>
         </Border>

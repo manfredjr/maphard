@@ -124,6 +124,19 @@ public class LinhaDeComandoTestes
     }
 
     [Fact]
+    public void Elevado_so_vale_para_a_janela_da_maquina_real()
+    {
+        var a = ArgumentosCli.Interpretar(["--elevado"]);
+
+        Assert.True(a.Valido);
+        Assert.True(a.Elevado);
+        Assert.Equal(ComandoCli.Janela, a.Comando);
+        Assert.False(ArgumentosCli.Interpretar(["coletar", "--elevado"]).Valido);
+        Assert.False(ArgumentosCli.Interpretar(["--demonstracao", "--elevado"]).Valido);
+        Assert.Contains("--elevado", ArgumentosCli.TextoAjuda, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Resumo_mostra_os_alertas_de_memoria()
     {
         var linhas = ExecutorCli.Resumo(MapHard.Nucleo.Painel.DadosDemonstracao.Coleta()).ToList();

@@ -78,6 +78,19 @@ public partial class JanelaPrincipal : Window
         }
     }
 
+    /// <summary>Com a elevação aceita, a janela nova assume e esta fecha. Recusada, esta continua com o aviso.</summary>
+    private void AoLerComoAdministrador(object sender, RoutedEventArgs e)
+    {
+        if (Shell.ReabrirComoAdministrador())
+        {
+            Close();
+        }
+        else
+        {
+            _painel.AvisarElevacaoCancelada();
+        }
+    }
+
     private void AoAbrirSobre(object sender, RoutedEventArgs e) => new JanelaSobre { Owner = this }.ShowDialog();
 
     private void AoClicarLogo(object sender, RoutedEventArgs e) => Shell.AbrirNoNavegador(TextosSobre.SiteMt);
