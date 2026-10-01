@@ -104,7 +104,7 @@ public static class LeitorMemoria
                 ? Campo<T>.Erro(FonteDado.Windows, l.FalhaEstado ?? "GlobalMemoryStatusEx falhou")
                 : ler(l.Estado) is { } valor ? Campo<T>.Lido(valor, FonteDado.Windows) : Campo<T>.NaoInformado(FonteDado.Windows, "GetPerformanceInfo falhou");
 
-        return new SecaoMemoria(
+        var secao = new SecaoMemoria(
             instalada,
             utilizavel,
             reservada,
@@ -122,6 +122,8 @@ public static class LeitorMemoria
             DoWindows(x => x.CacheBytes),
             [],
             Campo<string>.NaoInformado(FonteDado.Smbios));
+
+        return secao with { Alertas = AlertasMemoria.Calcular(secao), Ampliacao = AlertasMemoria.Ampliacao(secao) };
     }
 
     /// <summary>Instalada: a do Windows. Sem ela, a soma dos módulos. Diferença entre as duas vai na observação.</summary>
