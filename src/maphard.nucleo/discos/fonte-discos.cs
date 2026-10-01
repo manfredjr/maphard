@@ -9,6 +9,12 @@ namespace MapHard.Nucleo.Discos;
 public interface IFonteDiscos
 {
     IReadOnlyList<DiscoBruto> Discos();
+
+    /// <summary>Log de saúde NVMe (512 bytes) do disco <paramref name="numero"/>, ou null.</summary>
+    byte[]? LogSaudeNvme(int numero);
+
+    /// <summary>IDENTIFY do controlador NVMe (4096 bytes), ou null.</summary>
+    byte[]? IdentificacaoNvme(int numero);
 }
 
 /// <summary>
@@ -29,6 +35,13 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
     private const int PropriedadeDispositivo = 0;
     private const int PropriedadePenalidadeBusca = 7;
     private const int PropriedadeTrim = 8;
+    private const int PropriedadeProtocoloAdaptador = 49;
+    private const int PropriedadeProtocoloDispositivo = 50;
+    private const int ProtocoloNvmeTipo = 3;
+    private const int DadoIdentify = 1;
+    private const int DadoLogPage = 2;
+    private const int LogSaude = 2;
+    private const int CnsControlador = 1;
 
     private const uint DigcfPresente = 0x02;
     private const uint DigcfInterface = 0x10;
@@ -66,6 +79,47 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
         }
 
         return discos.Values.OrderBy(d => d.Numero).ToList();
+    }
+
+    public byte[]? LogSaudeNvme(int numero) => ProtocoloNvme(numero, PropriedadeProtocoloDispositivo, DadoLogPage, LogSaude, 512);
+
+    public byte[]? IdentificacaoNvme(int numero) => ProtocoloNvme(numero, PropriedadeProtocoloAdaptador, DadoIdentify, CnsControlador, 4096);
+
+    /// <summary>
+    /// Consulta de protocolo NVMe, como em "Working with NVMe drives" (learn.microsoft.com): STORAGE_PROPERTY_QUERY
+    /// (8 bytes até AdditionalParameters) seguida do STORAGE_PROTOCOL_SPECIFIC_DATA (40 bytes) e da área de dados;
+    /// a resposta é um STORAGE_PROTOCOL_DATA_DESCRIPTOR (Version e Size mais a mesma estrutura de 40 bytes), com os
+    /// dados no ProtocolDataOffset contado do início da estrutura de 40 bytes. ProtocolTypeNvme 3,
+    /// NVMeDataTypeIdentify 1, NVMeDataTypeLogPage 2, NVME_LOG_PAGE_HEALTH_INFO 2 e NVME_IDENTIFY_CNS_CONTROLLER 1
+    /// pelos ntddstor.h e nvme.h do SDK.
+    /// </summary>
+    private static byte[]? ProtocoloNvme(int numero, int propriedade, int tipoDado, int pedido, int tamanho)
+    {
+        const int inicioDados = 8;
+        const int tamanhoProtocolo = 40;
+        using var disco = CreateFileW($@"\\.\PhysicalDrive{numero}", 0, CompartilharLeituraGravacao, 0, AbrirExistente, 0, 0);
+        if (disco.IsInvalid)
+        {
+            return null;
+        }
+
+        var buffer = new byte[inicioDados + tamanhoProtocolo + tamanho];
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(0), propriedade);
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(inicioDados + 0), ProtocoloNvmeTipo);
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(inicioDados + 4), tipoDado);
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(inicioDados + 8), pedido);
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(inicioDados + 16), tamanhoProtocolo);
+        BinaryPrimitives.WriteInt32LittleEndian(buffer.AsSpan(inicioDados + 20), tamanho);
+        if (!DeviceIoControl(disco, ConsultaPropriedade, buffer, buffer.Length, buffer, buffer.Length, out _, 0))
+        {
+            return null;
+        }
+
+        // Resposta: Version (0) e Size (4) do descritor, depois a estrutura de protocolo a partir do byte 8.
+        var deslocamento = BinaryPrimitives.ReadInt32LittleEndian(buffer.AsSpan(inicioDados + 16));
+        var comprimento = BinaryPrimitives.ReadInt32LittleEndian(buffer.AsSpan(inicioDados + 20));
+        var inicio = inicioDados + deslocamento;
+        return deslocamento <= 0 || comprimento < tamanho || inicio + tamanho > buffer.Length ? null : buffer.AsSpan(inicio, tamanho).ToArray();
     }
 
     /// <summary>Caminho e instância de cada interface de disco presente (SetupDiGetClassDevsW com GUID_DEVINTERFACE_DISK).</summary>
