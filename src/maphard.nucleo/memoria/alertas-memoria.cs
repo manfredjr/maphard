@@ -80,7 +80,11 @@ public static partial class AlertasMemoria
         return Campo<string>.Lido(string.Join("; ", partes), FonteDado.Smbios);
     }
 
-    /// <summary>A primeira diferença entre os módulos instalados: capacidade, velocidade nominal ou part number.</summary>
+    /// <summary>
+    /// A primeira diferença entre os módulos instalados: capacidade ou velocidade nominal. O part number
+    /// não entra, por decisão do Manfred em 01/10/2026: com capacidade e velocidade iguais, part number
+    /// diferente é comum em pentes de fábrica (muda só a revisão do chip).
+    /// </summary>
     private static string? Diferenca(IReadOnlyList<ModuloTela> instalados)
     {
         if (instalados.Count < 2)
@@ -95,13 +99,7 @@ public static partial class AlertasMemoria
         }
 
         var velocidades = Distintos(instalados.Select(m => m.VelocidadeNominal));
-        if (velocidades.Count > 1)
-        {
-            return $"{string.Join(" e ", velocidades)} MT/s";
-        }
-
-        var partNumbers = Distintos(instalados.Select(m => m.PartNumber));
-        return partNumbers.Count > 1 ? $"part numbers {string.Join(" e ", partNumbers)}" : null;
+        return velocidades.Count > 1 ? $"{string.Join(" e ", velocidades)} MT/s" : null;
     }
 
     private static List<T> Distintos<T>(IEnumerable<Campo<T>> campos) =>

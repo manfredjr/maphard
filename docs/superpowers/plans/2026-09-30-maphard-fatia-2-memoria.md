@@ -145,7 +145,7 @@ Regras, com valores iniciais que o Manfred pode ajustar:
 
 | Alerta | Quando | Texto |
 |---|---|---|
-| Módulos diferentes | Entre os módulos instalados, capacidade, velocidade nominal ou part number diferem | "módulos diferentes: 8 GB e 4 GB" |
+| Módulos diferentes | Entre os módulos instalados, capacidade ou velocidade nominal diferem. O part number saiu da regra por decisão do Manfred em 01/10/2026, depois do teste em máquina real | "módulos diferentes: 8 GB e 4 GB" |
 | Abaixo da velocidade | Velocidade configurada menor que a nominal | "rodando a 2666 MT/s; os módulos aceitam 3200. Pode ser limite do processador ou da placa" |
 | Canal único provável | Um módulo só numa placa com dois ou mais slots; ou dois módulos cujos textos de slot indicam o mesmo canal ("ChannelA-DIMM0" e "ChannelA-DIMM1", "A1" e "A2") | "provável canal único: o desempenho da memória cai" |
 | Reserva alta | Reservada acima de 25% da instalada | "o Windows usa 6 GB dos 16 GB instalados" |

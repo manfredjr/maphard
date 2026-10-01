@@ -56,11 +56,11 @@ public class MemoriaAlertasTestes
     }
 
     [Fact]
-    public void Part_numbers_diferentes_geram_alerta()
+    public void Part_numbers_diferentes_com_capacidade_e_velocidade_iguais_nao_geram_alerta()
     {
         var s = Secao(2, 64 * 1024 * 1024, 16, 16 * Gb - (200 * 1024 * 1024), new Pente(8192, "ChannelA-DIMM0"), new Pente(8192, "ChannelB-DIMM0", PartNumber: "PN-TESTE-OUTRO"));
 
-        Assert.Contains(AlertasMemoria.ModulosDiferentes, Codigos(s));
+        Assert.Empty(s.Alertas);
     }
 
     [Fact]
