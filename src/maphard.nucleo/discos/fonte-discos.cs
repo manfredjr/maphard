@@ -15,6 +15,9 @@ public interface IFonteDiscos
 
     /// <summary>IDENTIFY do controlador NVMe (4096 bytes), ou null.</summary>
     byte[]? IdentificacaoNvme(int numero);
+
+    /// <summary>SMART ATA pelos quatro comandos permitidos. Sem administrador, volta com a falha "requer administrador".</summary>
+    MapHard.Nucleo.Smart.SmartAtaBruto SmartAta(int numero);
 }
 
 /// <summary>
@@ -120,6 +123,68 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
         var comprimento = BinaryPrimitives.ReadInt32LittleEndian(buffer.AsSpan(inicioDados + 20));
         var inicio = inicioDados + deslocamento;
         return deslocamento <= 0 || comprimento < tamanho || inicio + tamanho > buffer.Length ? null : buffer.AsSpan(inicio, tamanho).ToArray();
+    }
+
+    /// <summary>
+    /// SMART ATA pelo IOCTL_ATA_PASS_THROUGH (0x0004D02C, ntddscsi.h), que exige o disco aberto em leitura e
+    /// gravação (learn.microsoft.com: "must have read/write access to the device"); na prática, administrador.
+    /// ATA_PASS_THROUGH_EX em 64 bits: Length (0), AtaFlags (2), PathId, TargetId, Lun, Reserved (4 a 7),
+    /// DataTransferLength (8), TimeOutValue (12), ReservedAsUlong (16), DataBufferOffset (24, ULONG_PTR alinhado),
+    /// PreviousTaskFile (32) e CurrentTaskFile (40); 48 bytes, com os dados logo depois.
+    /// ATA_FLAGS_DRDY_REQUIRED 1 e ATA_FLAGS_DATA_IN 2 pelo ntddscsi.h.
+    /// </summary>
+    public MapHard.Nucleo.Smart.SmartAtaBruto SmartAta(int numero)
+    {
+        const uint leituraGravacao = 0xC0000000;
+        const int acessoNegado = 5;
+        using var disco = CreateFileW($@"\\.\PhysicalDrive{numero}", leituraGravacao, CompartilharLeituraGravacao, 0, AbrirExistente, 0, 0);
+        if (disco.IsInvalid)
+        {
+            return new(null, null, null, null, null, Marshal.GetLastPInvokeError() == acessoNegado ? Volumes.RequerAdministrador : ControladoraSemSmart);
+        }
+
+        var identificacao = PassagemAta(disco, MapHard.Nucleo.Smart.ComandoAta.Identificar);
+        if (identificacao is null)
+        {
+            return new(null, null, null, null, null, ControladoraSemSmart);
+        }
+
+        var status = PassagemAta(disco, MapHard.Nucleo.Smart.ComandoAta.LerStatus);
+        return new(
+            identificacao.Value.Dados,
+            PassagemAta(disco, MapHard.Nucleo.Smart.ComandoAta.LerValores)?.Dados,
+            PassagemAta(disco, MapHard.Nucleo.Smart.ComandoAta.LerLimites)?.Dados,
+            status?.Registradores[3],
+            status?.Registradores[4],
+            null);
+    }
+
+    public const string ControladoraSemSmart = "SMART indisponível por esta controladora";
+
+    private static (byte[]? Dados, byte[] Registradores)? PassagemAta(SafeFileHandle disco, MapHard.Nucleo.Smart.ComandoAta comando)
+    {
+        const int tamanhoEstrutura = 48;
+        const int tamanhoDados = 512;
+        const uint passagemAta = 0x0004D02C;
+        const ushort drdy = 1;
+        const ushort dadosEntrada = 2;
+        const uint segundos = 10;
+
+        var comDados = MapHard.Nucleo.Smart.ComandosAta.TemDados(comando);
+        var buffer = new byte[tamanhoEstrutura + (comDados ? tamanhoDados : 0)];
+        BinaryPrimitives.WriteUInt16LittleEndian(buffer.AsSpan(0), tamanhoEstrutura);
+        BinaryPrimitives.WriteUInt16LittleEndian(buffer.AsSpan(2), comDados ? (ushort)(drdy | dadosEntrada) : drdy);
+        BinaryPrimitives.WriteUInt32LittleEndian(buffer.AsSpan(8), comDados ? (uint)tamanhoDados : 0);
+        BinaryPrimitives.WriteUInt32LittleEndian(buffer.AsSpan(12), segundos);
+        BinaryPrimitives.WriteUInt64LittleEndian(buffer.AsSpan(24), comDados ? (ulong)tamanhoEstrutura : 0);
+        MapHard.Nucleo.Smart.ComandosAta.Registradores(comando).CopyTo(buffer, 40);
+
+        if (!DeviceIoControl(disco, passagemAta, buffer, buffer.Length, buffer, buffer.Length, out _, 0))
+        {
+            return null;
+        }
+
+        return (comDados ? buffer.AsSpan(tamanhoEstrutura, tamanhoDados).ToArray() : null, buffer.AsSpan(40, 8).ToArray());
     }
 
     /// <summary>Caminho e instância de cada interface de disco presente (SetupDiGetClassDevsW com GUID_DEVINTERFACE_DISK).</summary>
