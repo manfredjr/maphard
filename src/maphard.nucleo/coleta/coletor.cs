@@ -61,7 +61,7 @@ public sealed class Coletor
             cancelar,
             tempoLimite: _tempoLimite + TimeSpan.FromSeconds(1)).ConfigureAwait(false);
 
-        var dadosFirmware = firmware.Result.Valor ?? FirmwareEmErro(firmware.Result.Falha!);
+        var dadosFirmware = OcultoPeloHipervisor(firmware.Result.Valor ?? FirmwareEmErro(firmware.Result.Falha!), id.Valor);
         var dadosWindows = windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!);
 
         var processador = MontarProcessador(tabelaSmbios, id, topologia.Result, clocks, dadosFirmware);
@@ -179,7 +179,11 @@ public sealed class Coletor
             DoCpuid<IReadOnlyList<string>>(i => i.Instrucoes),
             nivel,
             clocks.Valor ?? ClocksEmErro(clocks.Falha!),
-            id is null ? DoCpuid<string>(_ => null).Mapear(_ => false) : Campo<bool>.Lido(id.VirtualizacaoNoProcessador, FonteDado.Cpuid),
+            id is null
+                ? DoCpuid<string>(_ => null).Mapear(_ => false)
+                : id.HipervisorPresente && !id.VirtualizacaoNoProcessador
+                    ? Campo<bool>.NaoInformado(FonteDado.Cpuid, MotivoHipervisor)
+                    : Campo<bool>.Lido(id.VirtualizacaoNoProcessador, FonteDado.Cpuid),
             firmware.VirtualizacaoLigada,
             id is null ? DoCpuid<string>(_ => null).Mapear(_ => false) : Campo<bool>.Lido(id.HipervisorPresente, FonteDado.Cpuid));
     }
@@ -260,6 +264,16 @@ public sealed class Coletor
         id?.HipervisorPresente == true && sistema is not null
         && ((sistema.Fabricante is { } f && _fabricantesHipervisor.Any(h => f.Contains(h, StringComparison.OrdinalIgnoreCase)))
             || sistema.Produto == "Virtual Machine");
+
+    // Com o hipervisor ativo (Hyper-V ou a segurança baseada em virtualização do Windows), o processador
+    // esconde a virtualização do próprio Windows: o CPUID e o IsProcessorFeaturePresent dizem "não"
+    // mesmo com ela suportada e ligada. Esse "não" vira "não informado", com o motivo.
+    internal const string MotivoHipervisor = "o hipervisor ativo esconde esta informação do Windows";
+
+    private static DadosFirmware OcultoPeloHipervisor(DadosFirmware firmware, IdentidadeCpu? id) =>
+        id?.HipervisorPresente == true && firmware.VirtualizacaoLigada is { FoiLido: true, Valor: false }
+            ? firmware with { VirtualizacaoLigada = Campo<bool>.NaoInformado(FonteDado.Windows, MotivoHipervisor) }
+            : firmware;
 
     private static DadosFirmware FirmwareEmErro(string motivo)
     {

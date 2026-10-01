@@ -44,6 +44,33 @@ public class ColetaTestes
     }
 
     [Fact]
+    public async Task Hipervisor_ativo_deixa_a_virtualizacao_nao_informada()
+    {
+        // Bit 31 de ECX na folha 1: hipervisor presente. Sem o bit 5 (VMX), como o Windows vê com o Hyper-V ligado.
+        var cpuid = CpuidSimulado.Base(maiorBasica: 0x16).Com(0x16, 3600, 4700).NomeComercial("Processador de Teste 3.60GHz").Bit(1, 'c', 31).Bit(0x80000001, 'd', 29);
+        var fontes = FontesSimuladas.Completas(cpuid: cpuid) with { Firmware = new FontesSimuladas.Firmware(virtualizacaoLigada: false) };
+
+        var c = await Coletar(fontes);
+
+        Assert.True(c.Processador.Hipervisor.Valor);
+        Assert.Equal(EstadoCampo.NaoInformado, c.Processador.VirtualizacaoNoProcessador.Estado);
+        Assert.Equal(Coletor.MotivoHipervisor, c.Processador.VirtualizacaoNoProcessador.Motivo);
+        Assert.Equal(EstadoCampo.NaoInformado, c.Processador.VirtualizacaoLigada.Estado);
+        Assert.Equal(EstadoCampo.NaoInformado, c.Placa.Firmware.VirtualizacaoLigada.Estado);
+    }
+
+    [Fact]
+    public async Task Sem_hipervisor_a_virtualizacao_desligada_e_lida_como_nao()
+    {
+        var fontes = FontesSimuladas.Completas() with { Firmware = new FontesSimuladas.Firmware(virtualizacaoLigada: false) };
+
+        var c = await Coletar(fontes);
+
+        Assert.Equal(EstadoCampo.Lido, c.Processador.VirtualizacaoLigada.Estado);
+        Assert.False(c.Processador.VirtualizacaoLigada.Valor);
+    }
+
+    [Fact]
     public async Task Fonte_que_lanca_excecao_deixa_so_os_campos_dela_em_erro()
     {
         var smbios = new FontesSimuladas.Smbios(() => throw new InvalidOperationException("falha simulada"));
