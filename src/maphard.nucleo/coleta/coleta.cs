@@ -1,5 +1,6 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
@@ -18,6 +19,7 @@ public sealed record Identificacao(
     Campo<long> MemoriaInstalada,
     Campo<string> MemoriaTipo,
     Campo<long> MemoriaUtilizavel,
+    Campo<string> Discos,
     DadosWindows Windows);
 
 /// <summary>Seção Processador (R3 a R8).</summary>
@@ -70,10 +72,11 @@ public sealed record ColetaMaquina(
     Identificacao Identificacao,
     SecaoProcessador Processador,
     SecaoMemoria Memoria,
+    SecaoDiscos Discos,
     SecaoPlaca Placa)
 {
     public const string NomeFormato = "maphard-coleta";
 
-    /// <summary>2 a partir da fatia 2, que acrescenta a seção Memória e a memória instalada na identificação.</summary>
-    public const int VersaoAtual = 2;
+    /// <summary>3 a partir da fatia 3, que acrescenta a seção Discos e os discos na identificação.</summary>
+    public const int VersaoAtual = 3;
 }

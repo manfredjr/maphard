@@ -31,6 +31,39 @@ public static class Formatador
         return $"{valor.ToString("0.##", PtBr)} {_unidades[unidade]}";
     }
 
+    private static readonly string[] _unidadesDecimais = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB"];
+
+    /// <summary>
+    /// Tamanho em potências de 1000, como o fabricante de disco usa na etiqueta e o SMART conta os dados
+    /// gravados: "1,02 TB", "38,2 TB". A memória e os volumes continuam em <see cref="Bytes"/>, como o Windows mostra.
+    /// </summary>
+    public static string BytesDecimais(decimal bytes)
+    {
+        if (bytes < 1000)
+        {
+            return bytes == 1 ? "1 byte" : $"{bytes.ToString("0", PtBr)} bytes";
+        }
+
+        var valor = bytes;
+        var unidade = 0;
+        while (valor >= 1000 && unidade < _unidadesDecimais.Length - 1)
+        {
+            valor /= 1000;
+            unidade++;
+        }
+
+        return $"{valor.ToString("0.##", PtBr)} {_unidadesDecimais[unidade]}";
+    }
+
+    /// <summary>"12.345 horas, 514 dias". Abaixo de 24 horas, só as horas.</summary>
+    public static string Horas(long horas) =>
+        horas < 24 ? Plural(horas, "hora", "horas") : $"{Plural(horas, "hora", "horas")}, {Plural(horas / 24, "dia", "dias")}";
+
+    /// <summary>"38,2 TB gravados".</summary>
+    public static string Gravados(decimal bytes) => $"{BytesDecimais(bytes)} gravados";
+
+    public static string Temperatura(int graus) => $"{graus} °C";
+
     /// <summary>Clock: abaixo de 1000 MHz em MHz, a partir daí em GHz com duas casas: "800 MHz", "3,60 GHz".</summary>
     public static string Mhz(double mhz)
     {

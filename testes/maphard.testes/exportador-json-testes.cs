@@ -67,13 +67,13 @@ public class ExportadorJsonTestes
     }
 
     [Fact]
-    public async Task Versao_2_do_formato_traz_a_secao_memoria()
+    public async Task Formato_traz_a_secao_memoria()
     {
         var json = JsonDocument.Parse(ExportadorJson.Serializar(await Coletar())).RootElement;
         var memoria = json.GetProperty("memoria");
         var modulos = memoria.GetProperty("modulos").GetProperty("valor");
 
-        Assert.Equal(2, json.GetProperty("versaoFormato").GetInt32());
+        Assert.Equal(3, json.GetProperty("versaoFormato").GetInt32());
         Assert.Equal(17179869184, memoria.GetProperty("instalada").GetProperty("valor").GetInt64());
         Assert.Equal(4, modulos.GetArrayLength());
         Assert.True(modulos[1].GetProperty("vazio").GetBoolean());

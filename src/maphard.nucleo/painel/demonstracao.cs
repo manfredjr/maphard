@@ -1,5 +1,9 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
+using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Saude;
+using MapHard.Nucleo.Smart;
+using MapHard.Nucleo.Tabelas;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
@@ -76,6 +80,7 @@ public static class DadosDemonstracao
             firmware);
 
         var memoria = Memoria();
+        var discos = Discos();
 
         var identificacao = new Identificacao(
             Texto("ESTACAO-EXEMPLO"),
@@ -86,6 +91,7 @@ public static class DadosDemonstracao
             memoria.Instalada,
             memoria.Tipo,
             memoria.Utilizavel,
+            Coletor.ResumoDiscos(discos),
             windows);
 
         return new ColetaMaquina(
@@ -97,7 +103,55 @@ public static class DadosDemonstracao
             identificacao,
             processador,
             memoria,
+            discos,
             placa);
+    }
+
+    /// <summary>
+    /// Dois discos fictícios: um SSD NVMe Bom e um HDD em Atenção, com setores realocados, para a imagem
+    /// mostrar os dois estados. A saúde sai das mesmas regras da coleta real.
+    /// </summary>
+    private static SecaoDiscos Discos()
+    {
+        var nvme = new SaudeNvme(0, 38, 100, 10, 4, 21_500_000_000_000m, 12_800_000_000_000m, 412, 3_210, 9, 0, 0, 75);
+        var ata = new LeituraSmartAta(
+        [
+            new AtributoSmart(0x05, 0x33, 99, 99, 36, 3),
+            new AtributoSmart(0x09, 0x32, 81, 81, 0, 16_802),
+            new AtributoSmart(0x0C, 0x32, 99, 99, 0, 1_204),
+            new AtributoSmart(0xC2, 0x22, 39, 52, 0, 39),
+            new AtributoSmart(0xC5, 0x12, 100, 100, 0, 0),
+        ], false, 7200, false, "SATA 6 Gb/s", null, null);
+
+        VolumeTela Volume(string letra, string rotulo, long livreGb, long totalGb) => new(
+            Texto(letra), Texto(rotulo), Texto("NTFS"),
+            Campo<long>.Lido(livreGb * 1024 * 1024 * 1024, D), Campo<long>.Lido(totalGb * 1024 * 1024 * 1024, D),
+            Campo<string>.RequerAdministrador(D));
+
+        var nomes = AtributosSmart.Embutida;
+        var ssd = new DiscoTela(
+            0, Texto("SSD NVMe Exemplo 1TB"), Texto("1.0"), Texto("SERIE-DISCO-0001"),
+            Campo<long>.Lido(1_000_204_886_016, D), Texto("SSD NVMe"), Texto("NVMe, PCIe 4.0 x4"),
+            Campo<int>.NaoSuportado(D, "SSD não tem rotação"), Campo<bool>.Lido(true, D), Texto("GPT"),
+            RegrasDisco.Nvme(nvme, null),
+            Campo<int>.Lido(38, D), Campo<long>.Lido(3_210, D), Campo<long>.Lido(412, D),
+            Campo<decimal>.Lido(nvme.DadosGravadosBytes, D), Campo<int>.Lido(4, D),
+            Campo<IReadOnlyList<LinhaSmart>>.Lido([new LinhaSmart("Percentage Used", "Vida usada (%)", "Percentage Used", null, null, null, 4)], D),
+            [Volume("C:", "Sistema", 412, 930)]);
+
+        var hdd = new DiscoTela(
+            1, Texto("HDD Exemplo 2TB"), Texto("CC43"), Texto("SERIE-DISCO-0002"),
+            Campo<long>.Lido(2_000_398_934_016, D), Texto("HDD"), Texto("SATA 6 Gb/s"),
+            Campo<int>.Lido(7200, D), Campo<bool>.Lido(false, D), Texto("GPT"),
+            RegrasDisco.Ata(ata, TipoDisco.Hdd, nomes),
+            Campo<int>.Lido(39, D), Campo<long>.Lido(16_802, D), Campo<long>.Lido(1_204, D),
+            Campo<decimal>.NaoInformado(D, "o atributo de dados gravados muda de unidade conforme o fabricante; veja a tabela SMART"),
+            Campo<int>.NaoInformado(D, "em disco SATA, a vida usada depende do fabricante; veja a tabela SMART"),
+            Campo<IReadOnlyList<LinhaSmart>>.Lido(
+                ata.Atributos.Select(a => new LinhaSmart($"{a.Id:X2}h", nomes.Nome(a.Id), nomes.Buscar(a.Id)?.NomeOriginal ?? string.Empty, a.Atual, a.Pior, a.Limite, a.Bruto)).ToList(), D),
+            [Volume("D:", "Arquivos", 1_120, 1_862)]);
+
+        return new SecaoDiscos(Campo<IReadOnlyList<DiscoTela>>.Lido([ssd, hdd], D), []);
     }
 
     /// <summary>

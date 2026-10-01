@@ -18,6 +18,9 @@ public interface IFonteDiscos
 
     /// <summary>SMART ATA pelos quatro comandos permitidos. Sem administrador, volta com a falha "requer administrador".</summary>
     MapHard.Nucleo.Smart.SmartAtaBruto SmartAta(int numero);
+
+    /// <summary>Volumes com letra. O BitLocker só é lido com <paramref name="administrador"/>.</summary>
+    IReadOnlyList<VolumeBruto> Volumes(bool administrador);
 }
 
 /// <summary>
@@ -84,6 +87,8 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
         return discos.Values.OrderBy(d => d.Numero).ToList();
     }
 
+    public IReadOnlyList<VolumeBruto> Volumes(bool administrador) => new FonteVolumesWindows().Ler(administrador);
+
     public byte[]? LogSaudeNvme(int numero) => ProtocoloNvme(numero, PropriedadeProtocoloDispositivo, DadoLogPage, LogSaude, 512);
 
     public byte[]? IdentificacaoNvme(int numero) => ProtocoloNvme(numero, PropriedadeProtocoloAdaptador, DadoIdentify, CnsControlador, 4096);
@@ -140,7 +145,7 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
         using var disco = CreateFileW($@"\\.\PhysicalDrive{numero}", leituraGravacao, CompartilharLeituraGravacao, 0, AbrirExistente, 0, 0);
         if (disco.IsInvalid)
         {
-            return new(null, null, null, null, null, Marshal.GetLastPInvokeError() == acessoNegado ? Volumes.RequerAdministrador : ControladoraSemSmart);
+            return new(null, null, null, null, null, Marshal.GetLastPInvokeError() == acessoNegado ? MapHard.Nucleo.Discos.Volumes.RequerAdministrador : ControladoraSemSmart);
         }
 
         var identificacao = PassagemAta(disco, MapHard.Nucleo.Smart.ComandoAta.Identificar);

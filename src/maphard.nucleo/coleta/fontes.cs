@@ -1,6 +1,7 @@
 using System.Runtime.Versioning;
 using System.Security.Principal;
 using MapHard.Nucleo.Cpuid;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
@@ -18,6 +19,7 @@ public sealed record FontesColeta(
     IFonteRegistro Registro,
     Func<string> NomeComputador,
     IFonteMemoria Memoria,
+    IFonteDiscos Discos,
     Func<bool> Administrador)
 {
     [SupportedOSPlatform("windows")]
@@ -30,6 +32,7 @@ public sealed record FontesColeta(
         new FonteRegistroWindows(),
         () => Environment.MachineName,
         new FonteMemoriaWindows(),
+        new FonteDiscosWindows(),
         EhAdministrador);
 
     [SupportedOSPlatform("windows")]
