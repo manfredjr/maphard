@@ -18,6 +18,9 @@ public sealed record EstruturaSmbios(byte Tipo, ushort Identificador, byte[] For
     public ushort? Palavra(int deslocamento) =>
         deslocamento >= 0 && deslocamento + 2 <= Formatada.Length ? BinaryPrimitives.ReadUInt16LittleEndian(Formatada.AsSpan(deslocamento)) : null;
 
+    public uint? PalavraDupla(int deslocamento) =>
+        deslocamento >= 0 && deslocamento + 4 <= Formatada.Length ? BinaryPrimitives.ReadUInt32LittleEndian(Formatada.AsSpan(deslocamento)) : null;
+
     public ulong? PalavraQuadrupla(int deslocamento) =>
         deslocamento >= 0 && deslocamento + 8 <= Formatada.Length ? BinaryPrimitives.ReadUInt64LittleEndian(Formatada.AsSpan(deslocamento)) : null;
 
