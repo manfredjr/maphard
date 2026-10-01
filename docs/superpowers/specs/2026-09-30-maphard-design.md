@@ -36,7 +36,7 @@ O fluxo de trabalho que o programa atende:
 | Visual | Faixa verde no topo com o símbolo do MapHard e o logo da MT, cartões brancos, botões em pílula, linha em gradiente acima da barra de status | Mesmas características visuais do MapNet e do MapDisk, pedido do Manfred |
 | Driver de kernel | Nenhum na versão 1 | Ver seção 4. É a decisão que mais pesa no que o programa consegue ou não mostrar |
 | Sensores | Módulo opcional depois da versão 1, com a biblioteca LibreHardwareMonitor e o driver PawnIO | Decisão do Manfred em 30/09/2026. Ver seção 14 |
-| Permissão | Abre como usuário comum. O botão "Ler como administrador" reabre o programa elevado | Regra do MapDisk. Sem administrador já sai a maior parte das informações. SMART, TPM e BitLocker pedem elevação, e a tela diz isso em vez de esconder **[DECIDIR]** |
+| Permissão | Abre como usuário comum. O botão "Ler como administrador" reabre o programa elevado | Regra do MapDisk. Sem administrador já sai a maior parte das informações. SMART, TPM e BitLocker pedem elevação, e a tela diz isso em vez de esconder. Decidido pelo Manfred em 01/10/2026 (pergunta 2) |
 | Só leitura | O MapHard não altera nada na máquina | Programa de diagnóstico. Nenhuma configuração, driver ou firmware é mudado |
 | Internet | Nenhum acesso | Mesma regra dos outros dois. Tabelas de fabricantes e de processadores vão embutidas no `.exe` |
 
@@ -339,7 +339,7 @@ Decisão do Manfred em 30/09/2026: a versão 1 sai sem driver, e as leituras que
 | # | Pergunta |
 |---|---|
 | 1 | Windows Server entra nos testes da versão 1? |
-| 2 | Abrir como usuário comum com o botão "Ler como administrador" (padrão do MapDisk) ou pedir administrador já na abertura, já que o SMART precisa? |
+| 2 | Abrir como usuário comum com o botão "Ler como administrador" (padrão do MapDisk) ou pedir administrador já na abertura, já que o SMART precisa? Respondida em 01/10/2026: abre como usuário comum, com o botão "Ler como administrador" |
 | 3 | O JSON deve seguir o formato do projeto `inventario-estacoes`, para as coletas entrarem direto lá? |
 | 4 | Endereço da página: `maphard.manfred.com.br`? |
 | 5 | Arte do símbolo do MapHard, no mesmo estilo dos símbolos do MapNet e do MapDisk. [PREENCHER] |

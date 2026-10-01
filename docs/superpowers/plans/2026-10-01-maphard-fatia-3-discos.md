@@ -207,7 +207,7 @@ public sealed record SaudeDisco(EstadoSaude Estado, IReadOnlyList<string> Motivo
 
 ### Tarefa 7: "Ler como administrador"
 
-Segue o desenho (seção 3): o programa abre como usuário comum, e o botão reabre o programa elevado. A pergunta 2 do desenho continua aberta; se o Manfred decidir abrir já elevado, esta tarefa muda antes de começar.
+Segue o desenho (seção 3) e a decisão do Manfred de 01/10/2026 na pergunta 2: o programa abre como usuário comum, e o botão reabre o programa elevado. O manifesto continua `asInvoker`.
 
 - [ ] **Passo 1:** argumento `--elevado` na leitura dos argumentos, com teste: só vale para a janela, como o `--demonstracao`.
 - [ ] **Passo 2:** botão na faixa do topo, visível só quando o programa não está elevado. Ele reabre o próprio `.exe` com o verbo `runas` e `--elevado`, e fecha a janela atual quando a nova abre. Se o técnico recusar o pedido do Windows, a janela atual continua, com a mensagem "Leitura como administrador cancelada".
