@@ -1,0 +1,1531 @@
+# Fabricantes de memoria pelo codigo JEDEC (JEP106). Gerada por ferramentas\gerar-fabricantes-memoria.ps1.
+# Fonte: i2c-tools 4.4 eeprom/decode-dimms @vendors https://mirrors.edge.kernel.org/pub/software/utils/i2c-tools/i2c-tools-4.4.tar.xz (GPL-2.0 ou posterior).
+# banco comeca em 1. codigo e o byte do fabricante com a paridade impar no bit 7, em hexadecimal, como gravado no modulo.
+banco;codigo;nome;fonte
+1;01;AMD;decode-dimms
+1;02;AMI;decode-dimms
+1;83;Fairchild;decode-dimms
+1;04;Fujitsu;decode-dimms
+1;85;GTE;decode-dimms
+1;86;Harris;decode-dimms
+1;07;Hitachi;decode-dimms
+1;08;Inmos;decode-dimms
+1;89;Intel;decode-dimms
+1;8A;I.T.T.;decode-dimms
+1;0B;Intersil;decode-dimms
+1;8C;Monolithic Memories;decode-dimms
+1;0D;Mostek;decode-dimms
+1;0E;Freescale (former Motorola);decode-dimms
+1;8F;National;decode-dimms
+1;10;NEC;decode-dimms
+1;91;RCA;decode-dimms
+1;92;Raytheon;decode-dimms
+1;13;Conexant (Rockwell);decode-dimms
+1;94;Seeq;decode-dimms
+1;15;NXP (former Signetics, Philips Semi.);decode-dimms
+1;16;Synertek;decode-dimms
+1;97;Texas Instruments;decode-dimms
+1;98;Kioxia Corporation (former Toshiba Memory Corporation);decode-dimms
+1;19;Xicor;decode-dimms
+1;1A;Zilog;decode-dimms
+1;9B;Eurotechnique;decode-dimms
+1;1C;Mitsubishi;decode-dimms
+1;9D;Lucent (AT&T);decode-dimms
+1;9E;Exel;decode-dimms
+1;1F;Atmel;decode-dimms
+1;20;STMicroelectronics (former SGS/Thomson);decode-dimms
+1;A1;Lattice Semi.;decode-dimms
+1;A2;NCR;decode-dimms
+1;23;Wafer Scale Integration;decode-dimms
+1;A4;IBM;decode-dimms
+1;25;Tristar;decode-dimms
+1;26;Visic;decode-dimms
+1;A7;Intl. CMOS Technology;decode-dimms
+1;A8;SSSI;decode-dimms
+1;29;MicrochipTechnology;decode-dimms
+1;2A;Ricoh Ltd.;decode-dimms
+1;AB;VLSI;decode-dimms
+1;2C;Micron Technology;decode-dimms
+1;AD;SK Hynix (former Hyundai Electronics);decode-dimms
+1;AE;OKI Semiconductor;decode-dimms
+1;2F;ACTEL;decode-dimms
+1;B0;Sharp;decode-dimms
+1;31;Catalyst;decode-dimms
+1;32;Panasonic;decode-dimms
+1;B3;IDT;decode-dimms
+1;34;Cypress;decode-dimms
+1;B5;DEC;decode-dimms
+1;B6;LSI Logic;decode-dimms
+1;37;Zarlink (former Plessey);decode-dimms
+1;38;UTMC;decode-dimms
+1;B9;Thinking Machine;decode-dimms
+1;BA;Thomson CSF;decode-dimms
+1;3B;Integrated CMOS (Vertex);decode-dimms
+1;BC;Honeywell;decode-dimms
+1;3D;Tektronix;decode-dimms
+1;3E;Oracle Corporation (former Sun Microsystems);decode-dimms
+1;BF;Silicon Storage Technology;decode-dimms
+1;40;ProMos/Mosel Vitelic;decode-dimms
+1;C1;Infineon (former Siemens);decode-dimms
+1;C2;Macronix;decode-dimms
+1;43;Xerox;decode-dimms
+1;C4;Plus Logic;decode-dimms
+1;45;Western Digital Technologies (former SanDisk Corporation);decode-dimms
+1;46;Elan Circuit Tech.;decode-dimms
+1;C7;European Silicon Str.;decode-dimms
+1;C8;Apple Computer;decode-dimms
+1;49;Xilinx;decode-dimms
+1;4A;Compaq;decode-dimms
+1;CB;Protocol Engines;decode-dimms
+1;4C;SCI;decode-dimms
+1;CD;Seiko Instruments;decode-dimms
+1;CE;Samsung;decode-dimms
+1;4F;I3 Design System;decode-dimms
+1;D0;Klic;decode-dimms
+1;51;Crosspoint Solutions;decode-dimms
+1;52;Alliance Memory Inc;decode-dimms
+1;D3;Tandem;decode-dimms
+1;54;Hewlett-Packard;decode-dimms
+1;D5;Integrated Silicon Solutions;decode-dimms
+1;D6;Brooktree;decode-dimms
+1;57;New Media;decode-dimms
+1;58;MHS Electronic;decode-dimms
+1;D9;Performance Semi.;decode-dimms
+1;DA;Winbond Electronic;decode-dimms
+1;5B;Kawasaki Steel;decode-dimms
+1;DC;Bright Micro;decode-dimms
+1;5D;TECMAR;decode-dimms
+1;5E;Exar;decode-dimms
+1;DF;PCMCIA;decode-dimms
+1;E0;LG Semi (former Goldstar);decode-dimms
+1;61;Northern Telecom;decode-dimms
+1;62;Sanyo;decode-dimms
+1;E3;Array Microsystems;decode-dimms
+1;64;Crystal Semiconductor;decode-dimms
+1;E5;Analog Devices;decode-dimms
+1;E6;PMC-Sierra;decode-dimms
+1;67;Asparix;decode-dimms
+1;68;Convex Computer;decode-dimms
+1;E9;Quality Semiconductor;decode-dimms
+1;EA;Nimbus Technology;decode-dimms
+1;6B;Transwitch;decode-dimms
+1;EC;Micronas (ITT Intermetall);decode-dimms
+1;6D;Cannon;decode-dimms
+1;6E;Altera;decode-dimms
+1;EF;NEXCOM;decode-dimms
+1;70;QUALCOMM;decode-dimms
+1;F1;Sony;decode-dimms
+1;F2;Cray Research;decode-dimms
+1;73;AMS(Austria Micro);decode-dimms
+1;F4;Vitesse;decode-dimms
+1;75;Aster Electronics;decode-dimms
+1;76;Bay Networks (Synoptic);decode-dimms
+1;F7;Zentrum or ZMD;decode-dimms
+1;F8;TRW;decode-dimms
+1;79;Thesys;decode-dimms
+1;7A;Solbourne Computer;decode-dimms
+1;FB;Allied-Signal;decode-dimms
+1;7C;Dialog;decode-dimms
+1;FD;Media Vision;decode-dimms
+1;FE;Numonyx Corporation (former Level One Communication);decode-dimms
+2;01;Cirrus Logic;decode-dimms
+2;02;National Instruments;decode-dimms
+2;83;ILC Data Device;decode-dimms
+2;04;Alcatel Mietec;decode-dimms
+2;85;Micro Linear;decode-dimms
+2;86;Univ. of NC;decode-dimms
+2;07;JTAG Technologies;decode-dimms
+2;08;BAE Systems;decode-dimms
+2;89;Nchip;decode-dimms
+2;8A;Galileo Tech;decode-dimms
+2;0B;Bestlink Systems;decode-dimms
+2;8C;Graychip;decode-dimms
+2;0D;GENNUM;decode-dimms
+2;0E;VideoLogic;decode-dimms
+2;8F;Robert Bosch;decode-dimms
+2;10;Chip Express;decode-dimms
+2;91;DATARAM;decode-dimms
+2;92;United Microelec Corp.;decode-dimms
+2;13;TCSI;decode-dimms
+2;94;Smart Modular;decode-dimms
+2;15;Hughes Aircraft;decode-dimms
+2;16;Lanstar Semiconductor;decode-dimms
+2;97;Qlogic;decode-dimms
+2;98;Kingston;decode-dimms
+2;19;Music Semi;decode-dimms
+2;1A;Ericsson Components;decode-dimms
+2;9B;SpaSE;decode-dimms
+2;1C;Eon Silicon Devices;decode-dimms
+2;9D;Integrated Silicon Solution (ISSI) (former Programmable Micro Corp);decode-dimms
+2;9E;DoD;decode-dimms
+2;1F;Integ. Memories Tech.;decode-dimms
+2;20;Corollary Inc.;decode-dimms
+2;A1;Dallas Semiconductor;decode-dimms
+2;A2;Omnivision;decode-dimms
+2;23;EIV(Switzerland);decode-dimms
+2;A4;Novatel Wireless;decode-dimms
+2;25;Zarlink (former Mitel);decode-dimms
+2;26;Clearpoint;decode-dimms
+2;A7;Cabletron;decode-dimms
+2;A8;STEC (former Silicon Technology);decode-dimms
+2;29;Vanguard;decode-dimms
+2;2A;Hagiwara Sys-Com;decode-dimms
+2;AB;Vantis;decode-dimms
+2;2C;Celestica;decode-dimms
+2;AD;Century;decode-dimms
+2;AE;Hal Computers;decode-dimms
+2;2F;Rohm Company Ltd.;decode-dimms
+2;B0;Juniper Networks;decode-dimms
+2;31;Libit Signal Processing;decode-dimms
+2;32;Mushkin Enhanced Memory;decode-dimms
+2;B3;Tundra Semiconductor;decode-dimms
+2;34;Adaptec Inc.;decode-dimms
+2;B5;LightSpeed Semi.;decode-dimms
+2;B6;ZSP Corp.;decode-dimms
+2;37;AMIC Technology;decode-dimms
+2;38;Adobe Systems;decode-dimms
+2;B9;Dynachip;decode-dimms
+2;BA;PNY Technologies Inc. (former PNY Electronics);decode-dimms
+2;3B;Newport Digital;decode-dimms
+2;BC;MMC Networks;decode-dimms
+2;3D;T Square;decode-dimms
+2;3E;Seiko Epson;decode-dimms
+2;BF;Broadcom;decode-dimms
+2;40;Viking Components;decode-dimms
+2;C1;V3 Semiconductor;decode-dimms
+2;C2;Flextronics (former Orbit);decode-dimms
+2;43;Suwa Electronics;decode-dimms
+2;C4;Transmeta;decode-dimms
+2;45;Micron CMS;decode-dimms
+2;46;American Computer & Digital Components Inc;decode-dimms
+2;C7;Enhance 3000 Inc;decode-dimms
+2;C8;Tower Semiconductor;decode-dimms
+2;49;CPU Design;decode-dimms
+2;4A;Price Point;decode-dimms
+2;CB;Maxim Integrated Product;decode-dimms
+2;4C;Tellabs;decode-dimms
+2;CD;Centaur Technology;decode-dimms
+2;CE;Unigen Corporation;decode-dimms
+2;4F;Transcend Information;decode-dimms
+2;D0;Memory Card Technology;decode-dimms
+2;51;CKD Corporation Ltd.;decode-dimms
+2;52;Capital Instruments, Inc.;decode-dimms
+2;D3;Aica Kogyo, Ltd.;decode-dimms
+2;54;Linvex Technology;decode-dimms
+2;D5;MSC Vertriebs GmbH;decode-dimms
+2;D6;AKM Company, Ltd.;decode-dimms
+2;57;Dynamem, Inc.;decode-dimms
+2;58;NERA ASA;decode-dimms
+2;D9;GSI Technology;decode-dimms
+2;DA;Dane-Elec (C Memory);decode-dimms
+2;5B;Acorn Computers;decode-dimms
+2;DC;Lara Technology;decode-dimms
+2;5D;Oak Technology, Inc.;decode-dimms
+2;5E;Itec Memory;decode-dimms
+2;DF;Tanisys Technology;decode-dimms
+2;E0;Truevision;decode-dimms
+2;61;Wintec Industries;decode-dimms
+2;62;Super PC Memory;decode-dimms
+2;E3;MGV Memory;decode-dimms
+2;64;Galvantech;decode-dimms
+2;E5;Gadzoox Nteworks;decode-dimms
+2;E6;Multi Dimensional Cons.;decode-dimms
+2;67;GateField;decode-dimms
+2;68;Integrated Memory System;decode-dimms
+2;E9;Triscend;decode-dimms
+2;EA;XaQti;decode-dimms
+2;6B;Goldenram;decode-dimms
+2;EC;Clear Logic;decode-dimms
+2;6D;Cimaron Communications;decode-dimms
+2;6E;Nippon Steel Semi. Corp.;decode-dimms
+2;EF;Advantage Memory;decode-dimms
+2;70;AMCC;decode-dimms
+2;F1;LeCroy;decode-dimms
+2;F2;Yamaha Corporation;decode-dimms
+2;73;Digital Microwave;decode-dimms
+2;F4;NetLogic Microsystems;decode-dimms
+2;75;MIMOS Semiconductor;decode-dimms
+2;76;Advanced Fibre;decode-dimms
+2;F7;BF Goodrich Data.;decode-dimms
+2;F8;Epigram;decode-dimms
+2;79;Acbel Polytech Inc.;decode-dimms
+2;7A;Apacer Technology;decode-dimms
+2;FB;Admor Memory;decode-dimms
+2;7C;FOXCONN;decode-dimms
+2;FD;Quadratics Superconductor;decode-dimms
+2;FE;3COM;decode-dimms
+3;01;Camintonn Corporation;decode-dimms
+3;02;ISOA Incorporated;decode-dimms
+3;83;Agate Semiconductor;decode-dimms
+3;04;ADMtek Incorporated;decode-dimms
+3;85;HYPERTEC;decode-dimms
+3;86;Adhoc Technologies;decode-dimms
+3;07;MOSAID Technologies;decode-dimms
+3;08;Ardent Technologies;decode-dimms
+3;89;Switchcore;decode-dimms
+3;8A;Cisco Systems, Inc.;decode-dimms
+3;0B;Allayer Technologies;decode-dimms
+3;8C;WorkX AG (Wichman);decode-dimms
+3;0D;Oasis Semiconductor;decode-dimms
+3;0E;Novanet Semiconductor;decode-dimms
+3;8F;E-M Solutions;decode-dimms
+3;10;Power General;decode-dimms
+3;91;Advanced Hardware Arch.;decode-dimms
+3;92;Inova Semiconductors GmbH;decode-dimms
+3;13;Telocity;decode-dimms
+3;94;Delkin Devices;decode-dimms
+3;15;Symagery Microsystems;decode-dimms
+3;16;C-Port Corporation;decode-dimms
+3;97;SiberCore Technologies;decode-dimms
+3;98;Southland Microsystems;decode-dimms
+3;19;Malleable Technologies;decode-dimms
+3;1A;Kendin Communications;decode-dimms
+3;9B;Great Technology Microcomputer;decode-dimms
+3;1C;Sanmina Corporation;decode-dimms
+3;9D;HADCO Corporation;decode-dimms
+3;9E;Corsair;decode-dimms
+3;1F;Actrans System Inc.;decode-dimms
+3;20;ALPHA Technologies;decode-dimms
+3;A1;Silicon Laboratories, Inc. (Cygnal);decode-dimms
+3;A2;Artesyn Technologies;decode-dimms
+3;23;Align Manufacturing;decode-dimms
+3;A4;Peregrine Semiconductor;decode-dimms
+3;25;Chameleon Systems;decode-dimms
+3;26;Aplus Flash Technology;decode-dimms
+3;A7;MIPS Technologies;decode-dimms
+3;A8;Chrysalis ITS;decode-dimms
+3;29;ADTEC Corporation;decode-dimms
+3;2A;Kentron Technologies;decode-dimms
+3;AB;Win Technologies;decode-dimms
+3;2C;Tezzaron Semiconductor (former Tachyon Semiconductor);decode-dimms
+3;AD;Extreme Packet Devices;decode-dimms
+3;AE;RF Micro Devices;decode-dimms
+3;2F;Siemens AG;decode-dimms
+3;B0;Sarnoff Corporation;decode-dimms
+3;31;Itautec SA (former Itautec Philco SA);decode-dimms
+3;32;Radiata Inc.;decode-dimms
+3;B3;Benchmark Elect. (AVEX);decode-dimms
+3;34;Legend;decode-dimms
+3;B5;SpecTek Incorporated;decode-dimms
+3;B6;Hi/fn;decode-dimms
+3;37;Enikia Incorporated;decode-dimms
+3;38;SwitchOn Networks;decode-dimms
+3;B9;AANetcom Incorporated;decode-dimms
+3;BA;Micro Memory Bank;decode-dimms
+3;3B;ESS Technology;decode-dimms
+3;BC;Virata Corporation;decode-dimms
+3;3D;Excess Bandwidth;decode-dimms
+3;3E;West Bay Semiconductor;decode-dimms
+3;BF;DSP Group;decode-dimms
+3;40;Newport Communications;decode-dimms
+3;C1;Chip2Chip Incorporated;decode-dimms
+3;C2;Phobos Corporation;decode-dimms
+3;43;Intellitech Corporation;decode-dimms
+3;C4;Nordic VLSI ASA;decode-dimms
+3;45;Ishoni Networks;decode-dimms
+3;46;Silicon Spice;decode-dimms
+3;C7;Alchemy Semiconductor;decode-dimms
+3;C8;Agilent Technologies;decode-dimms
+3;49;Centillium Communications;decode-dimms
+3;4A;W.L. Gore;decode-dimms
+3;CB;HanBit Electronics;decode-dimms
+3;4C;GlobeSpan;decode-dimms
+3;CD;Element 14;decode-dimms
+3;CE;Pycon;decode-dimms
+3;4F;Saifun Semiconductors;decode-dimms
+3;D0;Sibyte, Incorporated;decode-dimms
+3;51;MetaLink Technologies;decode-dimms
+3;52;Feiya Technology;decode-dimms
+3;D3;I & C Technology;decode-dimms
+3;54;Shikatronics;decode-dimms
+3;D5;Elektrobit;decode-dimms
+3;D6;Megic;decode-dimms
+3;57;Com-Tier;decode-dimms
+3;58;Malaysia Micro Solutions;decode-dimms
+3;D9;Hyperchip;decode-dimms
+3;DA;Gemstone Communications;decode-dimms
+3;5B;Anadigm (former Anadyne);decode-dimms
+3;DC;3ParData;decode-dimms
+3;5D;Mellanox Technologies;decode-dimms
+3;5E;Tenx Technologies;decode-dimms
+3;DF;Helix AG;decode-dimms
+3;E0;Domosys;decode-dimms
+3;61;Skyup Technology;decode-dimms
+3;62;HiNT Corporation;decode-dimms
+3;E3;Chiaro;decode-dimms
+3;64;MDT Technologies GmbH (former MCI Computer GMBH);decode-dimms
+3;E5;Exbit Technology A/S;decode-dimms
+3;E6;Integrated Technology Express;decode-dimms
+3;67;AVED Memory;decode-dimms
+3;68;Legerity;decode-dimms
+3;E9;Jasmine Networks;decode-dimms
+3;EA;Caspian Networks;decode-dimms
+3;6B;nCUBE;decode-dimms
+3;EC;Silicon Access Networks;decode-dimms
+3;6D;FDK Corporation;decode-dimms
+3;6E;High Bandwidth Access;decode-dimms
+3;EF;MultiLink Technology;decode-dimms
+3;70;BRECIS;decode-dimms
+3;F1;World Wide Packets;decode-dimms
+3;F2;APW;decode-dimms
+3;73;Chicory Systems;decode-dimms
+3;F4;Xstream Logic;decode-dimms
+3;75;Fast-Chip;decode-dimms
+3;76;Zucotto Wireless;decode-dimms
+3;F7;Realchip;decode-dimms
+3;F8;Galaxy Power;decode-dimms
+3;79;eSilicon;decode-dimms
+3;7A;Morphics Technology;decode-dimms
+3;FB;Accelerant Networks;decode-dimms
+3;7C;Silicon Wave;decode-dimms
+3;FD;SandCraft;decode-dimms
+3;FE;Elpida;decode-dimms
+4;01;Solectron;decode-dimms
+4;02;Optosys Technologies;decode-dimms
+4;83;Buffalo (former Melco);decode-dimms
+4;04;TriMedia Technologies;decode-dimms
+4;85;Cyan Technologies;decode-dimms
+4;86;Global Locate;decode-dimms
+4;07;Optillion;decode-dimms
+4;08;Terago Communications;decode-dimms
+4;89;Ikanos Communications;decode-dimms
+4;8A;Princeton Technology;decode-dimms
+4;0B;Nanya Technology;decode-dimms
+4;8C;Elite Flash Storage;decode-dimms
+4;0D;Mysticom;decode-dimms
+4;0E;LightSand Communications;decode-dimms
+4;8F;ATI Technologies;decode-dimms
+4;10;Agere Systems;decode-dimms
+4;91;NeoMagic;decode-dimms
+4;92;AuroraNetics;decode-dimms
+4;13;Golden Empire;decode-dimms
+4;94;Mushkin;decode-dimms
+4;15;Tioga Technologies;decode-dimms
+4;16;Netlist;decode-dimms
+4;97;TeraLogic;decode-dimms
+4;98;Cicada Semiconductor;decode-dimms
+4;19;Centon Electronics;decode-dimms
+4;1A;Tyco Electronics;decode-dimms
+4;9B;Magis Works;decode-dimms
+4;1C;Zettacom;decode-dimms
+4;9D;Cogency Semiconductor;decode-dimms
+4;9E;Chipcon AS;decode-dimms
+4;1F;Aspex Technology;decode-dimms
+4;20;F5 Networks;decode-dimms
+4;A1;Programmable Silicon Solutions;decode-dimms
+4;A2;ChipWrights;decode-dimms
+4;23;Acorn Networks;decode-dimms
+4;A4;Quicklogic;decode-dimms
+4;25;Kingmax Semiconductor;decode-dimms
+4;26;BOPS;decode-dimms
+4;A7;Flasys;decode-dimms
+4;A8;BitBlitz Communications;decode-dimms
+4;29;eMemory Technology;decode-dimms
+4;2A;Procket Networks;decode-dimms
+4;AB;Purple Ray;decode-dimms
+4;2C;Trebia Networks;decode-dimms
+4;AD;Delta Electronics;decode-dimms
+4;AE;Onex Communications;decode-dimms
+4;2F;Ample Communications;decode-dimms
+4;B0;Memory Experts Intl;decode-dimms
+4;31;Astute Networks;decode-dimms
+4;32;Azanda Network Devices;decode-dimms
+4;B3;Dibcom;decode-dimms
+4;34;Tekmos;decode-dimms
+4;B5;API NetWorks;decode-dimms
+4;B6;Bay Microsystems;decode-dimms
+4;37;Firecron Ltd;decode-dimms
+4;38;Resonext Communications;decode-dimms
+4;B9;Tachys Technologies;decode-dimms
+4;BA;Equator Technology;decode-dimms
+4;3B;Concept Computer;decode-dimms
+4;BC;SILCOM;decode-dimms
+4;3D;3Dlabs;decode-dimms
+4;3E;c't Magazine;decode-dimms
+4;BF;Sanera Systems;decode-dimms
+4;40;Silicon Packets;decode-dimms
+4;C1;Viasystems Group;decode-dimms
+4;C2;Simtek;decode-dimms
+4;43;Semicon Devices Singapore;decode-dimms
+4;C4;Satron Handelsges;decode-dimms
+4;45;Improv Systems;decode-dimms
+4;46;INDUSYS GmbH;decode-dimms
+4;C7;Corrent;decode-dimms
+4;C8;Infrant Technologies;decode-dimms
+4;49;Ritek Corp;decode-dimms
+4;4A;empowerTel Networks;decode-dimms
+4;CB;Hypertec;decode-dimms
+4;4C;Cavium Networks;decode-dimms
+4;CD;PLX Technology;decode-dimms
+4;CE;Massana Design;decode-dimms
+4;4F;Intrinsity;decode-dimms
+4;D0;Valence Semiconductor;decode-dimms
+4;51;Terawave Communications;decode-dimms
+4;52;IceFyre Semiconductor;decode-dimms
+4;D3;Primarion;decode-dimms
+4;54;Picochip Designs Ltd;decode-dimms
+4;D5;Silverback Systems;decode-dimms
+4;D6;Jade Star Technologies;decode-dimms
+4;57;Pijnenburg Securealink;decode-dimms
+4;58;takeMS - Ultron AG (former Memorysolution GmbH);decode-dimms
+4;D9;Cambridge Silicon Radio;decode-dimms
+4;DA;Swissbit;decode-dimms
+4;5B;Nazomi Communications;decode-dimms
+4;DC;eWave System;decode-dimms
+4;5D;Rockwell Collins;decode-dimms
+4;5E;Picocel Co., Ltd.;decode-dimms
+4;DF;Alphamosaic Ltd;decode-dimms
+4;E0;Sandburst;decode-dimms
+4;61;SiCon Video;decode-dimms
+4;62;NanoAmp Solutions;decode-dimms
+4;E3;Ericsson Technology;decode-dimms
+4;64;PrairieComm;decode-dimms
+4;E5;Mitac International;decode-dimms
+4;E6;Layer N Networks;decode-dimms
+4;67;MtekVision;decode-dimms
+4;68;Allegro Networks;decode-dimms
+4;E9;Marvell Semiconductors;decode-dimms
+4;EA;Netergy Microelectronic;decode-dimms
+4;6B;NVIDIA;decode-dimms
+4;EC;Internet Machines;decode-dimms
+4;6D;Memorysolution GmbH (former Peak Electronics);decode-dimms
+4;6E;Litchfield Communication;decode-dimms
+4;EF;Accton Technology;decode-dimms
+4;70;Teradiant Networks;decode-dimms
+4;F1;Scaleo Chip (former Europe Technologies);decode-dimms
+4;F2;Cortina Systems;decode-dimms
+4;73;RAM Components;decode-dimms
+4;F4;Raqia Networks;decode-dimms
+4;75;ClearSpeed;decode-dimms
+4;76;Matsushita Battery;decode-dimms
+4;F7;Xelerated;decode-dimms
+4;F8;SimpleTech;decode-dimms
+4;79;Utron Technology;decode-dimms
+4;7A;Astec International;decode-dimms
+4;FB;AVM gmbH;decode-dimms
+4;7C;Redux Communications;decode-dimms
+4;FD;Dot Hill Systems;decode-dimms
+4;FE;TeraChip;decode-dimms
+5;01;T-RAM Incorporated;decode-dimms
+5;02;Innovics Wireless;decode-dimms
+5;83;Teknovus;decode-dimms
+5;04;KeyEye Communications;decode-dimms
+5;85;Runcom Technologies;decode-dimms
+5;86;RedSwitch;decode-dimms
+5;07;Dotcast;decode-dimms
+5;08;Silicon Mountain Memory;decode-dimms
+5;89;Signia Technologies;decode-dimms
+5;8A;Pixim;decode-dimms
+5;0B;Galazar Networks;decode-dimms
+5;8C;White Electronic Designs;decode-dimms
+5;0D;Patriot Scientific;decode-dimms
+5;0E;Neoaxiom Corporation;decode-dimms
+5;8F;3Y Power Technology;decode-dimms
+5;10;Scaleo Chip (former Europe Technologies);decode-dimms
+5;91;Potentia Power Systems;decode-dimms
+5;92;C-guys Incorporated;decode-dimms
+5;13;Digital Communications Technology Incorporated;decode-dimms
+5;94;Silicon-Based Technology;decode-dimms
+5;15;Fulcrum Microsystems;decode-dimms
+5;16;Positivo Informatica Ltd;decode-dimms
+5;97;XIOtech Corporation;decode-dimms
+5;98;PortalPlayer;decode-dimms
+5;19;Zhiying Software;decode-dimms
+5;1A;Parker Vision, Inc. (former Direct2Data);decode-dimms
+5;9B;Phonex Broadband;decode-dimms
+5;1C;Skyworks Solutions;decode-dimms
+5;9D;Entropic Communications;decode-dimms
+5;9E;I'M Intelligent Memory Ltd (former Pacific Force Technology);decode-dimms
+5;1F;Zensys A/S;decode-dimms
+5;20;Legend Silicon Corp.;decode-dimms
+5;A1;sci-worx GmbH;decode-dimms
+5;A2;SMSC (former Oasis Silicon Systems);decode-dimms
+5;23;Renesas Electronics (former Renesas Technology);decode-dimms
+5;A4;Raza Microelectronics;decode-dimms
+5;25;Phyworks;decode-dimms
+5;26;MediaTek;decode-dimms
+5;A7;Non-cents Productions;decode-dimms
+5;A8;US Modular;decode-dimms
+5;29;Wintegra Ltd;decode-dimms
+5;2A;Mathstar;decode-dimms
+5;AB;StarCore;decode-dimms
+5;2C;Oplus Technologies;decode-dimms
+5;AD;Mindspeed;decode-dimms
+5;AE;Just Young Computer;decode-dimms
+5;2F;Radia Communications;decode-dimms
+5;B0;OCZ;decode-dimms
+5;31;Emuzed;decode-dimms
+5;32;LOGIC Devices;decode-dimms
+5;B3;Inphi Corporation;decode-dimms
+5;34;Quake Technologies;decode-dimms
+5;B5;Vixel;decode-dimms
+5;B6;SolusTek;decode-dimms
+5;37;Kongsberg Maritime;decode-dimms
+5;38;Faraday Technology;decode-dimms
+5;B9;Altium Ltd.;decode-dimms
+5;BA;Insyte;decode-dimms
+5;3B;ARM Ltd.;decode-dimms
+5;BC;DigiVision;decode-dimms
+5;3D;Vativ Technologies;decode-dimms
+5;3E;Endicott Interconnect Technologies;decode-dimms
+5;BF;Pericom;decode-dimms
+5;40;Bandspeed;decode-dimms
+5;C1;LeWiz Communications;decode-dimms
+5;C2;CPU Technology;decode-dimms
+5;43;Ramaxel Technology;decode-dimms
+5;C4;DSP Group;decode-dimms
+5;45;Axis Communications;decode-dimms
+5;46;Legacy Electronics;decode-dimms
+5;C7;Chrontel;decode-dimms
+5;C8;Powerchip Semiconductor;decode-dimms
+5;49;MobilEye Technologies;decode-dimms
+5;4A;Excel Semiconductor;decode-dimms
+5;CB;A-DATA Technology;decode-dimms
+5;4C;VirtualDigm;decode-dimms
+5;CD;G Skill Intl;decode-dimms
+5;CE;Quanta Computer;decode-dimms
+5;4F;Yield Microelectronics;decode-dimms
+5;D0;Afa Technologies;decode-dimms
+5;51;KINGBOX Technology Co. Ltd.;decode-dimms
+5;52;Ceva;decode-dimms
+5;D3;iStor Networks;decode-dimms
+5;54;Advance Modules;decode-dimms
+5;D5;Microsoft;decode-dimms
+5;D6;Open-Silicon;decode-dimms
+5;57;Goal Semiconductor;decode-dimms
+5;58;ARC International;decode-dimms
+5;D9;Simmtec;decode-dimms
+5;DA;Metanoia;decode-dimms
+5;5B;Key Stream;decode-dimms
+5;DC;Lowrance Electronics;decode-dimms
+5;5D;Adimos;decode-dimms
+5;5E;SiGe Semiconductor;decode-dimms
+5;DF;Fodus Communications;decode-dimms
+5;E0;Credence Systems Corp.;decode-dimms
+5;61;Genesis Microchip Inc.;decode-dimms
+5;62;Vihana, Inc.;decode-dimms
+5;E3;WIS Technologies;decode-dimms
+5;64;GateChange Technologies;decode-dimms
+5;E5;High Density Devices AS;decode-dimms
+5;E6;Synopsys;decode-dimms
+5;67;Gigaram;decode-dimms
+5;68;Enigma Semiconductor Inc.;decode-dimms
+5;E9;Century Micro Inc.;decode-dimms
+5;EA;Icera Semiconductor;decode-dimms
+5;6B;Mediaworks Integrated Systems;decode-dimms
+5;EC;O'Neil Product Development;decode-dimms
+5;6D;Supreme Top Technology Ltd.;decode-dimms
+5;6E;MicroDisplay Corporation;decode-dimms
+5;EF;Team Group Inc.;decode-dimms
+5;70;Sinett Corporation;decode-dimms
+5;F1;Toshiba Corporation;decode-dimms
+5;F2;Tensilica;decode-dimms
+5;73;SiRF Technology;decode-dimms
+5;F4;Bacoc Inc.;decode-dimms
+5;75;SMaL Camera Technologies;decode-dimms
+5;76;Thomson SC;decode-dimms
+5;F7;Airgo Networks;decode-dimms
+5;F8;Wisair Ltd.;decode-dimms
+5;79;SigmaTel;decode-dimms
+5;7A;Arkados;decode-dimms
+5;FB;Compete IT gmbH Co. KG;decode-dimms
+5;7C;Eudar Technology Inc.;decode-dimms
+5;FD;Focus Enhancements;decode-dimms
+5;FE;Xyratex;decode-dimms
+6;01;Specular Networks;decode-dimms
+6;02;Patriot Memory;decode-dimms
+6;83;U-Chip Technology Corp.;decode-dimms
+6;04;Silicon Optix;decode-dimms
+6;85;Greenfield Networks;decode-dimms
+6;86;CompuRAM GmbH;decode-dimms
+6;07;Stargen, Inc.;decode-dimms
+6;08;NetCell Corporation;decode-dimms
+6;89;Excalibrus Technologies Ltd;decode-dimms
+6;8A;SCM Microsystems;decode-dimms
+6;0B;Xsigo Systems, Inc.;decode-dimms
+6;8C;CHIPS & Systems Inc;decode-dimms
+6;0D;Tier 1 Multichip Solutions;decode-dimms
+6;0E;CWRL Labs;decode-dimms
+6;8F;Teradici;decode-dimms
+6;10;Gigaram, Inc.;decode-dimms
+6;91;g2 Microsystems;decode-dimms
+6;92;PowerFlash Semiconductor;decode-dimms
+6;13;P.A. Semi, Inc.;decode-dimms
+6;94;NovaTech Solutions, S.A.;decode-dimms
+6;15;c2 Microsystems, Inc.;decode-dimms
+6;16;Level5 Networks;decode-dimms
+6;97;COS Memory AG;decode-dimms
+6;98;Innovasic Semiconductor;decode-dimms
+6;19;02IC Co. Ltd;decode-dimms
+6;1A;Tabula, Inc.;decode-dimms
+6;9B;Crucial Technology;decode-dimms
+6;1C;Chelsio Communications;decode-dimms
+6;9D;Solarflare Communications;decode-dimms
+6;9E;Xambala Inc.;decode-dimms
+6;1F;EADS Astrium;decode-dimms
+6;20;Terra Semiconductor Inc. (former ATO Semicon Co. Ltd.);decode-dimms
+6;A1;Imaging Works, Inc.;decode-dimms
+6;A2;Astute Networks, Inc.;decode-dimms
+6;23;Tzero;decode-dimms
+6;A4;Emulex;decode-dimms
+6;25;Power-One;decode-dimms
+6;26;Pulse~LINK Inc.;decode-dimms
+6;A7;Hon Hai Precision Industry;decode-dimms
+6;A8;White Rock Networks Inc.;decode-dimms
+6;29;Telegent Systems USA, Inc.;decode-dimms
+6;2A;Atrua Technologies, Inc.;decode-dimms
+6;AB;Acbel Polytech Inc.;decode-dimms
+6;2C;eRide Inc.;decode-dimms
+6;AD;ULi Electronics Inc.;decode-dimms
+6;AE;Magnum Semiconductor Inc.;decode-dimms
+6;2F;neoOne Technology, Inc.;decode-dimms
+6;B0;Connex Technology, Inc.;decode-dimms
+6;31;Stream Processors, Inc.;decode-dimms
+6;32;Focus Enhancements;decode-dimms
+6;B3;Telecis Wireless, Inc.;decode-dimms
+6;34;uNav Microelectronics;decode-dimms
+6;B5;Tarari, Inc.;decode-dimms
+6;B6;Ambric, Inc.;decode-dimms
+6;37;Newport Media, Inc.;decode-dimms
+6;38;VMTS;decode-dimms
+6;B9;Enuclia Semiconductor, Inc.;decode-dimms
+6;BA;Virtium Technology Inc.;decode-dimms
+6;3B;Solid State System Co., Ltd.;decode-dimms
+6;BC;Kian Tech LLC;decode-dimms
+6;3D;Artimi;decode-dimms
+6;3E;Power Quotient International;decode-dimms
+6;BF;Avago Technologies;decode-dimms
+6;40;ADTechnology;decode-dimms
+6;C1;Sigma Designs;decode-dimms
+6;C2;SiCortex, Inc.;decode-dimms
+6;43;Ventura Technology Group;decode-dimms
+6;C4;eASIC;decode-dimms
+6;45;M.H.S. SAS;decode-dimms
+6;46;Micro Star International;decode-dimms
+6;C7;Rapport Inc.;decode-dimms
+6;C8;Makway International;decode-dimms
+6;49;Broad Reach Engineering Co.;decode-dimms
+6;4A;Semiconductor Mfg Intl Corp;decode-dimms
+6;CB;SiConnect;decode-dimms
+6;4C;FCI USA Inc.;decode-dimms
+6;CD;Validity Sensors;decode-dimms
+6;CE;Coney Technology Co. Ltd.;decode-dimms
+6;4F;Spans Logic;decode-dimms
+6;D0;Neterion Inc.;decode-dimms
+6;51;Qimonda;decode-dimms
+6;52;New Japan Radio Co. Ltd.;decode-dimms
+6;D3;Velogix;decode-dimms
+6;54;Montalvo Systems;decode-dimms
+6;D5;iVivity Inc.;decode-dimms
+6;D6;Walton Chaintech;decode-dimms
+6;57;AENEON;decode-dimms
+6;58;Lorom Industrial Co. Ltd.;decode-dimms
+6;D9;Radiospire Networks;decode-dimms
+6;DA;Sensio Technologies, Inc.;decode-dimms
+6;5B;Nethra Imaging;decode-dimms
+6;DC;Hexon Technology Pte Ltd;decode-dimms
+6;5D;CompuStocx (CSX);decode-dimms
+6;5E;Methode Electronics, Inc.;decode-dimms
+6;DF;Connect One Ltd.;decode-dimms
+6;E0;Opulan Technologies;decode-dimms
+6;61;Septentrio NV;decode-dimms
+6;62;Goldenmars Technology Inc.;decode-dimms
+6;E3;Kreton Corporation;decode-dimms
+6;64;Cochlear Ltd.;decode-dimms
+6;E5;Altair Semiconductor;decode-dimms
+6;E6;NetEffect, Inc.;decode-dimms
+6;67;Spansion, Inc.;decode-dimms
+6;68;Taiwan Semiconductor Mfg;decode-dimms
+6;E9;Emphany Systems Inc.;decode-dimms
+6;EA;ApaceWave Technologies;decode-dimms
+6;6B;Mobilygen Corporation;decode-dimms
+6;EC;Tego;decode-dimms
+6;6D;Cswitch Corporation;decode-dimms
+6;6E;Haier (Beijing) IC Design Co.;decode-dimms
+6;EF;MetaRAM;decode-dimms
+6;70;Axel Electronics Co. Ltd.;decode-dimms
+6;F1;Tilera Corporation;decode-dimms
+6;F2;Aquantia;decode-dimms
+6;73;Vivace Semiconductor;decode-dimms
+6;F4;Redpine Signals;decode-dimms
+6;75;Octalica;decode-dimms
+6;76;InterDigital Communications;decode-dimms
+6;F7;Avant Technology;decode-dimms
+6;F8;Asrock, Inc.;decode-dimms
+6;79;Availink;decode-dimms
+6;7A;Quartics, Inc.;decode-dimms
+6;FB;Element CXI;decode-dimms
+6;7C;Innovaciones Microelectronicas;decode-dimms
+6;FD;VeriSilicon Microelectronics;decode-dimms
+6;FE;W5 Networks;decode-dimms
+7;01;MOVEKING;decode-dimms
+7;02;Mavrix Technology, Inc.;decode-dimms
+7;83;CellGuide Ltd.;decode-dimms
+7;04;Faraday Technology;decode-dimms
+7;85;Diablo Technologies, Inc.;decode-dimms
+7;86;Jennic;decode-dimms
+7;07;Octasic;decode-dimms
+7;08;Molex Incorporated;decode-dimms
+7;89;3Leaf Networks;decode-dimms
+7;8A;Bright Micron Technology;decode-dimms
+7;0B;Netxen;decode-dimms
+7;8C;NextWave Broadband Inc.;decode-dimms
+7;0D;DisplayLink;decode-dimms
+7;0E;ZMOS Technology;decode-dimms
+7;8F;Tec-Hill;decode-dimms
+7;10;Multigig, Inc.;decode-dimms
+7;91;Amimon;decode-dimms
+7;92;Euphonic Technologies, Inc.;decode-dimms
+7;13;BRN Phoenix;decode-dimms
+7;94;InSilica;decode-dimms
+7;15;Ember Corporation;decode-dimms
+7;16;Avexir Technologies Corporation;decode-dimms
+7;97;Echelon Corporation;decode-dimms
+7;98;Edgewater Computer Systems;decode-dimms
+7;19;XMOS Semiconductor Ltd.;decode-dimms
+7;1A;GENUSION, Inc.;decode-dimms
+7;9B;Memory Corp NV;decode-dimms
+7;1C;SiliconBlue Technologies;decode-dimms
+7;9D;Rambus Inc.;decode-dimms
+7;9E;Andes Technology Corporation;decode-dimms
+7;1F;Coronis Systems;decode-dimms
+7;20;Achronix Semiconductor;decode-dimms
+7;A1;Siano Mobile Silicon Ltd.;decode-dimms
+7;A2;Semtech Corporation;decode-dimms
+7;23;Pixelworks Inc.;decode-dimms
+7;A4;Gaisler Research AB;decode-dimms
+7;25;Teranetics;decode-dimms
+7;26;Toppan Printing Co. Ltd.;decode-dimms
+7;A7;Kingxcon;decode-dimms
+7;A8;Silicon Integrated Systems;decode-dimms
+7;29;I-O Data Device, Inc.;decode-dimms
+7;2A;NDS Americas Inc.;decode-dimms
+7;AB;Solomon Systech Limited;decode-dimms
+7;2C;On Demand Microelectronics;decode-dimms
+7;AD;Amicus Wireless Inc.;decode-dimms
+7;AE;SMARDTV SNC;decode-dimms
+7;2F;Comsys Communication Ltd.;decode-dimms
+7;B0;Movidia Ltd.;decode-dimms
+7;31;Javad GNSS, Inc.;decode-dimms
+7;32;Montage Technology Group;decode-dimms
+7;B3;Trident Microsystems;decode-dimms
+7;34;Super Talent;decode-dimms
+7;B5;Optichron, Inc.;decode-dimms
+7;B6;Future Waves UK Ltd.;decode-dimms
+7;37;SiBEAM, Inc.;decode-dimms
+7;38;Inicore, Inc.;decode-dimms
+7;B9;Virident Systems;decode-dimms
+7;BA;M2000, Inc.;decode-dimms
+7;3B;ZeroG Wireless, Inc.;decode-dimms
+7;BC;Gingle Technology Co. Ltd.;decode-dimms
+7;3D;Space Micro Inc.;decode-dimms
+7;3E;Wilocity;decode-dimms
+7;BF;Novafora, Inc.;decode-dimms
+7;40;iKoa Corporation;decode-dimms
+7;C1;ASint Technology;decode-dimms
+7;C2;Ramtron;decode-dimms
+7;43;Plato Networks Inc.;decode-dimms
+7;C4;IPtronics AS;decode-dimms
+7;45;Infinite-Memories;decode-dimms
+7;46;Parade Technologies Inc.;decode-dimms
+7;C7;Dune Networks;decode-dimms
+7;C8;GigaDevice Semiconductor;decode-dimms
+7;49;Modu Ltd.;decode-dimms
+7;4A;CEITEC;decode-dimms
+7;CB;Northrop Grumman;decode-dimms
+7;4C;XRONET Corporation;decode-dimms
+7;CD;Sicon Semiconductor AB;decode-dimms
+7;CE;Atla Electronics Co. Ltd.;decode-dimms
+7;4F;TOPRAM Technology;decode-dimms
+7;D0;Silego Technology Inc.;decode-dimms
+7;51;Kinglife;decode-dimms
+7;52;Ability Industries Ltd.;decode-dimms
+7;D3;Silicon Power Computer & Communications;decode-dimms
+7;54;Augusta Technology, Inc.;decode-dimms
+7;D5;Nantronics Semiconductors;decode-dimms
+7;D6;Hilscher Gesellschaft;decode-dimms
+7;57;Quixant Ltd.;decode-dimms
+7;58;Percello Ltd.;decode-dimms
+7;D9;NextIO Inc.;decode-dimms
+7;DA;Scanimetrics Inc.;decode-dimms
+7;5B;FS-Semi Company Ltd.;decode-dimms
+7;DC;Infinera Corporation;decode-dimms
+7;5D;SandForce Inc.;decode-dimms
+7;5E;Lexar Media;decode-dimms
+7;DF;Teradyne Inc.;decode-dimms
+7;E0;Memory Exchange Corp.;decode-dimms
+7;61;Suzhou Smartek Electronics;decode-dimms
+7;62;Avantium Corporation;decode-dimms
+7;E3;ATP Electronics Inc.;decode-dimms
+7;64;Valens Semiconductor Ltd;decode-dimms
+7;E5;Agate Logic, Inc.;decode-dimms
+7;E6;Netronome;decode-dimms
+7;67;Zenverge, Inc.;decode-dimms
+7;68;N-trig Ltd;decode-dimms
+7;E9;SanMax Technologies Inc.;decode-dimms
+7;EA;Contour Semiconductor Inc.;decode-dimms
+7;6B;TwinMOS;decode-dimms
+7;EC;Silicon Systems, Inc.;decode-dimms
+7;6D;V-Color Technology Inc.;decode-dimms
+7;6E;Certicom Corporation;decode-dimms
+7;EF;JSC ICC Milandr;decode-dimms
+7;70;PhotoFast Global Inc.;decode-dimms
+7;F1;InnoDisk Corporation;decode-dimms
+7;F2;Muscle Power;decode-dimms
+7;73;Energy Micro;decode-dimms
+7;F4;Innofidei;decode-dimms
+7;75;CopperGate Communications;decode-dimms
+7;76;Holtek Semiconductor Inc.;decode-dimms
+7;F7;Myson Century, Inc.;decode-dimms
+7;F8;FIDELIX;decode-dimms
+7;79;Red Digital Cinema;decode-dimms
+7;7A;Densbits Technology;decode-dimms
+7;FB;Zempro;decode-dimms
+7;7C;MoSys;decode-dimms
+7;FD;Provigent;decode-dimms
+7;FE;Triad Semiconductor, Inc.;decode-dimms
+8;01;Siklu Communication Ltd.;decode-dimms
+8;02;A Force Manufacturing Ltd.;decode-dimms
+8;83;Strontium;decode-dimms
+8;04;ALi Corp (former Abilis Systems);decode-dimms
+8;85;Siglead, Inc.;decode-dimms
+8;86;Ubicom, Inc.;decode-dimms
+8;07;Unifosa Corporation;decode-dimms
+8;08;Stretch, Inc.;decode-dimms
+8;89;Lantiq Deutschland GmbH;decode-dimms
+8;8A;Visipro;decode-dimms
+8;0B;EKMemory;decode-dimms
+8;8C;Microelectronics Institute ZTE;decode-dimms
+8;0D;u-blox AG (former Cognovo Ltd);decode-dimms
+8;0E;Carry Technology Co. Ltd.;decode-dimms
+8;8F;Nokia;decode-dimms
+8;10;King Tiger Technology;decode-dimms
+8;91;Sierra Wireless;decode-dimms
+8;92;HT Micron;decode-dimms
+8;13;Albatron Technology Co. Ltd.;decode-dimms
+8;94;Leica Geosystems AG;decode-dimms
+8;15;BroadLight;decode-dimms
+8;16;AEXEA;decode-dimms
+8;97;ClariPhy Communications, Inc.;decode-dimms
+8;98;Green Plug;decode-dimms
+8;19;Design Art Networks;decode-dimms
+8;1A;Mach Xtreme Technology Ltd.;decode-dimms
+8;9B;ATO Solutions Co. Ltd.;decode-dimms
+8;1C;Ramsta;decode-dimms
+8;9D;Greenliant Systems, Ltd.;decode-dimms
+8;9E;Teikon;decode-dimms
+8;1F;Antec Hadron;decode-dimms
+8;20;NavCom Technology, Inc.;decode-dimms
+8;A1;Shanghai Fudan Microelectronics;decode-dimms
+8;A2;Calxeda, Inc.;decode-dimms
+8;23;JSC EDC Electronics;decode-dimms
+8;A4;Kandit Technology Co. Ltd.;decode-dimms
+8;25;Ramos Technology;decode-dimms
+8;26;Goldenmars Technology;decode-dimms
+8;A7;XeL Technology Inc.;decode-dimms
+8;A8;Newzone Corporation;decode-dimms
+8;29;ShenZhen MercyPower Tech;decode-dimms
+8;2A;Nanjing Yihuo Technology;decode-dimms
+8;AB;Nethra Imaging Inc.;decode-dimms
+8;2C;SiTel Semiconductor BV;decode-dimms
+8;AD;SolidGear Corporation;decode-dimms
+8;AE;Topower Computer Ind Co Ltd.;decode-dimms
+8;2F;Wilocity;decode-dimms
+8;B0;Profichip GmbH;decode-dimms
+8;31;Gerad Technologies;decode-dimms
+8;32;Ritek Corporation;decode-dimms
+8;B3;Gomos Technology Limited;decode-dimms
+8;34;Memoright Corporation;decode-dimms
+8;B5;D-Broad, Inc.;decode-dimms
+8;B6;HiSilicon Technologies;decode-dimms
+8;37;Syndiant Inc.;decode-dimms
+8;38;Enverv Inc.;decode-dimms
+8;B9;Cognex;decode-dimms
+8;BA;Xinnova Technology Inc.;decode-dimms
+8;3B;Ultron AG;decode-dimms
+8;BC;Concord Idea Corporation;decode-dimms
+8;3D;AIM Corporation;decode-dimms
+8;3E;Lifetime Memory Products;decode-dimms
+8;BF;Ramsway;decode-dimms
+8;40;Recore Systems BV;decode-dimms
+8;C1;Haotian Jinshibo Science Tech;decode-dimms
+8;C2;Being Advanced Memory;decode-dimms
+8;43;Adesto Technologies;decode-dimms
+8;C4;Giantec Semiconductor, Inc.;decode-dimms
+8;45;HMD Electronics AG;decode-dimms
+8;46;Gloway International (HK);decode-dimms
+8;C7;Kingcore;decode-dimms
+8;C8;Anucell Technology Holding;decode-dimms
+8;49;Accord Software & Systems Pvt. Ltd.;decode-dimms
+8;4A;Active-Semi Inc.;decode-dimms
+8;CB;Denso Corporation;decode-dimms
+8;4C;TLSI Inc.;decode-dimms
+8;CD;Shenzhen Daling Electronic Co. Ltd.;decode-dimms
+8;CE;Mustang;decode-dimms
+8;4F;Orca Systems;decode-dimms
+8;D0;Passif Semiconductor;decode-dimms
+8;51;GigaDevice Semiconductor (Beijing) Inc.;decode-dimms
+8;52;Memphis Electronic;decode-dimms
+8;D3;Beckhoff Automation GmbH;decode-dimms
+8;54;Harmony Semiconductor Corp (former ProPlus Design Solutions);decode-dimms
+8;D5;Air Computers SRL;decode-dimms
+8;D6;TMT Memory;decode-dimms
+8;57;Eorex Corporation;decode-dimms
+8;58;Xingtera;decode-dimms
+8;D9;Netsol;decode-dimms
+8;DA;Bestdon Technology Co. Ltd.;decode-dimms
+8;5B;Baysand Inc.;decode-dimms
+8;DC;Uroad Technology Co. Ltd. (former Triple Grow Industrial Ltd.);decode-dimms
+8;5D;Wilk Elektronik S.A.;decode-dimms
+8;5E;AAI;decode-dimms
+8;DF;Harman;decode-dimms
+8;E0;Berg Microelectronics Inc.;decode-dimms
+8;61;ASSIA, Inc.;decode-dimms
+8;62;Visiontek Products LLC;decode-dimms
+8;E3;OCMEMORY;decode-dimms
+8;64;Welink Solution Inc.;decode-dimms
+8;E5;Shark Gaming;decode-dimms
+8;E6;Avalanche Technology;decode-dimms
+8;67;R&D Center ELVEES OJSC;decode-dimms
+8;68;KingboMars Technology Co. Ltd.;decode-dimms
+8;E9;High Bridge Solutions Industria Eletronica;decode-dimms
+8;EA;Transcend Technology Co. Ltd.;decode-dimms
+8;6B;Everspin Technologies;decode-dimms
+8;EC;Hon-Hai Precision;decode-dimms
+8;6D;Smart Storage Systems;decode-dimms
+8;6E;Toumaz Group;decode-dimms
+8;EF;Zentel Electronics Corporation;decode-dimms
+8;70;Panram International Corporation;decode-dimms
+8;F1;Silicon Space Technology;decode-dimms
+8;F2;LITE-ON IT Corporation;decode-dimms
+8;73;Inuitive;decode-dimms
+8;F4;HMicro;decode-dimms
+8;75;BittWare Inc.;decode-dimms
+8;76;GLOBALFOUNDRIES;decode-dimms
+8;F7;ACPI Digital Co. Ltd;decode-dimms
+8;F8;Annapurna Labs;decode-dimms
+8;79;AcSiP Technology Corporation;decode-dimms
+8;7A;Idea! Electronic Systems;decode-dimms
+8;FB;Gowe Technology Co. Ltd;decode-dimms
+8;7C;Hermes Testing Solutions Inc.;decode-dimms
+8;FD;Positivo BGH;decode-dimms
+8;FE;Intelligence Silicon Technology;decode-dimms
+9;01;3D PLUS;decode-dimms
+9;02;Diehl Aerospace;decode-dimms
+9;83;Fairchild;decode-dimms
+9;04;Mercury Systems;decode-dimms
+9;85;Sonics Inc.;decode-dimms
+9;86;Emerson Automation Solutions (former ICC/GE Intelligent Platforms);decode-dimms
+9;07;Shenzhen Jinge Information Co. Ltd;decode-dimms
+9;08;SCWW;decode-dimms
+9;89;Silicon Motion Inc.;decode-dimms
+9;8A;Anurag;decode-dimms
+9;0B;King Kong;decode-dimms
+9;8C;FROM30 Co. Ltd;decode-dimms
+9;0D;Gowin Semiconductor Corp;decode-dimms
+9;0E;Fremont Micro Devices Ltd;decode-dimms
+9;8F;Ericsson Modems;decode-dimms
+9;10;Exelis;decode-dimms
+9;91;Satixfy Ltd;decode-dimms
+9;92;Galaxy Microsystems Ltd;decode-dimms
+9;13;Gloway International Co. Ltd;decode-dimms
+9;94;Lab;decode-dimms
+9;15;Smart Energy Instruments;decode-dimms
+9;16;Approved Memory Corporation;decode-dimms
+9;97;Axell Corporation;decode-dimms
+9;98;Essencore Limited (former ISD Technology Limited);decode-dimms
+9;19;Phytium;decode-dimms
+9;1A;Xi'an UniIC Semiconductors Co Ltd (former Xi'an SinoChip Semiconductor);decode-dimms
+9;9B;Ambiq Micro;decode-dimms
+9;1C;eveRAM Technology Inc.;decode-dimms
+9;9D;Infomax;decode-dimms
+9;9E;Butterfly Network Inc.;decode-dimms
+9;1F;Shenzhen City Gcai Electronics;decode-dimms
+9;20;Stack Devices Corporation;decode-dimms
+9;A1;ADK Media Group;decode-dimms
+9;A2;TSP Global Co. Ltd;decode-dimms
+9;23;HighX;decode-dimms
+9;A4;Shenzhen Elicks Technology;decode-dimms
+9;25;ISSI/Chingis;decode-dimms
+9;26;Google Inc.;decode-dimms
+9;A7;Dasima International Development;decode-dimms
+9;A8;Leahkinn Technology Limited;decode-dimms
+9;29;HIMA Paul Hildebrandt GmbH Co KG;decode-dimms
+9;2A;Keysight Technologies;decode-dimms
+9;AB;Techcomp International (Fastable);decode-dimms
+9;2C;Ancore Technology Corporation;decode-dimms
+9;AD;Nuvoton;decode-dimms
+9;AE;Korea Uhbele International Group Ltd;decode-dimms
+9;2F;Ikegami Tsushinki Co. Ltd;decode-dimms
+9;B0;RelChip Inc.;decode-dimms
+9;31;Baikal Electronics;decode-dimms
+9;32;Nemostech Inc.;decode-dimms
+9;B3;Memorysolution GmbH;decode-dimms
+9;34;Silicon Integrated Systems Corporation;decode-dimms
+9;B5;Xiede;decode-dimms
+9;B6;BRC (former Multilaser Components);decode-dimms
+9;37;Flash Chi;decode-dimms
+9;38;Jone;decode-dimms
+9;B9;GCT Semiconductor Inc.;decode-dimms
+9;BA;Hong Kong Zetta Device Technology;decode-dimms
+9;3B;Unimemory Technology(s) Pte Ltd;decode-dimms
+9;BC;Cuso;decode-dimms
+9;3D;Kuso;decode-dimms
+9;3E;Uniquify Inc.;decode-dimms
+9;BF;Skymedi Corporation;decode-dimms
+9;40;Core Chance Co. Ltd;decode-dimms
+9;C1;Tekism Co. Ltd;decode-dimms
+9;C2;Seagate Technology PLC;decode-dimms
+9;43;Hong Kong Gaia Group Co. Limited;decode-dimms
+9;C4;Gigacom Semiconductor LLC;decode-dimms
+9;45;V2 Technologies;decode-dimms
+9;46;TLi;decode-dimms
+9;C7;Neotion;decode-dimms
+9;C8;Lenovo;decode-dimms
+9;49;Shenzhen Zhongteng Electronic Corp. Ltd;decode-dimms
+9;4A;Compound Photonics;decode-dimms
+9;CB;In2H2 Inc (former Cognimem Technologies Inc);decode-dimms
+9;4C;Shenzhen Pango Microsystems Co. Ltd;decode-dimms
+9;CD;Vasekey;decode-dimms
+9;CE;Cal-Comp Industria de Semicondutores;decode-dimms
+9;4F;Eyenix Co. Ltd;decode-dimms
+9;D0;Heoriady;decode-dimms
+9;51;Accelerated Memory Production Inc.;decode-dimms
+9;52;INVECAS Inc.;decode-dimms
+9;D3;AP Memory;decode-dimms
+9;54;Douqi Technology;decode-dimms
+9;D5;Etron Technology Inc.;decode-dimms
+9;D6;Indie Semiconductor;decode-dimms
+9;57;Socionext Inc.;decode-dimms
+9;58;HGST;decode-dimms
+9;D9;EVGA;decode-dimms
+9;DA;Audience Inc.;decode-dimms
+9;5B;EpicGear;decode-dimms
+9;DC;Vitesse Enterprise Co.;decode-dimms
+9;5D;Foxtronn International Corporation;decode-dimms
+9;5E;Bretelon Inc.;decode-dimms
+9;DF;Graphcore;decode-dimms
+9;E0;Eoplex Inc;decode-dimms
+9;61;MaxLinear Inc;decode-dimms
+9;62;ETA Devices;decode-dimms
+9;E3;LOKI;decode-dimms
+9;64;IMS Electronics Co Ltd;decode-dimms
+9;E5;Dosilicon Co Ltd;decode-dimms
+9;E6;Dolphin Integration;decode-dimms
+9;67;Shenzhen Mic Electronics Technolog;decode-dimms
+9;68;Boya Microelectronics Inc;decode-dimms
+9;E9;Geniachip (Roche);decode-dimms
+9;EA;Axign;decode-dimms
+9;6B;Kingred Electronic Technology Ltd;decode-dimms
+9;EC;Chao Yue Zhuo Computer Business Dept.;decode-dimms
+9;6D;Guangzhou Si Nuo Electronic Technology.;decode-dimms
+9;6E;Crocus Technology Inc;decode-dimms
+9;EF;Creative Chips GmbH;decode-dimms
+9;70;GE Aviation Systems LLC.;decode-dimms
+9;F1;Asgard;decode-dimms
+9;F2;Good Wealth Technology Ltd;decode-dimms
+9;73;TriCor Technologies;decode-dimms
+9;F4;Nova-Systems GmbH;decode-dimms
+9;75;JUHOR;decode-dimms
+9;76;Zhuhai Douke Commerce Co Ltd;decode-dimms
+9;F7;DSL Memory;decode-dimms
+9;F8;Anvo-Systems Dresden GmbH;decode-dimms
+9;79;Realtek;decode-dimms
+9;7A;AltoBeam;decode-dimms
+9;FB;Wave Computing;decode-dimms
+9;7C;Beijing TrustNet Technology Co Ltd;decode-dimms
+9;FD;Innovium Inc;decode-dimms
+9;FE;Starsway Technology Limited;decode-dimms
+10;01;Weltronics Co LTD;decode-dimms
+10;02;VMware Inc;decode-dimms
+10;83;Hewlett Packard Enterprise;decode-dimms
+10;04;INTENSO;decode-dimms
+10;85;Puya Semiconductor;decode-dimms
+10;86;MEMORFI;decode-dimms
+10;07;MSC Technologies GmbH;decode-dimms
+10;08;Txrui;decode-dimms
+10;89;SiFive Inc;decode-dimms
+10;8A;Spreadtrum Communications;decode-dimms
+10;0B;XTX Technology Limited;decode-dimms
+10;8C;UMAX Technology;decode-dimms
+10;0D;Shenzhen Yong Sheng Technology;decode-dimms
+10;0E;SNOAMOO (Shenzhen Kai Zhuo Yue);decode-dimms
+10;8F;Daten Tecnologia LTDA;decode-dimms
+10;10;Shenzhen XinRuiYan Electronics;decode-dimms
+10;91;Eta Compute;decode-dimms
+10;92;Energous;decode-dimms
+10;13;Raspberry Pi Trading Ltd;decode-dimms
+10;94;Shenzhen Chixingzhe Tech Co Ltd;decode-dimms
+10;15;Silicon Mobility;decode-dimms
+10;16;IQ-Analog Corporation;decode-dimms
+10;97;Uhnder Inc;decode-dimms
+10;98;Impinj;decode-dimms
+10;19;DEPO Computers;decode-dimms
+10;1A;Nespeed Sysems;decode-dimms
+10;9B;Yangtze Memory Technologies Co Ltd;decode-dimms
+10;1C;MemxPro Inc;decode-dimms
+10;9D;Tammuz Co Ltd;decode-dimms
+10;9E;Allwinner Technology;decode-dimms
+10;1F;Shenzhen City Futian District Qing Xuan Tong Computer Trading Firm;decode-dimms
+10;20;XMC;decode-dimms
+10;A1;Teclast;decode-dimms
+10;A2;Maxsun;decode-dimms
+10;23;Haiguang Integrated Circuit Design;decode-dimms
+10;A4;RamCENTER Technology;decode-dimms
+10;25;Phison Electronics Corporation;decode-dimms
+10;26;Guizhou Huaxintong Semi-Conductor;decode-dimms
+10;A7;Network Intelligence;decode-dimms
+10;A8;Continental Technology (Holdings);decode-dimms
+10;29;Guangzhou Huayan Suning Electronic;decode-dimms
+10;2A;Guangzhou Zhouji Electronic Co Ltd;decode-dimms
+10;AB;Shenzhen Giant Hui Kang Tech Co Ltd;decode-dimms
+10;2C;Shenzhen Yilong Innovative Co Ltd;decode-dimms
+10;AD;Neo Forza;decode-dimms
+10;AE;Lyontek Inc;decode-dimms
+10;2F;Shanghai Kuxin Microelectronics Ltd;decode-dimms
+10;B0;Shenzhen Larix Technology Co Ltd;decode-dimms
+10;31;Qbit Semiconductor Ltd;decode-dimms
+10;32;Insignis Technology Corporation;decode-dimms
+10;B3;Lanson Memory Co Ltd;decode-dimms
+10;34;Shenzhen Superway Electronics Co Ltd;decode-dimms
+10;B5;Canaan-Creative Co Ltd;decode-dimms
+10;B6;Black Diamond Memory;decode-dimms
+10;37;Shenzhen City Parker Baking Electronics;decode-dimms
+10;38;Shenzhen Baihong Technology Co Ltd;decode-dimms
+10;B9;GEO Semiconductors;decode-dimms
+10;BA;OCPC;decode-dimms
+10;3B;Artery Technology Co Ltd;decode-dimms
+10;BC;Jinyu;decode-dimms
+10;3D;ShenzhenYing Chi Technology Development;decode-dimms
+10;3E;Shenzhen Pengcheng Xin Technology;decode-dimms
+10;BF;Pegasus Semiconductor (Shanghai) Co;decode-dimms
+10;40;Mythic Inc;decode-dimms
+10;C1;Elmos Semiconductor AG;decode-dimms
+10;C2;Kllisre;decode-dimms
+10;43;Shenzhen Winconway Technology;decode-dimms
+10;C4;Shenzhen Xingmem Technology Corp;decode-dimms
+10;45;Gold Key Technology Co Ltd;decode-dimms
+10;46;Habana Labs Ltd;decode-dimms
+10;C7;Hoodisk Electronics Co Ltd;decode-dimms
+10;C8;SemsoTai (SZ) Technology Co Ltd;decode-dimms
+10;49;OM Nanotech Pvt. Ltd;decode-dimms
+10;4A;Shenzhen Zhifeng Weiye Technology;decode-dimms
+10;CB;Xinshirui (Shenzhen) Electronics Co;decode-dimms
+10;4C;Guangzhou Zhong Hao Tian Electronic;decode-dimms
+10;CD;Shenzhen Longsys Electronics Co Ltd;decode-dimms
+10;CE;Deciso B.V.;decode-dimms
+10;4F;Puya Semiconductor (Shenzhen);decode-dimms
+10;D0;Shenzhen Veineda Technology Co Ltd;decode-dimms
+10;51;Antec Memory;decode-dimms
+10;52;Cortus SAS;decode-dimms
+10;D3;Dust Leopard;decode-dimms
+10;54;MyWo AS;decode-dimms
+10;D5;J&A Information Inc;decode-dimms
+10;D6;Shenzhen JIEPEI Technology Co Ltd;decode-dimms
+10;57;Heidelberg University;decode-dimms
+10;58;Flexxon PTE Ltd;decode-dimms
+10;D9;Wiliot;decode-dimms
+10;DA;Raysun Electronics International Ltd;decode-dimms
+10;5B;Aquarius Production Company LLC;decode-dimms
+10;DC;MACNICA DHW LTDA;decode-dimms
+10;5D;Intelimem;decode-dimms
+10;5E;Zbit Semiconductor Inc;decode-dimms
+10;DF;Shenzhen Technology Co Ltd;decode-dimms
+10;E0;Signalchip;decode-dimms
+10;61;Shenzen Recadata Storage Technology;decode-dimms
+10;62;Hyundai Technology;decode-dimms
+10;E3;Shanghai Fudi Investment Development;decode-dimms
+10;64;Aixi Technology;decode-dimms
+10;E5;Tecon MT;decode-dimms
+10;E6;Onda Electric Co Ltd;decode-dimms
+10;67;Jinshen;decode-dimms
+10;68;Kimtigo Semiconductor (HK) Limited;decode-dimms
+10;E9;IIT Madras;decode-dimms
+10;EA;Shenshan (Shenzhen) Electronic;decode-dimms
+10;6B;Hefei Core Storage Electronic Limited;decode-dimms
+10;EC;Colorful Technology Ltd;decode-dimms
+10;6D;Visenta (Xiamen) Technology Co Ltd;decode-dimms
+10;6E;Roa Logic BV;decode-dimms
+10;EF;NSITEXE Inc;decode-dimms
+10;70;Hong Kong Hyunion Electronics;decode-dimms
+10;F1;ASK Technology Group Limited;decode-dimms
+10;F2;GIGA-BYTE Technology Co Ltd;decode-dimms
+10;73;Terabyte Co Ltd;decode-dimms
+10;F4;Hyundai Inc;decode-dimms
+10;75;EXCELERAM;decode-dimms
+10;76;PsiKick;decode-dimms
+10;F7;Netac Technology Co Ltd;decode-dimms
+10;F8;PCCOOLER;decode-dimms
+10;79;Jiangsu Huacun Electronic Technology;decode-dimms
+10;7A;Shenzhen Micro Innovation Industry;decode-dimms
+10;FB;Beijing Tongfang Microelectronics Co;decode-dimms
+10;7C;XZN Storage Technology;decode-dimms
+10;FD;ChipCraft Sp. z.o.o.;decode-dimms
+10;FE;ALLFLASH Technology Limited;decode-dimms
+11;01;Foerd Technology Co Ltd;decode-dimms
+11;02;KingSpec;decode-dimms
+11;83;Codasip GmbH;decode-dimms
+11;04;SL Link Co Ltd;decode-dimms
+11;85;Shenzhen Kefu Technology Co Limited;decode-dimms
+11;86;Shenzhen ZST Electronics Technology;decode-dimms
+11;07;Kyokuto Electronic Inc;decode-dimms
+11;08;Warrior Technology;decode-dimms
+11;89;TRINAMIC Motion Control GmbH & Co;decode-dimms
+11;8A;PixelDisplay Inc;decode-dimms
+11;0B;Shenzhen Futian District Bo Yueda Elec;decode-dimms
+11;8C;Richtek Power;decode-dimms
+11;0D;Shenzhen LianTeng Electronics Co Ltd;decode-dimms
+11;0E;AITC Memory;decode-dimms
+11;8F;UNIC Memory Technology Co Ltd;decode-dimms
+11;10;Shenzhen Huafeng Science Technology;decode-dimms
+11;91;CXMT (former Innotron Memory Co Ltd);decode-dimms
+11;92;Guangzhou Xinyi Heng Computer Trading Firm;decode-dimms
+11;13;SambaNova Systems;decode-dimms
+11;94;V-GEN;decode-dimms
+11;15;Jump Trading;decode-dimms
+11;16;Ampere Computing;decode-dimms
+11;97;Shenzhen Zhongshi Technology Co Ltd;decode-dimms
+11;98;Shenzhen Zhongtian Bozhong Technology;decode-dimms
+11;19;Tri-Tech International;decode-dimms
+11;1A;Silicon Intergrated Systems Corporation;decode-dimms
+11;9B;Shenzhen HongDingChen Information;decode-dimms
+11;1C;Plexton Holdings Limited;decode-dimms
+11;9D;AMS (Jiangsu Advanced Memory Semi);decode-dimms
+11;9E;Wuhan Jing Tian Interconnected Tech Co;decode-dimms
+11;1F;Axia Memory Technology;decode-dimms
+11;20;Chipset Technology Holding Limited;decode-dimms
+11;A1;Shenzhen Xinshida Technology Co Ltd;decode-dimms
+11;A2;Shenzhen Chuangshifeida Technology;decode-dimms
+11;23;Guangzhou MiaoYuanJi Technology;decode-dimms
+11;A4;ADVAN Inc;decode-dimms
+11;25;Shenzhen Qianhai Weishengda Electronic Commerce Company Ltd;decode-dimms
+11;26;Guangzhou Guang Xie Cheng Trading;decode-dimms
+11;A7;StarRam International Co Ltd;decode-dimms
+11;A8;Shen Zhen XinShenHua Tech Co Ltd;decode-dimms
+11;29;UltraMemory Inc;decode-dimms
+11;2A;New Coastline Global Tech Industry Co;decode-dimms
+11;AB;Sinker;decode-dimms
+11;2C;Diamond;decode-dimms
+11;AD;PUSKILL;decode-dimms
+11;AE;Guangzhou Hao Jia Ye Technology Co;decode-dimms
+11;2F;Ming Xin Limited;decode-dimms
+11;B0;Barefoot Networks;decode-dimms
+11;31;Biwin Semiconductor (HK) Co Ltd;decode-dimms
+11;32;UD INFO Corporation;decode-dimms
+11;B3;Trek Technology (S) PTE Ltd;decode-dimms
+11;34;Xiamen Kingblaze Technology Co Ltd;decode-dimms
+11;B5;Shenzhen Lomica Technology Co Ltd;decode-dimms
+11;B6;Nuclei System Technology Co Ltd;decode-dimms
+11;37;Wuhan Xun Zhan Electronic Technology;decode-dimms
+11;38;Shenzhen Ingacom Semiconductor Ltd;decode-dimms
+11;B9;Zotac Technology Ltd;decode-dimms
+11;BA;Foxline;decode-dimms
+11;3B;Shenzhen Farasia Science Technology;decode-dimms
+11;BC;Efinix Inc;decode-dimms
+11;3D;Hua Nan San Xian Technology Co Ltd;decode-dimms
+11;3E;Goldtech Electronics Co Ltd;decode-dimms
+11;BF;Shanghai Han Rong Microelectronics Co;decode-dimms
+11;40;Shenzhen Zhongguang Yunhe Trading;decode-dimms
+11;C1;Smart Shine(QingDao) Microelectronics;decode-dimms
+11;C2;Thermaltake Technology Co Ltd;decode-dimms
+11;43;Shenzhen O'Yang Maile Technology Ltd;decode-dimms
+11;C4;UPMEM;decode-dimms
+11;45;Chun Well Technology Holding Limited;decode-dimms
+11;46;Astera Labs Inc;decode-dimms
+11;C7;Winconway;decode-dimms
+11;C8;Advantech Co Ltd;decode-dimms
+11;49;Chengdu Fengcai Electronic Technology;decode-dimms
+11;4A;The Boeing Company;decode-dimms
+11;CB;Blaize Inc;decode-dimms
+11;4C;Ramonster Technology Co Ltd;decode-dimms
+11;CD;Wuhan Naonongmai Technology Co Ltd;decode-dimms
+11;CE;Shenzhen Hui ShingTong Technology;decode-dimms
+11;4F;Yourlyon;decode-dimms
+11;D0;Fabu Technology;decode-dimms
+11;51;Shenzhen Yikesheng Technology Co Ltd;decode-dimms
+11;52;NOR-MEM;decode-dimms
+11;D3;Cervoz Co Ltd;decode-dimms
+11;54;Bitmain Technologies Inc;decode-dimms
+11;D5;Facebook Inc;decode-dimms
+11;D6;Shenzhen Longsys Electronics Co Ltd;decode-dimms
+11;57;Guangzhou Siye Electronic Technology;decode-dimms
+11;58;Silergy;decode-dimms
+11;D9;Adamway;decode-dimms
+11;DA;PZG;decode-dimms
+11;5B;Shenzhen King Power Electronics;decode-dimms
+11;DC;Guangzhou ZiaoFu Tranding Co Ltd;decode-dimms
+11;5D;Shenzhen SKIHOTAR Semiconductor;decode-dimms
+11;5E;PulseRain Technology;decode-dimms
+11;DF;Seeker Technology Limited;decode-dimms
+11;E0;Shenzhen OSCOO Tech Co Ltd;decode-dimms
+11;61;Shenzhen Yze Technology Co Ltd;decode-dimms
+11;62;Shenzhen Jieshuo Electronic Commerce;decode-dimms
+11;E3;Gazda;decode-dimms
+11;64;Hua Wei Technology Co Ltd;decode-dimms
+11;E5;Esperanto Technologies;decode-dimms
+11;E6;JinSheng Electronic (Shenzhen) Co Ltd;decode-dimms
+11;67;Shenzhen Shi Bolunshuai Technology;decode-dimms
+11;68;Shanghai Rei Zuan Information Tech;decode-dimms
+11;E9;Fraunhofer IIS;decode-dimms
+11;EA;Kandou Bus SA;decode-dimms
+11;6B;Acer;decode-dimms
+11;EC;Artmem Technology Co Ltd;decode-dimms
+11;6D;Gstar Semiconductor Co Ltd;decode-dimms
+11;6E;ShineDisk;decode-dimms
+11;EF;Shenzhen CHN Technology Co Ltd;decode-dimms
+11;70;UnionChip Semiconductor Co Ltd;decode-dimms
+11;F1;Tanbassh;decode-dimms
+11;F2;Shenzhen Tianyu Jieyun Intl Logistics;decode-dimms
+11;73;MCLogic Inc;decode-dimms
+11;F4;Eorex Corporation;decode-dimms
+11;75;Arm Technology (China) Co Ltd;decode-dimms
+11;76;Lexar Co Limited;decode-dimms
+11;F7;QinetiQ Group PLC;decode-dimms
+11;F8;Exascend;decode-dimms
+11;79;Hong Kong Hyunion Electronics Co Ltd;decode-dimms
+11;7A;Shenzhen Banghong Electronics Co Ltd;decode-dimms
+11;FB;MBit Wireless Inc;decode-dimms
+11;7C;Hex Five Security Inc;decode-dimms
+11;FD;ShenZhen Juhor Precision Tech Co Ltd;decode-dimms
+11;FE;Shenzhen Reeinno Technology Co Ltd;decode-dimms
+12;01;ABIT Electronics (Shenzhen) Co Ltd;decode-dimms
+12;02;Semidrive;decode-dimms
+12;83;MyTek Electronics Corp;decode-dimms
+12;04;Wxilicon Technology Co Ltd;decode-dimms
+12;85;Shenzhen Meixin Electronics Ltd;decode-dimms
+12;86;Ghost Wolf;decode-dimms
+12;07;LiSion Technologies Inc;decode-dimms
+12;08;Power Active Co Ltd;decode-dimms
+12;89;Pioneer High Fidelity Taiwan Co. Ltd;decode-dimms
+12;8A;LuoSilk;decode-dimms
+12;0B;Shenzhen Chuangshifeida Technology;decode-dimms
+12;8C;Black Sesame Technologies Inc;decode-dimms
+12;0D;Jiangsu Xinsheng Intelligent Technology;decode-dimms
+12;0E;MLOONG;decode-dimms
+12;8F;Quadratica LLC;decode-dimms
+12;10;Anpec Electronics;decode-dimms
+12;91;Xi'an Morebeck Semiconductor Tech Co;decode-dimms
+12;92;Kingbank Technology Co Ltd;decode-dimms
+12;13;ITRenew Inc;decode-dimms
+12;94;Shenzhen Eaget Innovation Tech Ltd;decode-dimms
+12;15;Jazer;decode-dimms
+12;16;Xiamen Semiconductor Investment Group;decode-dimms
+12;97;Guangzhou Longdao Network Tech Co;decode-dimms
+12;98;Shenzhen Futian SEC Electronic Market;decode-dimms
+12;19;Allegro Microsystems LLC;decode-dimms
+12;1A;Hunan RunCore Innovation Technology;decode-dimms
+12;9B;C-Corsa Technology;decode-dimms
+12;1C;Zhuhai Chuangfeixin Technology Co Ltd;decode-dimms
+12;9D;Beijing InnoMem Technologies Co Ltd;decode-dimms
+12;9E;YooTin;decode-dimms
+12;1F;Shenzhen Pengxiong Technology Co Ltd;decode-dimms
+12;20;Dongguan Yingbang Commercial Trading Co;decode-dimms
+12;A1;Shenzhen Ronisys Electronics Co Ltd;decode-dimms
+12;A2;Hongkong Xinlan Guangke Co Ltd;decode-dimms
+12;23;Apex Microelectronics Co Ltd;decode-dimms
+12;A4;Beijing Hongda Jinming Technology Co Ltd;decode-dimms
+12;25;Ling Rui Technology (Shenzhen) Co Ltd;decode-dimms
+12;26;Hongkong Hyunion Electronics Co Ltd;decode-dimms
+12;A7;Starsystems Inc;decode-dimms
+12;A8;Shenzhen Yingjiaxun Industrial Co Ltd;decode-dimms
+12;29;Dongguan Crown Code Electronic Commerce;decode-dimms
+12;2A;Monolithic Power Systems Inc;decode-dimms
+12;AB;WuHan SenNaiBo E-Commerce Co Ltd;decode-dimms
+12;2C;Hangzhou Hikstorage Technology Co;decode-dimms
+12;AD;Shenzhen Goodix Technology Co Ltd;decode-dimms
+12;AE;Aigo Electronic Technology Co Ltd;decode-dimms
+12;2F;Hefei Konsemi Storage Technology Co Ltd;decode-dimms
+12;B0;Cactus Technologies Limited;decode-dimms
+12;31;DSIN;decode-dimms
+12;32;Blu Wireless Technology;decode-dimms
+12;B3;Nanjing UCUN Technology Inc;decode-dimms
+12;34;Acacia Communications;decode-dimms
+12;B5;Beijinjinshengyihe Technology Co Ltd;decode-dimms
+12;B6;Zyzyx;decode-dimms
+12;37;T-HEAD Semiconductor Co Ltd;decode-dimms
+12;38;Shenzhen Hystou Technology Co Ltd;decode-dimms
+12;B9;Syzexion;decode-dimms
+12;BA;Kembona;decode-dimms
+12;3B;Qingdao Thunderobot Technology Co Ltd;decode-dimms
+12;BC;Morse Micro;decode-dimms
+12;3D;Shenzhen Envida Technology Co Ltd;decode-dimms
+12;3E;UDStore Solution Limited;decode-dimms
+12;BF;Shunlie;decode-dimms
+12;40;Shenzhen Xin Hong Rui Tech Ltd;decode-dimms
+12;C1;Shenzhen Yze Technology Co Ltd;decode-dimms
+12;C2;Shenzhen Huang Pu He Xin Technology;decode-dimms
+12;43;Xiamen Pengpai Microelectronics Co Ltd;decode-dimms
+12;C4;JISHUN;decode-dimms
+12;45;Shenzhen WODPOSIT Technology Co;decode-dimms
+12;46;Unistar;decode-dimms
+12;C7;UNICORE Electronic (Suzhou) Co Ltd;decode-dimms
+12;C8;Axonne Inc;decode-dimms
+12;49;Shenzhen SOVERECA Technology Co;decode-dimms
+12;4A;Dire Wolf;decode-dimms
+12;CB;Whampoa Core Technology Co Ltd;decode-dimms
+12;4C;CSI Halbleiter GmbH;decode-dimms
+12;CD;ONE Semiconductor;decode-dimms
+12;CE;SimpleMachines Inc;decode-dimms
+12;4F;Shenzhen Chengyi Qingdian Electronic;decode-dimms
+12;D0;Shenzhen Xinlianxin Network Technology;decode-dimms
+12;51;Vayyar Imaging Ltd;decode-dimms
+12;52;Paisen Network Technology Co Ltd;decode-dimms
+12;D3;Shenzhen Fengwensi Technology Co Ltd;decode-dimms
+12;54;Caplink Technology Limited;decode-dimms
+12;D5;JJT Solution Co Ltd;decode-dimms
+12;D6;HOSIN Global Electronics Co Ltd;decode-dimms
+12;57;Shenzhen KingDisk Century Technology;decode-dimms
+12;58;SOYO;decode-dimms
+12;D9;DIT Technology Co Ltd;decode-dimms
+12;DA;iFound;decode-dimms
+12;5B;Aril Computer Company;decode-dimms
+12;DC;ASUS;decode-dimms
+12;5D;Shenzhen Ruiyingtong Technology Co;decode-dimms
+12;5E;HANA Micron;decode-dimms
+12;DF;RANSOR;decode-dimms
+12;E0;Axiado Corporation;decode-dimms
+12;61;Tesla Corporation;decode-dimms
+12;62;Pingtouge (Shanghai) Semiconductor Co;decode-dimms
+12;E3;S3Plus Technologies SA;decode-dimms
+12;64;Integrated Silicon Solution Israel Ltd;decode-dimms
+12;E5;GreenWaves Technologies;decode-dimms
+12;E6;NUVIA Inc;decode-dimms
+12;67;Guangzhou Shuvrwine Technology Co;decode-dimms
+12;68;Shenzhen Hangshun Chip Technology;decode-dimms
+12;E9;Chengboliwei Electronic Business;decode-dimms
+12;EA;Kowin Memory Technology Co Ltd;decode-dimms
+12;6B;Euronet Technology Inc;decode-dimms
+12;EC;SCY;decode-dimms
+12;6D;Shenzhen Xinhongyusheng Electrical;decode-dimms
+12;6E;PICOCOM;decode-dimms
+12;EF;Shenzhen Toooogo Memory Technology;decode-dimms
+12;70;VLSI Solution;decode-dimms
+12;F1;Costar Electronics Inc;decode-dimms
+12;F2;Shenzhen Huatop Technology Co Ltd;decode-dimms
+12;73;Inspur Electronic Information Industry;decode-dimms
+12;F4;Shenzhen Boyuan Computer Technology;decode-dimms
+12;75;Beijing Welldisk Electronics Co Ltd;decode-dimms
+12;76;Suzhou EP Semicon Co Ltd;decode-dimms
+12;F7;Zhejiang Dahua Memory Technology;decode-dimms
+12;F8;Virtu Financial;decode-dimms
+12;79;Datotek International Co Ltd;decode-dimms
+12;7A;Telecom and Microelectronics Industries;decode-dimms
+12;FB;Echo Technology Ltd;decode-dimms
+12;7C;APEX-INFO;decode-dimms
+12;FD;Yingpark;decode-dimms
+12;FE;Shenzhen Bigway Tech Co Ltd;decode-dimms
+13;01;Beijing Haawking Technology Co Ltd;decode-dimms
+13;02;Open HW Group;decode-dimms
+13;83;JHICC;decode-dimms
+13;04;ncoder AG;decode-dimms
+13;85;ThinkTech Information Technology Co;decode-dimms
+13;86;Shenzhen Chixingzhe Technology Co Ltd;decode-dimms
+13;07;Skywalker;decode-dimms
+13;08;Shenzhen Kaizhuoyue Electronics Co Ltd;decode-dimms
+13;89;Shenzhen YC Storage Technology Co Ltd;decode-dimms
+13;8A;Shenzhen Chixingzhe Technology Co;decode-dimms
+13;0B;Wink Semiconductor (Shenzhen) Co Ltd;decode-dimms
+13;8C;AISTOR;decode-dimms
+13;0D;Palma Ceia SemiDesign;decode-dimms
+13;0E;EM Microelectronic-Marin SA;decode-dimms
+13;8F;Shenzhen Monarch Memory Technology;decode-dimms

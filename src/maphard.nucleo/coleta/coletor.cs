@@ -2,6 +2,7 @@ using System.Reflection;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Smbios;
 using MapHard.Nucleo.Tabelas;
@@ -18,13 +19,20 @@ public sealed class Coletor
     private readonly FontesColeta _fontes;
     private readonly TimeSpan _tempoLimite;
     private readonly TabelaProcessadores _tabela;
+    private readonly FabricantesMemoria _fabricantesMemoria;
     private readonly Func<DateTimeOffset> _agora;
 
-    public Coletor(FontesColeta fontes, TimeSpan tempoLimitePorFonte, TabelaProcessadores? tabela = null, Func<DateTimeOffset>? agora = null)
+    public Coletor(
+        FontesColeta fontes,
+        TimeSpan tempoLimitePorFonte,
+        TabelaProcessadores? tabela = null,
+        Func<DateTimeOffset>? agora = null,
+        FabricantesMemoria? fabricantesMemoria = null)
     {
         _fontes = fontes;
         _tempoLimite = tempoLimitePorFonte;
         _tabela = tabela ?? TabelaProcessadores.Embutida;
+        _fabricantesMemoria = fabricantesMemoria ?? FabricantesMemoria.Embutida;
         _agora = agora ?? (() => DateTimeOffset.Now);
     }
 
@@ -39,7 +47,7 @@ public sealed class Coletor
 
     public async Task<ColetaMaquina> ColetarAsync(IProgress<string>? andamento = null, CancellationToken cancelar = default)
     {
-        andamento?.Report("lendo firmware e processador...");
+        andamento?.Report("lendo firmware, processador e memória...");
 
         // As leituras rápidas correm juntas. A amostra dos clocks leva 1 segundo.
         var smbios = Ler(() => LeitorTabelaSmbios.Interpretar(_fontes.Smbios.LerTabelaBruta()), cancelar);
@@ -48,9 +56,10 @@ public sealed class Coletor
         var firmware = Ler(() => LeitorFirmware.Ler(_fontes.Firmware, _fontes.Registro, _fontes.Administrador()), cancelar);
         var windows = Ler(() => LeitorWindows.Ler(_fontes.Registro), cancelar);
         var computador = Ler(_fontes.NomeComputador, cancelar);
-        var memoria = Ler(_fontes.MemoriaUtilizavel, cancelar);
+        var instalada = Ler(_fontes.Memoria.InstaladaKb, cancelar);
+        var estadoMemoria = Ler(_fontes.Memoria.Estado, cancelar);
         var administrador = Ler(_fontes.Administrador, cancelar);
-        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, memoria, administrador).ConfigureAwait(false);
+        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador).ConfigureAwait(false);
 
         andamento?.Report("medindo clock e uso...");
         var tabelaSmbios = smbios.Result;
@@ -65,8 +74,17 @@ public sealed class Coletor
         var dadosWindows = windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!);
 
         var processador = MontarProcessador(tabelaSmbios, id, topologia.Result, clocks, dadosFirmware);
+        var memoria = LeitorMemoria.Montar(
+            new LeiturasMemoria(
+                tabelaSmbios.Valor,
+                tabelaSmbios.Falha,
+                instalada.Result.Valor,
+                instalada.Result.Falha,
+                estadoMemoria.Result.Valor,
+                estadoMemoria.Result.Falha),
+            _fabricantesMemoria);
         var placa = MontarPlaca(tabelaSmbios, dadosFirmware, id.Valor);
-        var identificacao = MontarIdentificacao(computador.Result, memoria.Result, placa, processador, dadosWindows);
+        var identificacao = MontarIdentificacao(computador.Result, memoria, placa, processador, dadosWindows);
 
         andamento?.Report("coleta concluída");
         return new ColetaMaquina(
@@ -77,6 +95,7 @@ public sealed class Coletor
             administrador.Result.Valor,
             identificacao,
             processador,
+            memoria,
             placa);
     }
 
@@ -224,7 +243,7 @@ public sealed class Coletor
             firmware);
     }
 
-    private static Identificacao MontarIdentificacao(Leitura<string> computador, Leitura<long?> memoria, SecaoPlaca placa, SecaoProcessador processador, DadosWindows windows)
+    private static Identificacao MontarIdentificacao(Leitura<string> computador, SecaoMemoria memoria, SecaoPlaca placa, SecaoProcessador processador, DadosWindows windows)
     {
         // Fabricante e modelo do equipamento. Texto de fábrica no tipo 1 cai para a placa-mãe (tipo 2), dito na observação.
         var fabricante = placa.EquipamentoFabricante.FoiLido ? placa.EquipamentoFabricante : DaPlaca(placa.PlacaFabricante, placa.EquipamentoFabricante);
@@ -239,9 +258,9 @@ public sealed class Coletor
             modelo,
             serie,
             processador.Nome,
-            memoria.Falhou
-                ? Campo<long>.Erro(FonteDado.Windows, memoria.Falha!)
-                : memoria.Valor is { } bytes ? Campo<long>.Lido(bytes, FonteDado.Windows) : Campo<long>.NaoInformado(FonteDado.Windows),
+            memoria.Instalada,
+            memoria.Tipo,
+            memoria.Utilizavel,
             windows);
     }
 

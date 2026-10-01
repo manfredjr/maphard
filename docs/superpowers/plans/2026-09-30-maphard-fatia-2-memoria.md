@@ -82,11 +82,11 @@ public sealed record ModuloMemoriaSmbios(
     int? Ranks, int? VoltagemConfiguradaMv);
 ```
 
-- [ ] **Passo 1:** testes com o `ConstrutorSmbios` da fatia 1: módulo de 16 GB em MB; módulo com o bit 15 (KB); módulo com 0x7FFF e tamanho estendido de 64 GB; slot vazio (tamanho 0) com os outros campos ignorados; tamanho 0xFFFF desconhecido; velocidade 0xFFFF com o estendido; estrutura curta (0x15) sem velocidade; estrutura de versão 2.x sem voltagem nem código de fabricante; nomes de tipo e formato (DDR4, DDR5, LPDDR5, SODIMM, DIMM); tipo fora da tabela vira nulo.
-- [ ] **Passo 2:** testes do tipo 16: capacidade em KB; 0x80000000 com o estendido; estrutura curta com 0x80000000 vira nula; ECC de um bit; várias estruturas do tipo 16, das quais só as de uso 3 (memória do sistema) contam.
-- [ ] **Passo 3:** implementar em `estruturas-memoria.cs`, com os deslocamentos da tabela acima e as leituras protegidas da fatia 1.
-- [ ] **Passo 4:** teste `[FatoWindows]`: a máquina real tem ao menos um módulo do tipo 17 com tamanho.
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** testes com o `ConstrutorSmbios` da fatia 1: módulo de 16 GB em MB; módulo com o bit 15 (KB); módulo com 0x7FFF e tamanho estendido de 64 GB; slot vazio (tamanho 0) com os outros campos ignorados; tamanho 0xFFFF desconhecido; velocidade 0xFFFF com o estendido; estrutura curta (0x15) sem velocidade; estrutura de versão 2.x sem voltagem nem código de fabricante; nomes de tipo e formato (DDR4, DDR5, LPDDR5, SODIMM, DIMM); tipo fora da tabela vira nulo.
+- [x] **Passo 2:** testes do tipo 16: capacidade em KB; 0x80000000 com o estendido; estrutura curta com 0x80000000 vira nula; ECC de um bit; várias estruturas do tipo 16, das quais só as de uso 3 (memória do sistema) contam.
+- [x] **Passo 3:** implementar em `estruturas-memoria.cs`, com os deslocamentos da tabela acima e as leituras protegidas da fatia 1.
+- [x] **Passo 4:** teste `[FatoWindows]`: a máquina real tem ao menos um módulo do tipo 17 com tamanho.
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 2: fabricantes de memória (JEP106)
 
@@ -98,10 +98,10 @@ Formato da tabela, com a fonte no cabeçalho e em cada linha:
 banco;codigo;nome;fonte
 ```
 
-- [ ] **Passo 1:** gerar `fabricantes-memoria.csv` a partir da lista `@vendors` do `decode-dimms`, com um roteiro em `ferramentas/` que baixa, converte e grava a fonte. O roteiro e a tabela entram no mesmo commit.
-- [ ] **Passo 2:** testes da tradução: nome já em texto fica como está; "80CE" e "CE00" dão o mesmo fabricante; código com paridade errada vira "código inválido"; código fora da tabela vira "código JEDEC 0x...", no estado lido, com a dica "fora da tabela do MapHard"; o código de 2 bytes do deslocamento 0x2C dá o mesmo resultado que o texto.
-- [ ] **Passo 3:** teste de integridade da tabela: sem repetição de banco e código, e fonte em toda linha.
-- [ ] **Passo 4:** testes verdes, commit.
+- [x] **Passo 1:** gerar `fabricantes-memoria.csv` a partir da lista `@vendors` do `decode-dimms`, com um roteiro em `ferramentas/` que baixa, converte e grava a fonte. O roteiro e a tabela entram no mesmo commit.
+- [x] **Passo 2:** testes da tradução: nome já em texto fica como está; "80CE" e "CE00" dão o mesmo fabricante; código com paridade errada vira "código inválido"; código fora da tabela vira "código JEDEC 0x...", no estado lido, com a dica "fora da tabela do MapHard"; o código de 2 bytes do deslocamento 0x2C dá o mesmo resultado que o texto.
+- [x] **Passo 3:** teste de integridade da tabela: sem repetição de banco e código, e fonte em toda linha.
+- [x] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 3: uso da memória pelo Windows
 
@@ -116,9 +116,9 @@ public sealed record EstadoMemoriaWindows(long TotalBytes, long DisponivelBytes,
     long? ConfirmadaBytes, long? LimiteConfirmadaBytes, long? CacheBytes);
 ```
 
-- [ ] **Passo 1:** conferir `PERFORMANCE_INFORMATION` na documentação (MicrosoftDocs/sdk-api, psapi) e anotar a fonte no comentário. Os valores vêm em páginas e são multiplicados pelo tamanho da página.
-- [ ] **Passo 2:** implementar a fonte real. Teste `[FatoWindows]`: instalada maior ou igual à utilizável.
-- [ ] **Passo 3:** testes verdes, commit.
+- [x] **Passo 1:** conferir `PERFORMANCE_INFORMATION` na documentação (MicrosoftDocs/sdk-api, psapi) e anotar a fonte no comentário. Os valores vêm em páginas e são multiplicados pelo tamanho da página.
+- [x] **Passo 2:** implementar a fonte real. Teste `[FatoWindows]`: instalada maior ou igual à utilizável.
+- [x] **Passo 3:** testes verdes, commit.
 
 ### Tarefa 4: seção Memória
 
@@ -135,9 +135,9 @@ public sealed record SecaoMemoria(
     Campo<string> Ampliacao);
 ```
 
-- [ ] **Passo 1:** testes: dois módulos iguais de 8 GB DDR4-3200 em quatro slots; slots sem módulo aparecem como "vazio", nunca somem; memória reservada é a instalada menos a utilizável; soma dos módulos diferente da instalada vai no motivo; SMBIOS sem tipo 17 deixa os módulos em "não informado" e a instalada ainda sai do Windows.
-- [ ] **Passo 2:** implementar em `leitor-memoria.cs`, com os mesmos cuidados do coletor da fatia 1 (tempo limite, erro só nos campos da fonte).
-- [ ] **Passo 3:** testes verdes, commit.
+- [x] **Passo 1:** testes: dois módulos iguais de 8 GB DDR4-3200 em quatro slots; slots sem módulo aparecem como "vazio", nunca somem; memória reservada é a instalada menos a utilizável; soma dos módulos diferente da instalada vai no motivo; SMBIOS sem tipo 17 deixa os módulos em "não informado" e a instalada ainda sai do Windows.
+- [x] **Passo 2:** implementar em `leitor-memoria.cs`, com os mesmos cuidados do coletor da fatia 1 (tempo limite, erro só nos campos da fonte).
+- [x] **Passo 3:** testes verdes, commit.
 
 ### Tarefa 5: alertas e ampliação
 
@@ -145,7 +145,7 @@ Regras, com valores iniciais que o Manfred pode ajustar:
 
 | Alerta | Quando | Texto |
 |---|---|---|
-| Módulos diferentes | Entre os módulos instalados, capacidade, velocidade nominal ou part number diferem | "módulos diferentes: 8 GB e 4 GB" |
+| Módulos diferentes | Entre os módulos instalados, capacidade ou velocidade nominal diferem. O part number saiu da regra por decisão do Manfred em 01/10/2026, depois do teste em máquina real | "módulos diferentes: 8 GB e 4 GB" |
 | Abaixo da velocidade | Velocidade configurada menor que a nominal | "rodando a 2666 MT/s; os módulos aceitam 3200. Pode ser limite do processador ou da placa" |
 | Canal único provável | Um módulo só numa placa com dois ou mais slots; ou dois módulos cujos textos de slot indicam o mesmo canal ("ChannelA-DIMM0" e "ChannelA-DIMM1", "A1" e "A2") | "provável canal único: o desempenho da memória cai" |
 | Reserva alta | Reservada acima de 25% da instalada | "o Windows usa 6 GB dos 16 GB instalados" |
@@ -153,23 +153,23 @@ Regras, com valores iniciais que o Manfred pode ajustar:
 - Ampliação: "cabem até 64 GB (informado pelo firmware); 2 slots livres; tipo DDR4, formato SODIMM". Sem capacidade máxima no firmware, a frase diz só os slots e o tipo. Com todos os slots ocupados, diz "sem slot livre: ampliar exige trocar módulos".
 - A regra do canal é heurística e o texto diz "provável". Texto de slot que não segue nenhum padrão conhecido não gera alerta.
 
-- [ ] **Passo 1:** um teste por linha do quadro, nos dois sentidos (dispara e não dispara), e os três casos da ampliação.
-- [ ] **Passo 2:** implementar em `alertas-memoria.cs`.
-- [ ] **Passo 3:** testes verdes, commit.
+- [x] **Passo 1:** um teste por linha do quadro, nos dois sentidos (dispara e não dispara), e os três casos da ampliação.
+- [x] **Passo 2:** implementar em `alertas-memoria.cs`.
+- [x] **Passo 3:** testes verdes, commit.
 
 ### Tarefa 6: saídas
 
-- [ ] **Passo 1:** coletor e JSON: a coleta ganha `Memoria`. A versão do formato do JSON passa a 2, porque a estrutura cresce. Teste de ida e volta.
-- [ ] **Passo 2:** identificação: "Memória" passa a ser a instalada com o tipo ("16 GB DDR4"), e a utilizável continua ao lado.
-- [ ] **Passo 3:** painel: seção **Memória**, entre Processador e Placa-mãe, com os cartões "Resumo" (instalada, utilizável, reservada, tipo, slots, capacidade máxima, ECC), "Atenção" (os alertas, só quando houver), "Slots" (um bloco por slot: tamanho, tipo e velocidade, fabricante, part number, número de série, ranks, voltagem), "Ampliação" e "Uso agora".
-- [ ] **Passo 4:** linha de comando: o resumo ganha a linha "Memória: 16 GB DDR4-3200, 2 de 4 slots" e os alertas.
-- [ ] **Passo 5:** demonstração com dois módulos fictícios e um alerta, para a imagem mostrar como fica.
-- [ ] **Passo 6:** testes do painel e da linha de comando, testes verdes, commit.
+- [x] **Passo 1:** coletor e JSON: a coleta ganha `Memoria`. A versão do formato do JSON passa a 2, porque a estrutura cresce. Teste de ida e volta.
+- [x] **Passo 2:** identificação: "Memória" passa a ser a instalada com o tipo ("16 GB DDR4"), e a utilizável continua ao lado.
+- [x] **Passo 3:** painel: seção **Memória**, entre Processador e Placa-mãe, com os cartões "Resumo" (instalada, utilizável, reservada, tipo, slots, capacidade máxima, ECC), "Atenção" (os alertas, só quando houver), "Slots" (um bloco por slot: tamanho, tipo e velocidade, fabricante, part number, número de série, ranks, voltagem), "Ampliação" e "Uso agora".
+- [x] **Passo 4:** linha de comando: o resumo ganha a linha "Memória: 16 GB DDR4-3200, 2 de 4 slots" e os alertas.
+- [x] **Passo 5:** demonstração com dois módulos fictícios e um alerta, para a imagem mostrar como fica.
+- [x] **Passo 6:** testes do painel e da linha de comando, testes verdes, commit.
 
 ### Tarefa 7: fechamento
 
-- [ ] **Passo 1:** README com a seção Memória no "Uso" e a linha da fatia 2 na "Situação do projeto".
-- [ ] **Passo 2:** pendências atualizadas.
+- [x] **Passo 1:** README com a seção Memória no "Uso" e a linha da fatia 2 na "Situação do projeto".
+- [x] **Passo 2:** pendências atualizadas.
 - [ ] **Passo 3:** portões, envio, Pull Request do código e leitura do CI até ficar verde.
 
 ## Como o Manfred testa

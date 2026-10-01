@@ -1,19 +1,22 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Smbios;
 using MapHard.Nucleo.Windows;
 
 namespace MapHard.Nucleo.Coleta;
 
-/// <summary>Resumo da máquina, no topo da tela e do relatório (R2, com o que a fatia 1 já lê).</summary>
+/// <summary>Resumo da máquina, no topo da tela e do relatório (R2, com o que as fatias 1 e 2 já leem).</summary>
 public sealed record Identificacao(
     Campo<string> Computador,
     Campo<string> Fabricante,
     Campo<string> Modelo,
     Campo<string> NumeroSerie,
     Campo<string> Processador,
+    Campo<long> MemoriaInstalada,
+    Campo<string> MemoriaTipo,
     Campo<long> MemoriaUtilizavel,
     DadosWindows Windows);
 
@@ -66,8 +69,11 @@ public sealed record ColetaMaquina(
     bool Administrador,
     Identificacao Identificacao,
     SecaoProcessador Processador,
+    SecaoMemoria Memoria,
     SecaoPlaca Placa)
 {
     public const string NomeFormato = "maphard-coleta";
-    public const int VersaoAtual = 1;
+
+    /// <summary>2 a partir da fatia 2, que acrescenta a seção Memória e a memória instalada na identificação.</summary>
+    public const int VersaoAtual = 2;
 }

@@ -1,6 +1,7 @@
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Smbios;
 using MapHard.Nucleo.Windows;
@@ -36,6 +37,16 @@ internal static class FontesSimuladas
         public RespostaTpm? Tpm() => new(0, 2);
     }
 
+    /// <summary>16 GB instalados, com 200 MB reservados pelo hardware.</summary>
+    internal sealed class Memoria(long? instaladaKb = 16L * 1024 * 1024) : IFonteMemoria
+    {
+        public const long Utilizavel = (16L * 1024 * 1024 * 1024) - (200L * 1024 * 1024);
+
+        public long? InstaladaKb() => instaladaKb;
+
+        public EstadoMemoriaWindows? Estado() => new(Utilizavel, 8L * 1024 * 1024 * 1024, 48, 10L * 1024 * 1024 * 1024, 24L * 1024 * 1024 * 1024, 3L * 1024 * 1024 * 1024);
+    }
+
     internal sealed class Registro : IFonteRegistro
     {
         private readonly Dictionary<(string, string), object> _valores = new()
@@ -69,6 +80,11 @@ internal static class FontesSimuladas
             .Estrutura(2, ConstrutorSmbios.Corpo(0x08, (0x04, 1), (0x05, 2), (0x07, 3)), "Fabricante Placa", "PLACA-X1", "SERIE-TESTE-0002")
             .Estrutura(3, ConstrutorSmbios.Corpo(0x09, (0x04, 1), (0x05, 0x03)), "Fabricante Exemplo")
             .Estrutura(4, processador, "SOQUETE 1", "Fabricante CPU", "Processador Exemplo")
+            .Estrutura(16, ConstrutorMemoria.Conjunto(64 * 1024 * 1024, 4))
+            .Estrutura(17, ConstrutorMemoria.Modulo(8192, formato: 0x09, codigoFabricante: 0xCE80), "ChannelA-DIMM0", "BANK 0", "Fabricante Memoria", "SERIE-MEM-0001", "PATRIMONIO-0001", "PN-TESTE-3200")
+            .Estrutura(17, ConstrutorMemoria.Modulo(0, formato: 0x09), "ChannelA-DIMM1", "BANK 1")
+            .Estrutura(17, ConstrutorMemoria.Modulo(8192, formato: 0x09, codigoFabricante: 0xCE80), "ChannelB-DIMM0", "BANK 2", "Fabricante Memoria", "SERIE-MEM-0002", "PATRIMONIO-0002", "PN-TESTE-3200")
+            .Estrutura(17, ConstrutorMemoria.Modulo(0, formato: 0x09), "ChannelB-DIMM1", "BANK 3")
             .Fim()
             .Montar();
     }
@@ -91,7 +107,8 @@ internal static class FontesSimuladas
         IFonteSmbios? smbios = null,
         IFonteCpuid? cpuid = null,
         IFonteTopologia? topologia = null,
-        IFonteClocks? clocks = null) => new(
+        IFonteClocks? clocks = null,
+        IFonteMemoria? memoria = null) => new(
         smbios ?? new Smbios(() => TabelaSmbios()),
         cpuid ?? Cpuid(),
         topologia ?? new Topologia(TabelaTopologia),
@@ -99,6 +116,6 @@ internal static class FontesSimuladas
         new Firmware(),
         new Registro(),
         () => "ESTACAO-TESTE",
-        () => 16L * 1024 * 1024 * 1024,
+        memoria ?? new Memoria(),
         () => false);
 }

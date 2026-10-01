@@ -16,6 +16,7 @@
   <ItemGroup>
     <EmbeddedResource Include="..\..\LICENSE" LogicalName="licenca.txt" />
     <EmbeddedResource Include="tabelas\processadores.csv" LogicalName="processadores.csv" />
+    <EmbeddedResource Include="tabelas\fabricantes-memoria.csv" LogicalName="fabricantes-memoria.csv" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@ using System.Runtime.Versioning;
 using System.Security.Principal;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Smbios;
 
@@ -16,7 +17,7 @@ public sealed record FontesColeta(
     IFonteFirmware Firmware,
     IFonteRegistro Registro,
     Func<string> NomeComputador,
-    Func<long?> MemoriaUtilizavel,
+    IFonteMemoria Memoria,
     Func<bool> Administrador)
 {
     [SupportedOSPlatform("windows")]
@@ -28,7 +29,7 @@ public sealed record FontesColeta(
         new FonteFirmwareWindows(),
         new FonteRegistroWindows(),
         () => Environment.MachineName,
-        () => GC.GetGCMemoryInfo().TotalAvailableMemoryBytes is > 0 and var total ? total : null,
+        new FonteMemoriaWindows(),
         EhAdministrador);
 
     [SupportedOSPlatform("windows")]

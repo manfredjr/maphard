@@ -44,6 +44,43 @@ public class ColetaTestes
     }
 
     [Fact]
+    public async Task Coleta_traz_a_secao_memoria_e_a_memoria_na_identificacao()
+    {
+        var c = await Coletar(FontesSimuladas.Completas());
+
+        Assert.Equal(16L * 1024 * 1024 * 1024, c.Memoria.Instalada.Valor);
+        Assert.Equal(4, c.Memoria.SlotsTotal.Valor);
+        Assert.Equal(2, c.Memoria.SlotsOcupados.Valor);
+        Assert.Equal("Samsung", c.Memoria.Modulos.Valor![0].Fabricante.Valor);
+        Assert.Equal(c.Memoria.Instalada, c.Identificacao.MemoriaInstalada);
+        Assert.Equal("DDR4", c.Identificacao.MemoriaTipo.Valor);
+        Assert.Equal(FontesSimuladas.Memoria.Utilizavel, c.Identificacao.MemoriaUtilizavel.Valor);
+        Assert.Empty(c.Memoria.Alertas);
+        Assert.Equal(ColetaMaquina.VersaoAtual, c.VersaoFormato);
+    }
+
+    [Fact]
+    public async Task Fonte_de_memoria_que_falha_nao_derruba_a_coleta()
+    {
+        var c = await Coletar(FontesSimuladas.Completas(memoria: new MemoriaQueFalha()));
+
+        Assert.Equal(EstadoCampo.ErroLeitura, c.Memoria.Utilizavel.Estado);
+        Assert.Equal("falha simulada", c.Memoria.Utilizavel.Motivo);
+        Assert.Equal(EstadoCampo.ErroLeitura, c.Memoria.EmUso.Estado);
+        Assert.Equal(16L * 1024 * 1024 * 1024, c.Memoria.Instalada.Valor);
+        Assert.Equal(FonteDado.Smbios, c.Memoria.Instalada.Fonte);
+        Assert.Equal(2, c.Memoria.SlotsOcupados.Valor);
+        Assert.Equal(8, c.Processador.Nucleos.Valor);
+    }
+
+    private sealed class MemoriaQueFalha : MapHard.Nucleo.Memoria.IFonteMemoria
+    {
+        public long? InstaladaKb() => throw new InvalidOperationException("falha simulada");
+
+        public MapHard.Nucleo.Memoria.EstadoMemoriaWindows? Estado() => throw new InvalidOperationException("falha simulada");
+    }
+
+    [Fact]
     public async Task Hipervisor_ativo_deixa_a_virtualizacao_nao_informada()
     {
         // Bit 31 de ECX na folha 1: hipervisor presente. Sem o bit 5 (VMX), como o Windows vê com o Hyper-V ligado.

@@ -70,7 +70,7 @@ public class PainelTestes
     }
 
     [Fact]
-    public async Task Painel_comeca_coletando_e_termina_com_as_tres_secoes()
+    public async Task Painel_comeca_coletando_e_termina_com_as_quatro_secoes()
     {
         var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
         Assert.Equal(EstadoPainel.Coletando, painel.Estado);
@@ -80,7 +80,7 @@ public class PainelTestes
         await painel.AtualizarAsync();
 
         Assert.Equal(EstadoPainel.Pronto, painel.Estado);
-        Assert.Equal(["Resumo", "Processador", "Placa-mãe e firmware"], painel.Secoes.Select(s => s.Titulo));
+        Assert.Equal(["Resumo", "Processador", "Memória", "Placa-mãe e firmware"], painel.Secoes.Select(s => s.Titulo));
         Assert.Equal("ESTACAO-TESTE   |   usuário comum   |   coletado em 30/09/2026 10:05", painel.TextoStatus);
         Assert.True(painel.PodeSalvar);
     }
@@ -95,7 +95,8 @@ public class PainelTestes
         string Texto(string rotulo) => linhas.First(l => l.Rotulo == rotulo).Texto;
 
         Assert.Equal("8 núcleos, 16 threads", Texto("Núcleos e threads"));
-        Assert.Equal("16 GB", Texto("Memória utilizável"));
+        Assert.Equal("16 GB DDR4", Texto("Memória"));
+        Assert.Equal("15,8 GB", Texto("Memória utilizável"));
         Assert.Equal("3,60 GHz", Texto("Clock base"));
         Assert.Equal("4,50 GHz", Texto("Clock atual"));
         Assert.Equal("8 x 48 KB", Texto("L1 de dados"));
@@ -104,6 +105,47 @@ public class PainelTestes
         Assert.Equal("ligado", Texto("Secure Boot"));
         Assert.Equal("x86-64-v1", Texto("Nível x86-64"));
         Assert.All(linhas, l => Assert.False(string.IsNullOrWhiteSpace(l.Texto), l.Rotulo));
+    }
+
+    [Fact]
+    public async Task Secao_memoria_tem_resumo_um_cartao_por_slot_ampliacao_e_uso()
+    {
+        var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
+        await painel.AtualizarAsync();
+
+        var memoria = painel.Secoes.Single(s => s.Id == MontadorSecoes.Memoria);
+        Assert.Equal(["Resumo", "ChannelA-DIMM0", "ChannelA-DIMM1", "ChannelB-DIMM0", "ChannelB-DIMM1", "Ampliação", "Uso agora"], memoria.Cartoes.Select(c => c.Titulo));
+
+        string Texto(string cartao, string rotulo) => memoria.Cartoes.Single(c => c.Titulo == cartao).Linhas.Single(l => l.Rotulo == rotulo).Texto;
+        Assert.Equal("16 GB", Texto("Resumo", "Instalada"));
+        Assert.Equal("200 MB", Texto("Resumo", "Reservada pelo hardware"));
+        Assert.Equal("2 de 4 ocupados", Texto("Resumo", "Slots"));
+        Assert.Equal("64 GB", Texto("Resumo", "Capacidade máxima"));
+        Assert.Equal("DDR4-3200", Texto("ChannelA-DIMM0", "Tipo e velocidade"));
+        Assert.Equal("Samsung", Texto("ChannelA-DIMM0", "Fabricante"));
+        Assert.Equal("1,2 V", Texto("ChannelA-DIMM0", "Voltagem"));
+        Assert.Equal("vazio", Texto("ChannelA-DIMM1", "Situação"));
+        Assert.Equal("cabem até 64 GB (informado pelo firmware); 2 slots livres; tipo DDR4, formato DIMM", Texto("Ampliação", "Resposta"));
+        Assert.Equal("48%", Texto("Uso agora", "Carga"));
+    }
+
+    [Fact]
+    public void Demonstracao_mostra_o_cartao_atencao_da_memoria()
+    {
+        var secoes = MontadorSecoes.Montar(DadosDemonstracao.Coleta(), Hoje);
+
+        var atencao = secoes.Single(s => s.Id == MontadorSecoes.Memoria).Cartoes.Single(c => c.Titulo == "Atenção");
+        var linha = Assert.Single(atencao.Linhas);
+        Assert.Equal("Velocidade", linha.Rotulo);
+        Assert.StartsWith("rodando a 2666 MT/s; os módulos aceitam 3200", linha.Texto);
+    }
+
+    [Fact]
+    public void Velocidade_abaixo_da_nominal_aparece_no_slot()
+    {
+        var modulo = DadosDemonstracao.Coleta().Memoria.Modulos.Valor![0];
+
+        Assert.Equal("DDR4-2666 (o módulo aceita 3200)", MontadorSecoes.TipoVelocidade(modulo).Valor);
     }
 
     [Fact]

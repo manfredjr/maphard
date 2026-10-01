@@ -67,6 +67,36 @@ public class ExportadorJsonTestes
     }
 
     [Fact]
+    public async Task Versao_2_do_formato_traz_a_secao_memoria()
+    {
+        var json = JsonDocument.Parse(ExportadorJson.Serializar(await Coletar())).RootElement;
+        var memoria = json.GetProperty("memoria");
+        var modulos = memoria.GetProperty("modulos").GetProperty("valor");
+
+        Assert.Equal(2, json.GetProperty("versaoFormato").GetInt32());
+        Assert.Equal(17179869184, memoria.GetProperty("instalada").GetProperty("valor").GetInt64());
+        Assert.Equal(4, modulos.GetArrayLength());
+        Assert.True(modulos[1].GetProperty("vazio").GetBoolean());
+        Assert.Equal("naoSuportado", modulos[1].GetProperty("tamanho").GetProperty("estado").GetString());
+        Assert.Equal("PN-TESTE-3200", modulos[0].GetProperty("partNumber").GetProperty("valor").GetString());
+        Assert.Equal(JsonValueKind.Array, memoria.GetProperty("alertas").ValueKind);
+        Assert.Equal("DDR4", json.GetProperty("identificacao").GetProperty("memoriaTipo").GetProperty("valor").GetString());
+    }
+
+    [Fact]
+    public async Task Ida_e_volta_mantem_a_secao_memoria()
+    {
+        var original = await Coletar();
+
+        var lida = ExportadorJson.Desserializar(ExportadorJson.Serializar(original))!;
+
+        Assert.Equal(original.Memoria.Modulos.Valor!.Count, lida.Memoria.Modulos.Valor!.Count);
+        Assert.Equal(original.Memoria.Modulos.Valor[0].Fabricante, lida.Memoria.Modulos.Valor[0].Fabricante);
+        Assert.Equal(original.Memoria.Ampliacao, lida.Memoria.Ampliacao);
+        Assert.Equal(original.Memoria.Instalada, lida.Memoria.Instalada);
+    }
+
+    [Fact]
     public async Task Acentos_saem_sem_escape()
     {
         var json = ExportadorJson.Serializar(await Coletar());
