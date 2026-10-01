@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Dispositivos;
+using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Smart;
 using MapHard.Nucleo.Tabelas;
@@ -66,6 +68,7 @@ public static class DadosDemonstracao
             Texto("PLACA-EXEMPLO"),
             Texto("1.0"),
             Texto("SERIE-TESTE-0002"),
+            Campo<string>.Lido("Chipset Exemplo", D, "dispositivo PCI 8086:0000"),
             Texto("Fabricante Exemplo"),
             Texto("Modelo Exemplo"),
             Texto("Linha Exemplo"),
@@ -104,8 +107,48 @@ public static class DadosDemonstracao
             processador,
             memoria,
             discos,
-            placa);
+            placa,
+            Estabilidade(),
+            Dispositivos());
     }
+
+    /// <summary>
+    /// Estabilidade fictícia: uma tela azul e um desligamento inesperado no período, o resto zerado, para a
+    /// imagem mostrar o cartão em Atenção.
+    /// </summary>
+    private static SecaoEstabilidade Estabilidade()
+    {
+        var momento = new DateTimeOffset(2026, 9, 21, 14, 30, 0, TimeSpan.FromHours(-3));
+        GrupoEventos Grupo(string codigo, string titulo, params string[] detalhes) =>
+            new(codigo, titulo, detalhes.Length, detalhes.Length > 0 ? momento : null, detalhes);
+
+        IReadOnlyList<GrupoEventos> grupos =
+        [
+            Grupo(Eventos.Estabilidade.TelasAzuis, "Telas azuis", "21/09/2026 14:30: código 0x9F"),
+            Grupo(Eventos.Estabilidade.Desligamentos, "Desligamentos inesperados", "21/09/2026 14:30: o botão de energia foi segurado"),
+            Grupo(Eventos.Estabilidade.Disco, "Erros de disco"),
+            Grupo(Eventos.Estabilidade.SistemaArquivos, "Erros do sistema de arquivos"),
+            Grupo(Eventos.Estabilidade.WheaCorrigido, "Erros de hardware corrigidos"),
+            Grupo(Eventos.Estabilidade.WheaNaoCorrigido, "Erros de hardware não corrigidos"),
+        ];
+
+        return new SecaoEstabilidade(
+            30,
+            Campo<IReadOnlyList<GrupoEventos>>.Lido(grupos, D),
+            Texto("sem erros, em 02/09/2026 09:10"),
+            false,
+            Campo<double>.Lido(6.2, D),
+            Campo<TimeSpan>.Lido(TimeSpan.FromHours(26.5), D),
+            Campo<DateTimeOffset>.Lido(new DateTimeOffset(2026, 9, 29, 7, 30, 0, TimeSpan.FromHours(-3)), D),
+            Campo<DateTimeOffset>.Lido(new DateTimeOffset(2024, 3, 2, 10, 0, 0, TimeSpan.FromHours(-3)), D));
+    }
+
+    /// <summary>Um dispositivo fictício sem driver, para a imagem mostrar o cartão Dispositivos.</summary>
+    private static SecaoDispositivos Dispositivos() => new(
+        Campo<IReadOnlyList<DispositivoProblema>>.Lido(
+            [new DispositivoProblema(Texto("Leitor de Cartão Exemplo"), Texto("Unknown"), 28, ProblemasDispositivo.Embutida.Texto(28))], D),
+        Campo<IReadOnlyList<DispositivoProblema>>.Lido([], D),
+        Campo<int>.Lido(148, D));
 
     /// <summary>
     /// Dois discos fictícios: um SSD NVMe Bom e um HDD em Atenção, com setores realocados, para a imagem

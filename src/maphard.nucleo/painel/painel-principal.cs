@@ -15,24 +15,46 @@ public enum EstadoPainel
 /// <summary>Estado e comandos da janela principal, sem nenhum tipo do WPF.</summary>
 public sealed class PainelPrincipal : INotifyPropertyChanged
 {
-    private readonly Func<CancellationToken, Task<ColetaMaquina>> _coletar;
+    private readonly Func<int, CancellationToken, Task<ColetaMaquina>> _coletar;
     private readonly Func<DateOnly> _hoje;
 
     public PainelPrincipal(Func<CancellationToken, Task<ColetaMaquina>> coletar, bool demonstracao = false, Func<DateOnly>? hoje = null)
+        : this((_, cancelar) => coletar(cancelar), demonstracao, hoje)
     {
-        _coletar = coletar;
+    }
+
+    /// <summary>Painel cuja coleta recebe o período dos eventos de estabilidade, em dias.</summary>
+    public PainelPrincipal(Func<int, CancellationToken, Task<ColetaMaquina>> coletarComDias, bool demonstracao = false, Func<DateOnly>? hoje = null, int dias = 30)
+    {
+        _coletar = coletarComDias;
         _hoje = hoje ?? (() => DateOnly.FromDateTime(DateTime.Now));
         Demonstracao = demonstracao;
+        DiasEventos = dias;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>Painel da máquina real.</summary>
     [System.Runtime.Versioning.SupportedOSPlatform("windows")]
-    public static PainelPrincipal Padrao()
+    public static PainelPrincipal Padrao(int dias = 30) =>
+        new((d, cancelar) => new Coletor(FontesColeta.Windows(), TimeSpan.FromSeconds(10), diasEventos: d).ColetarAsync(cancelar: cancelar), dias: dias);
+
+    /// <summary>Períodos de eventos que o técnico escolhe na janela (R27).</summary>
+    public static IReadOnlyList<int> OpcoesDias { get; } = [30, 90];
+
+    /// <summary>Período dos eventos de estabilidade da coleta atual.</summary>
+    public int DiasEventos { get; private set; }
+
+    /// <summary>Troca o período e coleta de novo.</summary>
+    public async Task AlterarDiasAsync(int dias, CancellationToken cancelar = default)
     {
-        var coletor = new Coletor(FontesColeta.Windows(), TimeSpan.FromSeconds(10));
-        return new PainelPrincipal(cancelar => coletor.ColetarAsync(cancelar: cancelar));
+        if (dias == DiasEventos || !OpcoesDias.Contains(dias))
+        {
+            return;
+        }
+
+        DiasEventos = dias;
+        await AtualizarAsync(cancelar).ConfigureAwait(true);
     }
 
     /// <summary>Painel com a máquina fictícia, para imagem de tela. Não lê nada do computador.</summary>
@@ -83,7 +105,7 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
         Avisar();
         try
         {
-            Coleta = await _coletar(cancelar).ConfigureAwait(true);
+            Coleta = await _coletar(DiasEventos, cancelar).ConfigureAwait(true);
             Secoes = MontadorSecoes.Montar(Coleta, _hoje());
             Estado = EstadoPainel.Pronto;
         }

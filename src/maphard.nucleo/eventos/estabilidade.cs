@@ -15,6 +15,7 @@ public sealed record SecaoEstabilidade(
     int Dias,
     Campo<IReadOnlyList<GrupoEventos>> Grupos,
     Campo<string> DiagnosticoMemoria,
+    bool? DiagnosticoMemoriaComErro,
     Campo<double> IndiceEstabilidade,
     Campo<TimeSpan> TempoLigado,
     Campo<DateTimeOffset> UltimoBoot,
@@ -30,6 +31,39 @@ public interface IFonteSistema
     DateTimeOffset? UltimoBoot();
 
     DateTimeOffset? InstalacaoWindows();
+}
+
+/// <summary>
+/// As quatro leituras do <see cref="IFonteSistema"/>, cada uma com o valor ou o motivo da falha. Uma leitura que
+/// falha (o WMI pode recusar) não derruba as outras.
+/// </summary>
+public sealed record LeiturasSistema(
+    double? Indice, string? FalhaIndice,
+    long? Milissegundos, string? FalhaMilissegundos,
+    DateTimeOffset? UltimoBoot, string? FalhaUltimoBoot,
+    DateTimeOffset? Instalacao, string? FalhaInstalacao)
+{
+    public static LeiturasSistema De(IFonteSistema fonte)
+    {
+        var (indice, falhaIndice) = Tentar(fonte.IndiceEstabilidade);
+        var (ms, falhaMs) = Tentar(fonte.MilissegundosLigado);
+        var (boot, falhaBoot) = Tentar(fonte.UltimoBoot);
+        var (instalacao, falhaInstalacao) = Tentar(fonte.InstalacaoWindows);
+        return new LeiturasSistema(indice, falhaIndice, ms, falhaMs, boot, falhaBoot, instalacao, falhaInstalacao);
+    }
+
+    private static (T? Valor, string? Falha) Tentar<T>(Func<T?> ler)
+        where T : struct
+    {
+        try
+        {
+            return (ler(), null);
+        }
+        catch (Exception erro) when (erro is COMException or UnauthorizedAccessException or InvalidOperationException or Microsoft.CSharp.RuntimeBinder.RuntimeBinderException)
+        {
+            return (null, erro.Message);
+        }
+    }
 }
 
 /// <summary>
@@ -75,8 +109,10 @@ public static partial class Estabilidade
         var kp41 = eventos.Where(e => Eh(e, KernelPower, 41)).ToList();
         var telasAzuis = kp41.Where(e => Numero(e, "BugcheckCode") is > 0).ToList();
         var desligamentos = kp41.Where(e => Numero(e, "BugcheckCode") is null or 0).ToList();
-        var disco = eventos.Where(e => e.Provedor.Equals(ProvedorDisco, StringComparison.OrdinalIgnoreCase) && _idsDisco.Contains(e.Id)).ToList();
-        var ntfs = eventos.Where(e => e.Provedor.Contains("Ntfs", StringComparison.OrdinalIgnoreCase) && _idsNtfs.Contains(e.Id)).ToList();
+        // O mesmo id serve para problema e para aviso de que está tudo bem: o NTFS 98 de nível informação diz
+        // "o volume está íntegro" (visto numa máquina real). Disco e sistema de arquivos só contam com nível 1 a 3.
+        var disco = eventos.Where(e => e.Provedor.Equals(ProvedorDisco, StringComparison.OrdinalIgnoreCase) && _idsDisco.Contains(e.Id) && EhProblema(e)).ToList();
+        var ntfs = eventos.Where(e => e.Provedor.Contains("Ntfs", StringComparison.OrdinalIgnoreCase) && _idsNtfs.Contains(e.Id) && EhProblema(e)).ToList();
         var whea = eventos.Where(e => e.Provedor.Equals(Whea, StringComparison.OrdinalIgnoreCase)).ToList();
 
         return
@@ -144,6 +180,9 @@ public static partial class Estabilidade
 
     private static string Data(EventoSistema e) => Formatador.DataHora(e.Momento.ToLocalTime());
 
+    /// <summary>Nível crítico, erro ou aviso. Nível 0 (sempre registrar) também conta, por não dizer que está tudo bem.</summary>
+    private static bool EhProblema(EventoSistema e) => e.Nivel is >= 0 and <= LeitorEvento.Aviso;
+
     private static bool Eh(EventoSistema e, string provedor, int id) => e.Id == id && e.Provedor.Equals(provedor, StringComparison.OrdinalIgnoreCase);
 
     private static long? Numero(EventoSistema e, string campo) =>
@@ -167,26 +206,43 @@ public static partial class Estabilidade
         return new DateTimeOffset(data.AddTicks(micro * 10L), deslocamento);
     }
 
-    public static SecaoEstabilidade Montar(int dias, IReadOnlyList<EventoSistema>? eventos, string? falhaEventos, IFonteSistema? sistema, string? falhaSistema)
+    public static SecaoEstabilidade Montar(int dias, IReadOnlyList<EventoSistema>? eventos, string? falhaEventos, IFonteSistema? sistema, string? falhaSistema) =>
+        Montar(dias, eventos, falhaEventos, sistema is null ? null : LeiturasSistema.De(sistema), falhaSistema);
+
+    public static SecaoEstabilidade Montar(int dias, IReadOnlyList<EventoSistema>? eventos, string? falhaEventos, LeiturasSistema? sistema, string? falhaSistema)
     {
         var grupos = eventos is null
             ? Campo<IReadOnlyList<GrupoEventos>>.Erro(FonteDado.Windows, falhaEventos ?? "log Sistema indisponível")
             : Campo<IReadOnlyList<GrupoEventos>>.Lido(Agrupar(eventos), FonteDado.Windows, $"log Sistema, últimos {dias} dias");
         var memoria = eventos is null ? Campo<string>.Erro(FonteDado.Windows, falhaEventos ?? "log Sistema indisponível") : DiagnosticoMemoria(eventos, dias);
 
-        Campo<T> DoSistema<T>(Func<IFonteSistema, T?> ler, string semValor)
-            where T : struct => sistema is null
-                ? Campo<T>.Erro(FonteDado.Windows, falhaSistema ?? "leitura do Windows indisponível")
-                : ler(sistema) is { } v ? Campo<T>.Lido(v, FonteDado.Windows) : Campo<T>.NaoSuportado(FonteDado.Windows, semValor);
+        Campo<T> DoSistema<T>(Func<LeiturasSistema, (T? Valor, string? Falha)> ler, string semValor)
+            where T : struct
+        {
+            if (sistema is null)
+            {
+                return Campo<T>.Erro(FonteDado.Windows, falhaSistema ?? "leitura do Windows indisponível");
+            }
+
+            var (valor, falha) = ler(sistema);
+            return falha is not null
+                ? Campo<T>.Erro(FonteDado.Windows, falha)
+                : valor is { } v ? Campo<T>.Lido(v, FonteDado.Windows) : Campo<T>.NaoSuportado(FonteDado.Windows, semValor);
+        }
+
+        // O Diagnóstico de Memória com nível diferente de informação conta como erro (regra da seção 8).
+        var ultimoDiagnostico = eventos?.Where(e => e.Provedor.Equals(DiagnosticoMemoriaProvedor, StringComparison.OrdinalIgnoreCase)).MaxBy(e => e.Momento);
+        bool? diagnosticoComErro = ultimoDiagnostico is null ? null : ultimoDiagnostico.Nivel != LeitorEvento.Informacao;
 
         return new SecaoEstabilidade(
             dias,
             grupos,
             memoria,
-            DoSistema(s => s.IndiceEstabilidade() is { } i ? Math.Round(i, 1) : (double?)null, "o Monitor de Confiabilidade não tem índice (desligado por política ou no Windows Server)"),
-            DoSistema(s => s.MilissegundosLigado() is { } ms ? TimeSpan.FromMilliseconds(ms) : (TimeSpan?)null, "tempo ligado indisponível"),
-            DoSistema(s => s.UltimoBoot(), "último boot não informado"),
-            DoSistema(s => s.InstalacaoWindows(), "data de instalação não informada"));
+            diagnosticoComErro,
+            DoSistema(s => (s.Indice is { } i ? Math.Round(i, 1) : (double?)null, s.FalhaIndice), "o Monitor de Confiabilidade não tem índice (desligado por política ou no Windows Server)"),
+            DoSistema(s => (s.Milissegundos is { } ms ? TimeSpan.FromMilliseconds(ms) : (TimeSpan?)null, s.FalhaMilissegundos), "tempo ligado indisponível"),
+            DoSistema(s => (s.UltimoBoot, s.FalhaUltimoBoot), "último boot não informado"),
+            DoSistema(s => (s.Instalacao, s.FalhaInstalacao), "data de instalação não informada"));
     }
 
     [GeneratedRegex(@"\\Device\\Harddisk\d+\\DR\d+", RegexOptions.IgnoreCase)]

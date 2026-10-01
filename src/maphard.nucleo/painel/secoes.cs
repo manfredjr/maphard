@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Dispositivos;
+using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
@@ -31,14 +33,18 @@ public static class MontadorSecoes
     public const string Memoria = "memoria";
     public const string Discos = "discos";
     public const string Placa = "placa";
+    public const string Estabilidade = "estabilidade";
+    public const string Dispositivos = "dispositivos";
 
     public static IReadOnlyList<SecaoTela> Montar(ColetaMaquina c, DateOnly hoje) =>
     [
         new(Resumo, "Resumo", MontarResumo(c)),
         new(Processador, "Processador", MontarProcessador(c.Processador)),
-        new(Memoria, "Memória", MontarMemoria(c.Memoria)),
+        new(Memoria, "Memória", MontarMemoria(c.Memoria, c.Estabilidade)),
         new(Discos, "Discos", MontarDiscos(c.Discos)),
         new(Placa, "Placa-mãe e firmware", MontarPlaca(c.Placa, hoje)),
+        new(Estabilidade, "Estabilidade", MontarEstabilidade(c.Estabilidade)),
+        new(Dispositivos, "Dispositivos", MontarDispositivos(c.Dispositivos)),
     ];
 
     /// <summary>Linha a partir de um campo. O texto do valor sai de <paramref name="formatar"/>; os outros estados, do texto do estado.</summary>
@@ -148,7 +154,7 @@ public static class MontadorSecoes
             .ToList();
     }
 
-    private static IReadOnlyList<CartaoTela> MontarMemoria(SecaoMemoria m)
+    private static IReadOnlyList<CartaoTela> MontarMemoria(SecaoMemoria m, SecaoEstabilidade e)
     {
         var cartoes = new List<CartaoTela>
         {
@@ -178,6 +184,12 @@ public static class MontadorSecoes
             cartoes.Add(new("Slots", [Linha("Módulos", m.Modulos)]));
         }
 
+        var saudeMemoria = RegrasEstabilidade.Memoria(m, e);
+        cartoes.Add(new("Erros de memória",
+        [
+            Linha("Diagnóstico de Memória", e.DiagnosticoMemoria),
+            new LinhaTela("Erros registrados pelo hardware", "contados na seção Estabilidade", EstadoCampo.Lido, "Regra do MapHard: o erro de memória do WHEA ainda não é separado dos outros erros de hardware"),
+        ], NomeSaude(saudeMemoria.Estado), TomSaude(saudeMemoria.Estado)));
         cartoes.Add(new("Ampliação", [Linha("Resposta", m.Ampliacao)]));
         cartoes.Add(new("Uso agora",
         [
@@ -296,6 +308,70 @@ public static class MontadorSecoes
         return cartoes;
     }
 
+    /// <summary>
+    /// Cartão "Eventos" com uma linha por grupo e a saúde no selo; um cartão por grupo com os detalhes, só quando houve
+    /// evento; e o cartão "Este Windows" com o índice, o tempo ligado, o último boot e a instalação.
+    /// </summary>
+    private static IReadOnlyList<CartaoTela> MontarEstabilidade(SecaoEstabilidade e)
+    {
+        var saude = RegrasEstabilidade.Estabilidade(e);
+        var cartoes = new List<CartaoTela>();
+        if (e.Grupos.FoiLido)
+        {
+            var linhas = new List<LinhaTela>
+            {
+                new("Situação", saude.Motivos.Count == 0 ? "nenhum problema no período" : string.Join("; ", saude.Motivos), EstadoCampo.Lido, "Regras de saúde do MapHard sobre o log Sistema"),
+            };
+            linhas.AddRange(e.Grupos.Valor!.Select(g => new LinhaTela(
+                g.Titulo,
+                g.Quantidade == 0 ? "nenhum" : $"{Formatador.Numero(g.Quantidade)}, o último em {Formatador.DataHora(g.Ultimo!.Value.ToLocalTime())}",
+                EstadoCampo.Lido,
+                $"Fonte: log Sistema do Windows, últimos {e.Dias} dias")));
+            cartoes.Add(new CartaoTela($"Eventos dos últimos {e.Dias} dias", linhas, NomeSaude(saude.Estado), TomSaude(saude.Estado)));
+            cartoes.AddRange(e.Grupos.Valor!.Where(g => g.Detalhes.Count > 0).Select(g =>
+                new CartaoTela(g.Titulo, g.Detalhes.Select((d, i) => new LinhaTela(i == 0 ? "Mais recentes" : string.Empty, d, EstadoCampo.Lido, "Fonte: log Sistema do Windows")).ToList())));
+        }
+        else
+        {
+            cartoes.Add(new CartaoTela("Eventos", [Linha("Log Sistema", e.Grupos)], NomeSaude(saude.Estado), TomSaude(saude.Estado)));
+        }
+
+        cartoes.Add(new CartaoTela("Este Windows",
+        [
+            Linha("Índice de estabilidade", e.IndiceEstabilidade, v => $"{v.ToString("0.0", Formatador.PtBr)} de 10"),
+            Linha("Tempo ligado", e.TempoLigado, Formatador.Duracao),
+            Linha("Último boot", e.UltimoBoot, d => Formatador.DataHora(d.ToLocalTime())),
+            Linha("Windows instalado em", e.InstalacaoWindows, d => Formatador.DataHora(d.ToLocalTime())),
+        ]));
+        return cartoes;
+    }
+
+    /// <summary>Cartão com os dispositivos com problema e a saúde no selo; os desativados à parte.</summary>
+    private static IReadOnlyList<CartaoTela> MontarDispositivos(SecaoDispositivos d)
+    {
+        var saude = RegrasEstabilidade.Dispositivos(d);
+        if (!d.ComProblema.FoiLido)
+        {
+            return [new CartaoTela("Dispositivos com problema", [Linha("Dispositivos", d.ComProblema)], NomeSaude(saude.Estado), TomSaude(saude.Estado))];
+        }
+
+        static LinhaTela LinhaDispositivo(DispositivoProblema p) =>
+            new(p.Nome.Valor ?? "dispositivo sem nome", $"código {p.Codigo}: {p.Texto}", EstadoCampo.Lido, $"Fonte: Gerenciador de Dispositivos do Windows. Classe: {p.Classe.Valor ?? "não informada"}");
+
+        var linhas = d.ComProblema.Valor!.Count == 0
+            ? new List<LinhaTela> { new("Situação", "nenhum dispositivo com problema", EstadoCampo.Lido, "Fonte: Gerenciador de Dispositivos do Windows") }
+            : d.ComProblema.Valor!.Select(LinhaDispositivo).ToList();
+        linhas.Add(Linha("Dispositivos verificados", d.Total, v => Formatador.Numero(v)));
+
+        var cartoes = new List<CartaoTela> { new("Dispositivos com problema", linhas, NomeSaude(saude.Estado), TomSaude(saude.Estado)) };
+        if (d.Desativados.Valor is { Count: > 0 } desativados)
+        {
+            cartoes.Add(new CartaoTela("Dispositivos desativados", desativados.Select(LinhaDispositivo).ToList()));
+        }
+
+        return cartoes;
+    }
+
     public static string NomeSaude(EstadoSaude estado) => estado switch
     {
         EstadoSaude.Bom => "Bom",
@@ -362,6 +438,7 @@ public static class MontadorSecoes
                 Linha("Modelo", p.PlacaModelo),
                 Linha("Versão", p.PlacaVersao),
                 Linha("Número de série", p.PlacaNumeroSerie),
+                Linha("Chipset", p.Chipset),
             ]),
             new("BIOS e firmware",
             [

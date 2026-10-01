@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Dispositivos;
+using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
@@ -43,12 +45,13 @@ public sealed record SecaoProcessador(
     Campo<bool> VirtualizacaoLigada,
     Campo<bool> Hipervisor);
 
-/// <summary>Seção Placa-mãe e firmware (R16 sem o chipset, R17 a R19).</summary>
+/// <summary>Seção Placa-mãe e firmware (R16 a R19).</summary>
 public sealed record SecaoPlaca(
     Campo<string> PlacaFabricante,
     Campo<string> PlacaModelo,
     Campo<string> PlacaVersao,
     Campo<string> PlacaNumeroSerie,
+    Campo<string> Chipset,
     Campo<string> EquipamentoFabricante,
     Campo<string> EquipamentoModelo,
     Campo<string> EquipamentoFamilia,
@@ -73,10 +76,12 @@ public sealed record ColetaMaquina(
     SecaoProcessador Processador,
     SecaoMemoria Memoria,
     SecaoDiscos Discos,
-    SecaoPlaca Placa)
+    SecaoPlaca Placa,
+    SecaoEstabilidade Estabilidade,
+    SecaoDispositivos Dispositivos)
 {
     public const string NomeFormato = "maphard-coleta";
 
-    /// <summary>3 a partir da fatia 3, que acrescenta a seção Discos e os discos na identificação.</summary>
-    public const int VersaoAtual = 3;
+    /// <summary>4 a partir da fatia 4, que acrescenta Estabilidade, Dispositivos e o chipset na placa-mãe.</summary>
+    public const int VersaoAtual = 4;
 }

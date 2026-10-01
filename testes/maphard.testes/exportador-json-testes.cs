@@ -73,7 +73,7 @@ public class ExportadorJsonTestes
         var memoria = json.GetProperty("memoria");
         var modulos = memoria.GetProperty("modulos").GetProperty("valor");
 
-        Assert.Equal(3, json.GetProperty("versaoFormato").GetInt32());
+        Assert.Equal(ColetaMaquina.VersaoAtual, json.GetProperty("versaoFormato").GetInt32());
         Assert.Equal(17179869184, memoria.GetProperty("instalada").GetProperty("valor").GetInt64());
         Assert.Equal(4, modulos.GetArrayLength());
         Assert.True(modulos[1].GetProperty("vazio").GetBoolean());

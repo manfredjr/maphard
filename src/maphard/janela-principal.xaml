@@ -1,6 +1,7 @@
 <Window x:Class="MapHard.JanelaPrincipal"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:painel="clr-namespace:MapHard.Nucleo.Painel;assembly=maphard.nucleo"
         Style="{StaticResource JanelaMT}"
         Title="MapHard - MT" Width="1100" Height="760" MinWidth="760" MinHeight="480"
         WindowStartupLocation="CenterScreen">
@@ -95,6 +96,11 @@
                             IsEnabled="{Binding PodeAtualizar}" ToolTip="Lê o computador de novo" />
                     <Button Content="Salvar JSON..." Style="{StaticResource BotaoFaixaContorno}" Click="AoSalvarJson"
                             IsEnabled="{Binding PodeSalvar}" ToolTip="Grava a coleta completa num arquivo JSON" />
+                    <ComboBox x:Name="PeriodoEventos" ItemsSource="{Binding Source={x:Static painel:PainelPrincipal.OpcoesDias}}"
+                              ItemStringFormat="Eventos de {0} dias" SelectionChanged="AoEscolherPeriodo" IsEnabled="{Binding PodeAtualizar}"
+                              VerticalAlignment="Center" Margin="6,0" Padding="8,4" MinWidth="150"
+                              AutomationProperties.Name="Período dos eventos de estabilidade"
+                              ToolTip="Período dos eventos da seção Estabilidade. Trocar faz a coleta de novo" />
                     <Button Content="Ler como administrador" Style="{StaticResource BotaoFaixaContorno}" Click="AoLerComoAdministrador"
                             Visibility="{Binding PodeElevar, Converter={StaticResource VisivelSe}}"
                             ToolTip="Reabre o MapHard como administrador, para ler o SMART dos discos SATA e o BitLocker. O Windows pede a confirmação" />

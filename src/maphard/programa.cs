@@ -29,7 +29,7 @@ internal static class Programa
         });
         aplicativo.DispatcherUnhandledException += AoErroNaoTratado;
 
-        var painel = argumentos.Demonstracao ? PainelPrincipal.ComDemonstracao() : PainelPrincipal.Padrao();
+        var painel = argumentos.Demonstracao ? PainelPrincipal.ComDemonstracao() : PainelPrincipal.Padrao(argumentos.Dias);
         return aplicativo.Run(new JanelaPrincipal(painel));
     }
 

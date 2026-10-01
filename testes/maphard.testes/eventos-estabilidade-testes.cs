@@ -85,6 +85,19 @@ public class EventosEstabilidadeTestes
         Assert.Equal(quantidade, Grupo([E(provedor, id, 2, mensagem: "A estrutura do sistema de arquivos está corrompida.")], Estabilidade.SistemaArquivos).Quantidade);
     }
 
+    [Fact]
+    public void Ntfs_98_de_informacao_e_volume_integro_e_nao_conta()
+    {
+        var eventos = new[]
+        {
+            E("Microsoft-Windows-Ntfs", 98, 4, mensagem: "O volume está íntegro. Nenhuma ação é necessária."),
+            E("disk", 51, 4, mensagem: @"\Device\Harddisk0\DR0 informação"),
+        };
+
+        Assert.Equal(0, Grupo(eventos, Estabilidade.SistemaArquivos).Quantidade);
+        Assert.Equal(0, Grupo(eventos, Estabilidade.Disco).Quantidade);
+    }
+
     [Theory]
     [InlineData(3, Estabilidade.WheaCorrigido)]
     [InlineData(2, Estabilidade.WheaNaoCorrigido)]
