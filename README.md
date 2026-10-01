@@ -12,9 +12,12 @@ Baixe o `maphard.exe` e abra. Não precisa instalar nem ser administrador. O pro
 
 A janela mostra, pela navegação à esquerda:
 
-- **Resumo:** nome do computador, fabricante, modelo, número de série, processador, memória instalada com o tipo, memória utilizável e versão do Windows.
+- **Resumo:** nome do computador, fabricante, modelo, número de série, processador, memória instalada com o tipo, memória utilizável, discos e versão do Windows.
 - **Processador:** nome, codinome, família, modelo e revisão, soquete, microcódigo, núcleos e threads (com os núcleos de desempenho e de eficiência no processador híbrido), clocks base, máximo e atual, uso, caches, instruções e virtualização.
 - **Memória:** instalada, utilizável e reservada pelo hardware, tipo, slots ocupados e livres, capacidade máxima e ECC. Um cartão por slot, inclusive os vazios, com tamanho, tipo e velocidade ("DDR4-3200"), formato, fabricante, part number, número de série, ranks e voltagem. Avisa quando os módulos são diferentes, quando a memória roda abaixo da velocidade, quando o canal único é provável e quando o Windows usa bem menos que o instalado. Responde quanto cabe a mais e quantos slots estão livres, e mostra o uso agora.
+- **Discos:** um cartão por disco com a saúde em destaque (Bom, Atenção, Ruim ou Desconhecido) e o motivo escrito ("3 setores realocados", "92% da vida útil usada"), temperatura, horas ligado, ciclos de energia, dados gravados, tipo (HDD, SSD SATA, SSD NVMe, USB), interface ("SATA 6 Gb/s", "NVMe, PCIe 4.0 x4"), capacidade, rotação, TRIM, partição e volumes com espaço livre e BitLocker. Logo abaixo, a tabela SMART com os nomes em português.
+
+Como usuário comum, o MapHard já lê a saúde dos SSDs NVMe. O SMART dos discos SATA e o BitLocker pedem administrador: o botão **Ler como administrador**, na faixa do topo, reabre o programa elevado, com a confirmação do Windows. Disco atrás de adaptador USB ou de controladora RAID que não repassa o SMART aparece com "SMART indisponível por esta controladora", nunca com saúde Bom.
 - **Placa-mãe e firmware:** equipamento, placa-mãe, BIOS com a data e a idade, UEFI ou legado, Secure Boot e TPM.
 
 Campo que não pôde ser lido aparece em cinza, com o motivo: "não informado pelo fabricante", "requer administrador", "não disponível neste equipamento" ou "erro de leitura". Parando o mouse sobre um valor, a dica diz de onde ele veio (CPUID, SMBIOS, registro do Windows...).
@@ -38,4 +41,4 @@ Sem nome depois de `--json`, o arquivo recebe o nome do computador e a data. No 
 | 0 | Regras, licença, desenho da versão 1 | Ramo da sessão na nuvem | Direto no `main`, com autorização | Concluída em 30/09/2026 |
 | 1 | Base, processador, placa-mãe e firmware, JSON e linha de comando | Ramo da sessão na nuvem | Plano em [#1](https://github.com/manfredjr/maphard/pull/1), código em [#2](https://github.com/manfredjr/maphard/pull/2), correções do teste em máquina real em [#5](https://github.com/manfredjr/maphard/pull/5) | Concluída em 30/09/2026; corrigida em 01/10/2026 |
 | 2 | Memória: módulos, slots, uso, alertas e ampliação | `memoria` | Plano em [#3](https://github.com/manfredjr/maphard/pull/3), código em [#6](https://github.com/manfredjr/maphard/pull/6) | Concluída em 01/10/2026 |
-| 3 | Discos: lista, volumes, SMART ATA e NVMe, regras de saúde, "Ler como administrador" | `plano-discos` | Plano em [#7](https://github.com/manfredjr/maphard/pull/7) | Plano em revisão |
+| 3 | Discos: lista, volumes, SMART ATA e NVMe, regras de saúde, "Ler como administrador" | `discos` | Plano em [#7](https://github.com/manfredjr/maphard/pull/7), código no PR da fatia 3 | Código em revisão |

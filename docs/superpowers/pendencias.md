@@ -34,6 +34,17 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Teste em máquina com slot livre e em desktop | O teste da fase desktop rodou num notebook com os dois slots ocupados. Slot vazio, canal único e ampliação com slot livre só foram vistos nos testes automáticos e na demonstração | Teste do Manfred num desktop e numa máquina com um pente só |
 | Comparação com o programa de referência | O programa de referência não estava instalado na máquina do teste. A comparação foi feita com o WMI (`Win32_PhysicalMemory` e `Win32_PhysicalMemoryArray`) | Repetir com o programa de referência instalado |
 
+## Fatia 3
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| SMART ATA, BitLocker e o botão "Ler como administrador" sem teste em máquina real | A máquina do teste da fase desktop tem só um SSD NVMe, e a sessão roda sem elevação. O pedido de elevação do Windows e a leitura elevada só foram vistos nos testes automáticos | Teste do Manfred numa máquina com disco SATA: abrir, usar o botão, aceitar o pedido do Windows e comparar a tabela SMART com o programa de referência |
+| Cores de Atenção e Ruim fora do tema da MT | O `tema-mt.xaml` do MapDisk não tem amarelo nem vermelho. As duas cores ficaram nos recursos da janela principal | Revisão do Manfred: aprovar as cores ou trazer as do MapDisk, se ele tiver |
+| Tabela SMART em linhas, não em grade | A tela usa o cartão de linhas das outras seções: "05h Setores realocados" e "atual 99, pior 99, limite 36, bruto 3". O desenho fala em tabela com colunas | Grade com colunas na janela, junto com o relatório HTML (fatia 7), ou antes, se o Manfred pedir |
+| Dados gravados e vida usada de disco SATA | O atributo de dados gravados (F1h) e os de vida do SSD mudam de unidade e de significado conforme o fabricante. Os dois campos ficam "não informado" e a tabela SMART mostra os valores | Tabela por fabricante a partir do `drivedb.h` do smartmontools, se o Manfred quiser |
+| Volume em mais de um disco | O volume que ocupa vários discos (volume dinâmico, Espaços de Armazenamento) fica em "Volumes sem disco físico ligado" | Leitura das extensões do volume, se aparecer em cliente |
+| Janela não vista na sessão | A sessão não enxerga a tela. A seção Discos, o selo da saúde e o botão foram conferidos pelos testes do painel e pela linha de comando | Conferência do Manfred na janela e na `--demonstracao` |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |
