@@ -1,7 +1,9 @@
 using System.Reflection;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Smbios;
@@ -20,6 +22,7 @@ public sealed class Coletor
     private readonly TimeSpan _tempoLimite;
     private readonly TabelaProcessadores _tabela;
     private readonly FabricantesMemoria _fabricantesMemoria;
+    private readonly AtributosSmart _atributosSmart;
     private readonly Func<DateTimeOffset> _agora;
 
     public Coletor(
@@ -27,12 +30,14 @@ public sealed class Coletor
         TimeSpan tempoLimitePorFonte,
         TabelaProcessadores? tabela = null,
         Func<DateTimeOffset>? agora = null,
-        FabricantesMemoria? fabricantesMemoria = null)
+        FabricantesMemoria? fabricantesMemoria = null,
+        AtributosSmart? atributosSmart = null)
     {
         _fontes = fontes;
         _tempoLimite = tempoLimitePorFonte;
         _tabela = tabela ?? TabelaProcessadores.Embutida;
         _fabricantesMemoria = fabricantesMemoria ?? FabricantesMemoria.Embutida;
+        _atributosSmart = atributosSmart ?? AtributosSmart.Embutida;
         _agora = agora ?? (() => DateTimeOffset.Now);
     }
 
@@ -59,16 +64,21 @@ public sealed class Coletor
         var instalada = Ler(_fontes.Memoria.InstaladaKb, cancelar);
         var estadoMemoria = Ler(_fontes.Memoria.Estado, cancelar);
         var administrador = Ler(_fontes.Administrador, cancelar);
-        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador).ConfigureAwait(false);
+        var discosBrutos = Ler(_fontes.Discos.Discos, cancelar);
+        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador, discosBrutos).ConfigureAwait(false);
 
-        andamento?.Report("medindo clock e uso...");
+        andamento?.Report("medindo clock e uso, lendo os discos...");
         var tabelaSmbios = smbios.Result;
         var id = cpuid.Result;
         var cpuSmbios = tabelaSmbios.Valor is null ? null : ProcessadorSmbios.Todos(tabelaSmbios.Valor).FirstOrDefault();
+
+        // Os discos correm junto com a amostra de 1 segundo dos clocks. Cada disco tem o próprio tempo limite.
+        var discos = LerDiscos(discosBrutos.Result, administrador.Result.Valor, cancelar);
         var clocks = await Ler(
             () => CalculoClocks.Montar(id.Valor?.ClockBaseMhz, id.Valor?.ClockMaximoMhz, cpuSmbios?.ClockMaximoMhz, _fontes.Clocks),
             cancelar,
             tempoLimite: _tempoLimite + TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+        var secaoDiscos = await discos.ConfigureAwait(false);
 
         var dadosFirmware = OcultoPeloHipervisor(firmware.Result.Valor ?? FirmwareEmErro(firmware.Result.Falha!), id.Valor);
         var dadosWindows = windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!);
@@ -84,7 +94,7 @@ public sealed class Coletor
                 estadoMemoria.Result.Falha),
             _fabricantesMemoria);
         var placa = MontarPlaca(tabelaSmbios, dadosFirmware, id.Valor);
-        var identificacao = MontarIdentificacao(computador.Result, memoria, placa, processador, dadosWindows);
+        var identificacao = MontarIdentificacao(computador.Result, memoria, secaoDiscos, placa, processador, dadosWindows);
 
         andamento?.Report("coleta concluída");
         return new ColetaMaquina(
@@ -96,7 +106,35 @@ public sealed class Coletor
             identificacao,
             processador,
             memoria,
+            secaoDiscos,
             placa);
+    }
+
+    /// <summary>
+    /// Volumes e, para cada disco, o log de saúde NVMe ou o SMART ATA, conforme o barramento. Disco que passa
+    /// do tempo fica com o SMART em "tempo esgotado"; os outros seguem.
+    /// </summary>
+    private async Task<SecaoDiscos> LerDiscos(Leitura<IReadOnlyList<DiscoBruto>> brutos, bool administrador, CancellationToken cancelar)
+    {
+        var volumes = await Ler(() => _fontes.Discos.Volumes(administrador), cancelar).ConfigureAwait(false);
+        if (brutos.Valor is not { } lista)
+        {
+            return LeitorDiscos.Montar(null, brutos.Falha, volumes.Valor ?? [], _atributosSmart);
+        }
+
+        var leituras = await Task.WhenAll(lista.Select(async d =>
+        {
+            if (DescritorArmazenamento.Interpretar(d.Descritor)?.Barramento == DescritorArmazenamento.BarramentoNvme)
+            {
+                var nvme = await Ler(() => (_fontes.Discos.LogSaudeNvme(d.Numero), _fontes.Discos.IdentificacaoNvme(d.Numero)), cancelar).ConfigureAwait(false);
+                return new LeituraDisco(d, null, nvme.Valor.Item1, nvme.Valor.Item2, nvme.Falha);
+            }
+
+            var ata = await Ler(() => _fontes.Discos.SmartAta(d.Numero), cancelar).ConfigureAwait(false);
+            return new LeituraDisco(d, ata.Valor, null, null, ata.Falha);
+        })).ConfigureAwait(false);
+
+        return LeitorDiscos.Montar(leituras, null, volumes.Valor ?? [], _atributosSmart);
     }
 
     private async Task<Leitura<T>> Ler<T>(Func<T> ler, CancellationToken cancelar, TimeSpan? tempoLimite = null)
@@ -243,7 +281,11 @@ public sealed class Coletor
             firmware);
     }
 
-    private static Identificacao MontarIdentificacao(Leitura<string> computador, SecaoMemoria memoria, SecaoPlaca placa, SecaoProcessador processador, DadosWindows windows)
+    /// <summary>"SSD NVMe 1,02 TB, HDD 2 TB": tipo e capacidade de fábrica de cada disco.</summary>
+    internal static Campo<string> ResumoDiscos(SecaoDiscos discos) => discos.Discos.Mapear(lista => string.Join(", ", lista.Select(d =>
+        d.Tamanho.FoiLido ? $"{d.Tipo.Valor} {Formatador.BytesDecimais(d.Tamanho.Valor)}" : d.Tipo.Valor ?? "disco")));
+
+    private static Identificacao MontarIdentificacao(Leitura<string> computador, SecaoMemoria memoria, SecaoDiscos discos, SecaoPlaca placa, SecaoProcessador processador, DadosWindows windows)
     {
         // Fabricante e modelo do equipamento. Texto de fábrica no tipo 1 cai para a placa-mãe (tipo 2), dito na observação.
         var fabricante = placa.EquipamentoFabricante.FoiLido ? placa.EquipamentoFabricante : DaPlaca(placa.PlacaFabricante, placa.EquipamentoFabricante);
@@ -261,6 +303,7 @@ public sealed class Coletor
             memoria.Instalada,
             memoria.Tipo,
             memoria.Utilizavel,
+            ResumoDiscos(discos),
             windows);
     }
 

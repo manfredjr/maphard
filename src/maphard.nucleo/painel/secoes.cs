@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Formatacao;
+using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 
@@ -12,8 +14,11 @@ public sealed record LinhaTela(string Rotulo, string Texto, EstadoCampo Estado, 
     public bool Lido => Estado == EstadoCampo.Lido;
 }
 
-/// <summary>Um cartão da tela, com título e linhas.</summary>
-public sealed record CartaoTela(string Titulo, IReadOnlyList<LinhaTela> Linhas);
+/// <summary>
+/// Um cartão da tela, com título e linhas. O selo, quando existe, aparece grande ao lado do título, na cor do
+/// tom ("bom", "atencao", "ruim" ou "desconhecido"): é a saúde de cada disco.
+/// </summary>
+public sealed record CartaoTela(string Titulo, IReadOnlyList<LinhaTela> Linhas, string? Selo = null, string? TomSelo = null);
 
 /// <summary>Uma seção da navegação à esquerda.</summary>
 public sealed record SecaoTela(string Id, string Titulo, IReadOnlyList<CartaoTela> Cartoes);
@@ -24,6 +29,7 @@ public static class MontadorSecoes
     public const string Resumo = "resumo";
     public const string Processador = "processador";
     public const string Memoria = "memoria";
+    public const string Discos = "discos";
     public const string Placa = "placa";
 
     public static IReadOnlyList<SecaoTela> Montar(ColetaMaquina c, DateOnly hoje) =>
@@ -31,6 +37,7 @@ public static class MontadorSecoes
         new(Resumo, "Resumo", MontarResumo(c)),
         new(Processador, "Processador", MontarProcessador(c.Processador)),
         new(Memoria, "Memória", MontarMemoria(c.Memoria)),
+        new(Discos, "Discos", MontarDiscos(c.Discos)),
         new(Placa, "Placa-mãe e firmware", MontarPlaca(c.Placa, hoje)),
     ];
 
@@ -70,6 +77,7 @@ public static class MontadorSecoes
                 Linha("Núcleos e threads", Juntar(p.Nucleos, p.Threads), v => v),
                 Linha("Memória", MemoriaComTipo(id.MemoriaInstalada, id.MemoriaTipo), v => v),
                 Linha("Memória utilizável", id.MemoriaUtilizavel, Formatador.Bytes),
+                Linha("Discos", id.Discos),
             ]),
             new("Windows",
             [
@@ -242,6 +250,95 @@ public static class MontadorSecoes
     /// <summary>"16 GB DDR4". Sem o tipo, só o tamanho.</summary>
     private static Campo<string> MemoriaComTipo(Campo<long> instalada, Campo<string> tipo) =>
         instalada.Mapear(b => tipo.FoiLido ? $"{Formatador.Bytes(b)} {tipo.Valor}" : Formatador.Bytes(b));
+
+    /// <summary>
+    /// Um cartão por disco, com a saúde no selo e o motivo na primeira linha; depois os dados do disco e os
+    /// volumes; e um cartão com a tabela SMART logo abaixo de cada disco.
+    /// </summary>
+    private static IReadOnlyList<CartaoTela> MontarDiscos(SecaoDiscos s)
+    {
+        if (!s.Discos.FoiLido)
+        {
+            return [new("Discos", [Linha("Discos", s.Discos)])];
+        }
+
+        var cartoes = new List<CartaoTela>();
+        foreach (var d in s.Discos.Valor!)
+        {
+            var titulo = $"Disco {d.Numero}: {d.Modelo.Valor ?? "modelo não informado"}";
+            var linhas = new List<LinhaTela>
+            {
+                new("Saúde", d.Saude.Motivos.Count == 0 ? "nenhum problema encontrado" : string.Join("; ", d.Saude.Motivos), EstadoCampo.Lido, "Regras de saúde do MapHard sobre o SMART do disco"),
+                Linha("Temperatura", d.Temperatura, Formatador.Temperatura),
+                Linha("Horas ligado", d.HorasLigado, Formatador.Horas),
+                Linha("Ciclos de energia", d.CiclosEnergia, v => Formatador.Numero(v)),
+                Linha("Dados gravados", d.DadosGravadosBytes, Formatador.Gravados),
+                Linha("Vida usada", d.VidaUsada, v => Formatador.Porcentagem(v)),
+                Linha("Tipo", d.Tipo),
+                Linha("Interface", d.Interface),
+                Linha("Capacidade", d.Tamanho, v => Formatador.BytesDecimais(v)),
+                Linha("Rotação", d.Rotacao, v => $"{Formatador.Numero(v)} rpm"),
+                Linha("TRIM", d.Trim, v => v ? "ligado" : "desligado"),
+                Linha("Partição", d.EstiloParticao),
+                Linha("Firmware", d.Firmware),
+                Linha("Número de série", d.NumeroSerie),
+            };
+            linhas.AddRange(d.Volumes.Select(LinhaVolume));
+            cartoes.Add(new CartaoTela(titulo, linhas, NomeSaude(d.Saude.Estado), TomSaude(d.Saude.Estado)));
+            cartoes.Add(new CartaoTela($"SMART do disco {d.Numero}", LinhasSmart(d.Smart)));
+        }
+
+        if (s.VolumesSemDisco.Count > 0)
+        {
+            cartoes.Add(new CartaoTela("Volumes sem disco físico ligado", s.VolumesSemDisco.Select(LinhaVolume).ToList()));
+        }
+
+        return cartoes;
+    }
+
+    public static string NomeSaude(EstadoSaude estado) => estado switch
+    {
+        EstadoSaude.Bom => "Bom",
+        EstadoSaude.Atencao => "Atenção",
+        EstadoSaude.Ruim => "Ruim",
+        _ => "Desconhecido",
+    };
+
+    private static string TomSaude(EstadoSaude estado) => estado switch
+    {
+        EstadoSaude.Bom => "bom",
+        EstadoSaude.Atencao => "atencao",
+        EstadoSaude.Ruim => "ruim",
+        _ => "desconhecido",
+    };
+
+    /// <summary>"Volume C: Sistema" e "412 GB livres de 930 GB, NTFS, BitLocker ligado".</summary>
+    private static LinhaTela LinhaVolume(VolumeTela v)
+    {
+        var rotulo = v.Rotulo.FoiLido ? $"Volume {v.Letra.Valor} {v.Rotulo.Valor}" : $"Volume {v.Letra.Valor}";
+        var espaco = v.Livre.FoiLido && v.Total.FoiLido ? $"{Formatador.Bytes(v.Livre.Valor)} livres de {Formatador.Bytes(v.Total.Valor)}" : "espaço não informado";
+        var sistema = v.SistemaArquivos.Valor is { } fs ? $", {fs}" : string.Empty;
+        var bitLocker = v.BitLocker.FoiLido ? $"BitLocker {v.BitLocker.Valor}" : $"BitLocker: {TextosEstado.Texto(v.BitLocker.Estado)}";
+        return new LinhaTela(rotulo, $"{espaco}{sistema}, {bitLocker}", EstadoCampo.Lido, $"Fonte: {TextosEstado.NomeFonte(v.Total.Fonte)}; BitLocker pelo {TextosEstado.NomeFonte(v.BitLocker.Fonte)}");
+    }
+
+    /// <summary>Uma linha por atributo: "05h Setores realocados" e "atual 99, pior 99, limite 36, bruto 3". Em NVMe, o valor do log.</summary>
+    private static IReadOnlyList<LinhaTela> LinhasSmart(Campo<IReadOnlyList<LinhaSmart>> smart)
+    {
+        if (!smart.FoiLido)
+        {
+            return [Linha("SMART", smart)];
+        }
+
+        return smart.Valor!.Select(l => l.Atual is null
+            ? new LinhaTela(l.Nome, Formatador.Numero((long)Math.Min(l.Bruto, long.MaxValue)), EstadoCampo.Lido, $"Fonte: SMART do disco. {l.NomeOriginal}")
+            : new LinhaTela(
+                $"{l.Id} {l.Nome}",
+                $"atual {l.Atual}, pior {l.Pior}, limite {(l.Limite is { } lim ? lim.ToString(Formatador.PtBr) : "não informado")}, bruto {Formatador.Numero((long)Math.Min(l.Bruto, long.MaxValue))}",
+                EstadoCampo.Lido,
+                $"Fonte: SMART do disco. {(l.NomeOriginal.Length > 0 ? l.NomeOriginal : "atributo do fabricante")}"))
+            .ToList();
+    }
 
     private static IReadOnlyList<CartaoTela> MontarPlaca(SecaoPlaca p, DateOnly hoje)
     {

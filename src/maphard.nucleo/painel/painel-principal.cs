@@ -62,10 +62,24 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
 
     public bool PodeAtualizar => !Coletando && !Demonstracao;
 
+    /// <summary>O botão "Ler como administrador" aparece depois de uma coleta como usuário comum.</summary>
+    public bool PodeElevar => !Demonstracao && !Coletando && Coleta is { Administrador: false };
+
+    /// <summary>Aviso da última ação da janela, na barra de status.</summary>
+    public string? Aviso { get; private set; }
+
+    /// <summary>O técnico recusou o pedido de elevação do Windows: a janela atual continua, com o aviso.</summary>
+    public void AvisarElevacaoCancelada()
+    {
+        Aviso = "leitura como administrador cancelada";
+        Avisar();
+    }
+
     public async Task AtualizarAsync(CancellationToken cancelar = default)
     {
         Estado = EstadoPainel.Coletando;
         Falha = null;
+        Aviso = null;
         Avisar();
         try
         {
@@ -110,6 +124,11 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
         if (Demonstracao)
         {
             yield return "demonstração: dados fictícios";
+        }
+
+        if (Aviso is not null)
+        {
+            yield return Aviso;
         }
     }
 

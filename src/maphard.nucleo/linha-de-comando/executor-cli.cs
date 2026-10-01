@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Formatacao;
+using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Painel;
 using MapHard.Nucleo.Relatorios;
@@ -89,9 +91,52 @@ public static class ExecutorCli
             yield return $"Atenção:     {alerta.Texto}";
         }
 
+        if (!c.Discos.Discos.FoiLido)
+        {
+            yield return $"Discos:      {Texto(c.Discos.Discos)}";
+        }
+
+        foreach (var d in c.Discos.Discos.Valor ?? [])
+        {
+            yield return $"Disco {d.Numero}:     {LinhaDisco(d)}";
+            if (d.Saude.Estado is EstadoSaude.Atencao or EstadoSaude.Ruim)
+            {
+                foreach (var motivo in d.Saude.Motivos)
+                {
+                    yield return $"Atenção:     {motivo}";
+                }
+            }
+        }
+
         yield return $"Placa-mãe:   {Texto(c.Placa.PlacaFabricante)} {Texto(c.Placa.PlacaModelo)}";
         yield return $"BIOS:        {Texto(c.Placa.BiosVersao)} de {Texto(c.Placa.BiosData, Formatador.Data)}, {Texto(c.Placa.Firmware.Modo)}";
         yield return $"Coletado em: {Formatador.DataHora(c.ColetadoEm)}{(c.Administrador ? " como administrador" : string.Empty)}";
+    }
+
+    /// <summary>
+    /// "SSD NVMe 1,02 TB, Bom, 44 °C, 3% da vida usada". Sem SMART, a saúde sai Desconhecido com o motivo,
+    /// e temperatura e vida usada só entram quando foram lidas.
+    /// </summary>
+    internal static string LinhaDisco(DiscoTela d)
+    {
+        var partes = new List<string>
+        {
+            d.Tamanho.FoiLido ? $"{Texto(d.Tipo)} {Formatador.BytesDecimais(d.Tamanho.Valor)}" : Texto(d.Tipo),
+            d.Saude.Estado == EstadoSaude.Desconhecido && d.Saude.Motivos.Count > 0
+                ? $"saúde {MontadorSecoes.NomeSaude(d.Saude.Estado)} ({d.Saude.Motivos[0]})"
+                : MontadorSecoes.NomeSaude(d.Saude.Estado),
+        };
+        if (d.Temperatura.FoiLido)
+        {
+            partes.Add(Formatador.Temperatura(d.Temperatura.Valor));
+        }
+
+        if (d.VidaUsada.FoiLido)
+        {
+            partes.Add($"{d.VidaUsada.Valor}% da vida usada");
+        }
+
+        return string.Join(", ", partes);
     }
 
     /// <summary>"16 GB DDR4-3200, 2 de 4 slots". O que não foi lido sai com o texto do estado.</summary>

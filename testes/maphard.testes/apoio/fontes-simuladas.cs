@@ -1,5 +1,6 @@
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Cpuid;
+using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
@@ -45,6 +46,33 @@ internal static class FontesSimuladas
         public long? InstaladaKb() => instaladaKb;
 
         public EstadoMemoriaWindows? Estado() => new(Utilizavel, 8L * 1024 * 1024 * 1024, 48, 10L * 1024 * 1024 * 1024, 24L * 1024 * 1024 * 1024, 3L * 1024 * 1024 * 1024);
+    }
+
+    /// <summary>
+    /// Disco 0: SSD NVMe com log de saúde. Disco 1: HDD SATA cujo SMART pede administrador, como na máquina
+    /// sem elevação. Volume C: no disco 0, D: no disco 1, e G: virtual, sem disco.
+    /// </summary>
+    internal sealed class DiscosSimulados(Func<int, MapHard.Nucleo.Smart.SmartAtaBruto>? smartAta = null) : IFonteDiscos
+    {
+        public IReadOnlyList<DiscoBruto> Discos() =>
+        [
+            new(0, DiscosDescritorTestes.Descritor(17, null, "NVMe Exemplo 1TB", "1.0", "SERIE-DISCO-0001"), false, true, 1_000_204_886_016, 1, 4, 4),
+            new(1, DiscosDescritorTestes.Descritor(11, "FABRICANTE", "HDD Exemplo 2TB", "CC43", "SERIE-DISCO-0002"), true, false, 2_000_398_934_016, 1, null, null),
+        ];
+
+        public byte[]? LogSaudeNvme(int numero) => numero == 0 ? SmartNvmeTestes.Log() : null;
+
+        public byte[]? IdentificacaoNvme(int numero) => numero == 0 ? SmartNvmeTestes.Identificacao(348) : null;
+
+        public MapHard.Nucleo.Smart.SmartAtaBruto SmartAta(int numero) =>
+            smartAta?.Invoke(numero) ?? new(null, null, null, null, null, MapHard.Nucleo.Discos.Volumes.RequerAdministrador);
+
+        public IReadOnlyList<VolumeBruto> Volumes(bool administrador) =>
+        [
+            new("C:", "Sistema", "NTFS", 400L * 1024 * 1024 * 1024, 930L * 1024 * 1024 * 1024, 0, null, MapHard.Nucleo.Discos.Volumes.RequerAdministrador),
+            new("D:", "Arquivos", "NTFS", 1_000L * 1024 * 1024 * 1024, 1_862L * 1024 * 1024 * 1024, 1, null, MapHard.Nucleo.Discos.Volumes.RequerAdministrador),
+            new("G:", "Nuvem", "FAT32", 10L * 1024 * 1024 * 1024, 15L * 1024 * 1024 * 1024, null, null, MapHard.Nucleo.Discos.Volumes.RequerAdministrador),
+        ];
     }
 
     internal sealed class Registro : IFonteRegistro
@@ -108,7 +136,8 @@ internal static class FontesSimuladas
         IFonteCpuid? cpuid = null,
         IFonteTopologia? topologia = null,
         IFonteClocks? clocks = null,
-        IFonteMemoria? memoria = null) => new(
+        IFonteMemoria? memoria = null,
+        IFonteDiscos? discos = null) => new(
         smbios ?? new Smbios(() => TabelaSmbios()),
         cpuid ?? Cpuid(),
         topologia ?? new Topologia(TabelaTopologia),
@@ -117,5 +146,6 @@ internal static class FontesSimuladas
         new Registro(),
         () => "ESTACAO-TESTE",
         memoria ?? new Memoria(),
+        discos ?? new DiscosSimulados(),
         () => false);
 }

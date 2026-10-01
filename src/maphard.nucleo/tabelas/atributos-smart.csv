@@ -1,0 +1,71 @@
+# Nomes dos atributos SMART ATA. Gerada por ferramentas\gerar-atributos-smart.ps1.
+# Fonte: smartmontools drivedb/drivedb.h entrada DEFAULT (GPL-2.0), https://github.com/smartmontools/smartmontools. O nome em portugues e traducao da MT.
+# tipo_disco: HDD, SSD ou vazio quando vale para os dois.
+id;nome_original;nome;tipo_disco;fonte
+1;Raw_Read_Error_Rate;Taxa de erros de leitura;;drivedb.h DEFAULT
+2;Throughput_Performance;Desempenho de transferência;;drivedb.h DEFAULT
+3;Spin_Up_Time;Tempo até girar;;drivedb.h DEFAULT
+4;Start_Stop_Count;Partidas e paradas;;drivedb.h DEFAULT
+5;Reallocated_Sector_Ct;Setores realocados;;drivedb.h DEFAULT
+6;Read_Channel_Margin;Margem do canal de leitura;HDD;drivedb.h DEFAULT
+7;Seek_Error_Rate;Taxa de erros de busca;HDD;drivedb.h DEFAULT
+8;Seek_Time_Performance;Desempenho de busca;HDD;drivedb.h DEFAULT
+9;Power_On_Hours;Horas ligado;;drivedb.h DEFAULT
+10;Spin_Retry_Count;Novas tentativas de giro;HDD;drivedb.h DEFAULT
+11;Calibration_Retry_Count;Novas tentativas de calibração;HDD;drivedb.h DEFAULT
+12;Power_Cycle_Count;Ciclos de energia;;drivedb.h DEFAULT
+13;Read_Soft_Error_Rate;Taxa de erros leves de leitura;;drivedb.h DEFAULT
+22;Helium_Level;Nível de hélio;HDD;drivedb.h DEFAULT
+23;Helium_Condition_Lower;Condição do hélio, inferior;HDD;drivedb.h DEFAULT
+24;Helium_Condition_Upper;Condição do hélio, superior;HDD;drivedb.h DEFAULT
+175;Program_Fail_Count_Chip;Falhas de programação por chip;SSD;drivedb.h DEFAULT
+176;Erase_Fail_Count_Chip;Falhas de apagamento por chip;SSD;drivedb.h DEFAULT
+177;Wear_Leveling_Count;Nivelamento de desgaste;SSD;drivedb.h DEFAULT
+178;Used_Rsvd_Blk_Cnt_Chip;Blocos de reserva usados por chip;SSD;drivedb.h DEFAULT
+179;Used_Rsvd_Blk_Cnt_Tot;Blocos de reserva usados no total;SSD;drivedb.h DEFAULT
+180;Unused_Rsvd_Blk_Cnt_Tot;Blocos de reserva livres no total;SSD;drivedb.h DEFAULT
+181;Program_Fail_Cnt_Total;Falhas de programação no total;;drivedb.h DEFAULT
+182;Erase_Fail_Count_Total;Falhas de apagamento no total;SSD;drivedb.h DEFAULT
+183;Runtime_Bad_Block;Blocos ruins em uso;;drivedb.h DEFAULT
+184;End-to-End_Error;Erros de ponta a ponta;;drivedb.h DEFAULT
+187;Reported_Uncorrect;Erros incorrigíveis informados;;drivedb.h DEFAULT
+188;Command_Timeout;Comandos expirados;;drivedb.h DEFAULT
+189;High_Fly_Writes;Gravações com cabeça alta;HDD;drivedb.h DEFAULT
+190;Airflow_Temperature_Cel;Temperatura do ar;;drivedb.h DEFAULT
+191;G-Sense_Error_Rate;Erros por impacto;HDD;drivedb.h DEFAULT
+192;Power-Off_Retract_Count;Recolhimentos ao desligar;;drivedb.h DEFAULT
+193;Load_Cycle_Count;Ciclos de carga da cabeça;HDD;drivedb.h DEFAULT
+194;Temperature_Celsius;Temperatura;;drivedb.h DEFAULT
+195;Hardware_ECC_Recovered;Erros corrigidos por ECC;;drivedb.h DEFAULT
+196;Reallocated_Event_Count;Eventos de realocação;;drivedb.h DEFAULT
+197;Current_Pending_Sector;Setores pendentes;;drivedb.h DEFAULT
+198;Offline_Uncorrectable;Setores incorrigíveis;;drivedb.h DEFAULT
+199;UDMA_CRC_Error_Count;Erros de CRC na interface;;drivedb.h DEFAULT
+200;Multi_Zone_Error_Rate;Taxa de erros de gravação;HDD;drivedb.h DEFAULT
+201;Soft_Read_Error_Rate;Taxa de erros leves de leitura;HDD;drivedb.h DEFAULT
+202;Data_Address_Mark_Errs;Erros de marca de endereço;HDD;drivedb.h DEFAULT
+203;Run_Out_Cancel;Cancelamentos por excentricidade;;drivedb.h DEFAULT
+204;Soft_ECC_Correction;Correções leves por ECC;;drivedb.h DEFAULT
+205;Thermal_Asperity_Rate;Taxa de asperezas térmicas;;drivedb.h DEFAULT
+206;Flying_Height;Altura de voo da cabeça;HDD;drivedb.h DEFAULT
+207;Spin_High_Current;Corrente alta no giro;HDD;drivedb.h DEFAULT
+208;Spin_Buzz;Ruído no giro;HDD;drivedb.h DEFAULT
+209;Offline_Seek_Performnce;Desempenho de busca em segundo plano;HDD;drivedb.h DEFAULT
+220;Disk_Shift;Deslocamento do disco;HDD;drivedb.h DEFAULT
+221;G-Sense_Error_Rate;Erros por impacto;HDD;drivedb.h DEFAULT
+222;Loaded_Hours;Horas com cabeça carregada;HDD;drivedb.h DEFAULT
+223;Load_Retry_Count;Novas tentativas de carga;HDD;drivedb.h DEFAULT
+224;Load_Friction;Atrito na carga;HDD;drivedb.h DEFAULT
+225;Load_Cycle_Count;Ciclos de carga da cabeça;HDD;drivedb.h DEFAULT
+226;Load-in_Time;Tempo de carga;HDD;drivedb.h DEFAULT
+227;Torq-amp_Count;Amplificações de torque;HDD;drivedb.h DEFAULT
+228;Power-off_Retract_Count;Recolhimentos ao desligar;;drivedb.h DEFAULT
+230;Head_Amplitude;Amplitude da cabeça;HDD;drivedb.h DEFAULT
+231;Temperature_Celsius;Temperatura;HDD;drivedb.h DEFAULT
+232;Available_Reservd_Space;Espaço de reserva disponível;;drivedb.h DEFAULT
+233;Media_Wearout_Indicator;Indicador de desgaste;SSD;drivedb.h DEFAULT
+240;Head_Flying_Hours;Horas de voo da cabeça;HDD;drivedb.h DEFAULT
+241;Total_LBAs_Written;Total de LBAs gravados;;drivedb.h DEFAULT
+242;Total_LBAs_Read;Total de LBAs lidos;;drivedb.h DEFAULT
+250;Read_Error_Retry_Rate;Novas tentativas de leitura;;drivedb.h DEFAULT
+254;Free_Fall_Sensor;Sensor de queda livre;HDD;drivedb.h DEFAULT

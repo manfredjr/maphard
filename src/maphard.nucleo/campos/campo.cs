@@ -26,6 +26,8 @@ public enum FonteDado
     Windows,
     Tabela,
     Demonstracao,
+    Armazenamento,
+    Smart,
 }
 
 /// <summary>Um dado lido, com o estado e a fonte. Fora do estado <see cref="EstadoCampo.Lido"/>, o valor é sempre nulo.</summary>
@@ -157,6 +159,8 @@ public static class TextosEstado
         FonteDado.Windows => "Windows",
         FonteDado.Tabela => "tabela do MapHard",
         FonteDado.Demonstracao => "demonstração",
+        FonteDado.Armazenamento => "consulta de armazenamento do Windows",
+        FonteDado.Smart => "SMART do disco",
         _ => fonte.ToString(),
     };
 }

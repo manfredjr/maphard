@@ -70,7 +70,7 @@ public class PainelTestes
     }
 
     [Fact]
-    public async Task Painel_comeca_coletando_e_termina_com_as_quatro_secoes()
+    public async Task Painel_comeca_coletando_e_termina_com_as_cinco_secoes()
     {
         var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
         Assert.Equal(EstadoPainel.Coletando, painel.Estado);
@@ -80,7 +80,7 @@ public class PainelTestes
         await painel.AtualizarAsync();
 
         Assert.Equal(EstadoPainel.Pronto, painel.Estado);
-        Assert.Equal(["Resumo", "Processador", "Memória", "Placa-mãe e firmware"], painel.Secoes.Select(s => s.Titulo));
+        Assert.Equal(["Resumo", "Processador", "Memória", "Discos", "Placa-mãe e firmware"], painel.Secoes.Select(s => s.Titulo));
         Assert.Equal("ESTACAO-TESTE   |   usuário comum   |   coletado em 30/09/2026 10:05", painel.TextoStatus);
         Assert.True(painel.PodeSalvar);
     }
@@ -146,6 +146,44 @@ public class PainelTestes
         var modulo = DadosDemonstracao.Coleta().Memoria.Modulos.Valor![0];
 
         Assert.Equal("DDR4-2666 (o módulo aceita 3200)", MontadorSecoes.TipoVelocidade(modulo).Valor);
+    }
+
+    [Fact]
+    public async Task Botao_de_administrador_aparece_depois_da_coleta_como_usuario_comum()
+    {
+        var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
+        Assert.False(painel.PodeElevar);
+
+        await painel.AtualizarAsync();
+
+        Assert.True(painel.PodeElevar);
+        Assert.Contains("usuário comum", painel.TextoStatus, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Botao_de_administrador_some_quando_ja_elevado_e_na_demonstracao()
+    {
+        var elevado = new PainelPrincipal(async c => (await Coletar(c)) with { Administrador = true }, hoje: () => Hoje);
+        await elevado.AtualizarAsync();
+        var demonstracao = PainelPrincipal.ComDemonstracao();
+        await demonstracao.AtualizarAsync();
+
+        Assert.False(elevado.PodeElevar);
+        Assert.Contains("administrador", elevado.TextoStatus, StringComparison.Ordinal);
+        Assert.False(demonstracao.PodeElevar);
+    }
+
+    [Fact]
+    public async Task Elevacao_cancelada_vai_para_o_status_e_sai_na_proxima_coleta()
+    {
+        var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
+        await painel.AtualizarAsync();
+
+        painel.AvisarElevacaoCancelada();
+        Assert.EndsWith("leitura como administrador cancelada", painel.TextoStatus, StringComparison.Ordinal);
+
+        await painel.AtualizarAsync();
+        Assert.DoesNotContain("cancelada", painel.TextoStatus, StringComparison.Ordinal);
     }
 
     [Fact]

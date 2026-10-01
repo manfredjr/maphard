@@ -220,6 +220,21 @@ public class ColetaTestes
             {
                 yield return ((EstadoCampo)tipo.GetProperty("Estado")!.GetValue(valor)!, tipo.GetProperty("Valor")!.GetValue(valor));
             }
+            else if (valor is System.Collections.IEnumerable itens and not string)
+            {
+                // Lista de registros do MapHard (volumes de um disco, por exemplo): os campos de cada item.
+                // O array herda o namespace do elemento, e o SyncRoot dele aponta para ele mesmo.
+                foreach (var item in itens)
+                {
+                    if (item?.GetType().Namespace?.StartsWith("MapHard", StringComparison.Ordinal) == true)
+                    {
+                        foreach (var interno in Campos(item))
+                        {
+                            yield return interno;
+                        }
+                    }
+                }
+            }
             else if (tipo.Namespace?.StartsWith("MapHard", StringComparison.Ordinal) == true && !tipo.IsEnum)
             {
                 foreach (var interno in Campos(valor))

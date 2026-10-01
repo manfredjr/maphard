@@ -22,4 +22,33 @@ internal static class Shell
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
+
+    /// <summary>
+    /// Reabre o próprio .exe com o verbo "runas", que faz o Windows pedir a elevação, e o argumento --elevado.
+    /// Devolve false quando o técnico recusa (ERROR_CANCELLED, 1223, WinError.h) ou o Windows não abre o programa.
+    /// </summary>
+    public static bool ReabrirComoAdministrador()
+    {
+        const int cancelado = 1223;
+        if (Environment.ProcessPath is not { } exe)
+        {
+            return false;
+        }
+
+        try
+        {
+            Process.Start(new ProcessStartInfo(exe, "--elevado") { UseShellExecute = true, Verb = "runas" });
+            return true;
+        }
+        catch (System.ComponentModel.Win32Exception erro) when (erro.NativeErrorCode == cancelado)
+        {
+            return false;
+        }
+        catch (System.ComponentModel.Win32Exception erro)
+        {
+            MessageBox.Show($"Não foi possível abrir o MapHard como administrador:\n{erro.Message}", "MapHard - MT",
+                MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
+    }
 }

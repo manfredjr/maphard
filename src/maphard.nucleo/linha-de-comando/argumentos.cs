@@ -19,6 +19,7 @@ public sealed class ArgumentosCli
           maphard coletar                      mostra o resumo da máquina
           maphard coletar --json [arquivo]     grava a coleta completa em JSON
           maphard --demonstracao               abre a janela com dados fictícios
+          maphard --elevado                    abre a janela já como administrador (usado pelo botão "Ler como administrador")
           maphard --ajuda                      mostra esta ajuda
           maphard --versao                     mostra a versão
 
@@ -40,6 +41,9 @@ public sealed class ArgumentosCli
     public string? ArquivoJson { get; private set; }
 
     public bool Demonstracao { get; private set; }
+
+    /// <summary>A janela foi reaberta pelo botão "Ler como administrador". O pedido de elevação é do Windows; o argumento só marca a origem.</summary>
+    public bool Elevado { get; private set; }
 
     public List<string> Erros { get; } = [];
 
@@ -70,6 +74,9 @@ public sealed class ArgumentosCli
                     break;
                 case "--demonstracao":
                     a.Demonstracao = true;
+                    break;
+                case "--elevado":
+                    a.Elevado = true;
                     break;
                 case "--json":
                     jsonRepetido |= a.GravarJson;
@@ -104,6 +111,11 @@ public sealed class ArgumentosCli
         if (a.Demonstracao && a.Comando != ComandoCli.Janela)
         {
             a.Erros.Add("--demonstracao só vale para abrir a janela.");
+        }
+
+        if (a.Elevado && (a.Comando != ComandoCli.Janela || a.Demonstracao))
+        {
+            a.Erros.Add("--elevado só vale para abrir a janela com a leitura da máquina.");
         }
 
         return a;

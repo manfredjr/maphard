@@ -113,11 +113,11 @@ public interface IFonteDiscos
 }
 ```
 
-- [ ] **Passo 1:** conferir as propriedades de PCIe no `pciprop.h` e no learn.microsoft.com e anotar a fonte no comentário. Se não houver como ler sem administrador, o campo fica "não informado" e a pendência vai para `pendencias.md`.
-- [ ] **Passo 2:** testes do intérprete do descritor com buffers montados à mão: modelo, firmware e número de série pelos deslocamentos; deslocamento 0 vira nulo; deslocamento fora do buffer vira nulo sem exceção; texto com espaços nas pontas sai aparado; barramento NVMe com penalidade nula dá `SsdNvme`; SATA sem penalidade dá `SsdSata`; SATA com penalidade dá `Hdd`; USB dá `Usb` mesmo com penalidade; RAID dá `Raid`.
-- [ ] **Passo 3:** implementar a enumeração pela SetupAPI (`GUID_DEVINTERFACE_DISK`), com o número de cada disco pelo `IOCTL_STORAGE_GET_DEVICE_NUMBER`, e as consultas com o disco aberto em acesso 0. Disco que some entre a enumeração e a consulta não derruba a lista.
-- [ ] **Passo 4:** teste `[FatoWindows]`: a máquina real tem ao menos um disco com tamanho e modelo.
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** conferir as propriedades de PCIe no `pciprop.h` e no learn.microsoft.com e anotar a fonte no comentário. Se não houver como ler sem administrador, o campo fica "não informado" e a pendência vai para `pendencias.md`.
+- [x] **Passo 2:** testes do intérprete do descritor com buffers montados à mão: modelo, firmware e número de série pelos deslocamentos; deslocamento 0 vira nulo; deslocamento fora do buffer vira nulo sem exceção; texto com espaços nas pontas sai aparado; barramento NVMe com penalidade nula dá `SsdNvme`; SATA sem penalidade dá `SsdSata`; SATA com penalidade dá `Hdd`; USB dá `Usb` mesmo com penalidade; RAID dá `Raid`.
+- [x] **Passo 3:** implementar a enumeração pela SetupAPI (`GUID_DEVINTERFACE_DISK`), com o número de cada disco pelo `IOCTL_STORAGE_GET_DEVICE_NUMBER`, e as consultas com o disco aberto em acesso 0. Disco que some entre a enumeração e a consulta não derruba a lista.
+- [x] **Passo 4:** teste `[FatoWindows]`: a máquina real tem ao menos um disco com tamanho e modelo.
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 2: volumes (R21)
 
@@ -126,11 +126,11 @@ public sealed record VolumeBruto(string Letra, string? Rotulo, string? SistemaAr
     long? LivreBytes, long? TotalBytes, int? Disco, bool? BitLocker /* null sem administrador */);
 ```
 
-- [ ] **Passo 1:** conferir `Win32_EncryptableVolume` no learn.microsoft.com (namespace, propriedade `ProtectionStatus` e seus valores) e anotar a fonte. Sem administrador, o BitLocker fica "requer administrador".
-- [ ] **Passo 2:** testes: volume ligado ao disco pelo número; volume sem disco (unidade de rede, mapeada) não entra; volume que ocupa dois discos (`IOCTL_STORAGE_GET_DEVICE_NUMBER` falha) entra no primeiro e leva o motivo; espaço livre e total formatados.
-- [ ] **Passo 3:** implementar com `GetLogicalDriveStringsW`, `GetDriveTypeW` (só fixos e removíveis), `GetVolumeInformationW` e `GetDiskFreeSpaceExW`.
-- [ ] **Passo 4:** teste `[FatoWindows]`: a unidade do Windows aparece ligada a um disco.
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** conferir `Win32_EncryptableVolume` no learn.microsoft.com (namespace, propriedade `ProtectionStatus` e seus valores) e anotar a fonte. Sem administrador, o BitLocker fica "requer administrador".
+- [x] **Passo 2:** testes: volume ligado ao disco pelo número; volume sem disco (unidade de rede, mapeada) não entra; volume que ocupa dois discos (`IOCTL_STORAGE_GET_DEVICE_NUMBER` falha) entra no primeiro e leva o motivo; espaço livre e total formatados.
+- [x] **Passo 3:** implementar com `GetLogicalDriveStringsW`, `GetDriveTypeW` (só fixos e removíveis), `GetVolumeInformationW` e `GetDiskFreeSpaceExW`.
+- [x] **Passo 4:** teste `[FatoWindows]`: a unidade do Windows aparece ligada a um disco.
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 3: saúde NVMe (R23, sem administrador)
 
@@ -145,11 +145,11 @@ public sealed record SaudeNvme(
     int? LimiteAvisoTemperaturaC);  // WCTEMP do IDENTIFY do controlador, quando houver
 ```
 
-- [ ] **Passo 1:** testes com um log de 512 bytes montado à mão: cada campo no deslocamento da página do `NVME_HEALTH_INFO_LOG`; contadores de 16 bytes maiores que `ulong` sem estouro; temperatura 315 K dá 42 °C; temperatura 0 vira nulo; buffer curto vira nulo; cada bit do alerta crítico vira o texto certo ("reserva abaixo do limite", "temperatura fora da faixa", "confiabilidade degradada", "mídia só de leitura", "falha na memória de reserva volátil").
-- [ ] **Passo 2:** conferir no `nvme.h` do SDK o deslocamento do WCTEMP na estrutura de IDENTIFY do controlador e o `NVMeDataTypeIdentify` com CNS 1. Sem a leitura, o limite de aviso fica nulo e a regra de temperatura do NVMe não dispara.
-- [ ] **Passo 3:** implementar a leitura com `StorageDeviceProtocolSpecificProperty`, como no exemplo da Microsoft, e o intérprete.
-- [ ] **Passo 4:** teste `[FatoWindows]`: em disco NVMe real, a temperatura fica entre 0 e 100 °C e o percentual usado é lido.
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** testes com um log de 512 bytes montado à mão: cada campo no deslocamento da página do `NVME_HEALTH_INFO_LOG`; contadores de 16 bytes maiores que `ulong` sem estouro; temperatura 315 K dá 42 °C; temperatura 0 vira nulo; buffer curto vira nulo; cada bit do alerta crítico vira o texto certo ("reserva abaixo do limite", "temperatura fora da faixa", "confiabilidade degradada", "mídia só de leitura", "falha na memória de reserva volátil").
+- [x] **Passo 2:** conferir no `nvme.h` do SDK o deslocamento do WCTEMP na estrutura de IDENTIFY do controlador e o `NVMeDataTypeIdentify` com CNS 1. Sem a leitura, o limite de aviso fica nulo e a regra de temperatura do NVMe não dispara.
+- [x] **Passo 3:** implementar a leitura com `StorageDeviceProtocolSpecificProperty`, como no exemplo da Microsoft, e o intérprete.
+- [x] **Passo 4:** teste `[FatoWindows]`: em disco NVMe real, a temperatura fica entre 0 e 100 °C e o percentual usado é lido.
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 4: SMART ATA (R22, com administrador)
 
@@ -163,11 +163,11 @@ public sealed record LeituraSmartAta(
     string? VelocidadeSata);     // "SATA 6 Gb/s"
 ```
 
-- [ ] **Passo 1:** conferir no `lib/ataprint.cpp` do smartmontools as palavras 76, 77 e 217 do IDENTIFY e anotar a fonte.
-- [ ] **Passo 2:** testes com a tabela de 512 bytes montada à mão: 30 itens, id 0 ignorado; bruto de 6 bytes em little-endian; limite casado pelo id; tabela sem limites deixa o limite nulo; soma de verificação errada vai no motivo e não descarta a leitura; status 0xF4/0x2C dá falha prevista; resposta incompleta dá nulo.
-- [ ] **Passo 3:** teste `ComandosAtaPermitidosTestes`: a fonte real só monta os quatro comandos permitidos.
-- [ ] **Passo 4:** implementar com `IOCTL_ATA_PASS_THROUGH`, com o disco aberto em leitura e gravação. Sem administrador, a abertura falha com acesso negado e a leitura volta "requer administrador", sem tentar de novo. Disco atrás de ponte USB ou de controladora RAID que não responde volta "SMART indisponível por esta controladora".
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** conferir no `lib/ataprint.cpp` do smartmontools as palavras 76, 77 e 217 do IDENTIFY e anotar a fonte.
+- [x] **Passo 2:** testes com a tabela de 512 bytes montada à mão: 30 itens, id 0 ignorado; bruto de 6 bytes em little-endian; limite casado pelo id; tabela sem limites deixa o limite nulo; soma de verificação errada vai no motivo e não descarta a leitura; status 0xF4/0x2C dá falha prevista; resposta incompleta dá nulo.
+- [x] **Passo 3:** teste `ComandosAtaPermitidosTestes`: a fonte real só monta os quatro comandos permitidos.
+- [x] **Passo 4:** implementar com `IOCTL_ATA_PASS_THROUGH`, com o disco aberto em leitura e gravação. Sem administrador, a abertura falha com acesso negado e a leitura volta "requer administrador", sem tentar de novo. Disco atrás de ponte USB ou de controladora RAID que não responde volta "SMART indisponível por esta controladora".
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 5: nomes dos atributos em português
 
@@ -177,10 +177,10 @@ Formato da tabela, com a fonte no cabeçalho e em cada linha:
 id;nome_original;nome;tipo_disco;fonte
 ```
 
-- [ ] **Passo 1:** roteiro `ferramentas/gerar-atributos-smart.ps1` que baixa o `drivedb.h` do repositório oficial do smartmontools pela API do GitHub e extrai a entrada `DEFAULT` (id, nome original e se vale para HDD ou SSD). A coluna `nome` em português é preenchida à mão, uma vez, e o roteiro preserva o que já estiver traduzido.
-- [ ] **Passo 2:** tradução dos nomes, pela `humanizar-ptbr`. Exemplos de padrão: "Setores realocados" (05h), "Horas ligado" (09h), "Ciclos de energia" (0Ch), "Temperatura" (C2h), "Setores pendentes" (C5h), "Setores incorrigíveis" (C6h), "Erros de CRC na interface" (C7h).
-- [ ] **Passo 3:** testes: id conhecido dá o nome em português e o original na dica; id fora da tabela dá "atributo do fabricante (0xNN)"; integridade da tabela (sem id repetido, fonte em toda linha, nome em toda linha).
-- [ ] **Passo 4:** testes verdes, commit do roteiro e da tabela juntos.
+- [x] **Passo 1:** roteiro `ferramentas/gerar-atributos-smart.ps1` que baixa o `drivedb.h` do repositório oficial do smartmontools pela API do GitHub e extrai a entrada `DEFAULT` (id, nome original e se vale para HDD ou SSD). A coluna `nome` em português é preenchida à mão, uma vez, e o roteiro preserva o que já estiver traduzido.
+- [x] **Passo 2:** tradução dos nomes, pela `humanizar-ptbr`. Exemplos de padrão: "Setores realocados" (05h), "Horas ligado" (09h), "Ciclos de energia" (0Ch), "Temperatura" (C2h), "Setores pendentes" (C5h), "Setores incorrigíveis" (C6h), "Erros de CRC na interface" (C7h).
+- [x] **Passo 3:** testes: id conhecido dá o nome em português e o original na dica; id fora da tabela dá "atributo do fabricante (0xNN)"; integridade da tabela (sem id repetido, fonte em toda linha, nome em toda linha).
+- [x] **Passo 4:** testes verdes, commit do roteiro e da tabela juntos.
 
 ### Tarefa 6: regras de saúde (R25, R26 e seção 8)
 
@@ -200,19 +200,19 @@ public enum EstadoSaude { Bom, Atencao, Ruim, Desconhecido }
 public sealed record SaudeDisco(EstadoSaude Estado, IReadOnlyList<string> Motivos);
 ```
 
-- [ ] **Passo 1:** um teste por linha do quadro, nos dois sentidos, com o motivo escrito ("3 setores realocados", "92% da vida útil usada", "temperatura de 55 °C"). Ruim ganha de Atenção; os motivos dos dois aparecem.
-- [ ] **Passo 2:** testes do R26: disco USB sem SMART fica Desconhecido com "SMART indisponível por esta controladora", nunca Bom.
-- [ ] **Passo 3:** implementar em `saude/regras-disco.cs`.
-- [ ] **Passo 4:** testes verdes, commit.
+- [x] **Passo 1:** um teste por linha do quadro, nos dois sentidos, com o motivo escrito ("3 setores realocados", "92% da vida útil usada", "temperatura de 55 °C"). Ruim ganha de Atenção; os motivos dos dois aparecem.
+- [x] **Passo 2:** testes do R26: disco USB sem SMART fica Desconhecido com "SMART indisponível por esta controladora", nunca Bom.
+- [x] **Passo 3:** implementar em `saude/regras-disco.cs`.
+- [x] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 7: "Ler como administrador"
 
 Segue o desenho (seção 3) e a decisão do Manfred de 01/10/2026 na pergunta 2: o programa abre como usuário comum, e o botão reabre o programa elevado. O manifesto continua `asInvoker`.
 
-- [ ] **Passo 1:** argumento `--elevado` na leitura dos argumentos, com teste: só vale para a janela, como o `--demonstracao`.
-- [ ] **Passo 2:** botão na faixa do topo, visível só quando o programa não está elevado. Ele reabre o próprio `.exe` com o verbo `runas` e `--elevado`, e fecha a janela atual quando a nova abre. Se o técnico recusar o pedido do Windows, a janela atual continua, com a mensagem "Leitura como administrador cancelada".
-- [ ] **Passo 3:** a barra de status já diz "usuário comum" ou "administrador"; teste do texto com o argumento.
-- [ ] **Passo 4:** testes verdes, commit.
+- [x] **Passo 1:** argumento `--elevado` na leitura dos argumentos, com teste: só vale para a janela, como o `--demonstracao`.
+- [x] **Passo 2:** botão na faixa do topo, visível só quando o programa não está elevado. Ele reabre o próprio `.exe` com o verbo `runas` e `--elevado`, e fecha a janela atual quando a nova abre. Se o técnico recusar o pedido do Windows, a janela atual continua, com a mensagem "Leitura como administrador cancelada".
+- [x] **Passo 3:** a barra de status já diz "usuário comum" ou "administrador"; teste do texto com o argumento.
+- [x] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 8: saídas
 
@@ -236,18 +236,18 @@ public sealed record VolumeTela(
     Campo<long> Livre, Campo<long> Total, Campo<bool> BitLocker);
 ```
 
-- [ ] **Passo 1:** formatador: `Formatador.Horas(12345)` dá "12.345 horas, 514 dias"; `Formatador.Gravados(38.2e12)` dá "38,2 TB gravados"; temperatura "42 °C". Testes.
-- [ ] **Passo 2:** coletor e JSON: a coleta ganha `Discos`, cada fonte com tempo limite; o SMART de cada disco tem o próprio tempo limite, para um disco lento não travar os outros. A versão do formato do JSON passa a 3. Teste de ida e volta.
-- [ ] **Passo 3:** identificação: a linha "Discos" com a capacidade de cada um ("SSD NVMe 1 TB, HDD 2 TB").
-- [ ] **Passo 4:** painel: seção **Discos**, entre Memória e Placa-mãe, com um cartão por disco: a saúde grande no alto, com o motivo; temperatura, horas e total gravado ao lado; dados do disco; volumes; e a tabela SMART embaixo (ID, nome, atual, pior, limite, bruto). Disco SATA sem elevação mostra "requer administrador" e o botão.
-- [ ] **Passo 5:** linha de comando: uma linha por disco, "Disco 0: SSD NVMe 1 TB, Bom, 42 °C, 3% da vida usada", e os motivos de Atenção e Ruim.
-- [ ] **Passo 6:** demonstração com dois discos fictícios, um Bom e um em Atenção, para a imagem mostrar os dois.
-- [ ] **Passo 7:** testes do painel e da linha de comando, testes verdes, commit.
+- [x] **Passo 1:** formatador: `Formatador.Horas(12345)` dá "12.345 horas, 514 dias"; `Formatador.Gravados(38.2e12)` dá "38,2 TB gravados"; temperatura "42 °C". Testes.
+- [x] **Passo 2:** coletor e JSON: a coleta ganha `Discos`, cada fonte com tempo limite; o SMART de cada disco tem o próprio tempo limite, para um disco lento não travar os outros. A versão do formato do JSON passa a 3. Teste de ida e volta.
+- [x] **Passo 3:** identificação: a linha "Discos" com a capacidade de cada um ("SSD NVMe 1 TB, HDD 2 TB").
+- [x] **Passo 4:** painel: seção **Discos**, entre Memória e Placa-mãe, com um cartão por disco: a saúde grande no alto, com o motivo; temperatura, horas e total gravado ao lado; dados do disco; volumes; e a tabela SMART embaixo (ID, nome, atual, pior, limite, bruto). Disco SATA sem elevação mostra "requer administrador" e o botão.
+- [x] **Passo 5:** linha de comando: uma linha por disco, "Disco 0: SSD NVMe 1 TB, Bom, 42 °C, 3% da vida usada", e os motivos de Atenção e Ruim.
+- [x] **Passo 6:** demonstração com dois discos fictícios, um Bom e um em Atenção, para a imagem mostrar os dois.
+- [x] **Passo 7:** testes do painel e da linha de comando, testes verdes, commit.
 
 ### Tarefa 9: fechamento
 
-- [ ] **Passo 1:** README com a seção Discos e o botão no "Uso"; na "Situação do projeto", a fatia 2 marcada como concluída em 01/10/2026 e a linha da fatia 3.
-- [ ] **Passo 2:** pendências atualizadas.
+- [x] **Passo 1:** README com a seção Discos e o botão no "Uso"; na "Situação do projeto", a fatia 2 marcada como concluída em 01/10/2026 e a linha da fatia 3.
+- [x] **Passo 2:** pendências atualizadas.
 - [ ] **Passo 3:** portões, envio, Pull Request do código e leitura do CI até ficar verde.
 
 ## Como o Manfred testa

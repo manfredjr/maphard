@@ -30,6 +30,33 @@
             </Setter>
         </Style>
 
+        <!-- Cores da saude dos discos. O tema da MT nao tem amarelo nem vermelho; ficam aqui ate a revisao do Manfred -->
+        <SolidColorBrush x:Key="PincelSaudeAtencao" Color="#B7791F" />
+        <SolidColorBrush x:Key="PincelSaudeRuim" Color="#B42318" />
+
+        <!-- Selo da saude do disco, ao lado do titulo do cartao -->
+        <Style x:Key="SeloSaude" TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="12,3" />
+            <Setter Property="Margin" Value="12,0,0,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Background" Value="{StaticResource PincelTextoSuave}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Selo}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TomSelo}" Value="bom">
+                    <Setter Property="Background" Value="{StaticResource PincelVerde}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TomSelo}" Value="atencao">
+                    <Setter Property="Background" Value="{StaticResource PincelSaudeAtencao}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TomSelo}" Value="ruim">
+                    <Setter Property="Background" Value="{StaticResource PincelSaudeRuim}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- Valor de uma linha: cinza quando o campo nao foi lido, com a dica da fonte -->
         <Style x:Key="ValorLinha" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource ValorInfo}">
             <Setter Property="ToolTip" Value="{Binding Dica}" />
@@ -68,6 +95,9 @@
                             IsEnabled="{Binding PodeAtualizar}" ToolTip="Lê o computador de novo" />
                     <Button Content="Salvar JSON..." Style="{StaticResource BotaoFaixaContorno}" Click="AoSalvarJson"
                             IsEnabled="{Binding PodeSalvar}" ToolTip="Grava a coleta completa num arquivo JSON" />
+                    <Button Content="Ler como administrador" Style="{StaticResource BotaoFaixaContorno}" Click="AoLerComoAdministrador"
+                            Visibility="{Binding PodeElevar, Converter={StaticResource VisivelSe}}"
+                            ToolTip="Reabre o MapHard como administrador, para ler o SMART dos discos SATA e o BitLocker. O Windows pede a confirmação" />
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -105,6 +135,9 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
                                     <Border Style="{StaticResource BarraTitulo}" />
                                     <TextBlock Text="{Binding Titulo}" Style="{StaticResource TituloCartao}" />
+                                    <Border Style="{StaticResource SeloSaude}">
+                                        <TextBlock Text="{Binding Selo}" Foreground="White" FontWeight="ExtraBold" FontSize="16" />
+                                    </Border>
                                 </StackPanel>
                                 <ItemsControl ItemsSource="{Binding Linhas}" Grid.IsSharedSizeScope="True">
                                     <ItemsControl.ItemTemplate>
