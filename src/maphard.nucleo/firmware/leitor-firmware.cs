@@ -39,8 +39,9 @@ public sealed record DadosFirmware(
 /// Firmware e segurança, sem administrador.
 /// Fontes: GetFirmwareType e FIRMWARE_TYPE (winbase, winnt), IsProcessorFeaturePresent com
 /// PF_VIRT_FIRMWARE_ENABLED = 21 e Tbsi_GetDeviceInfo com TBS_E_TPM_NOT_FOUND = 0x8028400F
-/// (MicrosoftDocs/sdk-api). A página do TPM_DEVICE_INFO cita TPM_VERSION_12 e TPM_VERSION_20 sem os
-/// números: [CONFERIR] os valores 1 e 2 no tbs.h. O valor 2 já foi lido numa máquina com TPM 2.0.
+/// (MicrosoftDocs/sdk-api). TPM_VERSION_12 = 1, TPM_VERSION_20 = 2 e a ordem dos campos do
+/// TPM_DEVICE_INFO conferidos no tbs.h do SDK do Windows, pela cópia do repositório
+/// microsoft/win32metadata (generation/WinSDK/RecompiledIdlHeaders/shared/tbs.h).
 /// A chave do Secure Boot foi conferida numa máquina real: UEFISecureBootEnabled = 1 com o msinfo32
 /// mostrando "Ativado".
 /// </summary>
