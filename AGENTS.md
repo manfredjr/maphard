@@ -20,7 +20,7 @@ O ciclo de cada fatia: desenho (spec), plano, código, Pull Request, teste do Ma
 
 ## Fases do projeto
 
-Combinado com o Manfred em 30/09/2026.
+Combinado com o Manfred em 30/09/2026. A fase de nuvem terminou em 30/09/2026, depois da fatia 1 e do plano da fatia 2, por decisão do Manfred. O ponto de partida da fase desktop é `docs/superpowers/passagem-fase-desktop.md`.
 
 | Fase | Onde roda | O que se faz |
 |---|---|---|
@@ -159,6 +159,7 @@ Inclusive quando a mudança é só em documentação, a partir do momento em que
 2. `dotnet test maphard.sln -c Release` com todos os testes verdes, inclusive o de caracteres proibidos e o de nome de arquivo. Na nuvem, vale o CI em Windows depois do envio.
 3. Busca por menção a ferramenta de IA no repositório e no texto do commit, com `git grep -i` pelos nomes das ferramentas usadas. Os nomes vão só no comando digitado na hora, nunca em arquivo do repositório, nem em plano ou roteiro.
 4. Conferência de que só os arquivos previstos entram no commit e de que o commit chegou ao GitHub.
+5. Depois de criar ou editar um Pull Request, reler o corpo no GitHub. Se a ferramenta tiver acrescentado um rodapé com o nome dela ou um link de sessão, retirar na hora.
 
 Antes de a solução existir, valem os portões 3 e 4 e a busca por caracteres proibidos.
 
