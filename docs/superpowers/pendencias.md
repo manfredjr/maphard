@@ -24,6 +24,16 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Ícone do `.exe` | Sem a arte do MapHard, o programa sai sem ícone próprio e a faixa mostra só o nome | Arte do Manfred |
 | Site da DMTF e documentação da Microsoft fora do alcance | A rede da sessão bloqueia `dmtf.org` e `learn.microsoft.com`. A documentação da Microsoft foi lida pelo repositório `MicrosoftDocs/sdk-api` no GitHub, e os deslocamentos do SMBIOS pelo `dmidecode` | Liberar os dois domínios nas configurações de rede do ambiente, ou conferir na fase desktop |
 
+## Fatia 2
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Alerta "módulos diferentes" por part number | Pelo plano, part numbers diferentes disparam o alerta mesmo com capacidade e velocidade iguais. No primeiro teste em máquina real, um notebook de fábrica com dois módulos do mesmo fabricante, de mesma capacidade e velocidade, recebeu o alerta por causa da revisão do chip no part number | Decisão do Manfred: manter o part number na regra, ou só capacidade e velocidade |
+| Código JEDEC inválido | O plano pedia mostrar "código inválido" como valor. Pela regra 2 do produto, o campo fica "não informado", com "código JEDEC inválido" no motivo | Confirmação do Manfred no PR da fatia 2 |
+| Arquivo de paginação no "Uso agora" | O R12 cita o tamanho do arquivo de paginação; o plano trocou pelo limite da memória confirmada (CommitLimit), que soma a memória física e a paginação | Decidir se o tamanho do arquivo de paginação entra separado, numa fatia futura |
+| Teste em máquina com slot livre e em desktop | O teste da fase desktop rodou num notebook com os dois slots ocupados. Slot vazio, canal único e ampliação com slot livre só foram vistos nos testes automáticos e na demonstração | Teste do Manfred num desktop e numa máquina com um pente só |
+| Comparação com o programa de referência | O programa de referência não estava instalado na máquina do teste. A comparação foi feita com o WMI (`Win32_PhysicalMemory` e `Win32_PhysicalMemoryArray`) | Repetir com o programa de referência instalado |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |
