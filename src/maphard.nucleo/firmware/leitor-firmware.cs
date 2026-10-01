@@ -39,8 +39,10 @@ public sealed record DadosFirmware(
 /// Firmware e segurança, sem administrador.
 /// Fontes: GetFirmwareType e FIRMWARE_TYPE (winbase, winnt), IsProcessorFeaturePresent com
 /// PF_VIRT_FIRMWARE_ENABLED = 21 e Tbsi_GetDeviceInfo com TBS_E_TPM_NOT_FOUND = 0x8028400F
-/// (MicrosoftDocs/sdk-api). [CONFERIR] os valores TPM_VERSION_12 = 1 e TPM_VERSION_20 = 2 do tbs.h,
-/// a chave do Secure Boot e o formato do valor "Update Revision", que a documentação lida não traz.
+/// (MicrosoftDocs/sdk-api). A página do TPM_DEVICE_INFO cita TPM_VERSION_12 e TPM_VERSION_20 sem os
+/// números: [CONFERIR] os valores 1 e 2 no tbs.h. O valor 2 já foi lido numa máquina com TPM 2.0.
+/// A chave do Secure Boot foi conferida numa máquina real: UEFISecureBootEnabled = 1 com o msinfo32
+/// mostrando "Ativado".
 /// </summary>
 public static class LeitorFirmware
 {
@@ -94,18 +96,20 @@ public static class LeitorFirmware
     }
 
     /// <summary>
-    /// "Update Revision" é binário de 8 bytes. Mostra a metade alta quando ela não é zero (formato usado
-    /// pela Intel) e a baixa nos outros casos. [CONFERIR] o formato na documentação.
+    /// "Update Revision" é binário. Com 4 bytes, é a revisão em little-endian (2C 01 00 00 dá 0x12C),
+    /// formato visto no Windows 11 em máquina real. Com 8 bytes, mostra a metade alta quando ela não é
+    /// zero (formato usado pela Intel) e a baixa nos outros casos.
+    /// [CONFERIR] o formato de 8 bytes, que a documentação lida não traz.
     /// </summary>
     internal static Campo<string> Microcodigo(object? valor)
     {
-        if (valor is not byte[] { Length: >= 8 } bytes)
+        if (valor is not byte[] { Length: >= 4 } bytes)
         {
             return Campo<string>.NaoInformado(FonteDado.Registro);
         }
 
-        var alta = BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(4));
         var baixa = BinaryPrimitives.ReadUInt32LittleEndian(bytes);
+        var alta = bytes.Length >= 8 ? BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(4)) : 0;
         var revisao = alta != 0 ? alta : baixa;
         return revisao == 0 ? Campo<string>.NaoInformado(FonteDado.Registro) : Campo<string>.Lido($"0x{revisao:X}", FonteDado.Registro);
     }

@@ -113,6 +113,14 @@ public class FirmwareTestes
         Assert.Equal(EstadoCampo.NaoInformado, LeitorFirmware.Microcodigo(null).Estado);
     }
 
+    [Fact]
+    public void Microcodigo_de_4_bytes_e_lido_direto()
+    {
+        Assert.Equal("0x12C", LeitorFirmware.Microcodigo(new byte[] { 0x2C, 0x01, 0, 0 }).Valor);
+        Assert.Equal(EstadoCampo.NaoInformado, LeitorFirmware.Microcodigo(new byte[4]).Estado);
+        Assert.Equal(EstadoCampo.NaoInformado, LeitorFirmware.Microcodigo(new byte[] { 1, 2, 3 }).Estado);
+    }
+
     [Theory]
     [InlineData("19045", "Professional", "Windows 10 Pro")]
     [InlineData("22631", "Core", "Windows 11 Home")]
