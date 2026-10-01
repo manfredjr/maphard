@@ -111,7 +111,7 @@ public sealed record PlacaRede(Campo<string> Nome, Campo<string> Descricao, Camp
 
 - [ ] **Passo 1:** conferir no learn.microsoft.com o `MIB_IF_ROW2` e o sinal de interface de hardware, para separar placa física de adaptador virtual. Sem fonte, a tela mostra todas e marca Ethernet e Wi-Fi pelo tipo.
 - [ ] **Passo 2:** testes: MAC no formato "AA-BB-CC-DD-EE-FF"; velocidade "1 Gb/s", "721 Mb/s"; tipo Ethernet (6) e Wi-Fi (71); placa desconectada fica sem velocidade; adaptador virtual fora da lista.
-- [ ] **Passo 3:** implementar com `GetAdaptersAddresses`, sem administrador. Só a lista: o detalhe de rede é assunto do MapNet.
+- [ ] **Passo 3:** implementar com `GetIfTable2`, que devolve o próprio `MIB_IF_ROW2` com o sinal de interface de hardware, sem administrador. Só a lista: o detalhe de rede é assunto do MapNet.
 - [ ] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 5: Windows e ativação (R34)
