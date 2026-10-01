@@ -8,15 +8,11 @@ public class ClocksTestes
 {
     private sealed class ClocksSimulados : IFonteClocks
     {
-        public int? Registro { get; init; }
-
-        public int? MaximoWindows { get; init; }
+        public int? NominalWindows { get; init; }
 
         public AmostraDesempenho? Amostra { get; init; } = new(100, [10, 30]);
 
-        public int? ClockRegistroMhz() => Registro;
-
-        public int? ClockMaximoWindowsMhz() => MaximoWindows;
+        public int? ClockNominalWindowsMhz() => NominalWindows;
 
         public AmostraDesempenho? Amostrar() => Amostra;
     }
@@ -35,22 +31,34 @@ public class ClocksTestes
     }
 
     [Fact]
-    public void Sem_cpuid_o_base_vem_do_registro_e_o_maximo_do_windows()
+    public void Com_o_cpuid_zerado_o_base_vem_do_nominal_do_windows_e_o_maximo_do_smbios()
     {
-        var c = CalculoClocks.Montar(null, null, 3900, new ClocksSimulados { Registro = 2904, MaximoWindows = 2904 });
+        // Processador híbrido com o hipervisor do Windows ativo: a folha 0x16 volta zerada.
+        var c = CalculoClocks.Montar(null, null, 4500, new ClocksSimulados { NominalWindows = 2500, Amostra = new(150, [50]) });
 
-        Assert.Equal(FonteDado.Registro, c.Base.Fonte);
-        Assert.Equal(2904, c.Base.Valor);
-        Assert.Equal(FonteDado.Windows, c.Maximo.Fonte);
+        Assert.Equal(2500, c.Base.Valor);
+        Assert.Equal(FonteDado.Windows, c.Base.Fonte);
+        Assert.Equal(4500, c.Maximo.Valor);
+        Assert.Equal(FonteDado.Smbios, c.Maximo.Fonte);
+        Assert.Equal(3750, c.Atual.Valor);
     }
 
     [Fact]
-    public void Ultimo_recurso_do_maximo_e_o_smbios()
+    public void Maximo_do_smbios_abaixo_do_base_fica_nao_informado()
     {
-        var c = CalculoClocks.Montar(null, null, 3900, new ClocksSimulados());
+        var c = CalculoClocks.Montar(null, null, 2000, new ClocksSimulados { NominalWindows = 2500 });
 
-        Assert.Equal(3900, c.Maximo.Valor);
-        Assert.Equal(FonteDado.Smbios, c.Maximo.Fonte);
+        Assert.Equal(EstadoCampo.NaoInformado, c.Maximo.Estado);
+        Assert.Contains("2000 MHz", c.Maximo.Motivo);
+    }
+
+    [Fact]
+    public void Sem_cpuid_e_sem_smbios_o_maximo_fica_nao_informado()
+    {
+        var c = CalculoClocks.Montar(null, null, null, new ClocksSimulados { NominalWindows = 2500 });
+
+        Assert.Equal(EstadoCampo.NaoInformado, c.Maximo.Estado);
+        Assert.Equal(2500, c.Base.Valor);
     }
 
     [Fact]
@@ -84,7 +92,7 @@ public class ClocksTestes
     }
 
     [FatoWindows]
-    public void Clock_real_tem_base_ou_maximo()
+    public void Clock_nominal_real_e_lido()
     {
         if (!OperatingSystem.IsWindows())
         {
@@ -93,6 +101,6 @@ public class ClocksTestes
 
         var fonte = new FonteClocksWindows();
 
-        Assert.True(fonte.ClockRegistroMhz() > 0 || fonte.ClockMaximoWindowsMhz() > 0);
+        Assert.True(fonte.ClockNominalWindowsMhz() > 0);
     }
 }
