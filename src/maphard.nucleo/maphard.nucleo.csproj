@@ -18,6 +18,7 @@
     <EmbeddedResource Include="tabelas\processadores.csv" LogicalName="processadores.csv" />
     <EmbeddedResource Include="tabelas\fabricantes-memoria.csv" LogicalName="fabricantes-memoria.csv" />
     <EmbeddedResource Include="tabelas\atributos-smart.csv" LogicalName="atributos-smart.csv" />
+    <EmbeddedResource Include="tabelas\problemas-dispositivo.csv" LogicalName="problemas-dispositivo.csv" />
   </ItemGroup>
 
 </Project>
