@@ -22,18 +22,16 @@ internal static class FontesSimuladas
 
     internal sealed class Clocks(Func<AmostraDesempenho?> amostrar) : IFonteClocks
     {
-        public int? ClockRegistroMhz() => 3600;
-
-        public int? ClockMaximoWindowsMhz() => 3600;
+        public int? ClockNominalWindowsMhz() => 3600;
 
         public AmostraDesempenho? Amostrar() => amostrar();
     }
 
-    internal sealed class Firmware : IFonteFirmware
+    internal sealed class Firmware(bool virtualizacaoLigada = true) : IFonteFirmware
     {
         public int? TipoFirmware() => 2;
 
-        public bool VirtualizacaoLigadaNoFirmware() => true;
+        public bool VirtualizacaoLigadaNoFirmware() => virtualizacaoLigada;
 
         public RespostaTpm? Tpm() => new(0, 2);
     }

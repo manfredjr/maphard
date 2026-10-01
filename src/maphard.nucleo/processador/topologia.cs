@@ -5,7 +5,10 @@ using System.Runtime.Versioning;
 
 namespace MapHard.Nucleo.Processador;
 
-/// <summary>Um nível de cache: tamanho de cada unidade e quantas unidades existem.</summary>
+/// <summary>
+/// Um grupo de cache: tamanho de cada unidade e quantas unidades existem. No processador híbrido,
+/// o mesmo nível aparece em mais de um grupo, um por tamanho.
+/// </summary>
 public sealed record CacheCpu(int Nivel, TipoCache Tipo, long TamanhoPorUnidade, int Unidades, int? Associatividade, int TamanhoLinha)
 {
     public long TamanhoTotal => TamanhoPorUnidade * Unidades;
@@ -125,15 +128,13 @@ public static class LeitorTopologia
         var classeMaior = nucleos.Max(n => n.Eficiencia);
         var desempenho = nucleos.Count(n => n.Eficiencia == classeMaior);
 
+        // No processador híbrido, o mesmo nível tem tamanhos diferentes nos núcleos de desempenho e
+        // nos de eficiência. Cada tamanho vira um grupo, na ordem em que o Windows lista os núcleos.
         var agrupados = caches
-            .GroupBy(c => (c.Nivel, c.Tipo))
+            .GroupBy(c => c)
             .OrderBy(g => g.Key.Nivel)
             .ThenByDescending(g => g.Key.Tipo)
-            .Select(g =>
-            {
-                var primeiro = g.First();
-                return new CacheCpu(g.Key.Nivel, g.Key.Tipo, primeiro.Tamanho, g.Count(), primeiro.Associatividade, primeiro.Linha);
-            })
+            .Select(g => new CacheCpu(g.Key.Nivel, g.Key.Tipo, g.Key.Tamanho, g.Count(), g.Key.Associatividade, g.Key.Linha))
             .ToList();
 
         return new TopologiaCpu(

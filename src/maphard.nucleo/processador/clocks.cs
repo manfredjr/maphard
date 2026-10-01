@@ -1,18 +1,17 @@
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using MapHard.Nucleo.Campos;
-using Microsoft.Win32;
 
 namespace MapHard.Nucleo.Processador;
 
 /// <summary>Leituras de clock e de uso que vêm do Windows. Os testes trocam por valores fixos.</summary>
 public interface IFonteClocks
 {
-    /// <summary>Valor <c>~MHz</c> do registro do primeiro processador.</summary>
-    int? ClockRegistroMhz();
-
-    /// <summary>MaxMhz da CallNtPowerInformation(ProcessorInformation).</summary>
-    int? ClockMaximoWindowsMhz();
+    /// <summary>
+    /// MaxMhz da CallNtPowerInformation(ProcessorInformation). Apesar do nome, é o clock nominal
+    /// (o base), sem o turbo. É o mesmo valor que o msinfo32 mostra ao lado do nome do processador.
+    /// </summary>
+    int? ClockNominalWindowsMhz();
 
     /// <summary>
     /// Amostra de 1 segundo dos contadores <c>% Processor Performance</c> (total) e
@@ -25,24 +24,30 @@ public sealed record AmostraDesempenho(double DesempenhoPercentual, IReadOnlyLis
 
 public sealed record ClocksCpu(Campo<int> Base, Campo<int> Maximo, Campo<int> Atual, Campo<double> UsoTotal, Campo<IReadOnlyList<double>> UsoPorProcessador);
 
-/// <summary>Junta as fontes de clock na ordem de confiança e calcula o clock atual.</summary>
+/// <summary>
+/// Junta as fontes de clock na ordem de confiança e calcula o clock atual.
+/// Com o hipervisor do Windows ativo (segurança baseada em virtualização), a folha 0x16 do CPUID
+/// volta zerada e as fontes reservas entram: o base vem do clock nominal do Windows e o máximo,
+/// do SMBIOS. O <c>~MHz</c> do registro não entra: é uma medição, não o clock base.
+/// </summary>
 public static class CalculoClocks
 {
     public static ClocksCpu Montar(int? baseCpuid, int? maximoCpuid, int? maximoSmbios, IFonteClocks fonte)
     {
         var baseMhz = baseCpuid is > 0
             ? Campo<int>.Lido(baseCpuid.Value, FonteDado.Cpuid)
-            : fonte.ClockRegistroMhz() is > 0 and var registro
-                ? Campo<int>.Lido(registro, FonteDado.Registro)
+            : fonte.ClockNominalWindowsMhz() is > 0 and var nominal
+                ? Campo<int>.Lido(nominal, FonteDado.Windows)
                 : Campo<int>.NaoInformado(FonteDado.Cpuid);
 
+        // Há placa que grava no SMBIOS um máximo abaixo do base. Esse valor não serve.
         var maximo = maximoCpuid is > 0
             ? Campo<int>.Lido(maximoCpuid.Value, FonteDado.Cpuid)
-            : fonte.ClockMaximoWindowsMhz() is > 0 and var windows
-                ? Campo<int>.Lido(windows, FonteDado.Windows)
-                : maximoSmbios is > 0
-                    ? Campo<int>.Lido(maximoSmbios.Value, FonteDado.Smbios)
-                    : Campo<int>.NaoInformado(FonteDado.Cpuid);
+            : maximoSmbios is not > 0
+                ? Campo<int>.NaoInformado(FonteDado.Cpuid)
+                : baseMhz.FoiLido && maximoSmbios < baseMhz.Valor
+                    ? Campo<int>.NaoInformado(FonteDado.Smbios, $"o SMBIOS informa {maximoSmbios} MHz, abaixo do clock base")
+                    : Campo<int>.Lido(maximoSmbios.Value, FonteDado.Smbios);
 
         var amostra = fonte.Amostrar();
         if (amostra is null)
@@ -85,13 +90,7 @@ public sealed partial class FonteClocksWindows : IFonteClocks
     private const string CaminhoDesempenho = @"\Processor Information(_Total)\% Processor Performance";
     private const string CaminhoUso = @"\Processor Information(*)\% Processor Utility";
 
-    public int? ClockRegistroMhz()
-    {
-        using var chave = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\CentralProcessor\0");
-        return chave?.GetValue("~MHz") is int mhz ? mhz : null;
-    }
-
-    public int? ClockMaximoWindowsMhz()
+    public int? ClockNominalWindowsMhz()
     {
         var quantidade = Environment.ProcessorCount;
         var buffer = new byte[quantidade * TamanhoInformacaoProcessador];
