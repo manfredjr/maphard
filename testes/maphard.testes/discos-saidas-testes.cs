@@ -95,13 +95,16 @@ public class DiscosSaidasTestes
     [Fact]
     public async Task Disco_que_passa_do_tempo_fica_com_o_smart_em_tempo_esgotado_e_os_outros_seguem()
     {
+        // O disco travado prende uma linha do pool de threads, e o .NET leva perto de meio segundo para abrir
+        // outra. Com limite menor que isso, a leitura do disco 0 fica na fila e estoura também (aconteceu no CI,
+        // que roda com poucos núcleos). O limite fica bem acima desse atraso e bem abaixo da espera do disco travado.
         var fontes = FontesSimuladas.Completas(discos: new FontesSimuladas.DiscosSimulados(_ =>
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(6000);
             return new SmartAtaBruto(null, null, null, null, null, null);
         }));
 
-        var c = await new Coletor(fontes, TimeSpan.FromMilliseconds(300)).ColetarAsync();
+        var c = await new Coletor(fontes, TimeSpan.FromSeconds(2)).ColetarAsync();
 
         var hdd = c.Discos.Discos.Valor![1];
         Assert.Equal(EstadoSaude.Desconhecido, hdd.Saude.Estado);
