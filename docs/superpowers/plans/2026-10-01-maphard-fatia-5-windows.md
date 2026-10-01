@@ -23,7 +23,7 @@ Conferido em 01/10/2026 num notebook com Windows 11, como usuário comum:
 
 | Leitura | Sem administrador | Observação |
 |---|---|---|
-| Placas de vídeo pela DXGI (nome, fabricante, memória dedicada) | Sim | A GeForce de 4 GB veio com 3.962 MB dedicados; o WMI parava em 4 GB, que é o problema citado no R31. O adaptador de software da Microsoft vem com o sinal `DXGI_ADAPTER_FLAG_SOFTWARE` e fica de fora |
+| Placas de vídeo pela DXGI (nome, fabricante, memória dedicada) | Sim | A memória dedicada veio sem o limite de 4 GB que o WMI tem, o problema citado no R31. O adaptador de software da Microsoft vem com o sinal `DXGI_ADAPTER_FLAG_SOFTWARE` e fica de fora |
 | EDID dos monitores no registro | Sim | O registro guarda também monitores que já foram desligados; a leitura vale só para os presentes |
 | Bateria pela consulta direta (`IOCTL_BATTERY_*`) | Sim | Abre com acesso de leitura |
 | Bateria pelo WMI (`root\wmi`) | Em parte | `BatteryStaticData` falhou; o número de ciclos veio 0. Por isso a fonte é a consulta direta |
@@ -149,7 +149,7 @@ Linhas da seção 8 do desenho:
 - [ ] **Passo 1:** um teste por linha, nos dois sentidos, com o motivo escrito ("desgaste de 34%", "Secure Boot desligado: ligar no firmware"). Processador "não consta na lista do MapHard" deixa o cartão Windows 11 em Desconhecido, não em Ruim.
 - [ ] **Passo 2:** coletor e JSON: a coleta ganha `Video`, `Monitores`, `Bateria`, `Rede` e `Windows11`, e a identificação ganha a ativação. Versão do formato 5. Teste de ida e volta.
 - [ ] **Passo 3:** painel: seções **Vídeo e monitores**, **Bateria** e **Windows** (com os cartões "Windows", "Windows 11, item por item" e "Placas de rede"), na ordem da navegação do desenho.
-- [ ] **Passo 4:** linha de comando: "Windows 11: aceita" ou "não aceita: processador fora da lista", "Bateria: desgaste de 12%", "Vídeo: NVIDIA GeForce RTX 3050, 4 GB".
+- [ ] **Passo 4:** linha de comando: "Windows 11: aceita" ou "não aceita: processador fora da lista", "Bateria: desgaste de 12%", "Vídeo: Placa Exemplo, 4 GB".
 - [ ] **Passo 5:** demonstração com uma placa de vídeo, um monitor, uma bateria e duas placas de rede fictícias, e o Windows 11 com um item em Atenção.
 - [ ] **Passo 6:** testes do painel e da linha de comando, testes verdes, commit.
 
