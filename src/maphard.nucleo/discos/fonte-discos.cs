@@ -64,7 +64,7 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
     public IReadOnlyList<DiscoBruto> Discos()
     {
         var discos = new Dictionary<int, DiscoBruto>();
-        foreach (var (caminho, instancia) in InterfacesDeDisco())
+        foreach (var (caminho, instancia) in InterfacesPresentes(InterfaceDisco))
         {
             using var disco = CreateFileW(caminho, 0, CompartilharLeituraGravacao, 0, AbrirExistente, 0, 0);
             if (disco.IsInvalid || Ioctl(disco, NumeroDispositivo, null, 12) is not { } numero)
@@ -192,11 +192,11 @@ public sealed partial class FonteDiscosWindows : IFonteDiscos
         return (comDados ? buffer.AsSpan(tamanhoEstrutura, tamanhoDados).ToArray() : null, buffer.AsSpan(40, 8).ToArray());
     }
 
-    /// <summary>Caminho e instância de cada interface de disco presente (SetupDiGetClassDevsW com GUID_DEVINTERFACE_DISK).</summary>
-    private static List<(string Caminho, uint Instancia)> InterfacesDeDisco()
+    /// <summary>Caminho e instância de cada interface presente da classe pedida (SetupDiGetClassDevsW com DIGCF_DEVICEINTERFACE).</summary>
+    internal static List<(string Caminho, uint Instancia)> InterfacesPresentes(Guid classeInterface)
     {
         var resultado = new List<(string, uint)>();
-        var guid = InterfaceDisco;
+        var guid = classeInterface;
         var lista = SetupDiGetClassDevsW(ref guid, null, 0, DigcfPresente | DigcfInterface);
         if (lista == -1)
         {
