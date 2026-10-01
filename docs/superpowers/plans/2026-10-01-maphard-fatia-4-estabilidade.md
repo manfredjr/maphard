@@ -89,11 +89,11 @@ public interface IFonteEventos
 }
 ```
 
-- [ ] **Passo 1:** testes do intérprete com XML montado à mão: provedor, id, nível e momento da seção `System`; `EventData` com `Data Name=`; `EventData` sem nome (só posição) vira chave "1", "2"...; XML malformado vira nulo sem exceção; momento em UTC convertido sem perder o fuso.
-- [ ] **Passo 2:** teste da consulta XPath gerada: provedores no `Provider[@Name=...]` com `or`, tempo em milissegundos, e o limite de 20 expressões da página "Consuming events" respeitado (acima disso, uma consulta por grupo).
-- [ ] **Passo 3:** implementar a fonte real com `EvtQuery` (canal `System`, `EvtQueryChannelPath | EvtQueryReverseDirection`), `EvtNext` em blocos, `EvtRender` com `EvtRenderEventXml` e `EvtFormatMessage` com `EvtFormatMessageEvent`, fechando cada handle com `EvtClose` no mesmo thread. Limite de eventos por provedor para não pesar na máquina (regra do produto 7).
-- [ ] **Passo 4:** teste `[FatoWindows]`: a consulta do log Sistema roda sem administrador e devolve uma lista (pode ser vazia).
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** testes do intérprete com XML montado à mão: provedor, id, nível e momento da seção `System`; `EventData` com `Data Name=`; `EventData` sem nome (só posição) vira chave "1", "2"...; XML malformado vira nulo sem exceção; momento em UTC convertido sem perder o fuso.
+- [x] **Passo 2:** teste da consulta XPath gerada: provedores no `Provider[@Name=...]` com `or`, tempo em milissegundos, e o limite de 20 expressões da página "Consuming events" respeitado (acima disso, uma consulta por grupo).
+- [x] **Passo 3:** implementar a fonte real com `EvtQuery` (canal `System`, `EvtQueryChannelPath | EvtQueryReverseDirection`), `EvtNext` em blocos, `EvtRender` com `EvtRenderEventXml` e `EvtFormatMessage` com `EvtFormatMessageEvent`, fechando cada handle com `EvtClose` no mesmo thread. Limite de eventos por provedor para não pesar na máquina (regra do produto 7).
+- [x] **Passo 4:** teste `[FatoWindows]`: a consulta do log Sistema roda sem administrador e devolve uma lista (pode ser vazia).
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 2: estabilidade e erros (R15, R27 a R29)
 
@@ -121,11 +121,11 @@ Grupos, com a fonte de cada um:
 | Erro de hardware corrigido | WHEA-Logger com nível 3 (aviso) | Detalhe: a mensagem do Windows |
 | Erro de hardware não corrigido | WHEA-Logger com nível 1 ou 2 | Idem |
 
-- [ ] **Passo 1:** um teste por linha do quadro, com eventos montados à mão, nos dois sentidos (entra e não entra no grupo).
-- [ ] **Passo 2:** testes do Diagnóstico de Memória: sem evento no período, "nenhum teste no período"; evento de nível 4, "sem erros", com a data; nível 2 ou 3, a mensagem do Windows.
-- [ ] **Passo 3:** índice de estabilidade pelo valor mais recente de `Win32_ReliabilityStabilityMetrics`, arredondado a uma casa; sem valor (política desligada, Windows Server), "não disponível neste equipamento" com o motivo. Tempo ligado por `GetTickCount64`; último boot e instalação por `Win32_OperatingSystem`. Teste `[FatoWindows]` do índice entre 1 e 10.
-- [ ] **Passo 4:** período de 30 dias, e 90 a escolher: opção `--dias 90` na linha de comando e escolha na janela (tarefa 6).
-- [ ] **Passo 5:** testes verdes, commit.
+- [x] **Passo 1:** um teste por linha do quadro, com eventos montados à mão, nos dois sentidos (entra e não entra no grupo).
+- [x] **Passo 2:** testes do Diagnóstico de Memória: sem evento no período, "nenhum teste no período"; evento de nível 4, "sem erros", com a data; nível 2 ou 3, a mensagem do Windows.
+- [x] **Passo 3:** índice de estabilidade pelo valor mais recente de `Win32_ReliabilityStabilityMetrics`, arredondado a uma casa; sem valor (política desligada, Windows Server), "não disponível neste equipamento" com o motivo. Tempo ligado por `GetTickCount64`; último boot e instalação por `Win32_OperatingSystem`. Teste `[FatoWindows]` do índice entre 1 e 10.
+- [x] **Passo 4:** período de 30 dias, e 90 a escolher: opção `--dias 90` na linha de comando e escolha na janela (tarefa 6).
+- [x] **Passo 5:** testes verdes, commit.
 
 ### Tarefa 3: códigos de problema de dispositivo
 
@@ -135,9 +135,9 @@ Formato da tabela:
 codigo;constante;texto;fonte
 ```
 
-- [ ] **Passo 1:** montar `problemas-dispositivo.csv` a partir da página "Device Manager error messages" e das páginas de cada código, com o texto em português passado pela `humanizar-ptbr` ("driver não instalado", "dispositivo desativado", "o Windows parou este dispositivo porque ele informou problemas"). Uma linha por código da página oficial.
-- [ ] **Passo 2:** testes: código conhecido dá o texto; código fora da tabela dá "problema código N"; integridade (sem código repetido, fonte em toda linha).
-- [ ] **Passo 3:** testes verdes, commit.
+- [x] **Passo 1:** montar `problemas-dispositivo.csv` a partir da página "Device Manager error messages" e das páginas de cada código, com o texto em português passado pela `humanizar-ptbr` ("driver não instalado", "dispositivo desativado", "o Windows parou este dispositivo porque ele informou problemas"). Uma linha por código da página oficial.
+- [x] **Passo 2:** testes: código conhecido dá o texto; código fora da tabela dá "problema código N"; integridade (sem código repetido, fonte em toda linha).
+- [x] **Passo 3:** testes verdes, commit.
 
 ### Tarefa 4: dispositivos com problema (R30)
 
@@ -146,17 +146,17 @@ public sealed record DispositivoBruto(string? Nome, string? Classe, IReadOnlyLis
 public sealed record DispositivoProblema(Campo<string> Nome, Campo<string> Classe, int Codigo, string Texto);
 ```
 
-- [ ] **Passo 1:** testes: só entra dispositivo com código diferente de zero; nome pelo nome amigável, e pela descrição quando não houver; código 22 (desativado) entra, mas separado dos outros, porque costuma ser escolha do usuário; lista vazia é "nenhum dispositivo com problema", lido.
-- [ ] **Passo 2:** implementar a fonte real: `SetupDiGetClassDevsW` com `DIGCF_ALLCLASSES | DIGCF_PRESENT`, propriedades pelo `SetupDiGetDevicePropertyW` com as chaves do `devpkey.h`.
-- [ ] **Passo 3:** teste `[FatoWindows]`: a máquina real tem dispositivos e a leitura não falha.
-- [ ] **Passo 4:** testes verdes, commit.
+- [x] **Passo 1:** testes: só entra dispositivo com código diferente de zero; nome pelo nome amigável, e pela descrição quando não houver; código 22 (desativado) entra, mas separado dos outros, porque costuma ser escolha do usuário; lista vazia é "nenhum dispositivo com problema", lido.
+- [x] **Passo 2:** implementar a fonte real: `SetupDiGetClassDevsW` com `DIGCF_ALLCLASSES | DIGCF_PRESENT`, propriedades pelo `SetupDiGetDevicePropertyW` com as chaves do `devpkey.h`.
+- [x] **Passo 3:** teste `[FatoWindows]`: a máquina real tem dispositivos e a leitura não falha.
+- [x] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 5: chipset (R16)
 
-- [ ] **Passo 1:** roteiro `ferramentas/gerar-chipsets.ps1` que baixa o `pci.ids` do repositório `pciutils/pciids` e grava em `chipsets.csv` os dispositivos da Intel (8086) e da AMD (1022) cujo nome indica ponte do processador, LPC, eSPI ou controlador do chipset, com a fonte e a licença no cabeçalho. Roteiro e tabela no mesmo commit.
-- [ ] **Passo 2:** testes: o dispositivo de classe `CC_0601` (LPC/eSPI) dá o chipset; sem ele, o de classe `CC_0600`; ID fora da tabela usa o nome que o Windows dá ao dispositivo, com a dica "fora da tabela do MapHard"; máquina virtual sem ponte conhecida fica "não informado".
-- [ ] **Passo 3:** a linha "Chipset" entra no cartão "Placa-mãe" da seção Placa-mãe e firmware.
-- [ ] **Passo 4:** testes verdes, commit.
+- [x] **Passo 1:** roteiro `ferramentas/gerar-chipsets.ps1` que baixa o `pci.ids` do repositório `pciutils/pciids` e grava em `chipsets.csv` os dispositivos da Intel (8086) e da AMD (1022) cujo nome indica ponte do processador, LPC, eSPI ou controlador do chipset, com a fonte e a licença no cabeçalho. Roteiro e tabela no mesmo commit.
+- [x] **Passo 2:** testes: o dispositivo de classe `CC_0601` (LPC/eSPI) dá o chipset; sem ele, o de classe `CC_0600`; ID fora da tabela usa o nome que o Windows dá ao dispositivo, com a dica "fora da tabela do MapHard"; máquina virtual sem ponte conhecida fica "não informado".
+- [x] **Passo 3:** a linha "Chipset" entra no cartão "Placa-mãe" da seção Placa-mãe e firmware.
+- [x] **Passo 4:** testes verdes, commit.
 
 ### Tarefa 6: regras de saúde e saídas
 
@@ -168,17 +168,17 @@ Linhas da seção 8 do desenho, com valores que o Manfred pode ajustar:
 | Memória | Módulos diferentes, abaixo da velocidade, canal único provável (fatia 2) | Erro no Diagnóstico de Memória. O erro de memória do WHEA entra quando o componente puder ser lido com fonte [CONFERIR] |
 | Dispositivos | Algum dispositivo com problema | Nenhum caso |
 
-- [ ] **Passo 1:** um teste por linha, nos dois sentidos, com o motivo escrito ("2 telas azuis nos últimos 30 dias").
-- [ ] **Passo 2:** coletor e JSON: a coleta ganha `Estabilidade` e `Dispositivos`, cada fonte com tempo limite. Versão do formato 4. Teste de ida e volta.
-- [ ] **Passo 3:** painel: seções **Estabilidade** e **Dispositivos**, na ordem da navegação do desenho; cartão "Erros de memória" na seção Memória; linha "Chipset" na placa-mãe; escolha de 30 ou 90 dias na seção Estabilidade, que refaz só a leitura dos eventos.
-- [ ] **Passo 4:** linha de comando: "Estabilidade: 2 telas azuis, 1 desligamento inesperado em 30 dias; índice 6,2", "Dispositivos: 1 com problema", e a opção `--dias`.
-- [ ] **Passo 5:** demonstração com eventos e um dispositivo com problema fictícios.
-- [ ] **Passo 6:** testes do painel e da linha de comando, testes verdes, commit.
+- [x] **Passo 1:** um teste por linha, nos dois sentidos, com o motivo escrito ("2 telas azuis nos últimos 30 dias").
+- [x] **Passo 2:** coletor e JSON: a coleta ganha `Estabilidade` e `Dispositivos`, cada fonte com tempo limite. Versão do formato 4. Teste de ida e volta.
+- [x] **Passo 3:** painel: seções **Estabilidade** e **Dispositivos**, na ordem da navegação do desenho; cartão "Erros de memória" na seção Memória; linha "Chipset" na placa-mãe; escolha de 30 ou 90 dias na seção Estabilidade, que refaz só a leitura dos eventos.
+- [x] **Passo 4:** linha de comando: "Estabilidade: 2 telas azuis, 1 desligamento inesperado em 30 dias; índice 6,2", "Dispositivos: 1 com problema", e a opção `--dias`.
+- [x] **Passo 5:** demonstração com eventos e um dispositivo com problema fictícios.
+- [x] **Passo 6:** testes do painel e da linha de comando, testes verdes, commit.
 
 ### Tarefa 7: fechamento
 
-- [ ] **Passo 1:** README com as seções novas no "Uso" e a linha da fatia 4 na "Situação do projeto".
-- [ ] **Passo 2:** pendências atualizadas, com cada [CONFERIR] que continuar aberto.
+- [x] **Passo 1:** README com as seções novas no "Uso" e a linha da fatia 4 na "Situação do projeto".
+- [x] **Passo 2:** pendências atualizadas, com cada [CONFERIR] que continuar aberto.
 - [ ] **Passo 3:** portões, envio, Pull Request do código e leitura do CI até ficar verde.
 
 ## Como o Manfred testa

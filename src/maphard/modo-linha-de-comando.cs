@@ -33,7 +33,7 @@ internal static partial class ModoLinhaDeComando
         try
         {
             Console.WriteLine();
-            var coletor = new Coletor(FontesColeta.Windows(), TimeSpan.FromSeconds(10));
+            var coletor = new Coletor(FontesColeta.Windows(), TimeSpan.FromSeconds(10), diasEventos: argumentos.Dias);
             return ExecutorCli.ExecutarAsync(
                 argumentos,
                 token => coletor.ColetarAsync(cancelar: token),

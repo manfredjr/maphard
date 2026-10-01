@@ -70,7 +70,7 @@ public class PainelTestes
     }
 
     [Fact]
-    public async Task Painel_comeca_coletando_e_termina_com_as_cinco_secoes()
+    public async Task Painel_comeca_coletando_e_termina_com_as_sete_secoes()
     {
         var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
         Assert.Equal(EstadoPainel.Coletando, painel.Estado);
@@ -80,7 +80,7 @@ public class PainelTestes
         await painel.AtualizarAsync();
 
         Assert.Equal(EstadoPainel.Pronto, painel.Estado);
-        Assert.Equal(["Resumo", "Processador", "Memória", "Discos", "Placa-mãe e firmware"], painel.Secoes.Select(s => s.Titulo));
+        Assert.Equal(["Resumo", "Processador", "Memória", "Discos", "Placa-mãe e firmware", "Estabilidade", "Dispositivos"], painel.Secoes.Select(s => s.Titulo));
         Assert.Equal("ESTACAO-TESTE   |   usuário comum   |   coletado em 30/09/2026 10:05", painel.TextoStatus);
         Assert.True(painel.PodeSalvar);
     }
@@ -114,7 +114,7 @@ public class PainelTestes
         await painel.AtualizarAsync();
 
         var memoria = painel.Secoes.Single(s => s.Id == MontadorSecoes.Memoria);
-        Assert.Equal(["Resumo", "ChannelA-DIMM0", "ChannelA-DIMM1", "ChannelB-DIMM0", "ChannelB-DIMM1", "Ampliação", "Uso agora"], memoria.Cartoes.Select(c => c.Titulo));
+        Assert.Equal(["Resumo", "ChannelA-DIMM0", "ChannelA-DIMM1", "ChannelB-DIMM0", "ChannelB-DIMM1", "Erros de memória", "Ampliação", "Uso agora"], memoria.Cartoes.Select(c => c.Titulo));
 
         string Texto(string cartao, string rotulo) => memoria.Cartoes.Single(c => c.Titulo == cartao).Linhas.Single(l => l.Rotulo == rotulo).Texto;
         Assert.Equal("16 GB", Texto("Resumo", "Instalada"));

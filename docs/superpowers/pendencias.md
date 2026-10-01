@@ -45,6 +45,17 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Volume em mais de um disco | O volume que ocupa vários discos (volume dinâmico, Espaços de Armazenamento) fica em "Volumes sem disco físico ligado" | Leitura das extensões do volume, se aparecer em cliente |
 | Janela não vista na sessão | A sessão não enxerga a tela. A seção Discos, o selo da saúde e o botão foram conferidos pelos testes do painel e pela linha de comando | Conferência do Manfred na janela e na `--demonstracao` |
 
+## Fatia 4
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Ids de evento do WHEA e do Diagnóstico de Memória | Só aparecem em respostas de fórum. A gravidade vem do nível do evento e a tela mostra a mensagem do Windows. Na máquina do teste da fase desktop não havia nenhum desses eventos | Conferir num evento real: rodar o Diagnóstico de Memória numa máquina de teste e ver o evento; numa máquina com erro de hardware, conferir o nível e a mensagem |
+| Erro de memória do WHEA no cartão Memória | O desenho pede o cartão Memória em Ruim com erro de memória no WHEA. Sem fonte para saber o componente do evento, esses erros contam só na Estabilidade | Achar na documentação ou num evento real o campo que diz o componente |
+| Ids de disco 7 e 11 e provedor do NTFS | Os ids 7 e 11 do `disk` só têm fonte de fórum; a página da Microsoft não diz o provedor dos eventos do NTFS. O MapHard lê os dois provedores (`Ntfs` e `Microsoft-Windows-Ntfs`) | Conferir num evento real |
+| Tela azul pelo 1001 e desligamento pelo 6008 | A contagem sai só do Kernel-Power 41, que tem página oficial; o 1001 do WER e o 6008 contariam a mesma queda duas vezes | Nada, se o 41 bastar nos testes do Manfred |
+| Índice de estabilidade pela API de script | O provedor de confiabilidade só entrega as propriedades do primeiro item da consulta; a leitura vai em janelas crescentes e lê o primeiro item da menor janela com resultado | Ler pela API COM do WMI, se o valor divergir do Monitor de Confiabilidade |
+| Comparação com o Visualizador de Eventos, o Monitor de Confiabilidade e o Gerenciador de Dispositivos | Feita na máquina do teste com o WMI e o `Get-WinEvent`; sem tela azul, desligamento ou dispositivo com problema reais | Teste do Manfred numa máquina com esses casos |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |

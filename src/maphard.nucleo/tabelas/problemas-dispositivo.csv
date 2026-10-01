@@ -1,0 +1,44 @@
+# Códigos de problema de dispositivo do Gerenciador de Dispositivos, definidos no Cfg.h.
+# Fonte: "Device Manager Error Messages" e a página de cada código, https://learn.microsoft.com/windows-hardware/drivers/install/device-manager-error-messages, lidas em 01/10/2026. Texto em português da MT.
+codigo;constante;texto;fonte
+1;CM_PROB_NOT_CONFIGURED;O dispositivo não está configurado corretamente.;learn.microsoft.com cm-prob-not-configured
+3;CM_PROB_OUT_OF_MEMORY;O driver pode estar corrompido, ou o sistema está com pouca memória ou recursos.;learn.microsoft.com cm-prob-out-of-memory
+9;CM_PROB_INVALID_DATA;O Windows não identifica o hardware: o número de identificação dele não é válido.;learn.microsoft.com cm-prob-invalid-data
+10;CM_PROB_FAILED_START;O dispositivo não consegue iniciar.;learn.microsoft.com cm-prob-failed-start
+12;CM_PROB_NORMAL_CONFLICT;O dispositivo não encontra recursos livres suficientes para usar.;learn.microsoft.com cm-prob-normal-conflict
+14;CM_PROB_NEED_RESTART;O dispositivo só funciona depois de reiniciar o computador.;learn.microsoft.com cm-prob-need-restart
+16;CM_PROB_PARTIAL_LOG_CONF;O Windows não identifica todos os recursos que o dispositivo usa.;learn.microsoft.com cm-prob-partial-log-conf
+18;CM_PROB_REINSTALL;É preciso reinstalar o driver do dispositivo.;learn.microsoft.com cm-prob-reinstall
+19;CM_PROB_REGISTRY;A configuração do dispositivo no registro está incompleta ou danificada.;learn.microsoft.com cm-prob-registry
+21;CM_PROB_WILL_BE_REMOVED;O Windows está removendo o dispositivo.;learn.microsoft.com cm-prob-will-be-removed
+22;CM_PROB_DISABLED;O dispositivo está desativado.;learn.microsoft.com cm-prob-disabled
+24;CM_PROB_DEVICE_NOT_THERE;O dispositivo não está presente, não funciona direito ou está sem todos os drivers instalados.;learn.microsoft.com cm-prob-device-not-there
+28;CM_PROB_FAILED_INSTALL;O driver do dispositivo não está instalado.;learn.microsoft.com cm-prob-failed-install
+29;CM_PROB_HARDWARE_DISABLED;O dispositivo está desativado porque o firmware não deu a ele os recursos necessários.;learn.microsoft.com cm-prob-hardware-disabled
+31;CM_PROB_FAILED_ADD;O Windows não consegue carregar o driver que o dispositivo precisa.;learn.microsoft.com cm-prob-failed-add
+32;CM_PROB_DISABLED_SERVICE;Um driver (serviço) do dispositivo está desativado.;learn.microsoft.com cm-prob-disabled-service
+33;CM_PROB_TRANSLATION_FAILED;O Windows não consegue saber quais recursos o dispositivo precisa.;learn.microsoft.com cm-prob-translation-failed
+34;CM_PROB_NO_SOFTCONFIG;O Windows não consegue determinar as configurações do dispositivo.;learn.microsoft.com cm-prob-no-softconfig
+35;CM_PROB_BIOS_TABLE;O firmware do computador não traz informação suficiente para configurar o dispositivo.;learn.microsoft.com cm-prob-bios-table
+36;CM_PROB_IRQ_TRANSLATION_FAILED;O dispositivo pede uma interrupção PCI, mas está configurado para uma interrupção ISA (ou o contrário).;learn.microsoft.com cm-prob-irq-translation-failed
+37;CM_PROB_FAILED_DRIVER_ENTRY;O Windows não consegue inicializar o driver do dispositivo.;learn.microsoft.com cm-prob-failed-driver-entry
+38;CM_PROB_DRIVER_FAILED_PRIOR_UNLOAD;O Windows não carrega o driver porque uma instância anterior dele ainda está na memória.;learn.microsoft.com cm-prob-driver-failed-prior-unload
+39;CM_PROB_DRIVER_FAILED_LOAD;O Windows não consegue carregar o driver. Ele pode estar corrompido ou faltando.;learn.microsoft.com cm-prob-driver-failed-load
+40;CM_PROB_DRIVER_SERVICE_KEY_INVALID;A informação do serviço do driver no registro está faltando ou errada.;learn.microsoft.com cm-prob-driver-service-key-invalid
+41;CM_PROB_LEGACY_SERVICE_NO_DEVICES;O Windows carregou o driver, mas não encontra o dispositivo.;learn.microsoft.com cm-prob-legacy-service-no-devices
+42;CM_PROB_DUPLICATE_DEVICE;Já existe um dispositivo duplicado funcionando no sistema.;learn.microsoft.com cm-prob-duplicate-device
+43;CM_PROB_FAILED_POST_START;O Windows parou o dispositivo porque ele informou problemas.;learn.microsoft.com cm-prob-failed-post-start
+44;CM_PROB_HALTED;Um programa ou serviço desligou o dispositivo.;learn.microsoft.com cm-prob-halted
+45;CM_PROB_PHANTOM;O dispositivo não está conectado ao computador agora.;learn.microsoft.com cm-prob-phantom
+46;CM_PROB_SYSTEM_SHUTDOWN;O Windows está desligando e não consegue acessar o dispositivo.;learn.microsoft.com cm-prob-system-shutdown
+47;CM_PROB_HELD_FOR_EJECT;O dispositivo foi preparado para remoção segura, mas não foi retirado.;learn.microsoft.com cm-prob-held-for-eject
+48;CM_PROB_DRIVER_BLOCKED;O software do dispositivo foi impedido de iniciar porque tem problemas conhecidos com o Windows.;learn.microsoft.com cm-prob-driver-blocked
+49;CM_PROB_REGISTRY_TOO_LARGE;O registro do sistema passou do tamanho limite e o Windows não inicia novos dispositivos.;learn.microsoft.com cm-prob-registry-too-large
+50;CM_PROB_SETPROPERTIES_FAILED;O Windows não consegue aplicar todas as propriedades do dispositivo.;learn.microsoft.com cm-prob-setproperties-failed
+51;CM_PROB_WAITING_ON_DEPENDENCY;O dispositivo está esperando outro dispositivo iniciar.;learn.microsoft.com cm-prob-waiting-on-dependency
+52;CM_PROB_UNSIGNED_DRIVER;O Windows não consegue verificar a assinatura digital do driver.;learn.microsoft.com cm-prob-unsigned-driver
+53;CM_PROB_USED_BY_DEBUGGER;O dispositivo está reservado para o depurador do kernel do Windows nesta sessão.;learn.microsoft.com cm-prob-used-by-debugger
+54;CM_PROB_DEVICE_RESET;O dispositivo falhou e está sendo reiniciado.;learn.microsoft.com cm-prob-device-reset
+55;CM_PROB_CONSOLE_LOCKED;O dispositivo fica bloqueado enquanto ninguém entra no Windows.;learn.microsoft.com cm-prob-console-locked
+56;CM_PROB_NEED_CLASS_CONFIG;O Windows ainda está preparando a configuração da classe do dispositivo.;learn.microsoft.com cm-prob-need-class-config
+57;CM_PROB_GUEST_ASSIGNMENT_FAILED;O dispositivo não pôde ser atribuído a uma partição convidada, numa máquina virtual.;learn.microsoft.com cm-prob-guest-assignment-failed

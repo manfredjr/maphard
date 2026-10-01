@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Dispositivos;
+using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
@@ -108,7 +110,14 @@ public static class ExecutorCli
             }
         }
 
-        yield return $"Placa-mãe:   {Texto(c.Placa.PlacaFabricante)} {Texto(c.Placa.PlacaModelo)}";
+        yield return $"Placa-mãe:   {Texto(c.Placa.PlacaFabricante)} {Texto(c.Placa.PlacaModelo)}, chipset {Texto(c.Placa.Chipset)}";
+        yield return $"Estabilidade: {LinhaEstabilidade(c.Estabilidade)}";
+        foreach (var motivo in RegrasEstabilidade.Estabilidade(c.Estabilidade) is { Estado: EstadoSaude.Ruim } e ? e.Motivos : [])
+        {
+            yield return $"Atenção:     {motivo}";
+        }
+
+        yield return $"Dispositivos: {LinhaDispositivos(c.Dispositivos)}";
         yield return $"BIOS:        {Texto(c.Placa.BiosVersao)} de {Texto(c.Placa.BiosData, Formatador.Data)}, {Texto(c.Placa.Firmware.Modo)}";
         yield return $"Coletado em: {Formatador.DataHora(c.ColetadoEm)}{(c.Administrador ? " como administrador" : string.Empty)}";
     }
@@ -138,6 +147,36 @@ public static class ExecutorCli
 
         return string.Join(", ", partes);
     }
+
+    /// <summary>"2 telas azuis, 1 desligamento inesperado em 30 dias; índice 6,2". Sem nada no período, "nenhum problema em 30 dias".</summary>
+    internal static string LinhaEstabilidade(SecaoEstabilidade e)
+    {
+        var indice = e.IndiceEstabilidade.FoiLido ? $"; índice {e.IndiceEstabilidade.Valor.ToString("0.0", Formatador.PtBr)}" : string.Empty;
+        if (!e.Grupos.FoiLido)
+        {
+            return $"{Texto(e.Grupos)}{indice}";
+        }
+
+        var partes = e.Grupos.Valor!.Where(g => g.Quantidade > 0).Select(g => g.Codigo switch
+        {
+            Estabilidade.TelasAzuis => Formatador.Plural(g.Quantidade, "tela azul", "telas azuis"),
+            Estabilidade.Desligamentos => Formatador.Plural(g.Quantidade, "desligamento inesperado", "desligamentos inesperados"),
+            Estabilidade.Disco => Formatador.Plural(g.Quantidade, "erro de disco", "erros de disco"),
+            Estabilidade.SistemaArquivos => Formatador.Plural(g.Quantidade, "erro do sistema de arquivos", "erros do sistema de arquivos"),
+            Estabilidade.WheaCorrigido => Formatador.Plural(g.Quantidade, "erro de hardware corrigido", "erros de hardware corrigidos"),
+            Estabilidade.WheaNaoCorrigido => Formatador.Plural(g.Quantidade, "erro de hardware não corrigido", "erros de hardware não corrigidos"),
+            _ => $"{Formatador.Numero(g.Quantidade)} {g.Titulo.ToLower(Formatador.PtBr)}",
+        }).ToList();
+        return partes.Count == 0
+            ? $"nenhum problema em {e.Dias} dias{indice}"
+            : $"{string.Join(", ", partes)} em {e.Dias} dias{indice}";
+    }
+
+    /// <summary>"1 com problema" ou "nenhum com problema".</summary>
+    internal static string LinhaDispositivos(SecaoDispositivos d) =>
+        d.ComProblema.FoiLido
+            ? d.ComProblema.Valor!.Count == 0 ? "nenhum com problema" : $"{Formatador.Numero(d.ComProblema.Valor.Count)} com problema: {string.Join("; ", d.ComProblema.Valor.Select(p => $"{p.Nome.Valor ?? "sem nome"} (código {p.Codigo})"))}"
+            : Texto(d.ComProblema);
 
     /// <summary>"16 GB DDR4-3200, 2 de 4 slots". O que não foi lido sai com o texto do estado.</summary>
     internal static string LinhaMemoria(SecaoMemoria m)

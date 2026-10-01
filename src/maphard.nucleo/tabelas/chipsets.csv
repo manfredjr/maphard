@@ -1,0 +1,496 @@
+# Dispositivos PCI que identificam o chipset: ponte do processador, LPC, eSPI e ponte ISA. Gerada por ferramentas\gerar-chipsets.ps1.
+# Fonte: pci.ids versao 2026.10.01, https://raw.githubusercontent.com/pciutils/pciids/master/pci.ids. Distribuido pela GPL-2.0 ou posterior, ou pela licenca BSD de 3 clausulas.
+fabricante;dispositivo;nome;fonte
+1022;13E2;Ariel PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;13E4;Ariel PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;13E8;Ariel LPC Bridge;pci.ids 2026.10.01
+1022;1438;Liverpool UMI PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;1452;Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;1482;Starship/Matisse PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;149F;Genoa/Bergamo Dummy Host Bridge;pci.ids 2026.10.01
+1022;14B7;Family 17h-19h PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;14DA;Raphael/Granite Ridge Dummy Host Bridge;pci.ids 2026.10.01
+1022;14EA;Phoenix Dummy Host Bridge;pci.ids 2026.10.01
+1022;1509;Strix/Strix Halo Dummy Host Bridge;pci.ids 2026.10.01
+1022;153D;Turin PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;1548;Kryptos/Cato/Garfield/Garfield+/Arlene/Pooky UMI PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;156B;Family 16h (Models 30h-3fh) Host Bridge;pci.ids 2026.10.01
+1022;157B;Family 15h (Models 60h-6fh) Host Bridge;pci.ids 2026.10.01
+1022;157D;Carrizo Audio Dummy Host Bridge;pci.ids 2026.10.01
+1022;1599;Amur/Nolan PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;15D2;Raven/Raven2 PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;15DA;Raven/Raven2 PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;15FA;FireFlight PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;15FC;FireFlight PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;1628;Arden PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;1632;Renoir PCIe Dummy Host Bridge;pci.ids 2026.10.01
+1022;2080;CS5536 [Geode companion] Host Bridge;pci.ids 2026.10.01
+1022;7468;AMD-8111 LPC;pci.ids 2026.10.01
+1022;780E;FCH LPC Bridge;pci.ids 2026.10.01
+1022;790E;FCH LPC Bridge;pci.ids 2026.10.01
+1022;9600;RS780 Host Bridge;pci.ids 2026.10.01
+1022;9601;RS880 Host Bridge;pci.ids 2026.10.01
+8086;0284;400 Series Chipset Family On-Package PCH-LP Prem-U LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0285;400 Series Chipset Family On-Package PCH-LP Mainstream/Base U LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0482;82375EB/SB PCI to EISA Bridge;pci.ids 2026.10.01
+8086;0484;82378ZB/IB, 82379AB (SIO, SIO.A) PCI to ISA Bridge;pci.ids 2026.10.01
+8086;0486;82425EX/ZX [Aries] PCIset with ISA bridge;pci.ids 2026.10.01
+8086;0684;H470 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0685;Z490 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0687;Q470 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;068C;QM480 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;068D;HM470 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;068E;WM490 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0697;W480 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;0958;Quark SoC X1000 Host Bridge;pci.ids 2026.10.01
+8086;1130;82815 815 Chipset Host Bridge and Memory Controller Hub;pci.ids 2026.10.01
+8086;123C;82380AB (MISA) Mobile PCI-to-ISA Bridge;pci.ids 2026.10.01
+8086;1600;Broadwell-U Host Bridge -OPI;pci.ids 2026.10.01
+8086;1604;Broadwell-U Host Bridge -OPI;pci.ids 2026.10.01
+8086;1608;Broadwell-U Host Bridge -OPI;pci.ids 2026.10.01
+8086;1610;Broadwell-U Host Bridge - DMI;pci.ids 2026.10.01
+8086;1614;Broadwell-U Host Bridge - DMI;pci.ids 2026.10.01
+8086;1618;Broadwell-U Host Bridge - DMI;pci.ids 2026.10.01
+8086;1900;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;1904;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;1908;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;190C;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;190F;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;1910;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;1918;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;191F;Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;19DC;Atom Processor C3000 Series LPC or eSPI;pci.ids 2026.10.01
+8086;1A21;82840 840 [Carmel] Chipset Host Bridge (Hub A);pci.ids 2026.10.01
+8086;1A30;82845 845 [Brookdale] Chipset Host Bridge;pci.ids 2026.10.01
+8086;1B81;C740 Series (Emmitsburg) Chipsets eSPI Controller;pci.ids 2026.10.01
+8086;1C40;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C41;Mobile SFF 6 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C42;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C43;Mobile 6 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C44;Z68 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C45;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C46;P67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C47;UM67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C48;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C49;HM65 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4A;H67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4B;HM67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4C;Q65 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4D;QS67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4E;Q67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C4F;QM67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C50;B65 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C51;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C52;C202 Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C53;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C54;C204 Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C55;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C56;C206 Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C57;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C58;Upgraded B65 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C59;Upgraded HM67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C5A;Upgraded Q67 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C5B;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C5C;H61 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1C5D;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C5E;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1C5F;6 Series/C200 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1D40;C600/X79 series chipset LPC Controller;pci.ids 2026.10.01
+8086;1D41;C600/X79 series chipset LPC Controller;pci.ids 2026.10.01
+8086;1E41;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E42;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E43;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E44;Z77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E45;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E46;Z75 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E47;Q77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E48;Q75 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E49;B75 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E4A;H77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E4B;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E4C;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E4D;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E4E;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E4F;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E50;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E51;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E52;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E53;C216 Series Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E54;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E55;QM77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E56;QS77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E57;HM77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E58;UM77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E59;HM76 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E5A;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E5B;UM77 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E5C;7 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;1E5D;HM75 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E5E;HM70 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;1E5F;NM70 Express Chipset LPC Controller;pci.ids 2026.10.01
+8086;2310;DH89xxCC LPC Controller;pci.ids 2026.10.01
+8086;2390;DH895XCC Series LPC Controller;pci.ids 2026.10.01
+8086;2410;82801AA ISA Bridge (LPC);pci.ids 2026.10.01
+8086;2420;82801AB ISA Bridge (LPC);pci.ids 2026.10.01
+8086;2440;82801BA ISA Bridge (LPC);pci.ids 2026.10.01
+8086;244C;82801BAM ISA Bridge (LPC);pci.ids 2026.10.01
+8086;2450;82801E ISA Bridge (LPC);pci.ids 2026.10.01
+8086;2480;82801CA LPC Interface Controller;pci.ids 2026.10.01
+8086;248C;82801CAM ISA Bridge (LPC);pci.ids 2026.10.01
+8086;24C0;82801DB/DBL (ICH4/ICH4-L) LPC Interface Bridge;pci.ids 2026.10.01
+8086;24CC;82801DBM (ICH4-M) LPC Interface Bridge;pci.ids 2026.10.01
+8086;24D0;82801EB/ER (ICH5/ICH5R) LPC Interface Bridge;pci.ids 2026.10.01
+8086;24DC;82801EB (ICH5) LPC Interface Bridge;pci.ids 2026.10.01
+8086;2500;82820 820 (Camino) Chipset Host Bridge (MCH);pci.ids 2026.10.01
+8086;2501;82820 820 (Camino) Chipset Host Bridge (MCH);pci.ids 2026.10.01
+8086;250B;82820 820 (Camino) Chipset Host Bridge;pci.ids 2026.10.01
+8086;2530;82850 850 (Tehama) Chipset Host Bridge (MCH);pci.ids 2026.10.01
+8086;2531;82860 860 (Wombat) Chipset Host Bridge (MCH);pci.ids 2026.10.01
+8086;25A1;6300ESB LPC Interface Controller;pci.ids 2026.10.01
+8086;2640;82801FB/FR (ICH6/ICH6R) LPC Interface Bridge;pci.ids 2026.10.01
+8086;2641;82801FBM (ICH6M) LPC Interface Bridge;pci.ids 2026.10.01
+8086;2642;82801FW/FRW (ICH6W/ICH6RW) LPC Interface Bridge;pci.ids 2026.10.01
+8086;2670;631xESB/632xESB/3100 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;27B0;82801GH (ICH7DH) LPC Interface Bridge;pci.ids 2026.10.01
+8086;27B8;82801GB/GR (ICH7 Family) LPC Interface Bridge;pci.ids 2026.10.01
+8086;27B9;82801GBM (ICH7-M) LPC Interface Bridge;pci.ids 2026.10.01
+8086;27BC;NM10 Family LPC Controller;pci.ids 2026.10.01
+8086;27BD;82801GHM (ICH7-M DH) LPC Interface Bridge;pci.ids 2026.10.01
+8086;2810;82801HB/HR (ICH8/R) LPC Interface Controller;pci.ids 2026.10.01
+8086;2811;82801HEM (ICH8M-E) LPC Interface Controller;pci.ids 2026.10.01
+8086;2812;82801HH (ICH8DH) LPC Interface Controller;pci.ids 2026.10.01
+8086;2814;82801HO (ICH8DO) LPC Interface Controller;pci.ids 2026.10.01
+8086;2815;82801HM (ICH8M) LPC Interface Controller;pci.ids 2026.10.01
+8086;2912;82801IH (ICH9DH) LPC Interface Controller;pci.ids 2026.10.01
+8086;2914;82801IO (ICH9DO) LPC Interface Controller;pci.ids 2026.10.01
+8086;2916;82801IR (ICH9R) LPC Interface Controller;pci.ids 2026.10.01
+8086;2917;ICH9M-E LPC Interface Controller;pci.ids 2026.10.01
+8086;2918;82801IB (ICH9) LPC Interface Controller;pci.ids 2026.10.01
+8086;2919;ICH9M LPC Interface Controller;pci.ids 2026.10.01
+8086;31E8;Celeron/Pentium Silver Processor LPC Controller;pci.ids 2026.10.01
+8086;31F0;Gemini Lake Host Bridge;pci.ids 2026.10.01
+8086;3482;Ice Lake-LP LPC Controller;pci.ids 2026.10.01
+8086;3575;82830M/MG/MP Host Bridge;pci.ids 2026.10.01
+8086;3578;82830M/MG/MP Host Bridge;pci.ids 2026.10.01
+8086;3882;Ice Lake LPC Controller;pci.ids 2026.10.01
+8086;3A14;82801JDO (ICH10DO) LPC Interface Controller;pci.ids 2026.10.01
+8086;3A16;82801JIR (ICH10R) LPC Interface Controller;pci.ids 2026.10.01
+8086;3A18;82801JIB (ICH10) LPC Interface Controller;pci.ids 2026.10.01
+8086;3A1A;82801JD (ICH10D) LPC Interface Controller;pci.ids 2026.10.01
+8086;3B00;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B01;Mobile 5 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B02;P55 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B03;PM55 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B04;5 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B05;Mobile 5 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B06;H55 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B07;QM57 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B08;H57 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B09;HM55 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0A;Q57 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0B;HM57 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0C;5 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0D;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0E;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B0F;QS57 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B10;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B11;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B12;3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B13;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B14;3420 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B15;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B16;3450 Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B17;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B18;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B19;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1A;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1B;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1C;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1D;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1E;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3B1F;5 Series/3400 Series Chipset LPC Interface Controller;pci.ids 2026.10.01
+8086;3E10;8th Gen Core 4-core Processor Host Bridge/DRAM Registers [Coffee Lake H];pci.ids 2026.10.01
+8086;3E18;8th Gen Core 4-core Workstation Processor Host Bridge/DRAM Registers [Coffee Lake S];pci.ids 2026.10.01
+8086;3E1F;8th Gen Core 4-core Desktop Processor Host Bridge/DRAM Registers [Coffee Lake S];pci.ids 2026.10.01
+8086;3E20;i9 Core / Xeon E 2200M Coffee Lake Host Bridge / DRAM Registers;pci.ids 2026.10.01
+8086;3E30;8th/9th Gen Core 8-core Desktop Processor Host Bridge/DRAM Registers [Coffee Lake S];pci.ids 2026.10.01
+8086;3E33;8th/9th Gen Core Processor Host Bridge/DRAM Registers [Coffee Lake];pci.ids 2026.10.01
+8086;3E35;Coffee Lake Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;3EC2;8th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;3EC4;8th/9th Gen Core Processor Host Bridge / DRAM Registers;pci.ids 2026.10.01
+8086;3EC6;8th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;3ECA;8th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;3ED0;8th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4114;Atom Processor E6xx PCI Host Bridge #1;pci.ids 2026.10.01
+8086;4115;Atom Processor E6xx PCI Host Bridge #2;pci.ids 2026.10.01
+8086;4116;Atom Processor E6xx PCI Host Bridge #3;pci.ids 2026.10.01
+8086;4117;Atom Processor E6xx PCI Host Bridge #4;pci.ids 2026.10.01
+8086;4384;Q570 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4385;Z590 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4386;H570 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4387;B560 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4388;H510 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4389;WM590 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;438A;QM580 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;438B;HM570 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;438C;C252 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;438D;C256 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;438E;H310D LPC/eSPI Controller;pci.ids 2026.10.01
+8086;438F;W580 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;4390;RM590E LPC/eSPI Controller;pci.ids 2026.10.01
+8086;4391;R580E LPC/eSPI Controller;pci.ids 2026.10.01
+8086;4619;Core i9/i7/i5/i3 Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;461B;Alder Lake-N Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;461C;Alder Lake-N Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4629;12th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4641;12th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4650;12th Gen Core Processor Host Bridge;pci.ids 2026.10.01
+8086;4660;12th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4668;12th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;4B00;Elkhart Lake eSPI Controller;pci.ids 2026.10.01
+8086;4D87;Jasper Lake eSPI Controller;pci.ids 2026.10.01
+8086;5031;EP80579 LPC Bus;pci.ids 2026.10.01
+8086;5181;Alder Lake PCH-P LPC/eSPI Controller;pci.ids 2026.10.01
+8086;5182;Alder Lake PCH eSPI Controller;pci.ids 2026.10.01
+8086;5187;Alder Lake LPC Controller;pci.ids 2026.10.01
+8086;519D;Raptor Lake LPC/eSPI Controller;pci.ids 2026.10.01
+8086;5481;Alder Lake-N PCH eSPI Controller;pci.ids 2026.10.01
+8086;5795;Xeon 6900 6700 6500 Series with P-Cores Processors eSPI;pci.ids 2026.10.01
+8086;5900;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;5904;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;590C;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;590F;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;5910;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;5914;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;5918;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;591F;Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;5AF0;Celeron N3350/Pentium N4200/Atom E3900 Series Host Bridge;pci.ids 2026.10.01
+8086;6400;Core Ultra 200V Series Processors with 4 P-Cores 4 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7180;440LX/EX - 82443LX/EX Host bridge;pci.ids 2026.10.01
+8086;7190;440BX/ZX/DX - 82443BX/ZX/DX Host bridge;pci.ids 2026.10.01
+8086;7192;440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled);pci.ids 2026.10.01
+8086;7194;82440MX Host Bridge;pci.ids 2026.10.01
+8086;7198;82440MX ISA Bridge;pci.ids 2026.10.01
+8086;71A0;440GX - 82443GX Host bridge;pci.ids 2026.10.01
+8086;71A2;440GX - 82443GX Host bridge (AGP disabled);pci.ids 2026.10.01
+8086;7202;Core Ultra 200H Series Processors eSPI Controller;pci.ids 2026.10.01
+8086;7203;Core Ultra 200V Series Processors eSPI Controller;pci.ids 2026.10.01
+8086;7702;Arrow Lake-H eSPI Controller;pci.ids 2026.10.01
+8086;7730;Arrow Lake-H [LPC/eSPI Controller];pci.ids 2026.10.01
+8086;7A04;Z790 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A05;H770 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A06;B760 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A0C;HM770 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A0D;WM790 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;7A13;C266 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A14;C262 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A83;Q670 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A84;Z690 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A85;H670 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A86;B660 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A87;H610 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A88;W680 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A8A;W790 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A8C;HM670 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7A8D;WM690 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7D01;Meteor Lake-H 6p+8e cores Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;7D06;Core Ultra 200H Series Processors with 6 P-Cores 8 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D1A;Core Ultra 200S/200S-Plus Series Processors with 8 P-Cores 16 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D1B;Core Ultra 200S Series Processors with 8 P-Cores 12 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D1C;Core Ultra 200HX/HX-Plus Series Processors with 8 P-Cores 16 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D29;Core Ultra 200S-Plus Series Processors with 6 P-Cores 12 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D2A;Core Ultra 200S Series Processors with 6 P-Cores 8 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D2D;Core Ultra 200HX/HX-Plus Series Processors with 8 P-Cores 12 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D2F;Core Ultra 200HX Series Processors with 6 P-Cores 8 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D30;Core Ultra 200U Series Processors with 2 P-Cores 8 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7D35;Core Ultra 200S Series Processors with 6 P-Cores 4 E-Cores Host Bridge;pci.ids 2026.10.01
+8086;7E01;Meteor Lake-P LPC/eSPI Controller;pci.ids 2026.10.01
+8086;7E02;Meteor Lake-H eSPI Controller;pci.ids 2026.10.01
+8086;7F03;Q870 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F04;Z890 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F06;B860 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F07;H810 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F08;W880 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F0C;HM870 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;7F0D;WM880 Chipset eSPI Controller;pci.ids 2026.10.01
+8086;8100;US15W/US15X SCH [Poulsbo] Host Bridge;pci.ids 2026.10.01
+8086;8101;US15L/UL11L SCH [Poulsbo] Host Bridge;pci.ids 2026.10.01
+8086;8119;US15W/US15X/US15L/UL11L SCH [Poulsbo] LPC Bridge;pci.ids 2026.10.01
+8086;8186;Atom Processor E6xx LPC Bridge;pci.ids 2026.10.01
+8086;8A12;Ice Lake-LP Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;8A14;Ice Lake Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;8C40;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C41;8 Series Chipset Family Mobile Super SKU LPC Controller;pci.ids 2026.10.01
+8086;8C42;8 Series/C220 Series Chipset Family Desktop Super SKU LPC Controller;pci.ids 2026.10.01
+8086;8C43;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C44;Z87 Express LPC Controller;pci.ids 2026.10.01
+8086;8C45;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C46;Z85 Express LPC Controller;pci.ids 2026.10.01
+8086;8C47;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C48;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C49;HM86 Express LPC Controller;pci.ids 2026.10.01
+8086;8C4A;H87 Express LPC Controller;pci.ids 2026.10.01
+8086;8C4B;HM87 Express LPC Controller;pci.ids 2026.10.01
+8086;8C4C;Q85 Express LPC Controller;pci.ids 2026.10.01
+8086;8C4D;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C4E;Q87 Express LPC Controller;pci.ids 2026.10.01
+8086;8C4F;QM87 Express LPC Controller;pci.ids 2026.10.01
+8086;8C50;B85 Express LPC Controller;pci.ids 2026.10.01
+8086;8C51;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C52;C222 Series Chipset Family Server Essential SKU LPC Controller;pci.ids 2026.10.01
+8086;8C53;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C54;C224 Series Chipset Family Server Standard SKU LPC Controller;pci.ids 2026.10.01
+8086;8C55;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C56;C226 Series Chipset Family Server Advanced SKU LPC Controller;pci.ids 2026.10.01
+8086;8C57;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C58;8 Series/C220 Series Chipset Family WS SKU LPC Controller;pci.ids 2026.10.01
+8086;8C59;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C5A;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C5B;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C5C;H81 Express LPC Controller;pci.ids 2026.10.01
+8086;8C5D;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C5E;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8C5F;8 Series/C220 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8CC1;9 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8CC2;9 Series Chipset Family LPC Controller;pci.ids 2026.10.01
+8086;8CC3;HM97 Chipset LPC Controller;pci.ids 2026.10.01
+8086;8CC4;Z97 Chipset LPC Controller;pci.ids 2026.10.01
+8086;8CC5;QM97 Chipset LPC Controller;pci.ids 2026.10.01
+8086;8CC6;H97 Chipset LPC Controller;pci.ids 2026.10.01
+8086;8D40;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D41;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D42;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D43;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D44;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D45;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D46;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D47;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D48;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D49;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4A;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4B;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4C;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4D;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4E;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;8D4F;C610/X99 series chipset LPC Controller;pci.ids 2026.10.01
+8086;9A02;Tiger Lake-UP4 2 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9A04;Tiger Lake-UP3 2 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9A12;Tiger Lake-UP4 4 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9A14;Tiger Lake-UP3/H35 4 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9A26;Tiger Lake-H 6 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9A36;Tiger Lake-H 8 cores Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B33;Comet Lake-S 6c Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;9B43;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B44;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B51;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B53;Comet Lake-S 6c Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;9B54;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B61;Comet Lake-U v1 4c Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;9B63;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9B64;10th Gen Core Processor Host Bridge/DRAM Registers;pci.ids 2026.10.01
+8086;9C40;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C41;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C42;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C43;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C44;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C45;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C46;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9C47;8 Series LPC Controller;pci.ids 2026.10.01
+8086;9CC1;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC2;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC3;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC5;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC6;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC7;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9CC9;Wildcat Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9D43;Sunrise Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9D46;LPC/eSPI Controller;pci.ids 2026.10.01
+8086;9D48;Sunrise Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9D4E;Sunrise Point LPC/eSPI Controller;pci.ids 2026.10.01
+8086;9D50;Sunrise Point LPC Controller;pci.ids 2026.10.01
+8086;9D56;Sunrise Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9D58;Sunrise Point-LP LPC Controller;pci.ids 2026.10.01
+8086;9D84;Cannon Point-LP LPC Controller;pci.ids 2026.10.01
+8086;A082;500 Series Chipset Family On-Package eSPI Controller;pci.ids 2026.10.01
+8086;A140;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A141;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A142;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A143;H110 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A144;H170 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A145;Z170 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A146;Q170 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A147;Q150 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A148;B150 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A149;C236 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A14A;C232 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A14B;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A14C;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A14D;QM170 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A14E;HM170 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A14F;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A150;CM236 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A151;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A152;HM175 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A153;QM175 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A154;CM238 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A155;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A156;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A157;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A158;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A159;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15A;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15B;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15C;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15D;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15E;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A15F;Sunrise Point-H LPC Controller;pci.ids 2026.10.01
+8086;A1C1;C621 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C2;C622 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C3;C624 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C4;C625 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C5;C626 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C6;C627 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1C7;C628 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A1CA;C629 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A242;C624 Chipset (Super) LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A243;C627 Chipset (Super) LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A244;C621 Chipset (Super) LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A245;C627 Chipset (Super) LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A246;C628 Chipset (Super) LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C4;H270 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C5;Z270 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C6;Q270 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C7;Q250 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C8;B250 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2C9;Z370 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2D2;X299 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A2D3;C422 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A303;H310 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A304;H370 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A305;Z390 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A306;Q370 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A307;Q360 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A308;B360 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A309;C246 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A30A;C242 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A30C;QM370 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A30D;HM370 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A30E;CM246 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A313;Cannon Lake LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A3C8;B460 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A3DA;H410 Chipset LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A700;Raptor Lake-S Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A703;Raptor Lake-S Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A706;Raptor Lake-P 6p+8e cores Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A707;Raptor Lake-P/U 4p+8e cores Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A708;Raptor Lake-P/U 2p+8e cores Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A740;Raptor Lake-S 8+12 - Host Bridge/DRAM Controller;pci.ids 2026.10.01
+8086;A806;Lunar Lake-M LPC/eSPI Controller;pci.ids 2026.10.01
+8086;A807;Core Ultra 200V Series Processors eSPI Controller;pci.ids 2026.10.01
+8086;AE10;Arrow Lake-HX Direct eSPI Controller;pci.ids 2026.10.01
+8086;E300;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01
+8086;E302;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01
+8086;E31F;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01
+8086;E400;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01
+8086;E402;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01
+8086;E41F;Core Ultra Processors (Series 3) eSPI;pci.ids 2026.10.01

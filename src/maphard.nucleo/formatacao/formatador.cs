@@ -59,6 +59,23 @@ public static class Formatador
     public static string Horas(long horas) =>
         horas < 24 ? Plural(horas, "hora", "horas") : $"{Plural(horas, "hora", "horas")}, {Plural(horas / 24, "dia", "dias")}";
 
+    /// <summary>"3 dias e 4 horas", "5 horas e 12 minutos", "8 minutos": as duas maiores unidades.</summary>
+    public static string Duracao(TimeSpan duracao)
+    {
+        var dias = (long)duracao.TotalDays;
+        if (dias > 0)
+        {
+            return duracao.Hours > 0 ? $"{Plural(dias, "dia", "dias")} e {Plural(duracao.Hours, "hora", "horas")}" : Plural(dias, "dia", "dias");
+        }
+
+        if (duracao.Hours > 0)
+        {
+            return duracao.Minutes > 0 ? $"{Plural(duracao.Hours, "hora", "horas")} e {Plural(duracao.Minutes, "minuto", "minutos")}" : Plural(duracao.Hours, "hora", "horas");
+        }
+
+        return Plural(duracao.Minutes, "minuto", "minutos");
+    }
+
     /// <summary>"38,2 TB gravados".</summary>
     public static string Gravados(decimal bytes) => $"{BytesDecimais(bytes)} gravados";
 

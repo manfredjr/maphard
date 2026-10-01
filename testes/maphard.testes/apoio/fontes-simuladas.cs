@@ -75,6 +75,40 @@ internal static class FontesSimuladas
         ];
     }
 
+    /// <summary>Eventos do log Sistema em XML montado à mão. Sem lista, nenhum evento no período.</summary>
+    internal sealed class Eventos(params (string Xml, string? Mensagem)[] eventos) : MapHard.Nucleo.Eventos.IFonteEventos
+    {
+        public List<int> DiasPedidos { get; } = [];
+
+        public IReadOnlyList<(string Xml, string? Mensagem)> Ler(IReadOnlyList<MapHard.Nucleo.Eventos.FiltroEvento> filtros, int dias, int limite)
+        {
+            DiasPedidos.Add(dias);
+            return eventos;
+        }
+    }
+
+    internal sealed class Sistema : MapHard.Nucleo.Eventos.IFonteSistema
+    {
+        public double? IndiceEstabilidade() => 8.66;
+
+        public long? MilissegundosLigado() => 93_600_000;
+
+        public DateTimeOffset? UltimoBoot() => new DateTimeOffset(2026, 9, 29, 7, 30, 0, TimeSpan.FromHours(-3));
+
+        public DateTimeOffset? InstalacaoWindows() => new DateTimeOffset(2024, 3, 2, 10, 0, 0, TimeSpan.FromHours(-3));
+    }
+
+    /// <summary>Um controlador eSPI que está na tabela de chipsets, um dispositivo normal e um sem driver.</summary>
+    internal sealed class Dispositivos(params MapHard.Nucleo.Dispositivos.DispositivoBruto[] extras) : MapHard.Nucleo.Dispositivos.IFonteDispositivos
+    {
+        public IReadOnlyList<MapHard.Nucleo.Dispositivos.DispositivoBruto> Ler() =>
+        [
+            new("Controlador eSPI Exemplo", "System", [@"PCI\VEN_8086&DEV_5182&SUBSYS_00000000&REV_01", @"PCI\VEN_8086&DEV_5182&CC_0601"], 0, "1.0"),
+            new("Teclado Exemplo", "Keyboard", [@"HID\VID_0000&PID_0000"], 0, "1.0"),
+            .. extras,
+        ];
+    }
+
     internal sealed class Registro : IFonteRegistro
     {
         private readonly Dictionary<(string, string), object> _valores = new()
@@ -137,7 +171,9 @@ internal static class FontesSimuladas
         IFonteTopologia? topologia = null,
         IFonteClocks? clocks = null,
         IFonteMemoria? memoria = null,
-        IFonteDiscos? discos = null) => new(
+        IFonteDiscos? discos = null,
+        MapHard.Nucleo.Eventos.IFonteEventos? eventos = null,
+        MapHard.Nucleo.Dispositivos.IFonteDispositivos? dispositivos = null) => new(
         smbios ?? new Smbios(() => TabelaSmbios()),
         cpuid ?? Cpuid(),
         topologia ?? new Topologia(TabelaTopologia),
@@ -147,5 +183,8 @@ internal static class FontesSimuladas
         () => "ESTACAO-TESTE",
         memoria ?? new Memoria(),
         discos ?? new DiscosSimulados(),
+        eventos ?? new Eventos(),
+        new Sistema(),
+        dispositivos ?? new Dispositivos(),
         () => false);
 }

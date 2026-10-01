@@ -25,7 +25,16 @@ public partial class JanelaPrincipal : Window
         }
 
         _painel.PropertyChanged += AoMudarPainel;
+        PeriodoEventos.SelectedItem = _painel.DiasEventos;
         Loaded += async (_, _) => await _painel.AtualizarAsync();
+    }
+
+    private async void AoEscolherPeriodo(object sender, SelectionChangedEventArgs e)
+    {
+        if (IsLoaded && PeriodoEventos.SelectedItem is int dias)
+        {
+            await _painel.AlterarDiasAsync(dias);
+        }
     }
 
     /// <summary>

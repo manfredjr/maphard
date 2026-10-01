@@ -2,6 +2,8 @@ using System.Reflection;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Discos;
+using MapHard.Nucleo.Dispositivos;
+using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Memoria;
@@ -23,6 +25,9 @@ public sealed class Coletor
     private readonly TabelaProcessadores _tabela;
     private readonly FabricantesMemoria _fabricantesMemoria;
     private readonly AtributosSmart _atributosSmart;
+    private readonly int _diasEventos;
+    private readonly ProblemasDispositivo _problemas;
+    private readonly TabelaChipsets _chipsets;
     private readonly Func<DateTimeOffset> _agora;
 
     public Coletor(
@@ -31,13 +36,19 @@ public sealed class Coletor
         TabelaProcessadores? tabela = null,
         Func<DateTimeOffset>? agora = null,
         FabricantesMemoria? fabricantesMemoria = null,
-        AtributosSmart? atributosSmart = null)
+        AtributosSmart? atributosSmart = null,
+        int diasEventos = 30,
+        ProblemasDispositivo? problemasDispositivo = null,
+        TabelaChipsets? chipsets = null)
     {
         _fontes = fontes;
         _tempoLimite = tempoLimitePorFonte;
         _tabela = tabela ?? TabelaProcessadores.Embutida;
         _fabricantesMemoria = fabricantesMemoria ?? FabricantesMemoria.Embutida;
         _atributosSmart = atributosSmart ?? AtributosSmart.Embutida;
+        _diasEventos = diasEventos;
+        _problemas = problemasDispositivo ?? ProblemasDispositivo.Embutida;
+        _chipsets = chipsets ?? TabelaChipsets.Embutida;
         _agora = agora ?? (() => DateTimeOffset.Now);
     }
 
@@ -65,7 +76,8 @@ public sealed class Coletor
         var estadoMemoria = Ler(_fontes.Memoria.Estado, cancelar);
         var administrador = Ler(_fontes.Administrador, cancelar);
         var discosBrutos = Ler(_fontes.Discos.Discos, cancelar);
-        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador, discosBrutos).ConfigureAwait(false);
+        var dispositivos = Ler(_fontes.Dispositivos.Ler, cancelar);
+        await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador, discosBrutos, dispositivos).ConfigureAwait(false);
 
         andamento?.Report("medindo clock e uso, lendo os discos...");
         var tabelaSmbios = smbios.Result;
@@ -74,11 +86,17 @@ public sealed class Coletor
 
         // Os discos correm junto com a amostra de 1 segundo dos clocks. Cada disco tem o próprio tempo limite.
         var discos = LerDiscos(discosBrutos.Result, administrador.Result.Valor, cancelar);
+        var eventos = Ler(() => _fontes.Eventos.Ler(Estabilidade.Filtros, _diasEventos, Estabilidade.LimitePorConsulta).Select(e => LeitorEvento.Interpretar(e.Xml, e.Mensagem)).OfType<EventoSistema>().ToList(), cancelar);
+        var sistema = Ler(() => LeiturasSistema.De(_fontes.Sistema), cancelar);
         var clocks = await Ler(
             () => CalculoClocks.Montar(id.Valor?.ClockBaseMhz, id.Valor?.ClockMaximoMhz, cpuSmbios?.ClockMaximoMhz, _fontes.Clocks),
             cancelar,
             tempoLimite: _tempoLimite + TimeSpan.FromSeconds(1)).ConfigureAwait(false);
         var secaoDiscos = await discos.ConfigureAwait(false);
+        await Task.WhenAll(eventos, sistema).ConfigureAwait(false);
+        var estabilidade = Estabilidade.Montar(_diasEventos, eventos.Result.Valor, eventos.Result.Falha, sistema.Result.Valor, sistema.Result.Falha);
+        var secaoDispositivos = Problemas.Montar(dispositivos.Result.Valor, dispositivos.Result.Falha, _problemas);
+        var chipset = dispositivos.Result.Valor is { } lista ? _chipsets.Identificar(lista) : Campo<string>.Erro(FonteDado.Windows, dispositivos.Result.Falha ?? "lista de dispositivos indisponível");
 
         var dadosFirmware = OcultoPeloHipervisor(firmware.Result.Valor ?? FirmwareEmErro(firmware.Result.Falha!), id.Valor);
         var dadosWindows = windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!);
@@ -93,7 +111,7 @@ public sealed class Coletor
                 estadoMemoria.Result.Valor,
                 estadoMemoria.Result.Falha),
             _fabricantesMemoria);
-        var placa = MontarPlaca(tabelaSmbios, dadosFirmware, id.Valor);
+        var placa = MontarPlaca(tabelaSmbios, dadosFirmware, id.Valor, chipset);
         var identificacao = MontarIdentificacao(computador.Result, memoria, secaoDiscos, placa, processador, dadosWindows);
 
         andamento?.Report("coleta concluída");
@@ -107,7 +125,9 @@ public sealed class Coletor
             processador,
             memoria,
             secaoDiscos,
-            placa);
+            placa,
+            estabilidade,
+            secaoDispositivos);
     }
 
     /// <summary>
@@ -245,7 +265,7 @@ public sealed class Coletor
             id is null ? DoCpuid<string>(_ => null).Mapear(_ => false) : Campo<bool>.Lido(id.HipervisorPresente, FonteDado.Cpuid));
     }
 
-    private static SecaoPlaca MontarPlaca(Leitura<TabelaSmbios?> smbios, DadosFirmware firmware, IdentidadeCpu? id)
+    private static SecaoPlaca MontarPlaca(Leitura<TabelaSmbios?> smbios, DadosFirmware firmware, IdentidadeCpu? id, Campo<string> chipset)
     {
         var tabela = smbios.Valor;
         var placa = tabela is null ? null : PlacaSmbios.De(tabela);
@@ -267,6 +287,7 @@ public sealed class Coletor
             TextoSmbios(smbios, _ => placa?.Produto),
             TextoSmbios(smbios, _ => placa?.Versao),
             TextoSmbios(smbios, _ => placa?.NumeroSerie),
+            chipset,
             TextoSmbios(smbios, _ => sistema?.Fabricante),
             TextoSmbios(smbios, _ => sistema?.Produto),
             TextoSmbios(smbios, _ => sistema?.Familia),

@@ -18,6 +18,7 @@ public sealed class ArgumentosCli
           maphard                              abre a janela
           maphard coletar                      mostra o resumo da máquina
           maphard coletar --json [arquivo]     grava a coleta completa em JSON
+          maphard coletar --dias 90            conta os eventos de estabilidade dos últimos 90 dias (padrão: 30)
           maphard --demonstracao               abre a janela com dados fictícios
           maphard --elevado                    abre a janela já como administrador (usado pelo botão "Ler como administrador")
           maphard --ajuda                      mostra esta ajuda
@@ -44,6 +45,9 @@ public sealed class ArgumentosCli
 
     /// <summary>A janela foi reaberta pelo botão "Ler como administrador". O pedido de elevação é do Windows; o argumento só marca a origem.</summary>
     public bool Elevado { get; private set; }
+
+    /// <summary>Período dos eventos de estabilidade: 30 (padrão) ou 90 dias, como pede o R27.</summary>
+    public int Dias { get; private set; } = 30;
 
     public List<string> Erros { get; } = [];
 
@@ -77,6 +81,18 @@ public sealed class ArgumentosCli
                     break;
                 case "--elevado":
                     a.Elevado = true;
+                    break;
+                case "--dias":
+                    if (i + 1 < args.Count && int.TryParse(args[i + 1], System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var dias) && dias is 30 or 90)
+                    {
+                        a.Dias = dias;
+                        i++;
+                    }
+                    else
+                    {
+                        a.Erros.Add("Use --dias 30 ou --dias 90.");
+                    }
+
                     break;
                 case "--json":
                     jsonRepetido |= a.GravarJson;
