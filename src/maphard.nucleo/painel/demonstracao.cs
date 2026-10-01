@@ -1,6 +1,7 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Firmware;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 using MapHard.Nucleo.Windows;
 
@@ -74,13 +75,17 @@ public static class DadosDemonstracao
             Campo<DateOnly>.Lido(new DateOnly(2021, 3, 15), D),
             firmware);
 
+        var memoria = Memoria();
+
         var identificacao = new Identificacao(
             Texto("ESTACAO-EXEMPLO"),
             Texto("Fabricante Exemplo"),
             Texto("Modelo Exemplo"),
             Texto("SERIE-TESTE-0001"),
             processador.Nome,
-            Campo<long>.Lido(16L * 1024 * 1024 * 1024, D),
+            memoria.Instalada,
+            memoria.Tipo,
+            memoria.Utilizavel,
             windows);
 
         return new ColetaMaquina(
@@ -91,7 +96,55 @@ public static class DadosDemonstracao
             false,
             identificacao,
             processador,
+            memoria,
             placa);
+    }
+
+    /// <summary>
+    /// Quatro slots, dois módulos fictícios de 8 GB DDR4 rodando a 2666 com nominal 3200, para a imagem
+    /// mostrar o cartão Atenção. Os alertas e a ampliação saem das mesmas regras da coleta real.
+    /// </summary>
+    private static SecaoMemoria Memoria()
+    {
+        const long gb = 1024L * 1024 * 1024;
+        ModuloTela Modulo(string slot, string serie) => new(
+            Texto(slot), Texto("BANK 0"), false,
+            Campo<long>.Lido(8 * gb, D), Texto("DDR4"), Texto("DIMM"),
+            Campo<int>.Lido(3200, D), Campo<int>.Lido(2666, D),
+            Texto("Fabricante Memoria Exemplo"), Texto("PN-TESTE-3200"), Texto(serie),
+            Campo<int>.Lido(1, D), Campo<int>.Lido(1200, D));
+        ModuloTela Vazio(string slot)
+        {
+            var texto = Campo<string>.NaoSuportado(D, "slot vazio");
+            var numero = Campo<int>.NaoSuportado(D, "slot vazio");
+            return new(Texto(slot), Texto("BANK 1"), true, Campo<long>.NaoSuportado(D, "slot vazio"), texto, texto, numero, numero, texto, texto, texto, numero, numero);
+        }
+
+        var secao = new SecaoMemoria(
+            Campo<long>.Lido(16 * gb, D),
+            Campo<long>.Lido((16 * gb) - (256 * 1024 * 1024), D),
+            Campo<long>.Lido(256 * 1024 * 1024, D),
+            Texto("DDR4"),
+            Campo<int>.Lido(4, D),
+            Campo<int>.Lido(2, D),
+            Campo<long>.Lido(64 * gb, D),
+            Texto("nenhuma"),
+            Campo<IReadOnlyList<ModuloTela>>.Lido([Modulo("ChannelA-DIMM0", "SERIE-MEM-0001"), Vazio("ChannelA-DIMM1"), Modulo("ChannelB-DIMM0", "SERIE-MEM-0002"), Vazio("ChannelB-DIMM1")], D),
+            Campo<long>.Lido(7 * gb, D),
+            Campo<long>.Lido(9 * gb, D),
+            Campo<int>.Lido(44, D),
+            Campo<long>.Lido(10 * gb, D),
+            Campo<long>.Lido(24 * gb, D),
+            Campo<long>.Lido(4 * gb, D),
+            [],
+            Campo<string>.NaoInformado(D));
+
+        var ampliacao = AlertasMemoria.Ampliacao(secao);
+        return secao with
+        {
+            Alertas = AlertasMemoria.Calcular(secao),
+            Ampliacao = ampliacao.FoiLido ? Texto(ampliacao.Valor!) : ampliacao,
+        };
     }
 
     private static Campo<string> Texto(string valor) => Campo<string>.Lido(valor, D);

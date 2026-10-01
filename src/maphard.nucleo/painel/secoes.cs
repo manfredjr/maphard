@@ -1,6 +1,7 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Formatacao;
+using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
 
 namespace MapHard.Nucleo.Painel;
@@ -22,12 +23,14 @@ public static class MontadorSecoes
 {
     public const string Resumo = "resumo";
     public const string Processador = "processador";
+    public const string Memoria = "memoria";
     public const string Placa = "placa";
 
     public static IReadOnlyList<SecaoTela> Montar(ColetaMaquina c, DateOnly hoje) =>
     [
         new(Resumo, "Resumo", MontarResumo(c)),
         new(Processador, "Processador", MontarProcessador(c.Processador)),
+        new(Memoria, "Memória", MontarMemoria(c.Memoria)),
         new(Placa, "Placa-mãe e firmware", MontarPlaca(c.Placa, hoje)),
     ];
 
@@ -65,6 +68,7 @@ public static class MontadorSecoes
                 Linha("Número de série", id.NumeroSerie),
                 Linha("Processador", id.Processador),
                 Linha("Núcleos e threads", Juntar(p.Nucleos, p.Threads), v => v),
+                Linha("Memória", MemoriaComTipo(id.MemoriaInstalada, id.MemoriaTipo), v => v),
                 Linha("Memória utilizável", id.MemoriaUtilizavel, Formatador.Bytes),
             ]),
             new("Windows",
@@ -135,6 +139,109 @@ public static class MontadorSecoes
                     + string.Join("; ", g.Select(c => $"{(c.Associatividade is { } a ? $"{a} vias" : "totalmente associativo")}, linha de {c.TamanhoLinha} bytes").Distinct())))
             .ToList();
     }
+
+    private static IReadOnlyList<CartaoTela> MontarMemoria(SecaoMemoria m)
+    {
+        var cartoes = new List<CartaoTela>
+        {
+            new("Resumo",
+            [
+                Linha("Instalada", m.Instalada, Formatador.Bytes),
+                Linha("Utilizável", m.Utilizavel, Formatador.Bytes),
+                Linha("Reservada pelo hardware", m.Reservada, Formatador.Bytes),
+                Linha("Tipo", m.Tipo),
+                Linha("Slots", Ocupacao(m.SlotsOcupados, m.SlotsTotal), v => v),
+                Linha("Capacidade máxima", m.CapacidadeMaxima, Formatador.Bytes),
+                Linha("Correção de erro (ECC)", m.Ecc),
+            ]),
+        };
+
+        if (m.Alertas.Count > 0)
+        {
+            cartoes.Add(new("Atenção", m.Alertas.Select(a => new LinhaTela(RotuloAlerta(a.Codigo), a.Texto, EstadoCampo.Lido, "Regra do MapHard sobre os dados lidos")).ToList()));
+        }
+
+        if (m.Modulos.FoiLido)
+        {
+            cartoes.AddRange(m.Modulos.Valor!.Select((modulo, i) => CartaoSlot(modulo, i)));
+        }
+        else
+        {
+            cartoes.Add(new("Slots", [Linha("Módulos", m.Modulos)]));
+        }
+
+        cartoes.Add(new("Ampliação", [Linha("Resposta", m.Ampliacao)]));
+        cartoes.Add(new("Uso agora",
+        [
+            Linha("Em uso", m.EmUso, Formatador.Bytes),
+            Linha("Disponível", m.Disponivel, Formatador.Bytes),
+            Linha("Carga", m.Carga, v => Formatador.Porcentagem(v)),
+            Linha("Em cache", m.Cache, Formatador.Bytes),
+            Linha("Confirmada", m.Confirmada, Formatador.Bytes),
+            Linha("Limite da confirmada", m.LimiteConfirmada, Formatador.Bytes),
+        ]));
+        return cartoes;
+    }
+
+    /// <summary>Um cartão por slot, com o nome do slot no título. Slot vazio tem uma linha só.</summary>
+    private static CartaoTela CartaoSlot(ModuloTela m, int indice)
+    {
+        var titulo = m.Slot.Valor ?? m.Banco.Valor ?? $"Slot {indice + 1}";
+        if (m.Vazio)
+        {
+            return new CartaoTela(titulo, [new LinhaTela("Situação", "vazio", EstadoCampo.Lido, "Fonte: SMBIOS")]);
+        }
+
+        return new CartaoTela(titulo,
+        [
+            Linha("Tamanho", m.Tamanho, Formatador.Bytes),
+            Linha("Tipo e velocidade", TipoVelocidade(m), v => v),
+            Linha("Formato", m.Formato),
+            Linha("Fabricante", m.Fabricante),
+            Linha("Part number", m.PartNumber),
+            Linha("Número de série", m.NumeroSerie),
+            Linha("Ranks", m.Ranks),
+            Linha("Voltagem", m.VoltagemMv, mv => $"{(mv / 1000.0).ToString("0.0##", Formatador.PtBr)} V"),
+            Linha("Banco", m.Banco),
+        ]);
+    }
+
+    /// <summary>"DDR4-3200", com a nominal entre parênteses quando o módulo roda abaixo dela.</summary>
+    internal static Campo<string> TipoVelocidade(ModuloTela m)
+    {
+        if (!m.VelocidadeConfigurada.FoiLido && !m.VelocidadeNominal.FoiLido)
+        {
+            return m.Tipo;
+        }
+
+        var emUso = m.VelocidadeConfigurada.FoiLido ? m.VelocidadeConfigurada : m.VelocidadeNominal;
+        var texto = m.Tipo.FoiLido ? $"{m.Tipo.Valor}-{emUso.Valor}" : $"{emUso.Valor} MT/s";
+        if (m.VelocidadeConfigurada.FoiLido && m.VelocidadeNominal.FoiLido && m.VelocidadeConfigurada.Valor < m.VelocidadeNominal.Valor)
+        {
+            texto += $" (o módulo aceita {m.VelocidadeNominal.Valor})";
+        }
+
+        return Campo<string>.Lido(texto, emUso.Fonte, m.VelocidadeConfigurada.FoiLido ? "velocidade configurada" : "velocidade nominal");
+    }
+
+    private static string RotuloAlerta(string codigo) => codigo switch
+    {
+        AlertasMemoria.ModulosDiferentes => "Módulos",
+        AlertasMemoria.AbaixoDaVelocidade => "Velocidade",
+        AlertasMemoria.CanalUnico => "Canal",
+        AlertasMemoria.ReservaAlta => "Reserva",
+        _ => "Alerta",
+    };
+
+    /// <summary>"2 de 4 ocupados".</summary>
+    private static Campo<string> Ocupacao(Campo<int> ocupados, Campo<int> total) =>
+        ocupados.FoiLido && total.FoiLido
+            ? Campo<string>.Lido($"{ocupados.Valor} de {total.Valor} ocupados", total.Fonte, total.Motivo)
+            : total.Mapear(t => $"{t} no total");
+
+    /// <summary>"16 GB DDR4". Sem o tipo, só o tamanho.</summary>
+    private static Campo<string> MemoriaComTipo(Campo<long> instalada, Campo<string> tipo) =>
+        instalada.Mapear(b => tipo.FoiLido ? $"{Formatador.Bytes(b)} {tipo.Valor}" : Formatador.Bytes(b));
 
     private static IReadOnlyList<CartaoTela> MontarPlaca(SecaoPlaca p, DateOnly hoje)
     {

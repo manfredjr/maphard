@@ -118,8 +118,18 @@ public class LinhaDeComandoTestes
         Assert.Contains("Computador:  ESTACAO-TESTE", texto);
         Assert.Contains("Núcleos:     8 núcleos, 16 threads", texto);
         Assert.Contains("base 3,60 GHz, máximo 4,70 GHz", texto);
-        Assert.Contains("Memória:     16 GB utilizáveis", texto);
+        Assert.Contains("Memória:     16 GB DDR4-3200, 2 de 4 slots (15,8 GB utilizáveis)", texto);
+        Assert.DoesNotContain("Atenção:", texto);
         Assert.Contains("F.10 de 15/03/2021, UEFI", texto);
+    }
+
+    [Fact]
+    public void Resumo_mostra_os_alertas_de_memoria()
+    {
+        var linhas = ExecutorCli.Resumo(MapHard.Nucleo.Painel.DadosDemonstracao.Coleta()).ToList();
+
+        Assert.Contains("Memória:     16 GB DDR4-2666 (o módulo aceita 3200), 2 de 4 slots (15,75 GB utilizáveis)", linhas);
+        Assert.Contains(linhas, l => l.StartsWith("Atenção:     rodando a 2666 MT/s", StringComparison.Ordinal));
     }
 
     [Fact]

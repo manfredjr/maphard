@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Formatacao;
+using MapHard.Nucleo.Memoria;
+using MapHard.Nucleo.Painel;
 using MapHard.Nucleo.Relatorios;
 
 namespace MapHard.Nucleo.LinhaDeComando;
@@ -81,10 +83,26 @@ public static class ExecutorCli
         yield return $"Processador: {Texto(p.Nome)}";
         yield return $"Núcleos:     {Texto(p.Nucleos)} núcleos, {Texto(p.Threads)} threads";
         yield return $"Clock:       base {Texto(p.Clocks.Base, v => Formatador.Mhz(v))}, máximo {Texto(p.Clocks.Maximo, v => Formatador.Mhz(v))}";
-        yield return $"Memória:     {Texto(id.MemoriaUtilizavel, Formatador.Bytes)} utilizáveis";
+        yield return $"Memória:     {LinhaMemoria(c.Memoria)} ({Texto(id.MemoriaUtilizavel, Formatador.Bytes)} utilizáveis)";
+        foreach (var alerta in c.Memoria.Alertas)
+        {
+            yield return $"Atenção:     {alerta.Texto}";
+        }
+
         yield return $"Placa-mãe:   {Texto(c.Placa.PlacaFabricante)} {Texto(c.Placa.PlacaModelo)}";
         yield return $"BIOS:        {Texto(c.Placa.BiosVersao)} de {Texto(c.Placa.BiosData, Formatador.Data)}, {Texto(c.Placa.Firmware.Modo)}";
         yield return $"Coletado em: {Formatador.DataHora(c.ColetadoEm)}{(c.Administrador ? " como administrador" : string.Empty)}";
+    }
+
+    /// <summary>"16 GB DDR4-3200, 2 de 4 slots". O que não foi lido sai com o texto do estado.</summary>
+    internal static string LinhaMemoria(SecaoMemoria m)
+    {
+        var primeiro = m.Modulos.Valor?.FirstOrDefault(x => !x.Vazio);
+        var tipoVelocidade = primeiro is null ? Texto(m.Tipo) : Texto(MontadorSecoes.TipoVelocidade(primeiro));
+        var slots = m.SlotsOcupados.FoiLido && m.SlotsTotal.FoiLido
+            ? $"{m.SlotsOcupados.Valor} de {Formatador.Plural(m.SlotsTotal.Valor, "slot", "slots")}"
+            : $"slots {Texto(m.SlotsTotal)}";
+        return $"{Texto(m.Instalada, Formatador.Bytes)} {tipoVelocidade}, {slots}";
     }
 
     private static string Texto<T>(Campo<T> campo, Func<T, string>? formatar = null) =>
