@@ -67,6 +67,34 @@ public class TopologiaTestes
     }
 
     [Fact]
+    public void Processador_hibrido_separa_os_caches_de_tamanhos_diferentes()
+    {
+        // 4 núcleos de desempenho e 8 de eficiência, com o L2 dos de eficiência dividido entre 4 núcleos.
+        var c = new ConstrutorTopologia().Pacote();
+        for (var i = 0; i < 4; i++)
+        {
+            c.Nucleo(2, eficiencia: 1).Cache(1, 2, 48 * 1024).Cache(1, 1, 32 * 1024).Cache(2, 0, 1280 * 1024, associatividade: 10);
+        }
+
+        for (var i = 0; i < 8; i++)
+        {
+            c.Nucleo(1, eficiencia: 0).Cache(1, 2, 32 * 1024).Cache(1, 1, 64 * 1024);
+        }
+
+        c.Cache(2, 0, 2048 * 1024, associatividade: 16).Cache(2, 0, 2048 * 1024, associatividade: 16).Cache(3, 0, 18 * 1024 * 1024);
+
+        var caches = LeitorTopologia.Interpretar(c.Montar())!.Caches;
+
+        Assert.Equal(["L1 de dados", "L1 de dados", "L1 de instruções", "L1 de instruções", "L2", "L2", "L3"], caches.Select(x => x.Rotulo));
+        Assert.Equal(448 * 1024, caches.Where(x => x.Rotulo == "L1 de dados").Sum(x => x.TamanhoTotal));
+        Assert.Equal(640 * 1024, caches.Where(x => x.Rotulo == "L1 de instruções").Sum(x => x.TamanhoTotal));
+        Assert.Equal(9 * 1024 * 1024, caches.Where(x => x.Rotulo == "L2").Sum(x => x.TamanhoTotal));
+        Assert.Equal((4, 48 * 1024), (caches[0].Unidades, caches[0].TamanhoPorUnidade));
+        Assert.Equal((8, 32 * 1024), (caches[1].Unidades, caches[1].TamanhoPorUnidade));
+        Assert.Equal(16, caches[5].Associatividade);
+    }
+
+    [Fact]
     public void Cache_totalmente_associativo_fica_sem_numero()
     {
         var c = new ConstrutorTopologia().Nucleo(1).Cache(1, 2, 32 * 1024, associatividade: 0xFF);

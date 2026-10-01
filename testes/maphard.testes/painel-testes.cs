@@ -1,6 +1,8 @@
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
+using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Painel;
+using MapHard.Nucleo.Processador;
 using MapHard.Testes.Apoio;
 
 namespace MapHard.Testes;
@@ -48,6 +50,23 @@ public class PainelTestes
 
         Assert.Equal("Coffee Lake", linha.Texto);
         Assert.Equal("Fonte: tabela do MapHard. Fonte X", linha.Dica);
+    }
+
+    [Fact]
+    public void Caches_do_mesmo_nivel_ficam_numa_linha_so()
+    {
+        IReadOnlyList<CacheCpu> caches =
+        [
+            new(1, TipoCache.Dados, 48 * 1024, 4, 12, 64),
+            new(1, TipoCache.Dados, 32 * 1024, 8, 8, 64),
+            new(3, TipoCache.Unificado, 18 * 1024 * 1024, 1, 12, 64),
+        ];
+
+        var linhas = MontadorSecoes.LinhasCaches(Campo<IReadOnlyList<CacheCpu>>.Lido(caches, FonteDado.Topologia));
+
+        Assert.Equal(["L1 de dados", "L3"], linhas.Select(l => l.Rotulo));
+        Assert.Equal($"4 x {Formatador.Bytes(48 * 1024)} + 8 x {Formatador.Bytes(32 * 1024)}", linhas[0].Texto);
+        Assert.Contains("12 vias, linha de 64 bytes; 8 vias, linha de 64 bytes", linhas[0].Dica);
     }
 
     [Fact]

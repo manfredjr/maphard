@@ -117,18 +117,22 @@ public static class MontadorSecoes
         ];
     }
 
-    private static IReadOnlyList<LinhaTela> LinhasCaches(Campo<IReadOnlyList<CacheCpu>> caches)
+    internal static IReadOnlyList<LinhaTela> LinhasCaches(Campo<IReadOnlyList<CacheCpu>> caches)
     {
         if (!caches.FoiLido)
         {
             return [Linha("Caches", caches)];
         }
 
-        return caches.Valor!.Select(c => new LinhaTela(
-            c.Rotulo,
-            c.Unidades == 1 ? Formatador.Bytes(c.TamanhoPorUnidade) : $"{c.Unidades} x {Formatador.Bytes(c.TamanhoPorUnidade)}",
-            EstadoCampo.Lido,
-            $"Fonte: {TextosEstado.NomeFonte(caches.Fonte)}. {(c.Associatividade is { } a ? $"{a} vias" : "totalmente associativo")}, linha de {c.TamanhoLinha} bytes"))
+        // Processador híbrido: os grupos do mesmo nível vão numa linha só, "4 x 48 KB + 8 x 32 KB".
+        return caches.Valor!
+            .GroupBy(c => c.Rotulo)
+            .Select(g => new LinhaTela(
+                g.Key,
+                string.Join(" + ", g.Select(c => c.Unidades == 1 ? Formatador.Bytes(c.TamanhoPorUnidade) : $"{c.Unidades} x {Formatador.Bytes(c.TamanhoPorUnidade)}")),
+                EstadoCampo.Lido,
+                $"Fonte: {TextosEstado.NomeFonte(caches.Fonte)}. "
+                    + string.Join("; ", g.Select(c => $"{(c.Associatividade is { } a ? $"{a} vias" : "totalmente associativo")}, linha de {c.TamanhoLinha} bytes").Distinct())))
             .ToList();
     }
 
