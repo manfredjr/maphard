@@ -12,7 +12,7 @@ Baixe o `maphard.exe` e abra. Não precisa instalar nem ser administrador. O pro
 
 A janela mostra, pela navegação à esquerda:
 
-- **Resumo:** nome do computador, fabricante, modelo, número de série, processador, memória instalada com o tipo, memória utilizável, discos, versão e ativação do Windows, e se a máquina aceita o Windows 11.
+- **Resumo:** primeiro, um cartão de saúde por área (Discos, Memória, Processador, Estabilidade, Dispositivos, Windows 11 e Bateria), com Bom, Atenção, Ruim ou Desconhecido e o motivo numa frase; o clique no cartão abre a seção. Depois, nome do computador, fabricante, modelo, número de série, processador, memória instalada com o tipo, memória utilizável, discos, versão e ativação do Windows, e se a máquina aceita o Windows 11.
 - **Processador:** nome, codinome, família, modelo e revisão, soquete, microcódigo, núcleos e threads (com os núcleos de desempenho e de eficiência no processador híbrido), clocks base, máximo e atual, uso, caches, instruções e virtualização.
 - **Memória:** instalada, utilizável e reservada pelo hardware, tipo, slots ocupados e livres, capacidade máxima e ECC. Um cartão por slot, inclusive os vazios, com tamanho, tipo e velocidade ("DDR4-3200"), formato, fabricante, part number, número de série, ranks e voltagem. Avisa quando os módulos são diferentes, quando a memória roda abaixo da velocidade, quando o canal único é provável e quando o Windows usa bem menos que o instalado. Responde quanto cabe a mais e quantos slots estão livres, e mostra o uso agora.
 - **Discos:** um cartão por disco com a saúde em destaque (Bom, Atenção, Ruim ou Desconhecido) e o motivo escrito ("3 setores realocados", "92% da vida útil usada"), temperatura, horas ligado, ciclos de energia, dados gravados, tipo (HDD, SSD SATA, SSD NVMe, USB), interface ("SATA 6 Gb/s", "NVMe, PCIe 4.0 x4"), capacidade, rotação, TRIM, partição e volumes com espaço livre e BitLocker. Logo abaixo, a tabela SMART com os nomes em português.
@@ -29,7 +29,7 @@ Campo que não pôde ser lido aparece em cinza, com o motivo: "não informado pe
 
 **Salvar JSON** grava a coleta completa, com o estado e a fonte de cada campo.
 
-Linha de comando (só lê):
+Linha de comando (só lê). O resumo começa pelo bloco "Saúde", com o estado de cada área:
 
     maphard coletar
     maphard coletar --json
@@ -50,4 +50,4 @@ Sem nome depois de `--json`, o arquivo recebe o nome do computador e a data. No 
 | 3 | Discos: lista, volumes, SMART ATA e NVMe, regras de saúde, "Ler como administrador" | `discos` | Plano em [#7](https://github.com/manfredjr/maphard/pull/7), código em [#8](https://github.com/manfredjr/maphard/pull/8) | Concluída em 01/10/2026 |
 | 4 | Estabilidade, erros de memória, dispositivos com problema e chipset | `estabilidade` | Plano em [#9](https://github.com/manfredjr/maphard/pull/9), código em [#10](https://github.com/manfredjr/maphard/pull/10) | Concluída em 01/10/2026 |
 | 5 | Vídeo, monitores, bateria, rede, Windows e verificação do Windows 11 | `plano-windows`, `windows` | Plano em [#11](https://github.com/manfredjr/maphard/pull/11), código em [#12](https://github.com/manfredjr/maphard/pull/12) | Concluída em 02/10/2026 |
-| 6 | Resumo com os cartões de saúde | `plano-resumo` | Plano em [#13](https://github.com/manfredjr/maphard/pull/13) | Plano em revisão |
+| 6 | Resumo com os cartões de saúde | `plano-resumo`, `resumo` | Plano em [#13](https://github.com/manfredjr/maphard/pull/13), código em Pull Request | Código em teste |
