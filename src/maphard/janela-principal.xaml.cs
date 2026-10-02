@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MapHard.Nucleo.Painel;
+using MapHard.Nucleo.Relatorios;
 using MapHard.Nucleo.Sobre;
 using Microsoft.Win32;
 
@@ -82,6 +83,16 @@ public partial class JanelaPrincipal : Window
     }
 
     private async void AoAtualizar(object sender, RoutedEventArgs e) => await _painel.AtualizarAsync();
+
+    /// <summary>Copia a seção aberta como texto (R37).</summary>
+    private void AoCopiar(object sender, RoutedEventArgs e)
+    {
+        if (Navegacao.SelectedItem is SecaoTela secao && _painel.Coleta is { } coleta)
+        {
+            Clipboard.SetText(TextoSecao.Gerar(secao, coleta));
+            _painel.AvisarCopia(secao.Titulo);
+        }
+    }
 
     private void AoSalvarJson(object sender, RoutedEventArgs e)
     {

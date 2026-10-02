@@ -115,6 +115,8 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Button Content="Atualizar" Style="{StaticResource BotaoFaixa}" Click="AoAtualizar"
                             IsEnabled="{Binding PodeAtualizar}" ToolTip="Lê o computador de novo" />
+                <Button Content="Copiar" Style="{StaticResource BotaoFaixaContorno}" Click="AoCopiar"
+                        IsEnabled="{Binding PodeSalvar}" ToolTip="Copia a seção aberta como texto, para colar em chamado ou e-mail" />
                     <Button Content="Salvar JSON..." Style="{StaticResource BotaoFaixaContorno}" Click="AoSalvarJson"
                             IsEnabled="{Binding PodeSalvar}" ToolTip="Grava a coleta completa num arquivo JSON" />
                     <ComboBox x:Name="PeriodoEventos" ItemsSource="{Binding Source={x:Static painel:PainelPrincipal.OpcoesDias}}"

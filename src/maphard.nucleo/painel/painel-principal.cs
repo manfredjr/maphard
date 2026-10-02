@@ -97,6 +97,13 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
         Avisar();
     }
 
+    /// <summary>A seção foi copiada: a barra de status confirma.</summary>
+    public void AvisarCopia(string secao)
+    {
+        Aviso = $"seção {secao} copiada";
+        Avisar();
+    }
+
     public async Task AtualizarAsync(CancellationToken cancelar = default)
     {
         Estado = EstadoPainel.Coletando;
