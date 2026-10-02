@@ -1,0 +1,128 @@
+# Processadores aceitos pelo Windows 11 25H2, pelas listas da Microsoft. Gerada por ferramentas\gerar-processadores-windows11.ps1.
+fabricante;produto;serie;versao;fonte
+Intel;Intel Atom;Atom X7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron 3000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron 4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron 5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron 6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron 7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron G4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron G5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron G6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron J4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron N4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Celeron;Celeron N5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;10th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;10th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;10th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;10th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;11th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;11th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;11th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;11th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;12th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;12th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;12th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;12th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;13th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;13th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;13th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;13th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;8th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;8th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;8th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;8th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;8th Generation Core m Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;9th Generation Core i3 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;9th Generation Core i5 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;9th Generation Core i7 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;9th Generation Core i9 Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core i3 Processors (14th Generation);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core i5 processors (14th Generation);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core i7 processors (14th Generation);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core i9 processors (14th Generation);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core Processor N300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core Processors (Series 1);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core;Core Processors (Series 2);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core Ultra;Core Ultra Processors (Series 1);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core Ultra;Core Ultra Processors (Series 2);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Core Ultra;Core Ultra Processors (Series 3);25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium 6800 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 4000U Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 4000Y Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 6000Y Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold 8000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold G5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Gold G7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Silver J5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Pentium;Pentium Silver N6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Processor;Intel 300 Processor for Desktop;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Processor;N100 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Processor;N200 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Processor;N90 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Processor;U300 series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-2400 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-2500 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-3400 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-3500 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon Scalable Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;2nd Generation Xeon Scalable Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;3rd Generation Xeon Scalable Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;4th Generation Xeon Scalable Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;5th Generation Xeon Scalable Processors;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon D-1700 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon D-1800 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon D-2700 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon D-2800 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon E-2100 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon E-2200 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon E-2300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon E-2400 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-10000M Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-11000M Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-1200 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-1300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon;Xeon W-3300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+Intel;Intel Xeon 600;Xeon 600 Processors for Workstation;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-intel-processors
+AMD;Athlon;7000 U Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;4004 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;4005 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;7003 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;8004 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;9004 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;EPYC;9005 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;10 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;100 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;200 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;AI 300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;AI Max 300 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;AI Z2 Extreme;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;Z1 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;Z2 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;3000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;8000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen;9000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;3000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;4000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;5000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;6000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;8000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen PRO;9000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper;3000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper;7000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper;9000 Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper PRO;3000 WX-Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper PRO;5000 WX-Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper PRO;7000 WX-Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+AMD;Ryzen Threadripper PRO;9000 WX-Series;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-amd-processors
+Qualcomm;Snapdragon X;X1;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-qualcomm-processors
+Qualcomm;Snapdragon X Plus;X1P;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-qualcomm-processors
+Qualcomm;Snapdragon X Elite;X1E;25H2;https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-25h2-supported-qualcomm-processors

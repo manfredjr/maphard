@@ -1,0 +1,2520 @@
+# Fabricantes PCI pelo codigo do fabricante. Gerada por ferramentas\gerar-fabricantes-pci.ps1.
+# Fonte: pci.ids versao 2026.10.01, https://raw.githubusercontent.com/pciutils/pciids/master/pci.ids. Distribuido pela GPL-2.0 ou posterior, ou pela licenca BSD de 3 clausulas.
+fabricante;nome;fonte
+0001;SafeNet (wrong ID);pci.ids 2026.10.01
+0010;Allied Telesis, Inc (Wrong ID);pci.ids 2026.10.01
+0014;Loongson Technology LLC;pci.ids 2026.10.01
+0018;Fn-Link Technology Limited;pci.ids 2026.10.01
+001C;PEAK-System Technik GmbH;pci.ids 2026.10.01
+0029;MICROCHIP;pci.ids 2026.10.01
+003D;Lockheed Martin-Marietta Corp;pci.ids 2026.10.01
+0059;Tiger Jet Network Inc. (Wrong ID);pci.ids 2026.10.01
+0070;Hauppauge computer works Inc.;pci.ids 2026.10.01
+0071;Nebula Electronics Ltd.;pci.ids 2026.10.01
+0095;Silicon Image, Inc. (Wrong ID);pci.ids 2026.10.01
+00A7;Teles AG (Wrong ID);pci.ids 2026.10.01
+0100;nCipher Security;pci.ids 2026.10.01
+0123;General Dynamics;pci.ids 2026.10.01
+0127;MIPS;pci.ids 2026.10.01
+0128;Dell (wrong ID);pci.ids 2026.10.01
+0168;Chengdu ZeoberCom Co.;pci.ids 2026.10.01
+018A;LevelOne;pci.ids 2026.10.01
+01DE;Oxide Computer Company;pci.ids 2026.10.01
+0200;Dell (wrong ID);pci.ids 2026.10.01
+021B;Compaq Computer Corporation;pci.ids 2026.10.01
+025E;Solidigm;pci.ids 2026.10.01
+0270;Hauppauge computer works Inc. (Wrong ID);pci.ids 2026.10.01
+0291;Davicom Semiconductor, Inc. (Wrong ID);pci.ids 2026.10.01
+02AC;SpeedStream;pci.ids 2026.10.01
+02E0;XFX Pine Group Inc. (Wrong ID);pci.ids 2026.10.01
+0303;Hewlett-Packard Company (Wrong ID);pci.ids 2026.10.01
+0308;ZyXEL Communications Corporation (Wrong ID);pci.ids 2026.10.01
+0315;SK-Electronics Co., Ltd.;pci.ids 2026.10.01
+031E;ANDES;pci.ids 2026.10.01
+0357;TTTech Computertechnik AG (Wrong ID);pci.ids 2026.10.01
+0432;SCM Microsystems, Inc.;pci.ids 2026.10.01
+0489;SIFIVE;pci.ids 2026.10.01
+0497;Dell Inc. (wrong ID);pci.ids 2026.10.01
+05B7;THEAD;pci.ids 2026.10.01
+060E;Lightelligence;pci.ids 2026.10.01
+0675;Dynalink;pci.ids 2026.10.01
+0709;LJMicro Co., Ltd;pci.ids 2026.10.01
+0721;Sapphire, Inc.;pci.ids 2026.10.01
+0731;Jingjia Microelectronics Co Ltd;pci.ids 2026.10.01
+0771;Xi'an Microelectronics Technology Institute;pci.ids 2026.10.01
+0777;Ubiquiti Networks, Inc.;pci.ids 2026.10.01
+0795;Wired Inc.;pci.ids 2026.10.01
+07D1;D-Link System Inc;pci.ids 2026.10.01
+0824;T1042 [Freescale];pci.ids 2026.10.01
+0911;Hantick;pci.ids 2026.10.01
+0925;VIA Technologies, Inc. (Wrong ID);pci.ids 2026.10.01
+0A89;BREA Technologies Inc;pci.ids 2026.10.01
+0B0B;Rhino Equipment Corp.;pci.ids 2026.10.01
+0BAE;Bachmann electronic GmbH;pci.ids 2026.10.01
+0CCD;Preferred Networks, Inc.;pci.ids 2026.10.01
+0E11;Compaq Computer Corporation;pci.ids 2026.10.01
+0E55;HaSoTec GmbH;pci.ids 2026.10.01
+0E8D;MediaTek Inc. (Wrong ID);pci.ids 2026.10.01
+0EAC;SHF Communication Technologies AG;pci.ids 2026.10.01
+0F62;Acrox Technologies Co., Ltd.;pci.ids 2026.10.01
+1000;Broadcom / LSI;pci.ids 2026.10.01
+1001;Kolter Electronic;pci.ids 2026.10.01
+1002;Advanced Micro Devices, Inc. [AMD/ATI];pci.ids 2026.10.01
+1003;ULSI Systems;pci.ids 2026.10.01
+1004;VLSI Technology Inc;pci.ids 2026.10.01
+1005;Avance Logic Inc. [ALI];pci.ids 2026.10.01
+1006;Reply Group;pci.ids 2026.10.01
+1007;NetFrame Systems Inc;pci.ids 2026.10.01
+1008;Epson;pci.ids 2026.10.01
+100A;Phoenix Technologies;pci.ids 2026.10.01
+100B;National Semiconductor Corporation;pci.ids 2026.10.01
+100C;Tseng Labs Inc;pci.ids 2026.10.01
+100D;AST Research Inc;pci.ids 2026.10.01
+100E;Weitek;pci.ids 2026.10.01
+1010;Video Logic, Ltd.;pci.ids 2026.10.01
+1011;Digital Equipment Corporation;pci.ids 2026.10.01
+1012;Micronics Computers Inc;pci.ids 2026.10.01
+1013;Cirrus Logic;pci.ids 2026.10.01
+1014;IBM;pci.ids 2026.10.01
+1015;LSI Logic Corp of Canada;pci.ids 2026.10.01
+1016;ICL Personal Systems;pci.ids 2026.10.01
+1017;SPEA Software AG;pci.ids 2026.10.01
+1018;Unisys Systems;pci.ids 2026.10.01
+1019;Elitegroup Computer Systems;pci.ids 2026.10.01
+101A;AT&T GIS (NCR);pci.ids 2026.10.01
+101B;Vitesse Semiconductor;pci.ids 2026.10.01
+101C;Western Digital;pci.ids 2026.10.01
+101D;Maxim Integrated Products;pci.ids 2026.10.01
+101E;American Megatrends Inc.;pci.ids 2026.10.01
+101F;PictureTel;pci.ids 2026.10.01
+1020;Hitachi Computer Products;pci.ids 2026.10.01
+1021;OKI Electric Industry Co. Ltd.;pci.ids 2026.10.01
+1022;Advanced Micro Devices, Inc. [AMD];pci.ids 2026.10.01
+1023;Trident Microsystems;pci.ids 2026.10.01
+1024;Beijing Dajia Internet Information Technology Co.;pci.ids 2026.10.01
+1025;Acer Incorporated [ALI];pci.ids 2026.10.01
+1028;Dell;pci.ids 2026.10.01
+1029;Siemens Nixdorf IS;pci.ids 2026.10.01
+102A;LSI Logic;pci.ids 2026.10.01
+102B;Matrox Electronics Systems Ltd.;pci.ids 2026.10.01
+102C;Chips and Technologies;pci.ids 2026.10.01
+102D;Wyse Technology Inc.;pci.ids 2026.10.01
+102E;Olivetti Advanced Technology;pci.ids 2026.10.01
+102F;Toshiba America;pci.ids 2026.10.01
+1030;TMC Research;pci.ids 2026.10.01
+1031;Miro Computer Products AG;pci.ids 2026.10.01
+1032;Compaq;pci.ids 2026.10.01
+1033;NEC Corporation;pci.ids 2026.10.01
+1034;Framatome Connectors USA Inc.;pci.ids 2026.10.01
+1035;Comp. & Comm. Research Lab;pci.ids 2026.10.01
+1036;Future Domain Corp.;pci.ids 2026.10.01
+1037;Hitachi Micro Systems;pci.ids 2026.10.01
+1038;AMP, Inc;pci.ids 2026.10.01
+1039;Silicon Integrated Systems [SiS];pci.ids 2026.10.01
+103A;Seiko Epson Corporation;pci.ids 2026.10.01
+103B;Tatung Corp. Of America;pci.ids 2026.10.01
+103C;Hewlett-Packard Company;pci.ids 2026.10.01
+103E;Solliday Engineering;pci.ids 2026.10.01
+103F;Synopsys/Logic Modeling Group;pci.ids 2026.10.01
+1040;Accelgraphics Inc.;pci.ids 2026.10.01
+1041;Computrend;pci.ids 2026.10.01
+1042;Micron;pci.ids 2026.10.01
+1043;ASUSTeK Computer Inc.;pci.ids 2026.10.01
+1044;Adaptec (formerly DPT);pci.ids 2026.10.01
+1045;OPTi Inc.;pci.ids 2026.10.01
+1046;IPC Corporation, Ltd.;pci.ids 2026.10.01
+1047;Genoa Systems Corp;pci.ids 2026.10.01
+1048;Elsa AG;pci.ids 2026.10.01
+1049;Fountain Technologies, Inc.;pci.ids 2026.10.01
+104A;STMicroelectronics;pci.ids 2026.10.01
+104B;BusLogic;pci.ids 2026.10.01
+104C;Texas Instruments;pci.ids 2026.10.01
+104D;Sony Corporation;pci.ids 2026.10.01
+104E;Oak Technology, Inc;pci.ids 2026.10.01
+104F;Co-time Computer Ltd;pci.ids 2026.10.01
+1050;Winbond Electronics Corp;pci.ids 2026.10.01
+1051;Anigma, Inc.;pci.ids 2026.10.01
+1052;?Young Micro Systems;pci.ids 2026.10.01
+1053;Young Micro Systems;pci.ids 2026.10.01
+1054;Hitachi, Ltd;pci.ids 2026.10.01
+1055;Microchip Technology / SMSC;pci.ids 2026.10.01
+1056;ICL;pci.ids 2026.10.01
+1057;Motorola;pci.ids 2026.10.01
+1058;Electronics & Telecommunications RSH;pci.ids 2026.10.01
+1059;Kontron;pci.ids 2026.10.01
+105A;Promise Technology, Inc.;pci.ids 2026.10.01
+105B;Foxconn International, Inc.;pci.ids 2026.10.01
+105C;Wipro Infotech Limited;pci.ids 2026.10.01
+105D;Number 9 Computer Company;pci.ids 2026.10.01
+105E;Vtech Computers Ltd;pci.ids 2026.10.01
+105F;Infotronic America Inc;pci.ids 2026.10.01
+1060;United Microelectronics [UMC];pci.ids 2026.10.01
+1061;I.I.T.;pci.ids 2026.10.01
+1062;Maspar Computer Corp;pci.ids 2026.10.01
+1063;Ocean Office Automation;pci.ids 2026.10.01
+1064;Alcatel;pci.ids 2026.10.01
+1065;Texas Microsystems;pci.ids 2026.10.01
+1066;PicoPower Technology;pci.ids 2026.10.01
+1067;Mitsubishi Electric;pci.ids 2026.10.01
+1068;Diversified Technology;pci.ids 2026.10.01
+1069;Mylex Corporation;pci.ids 2026.10.01
+106A;Aten Research Inc;pci.ids 2026.10.01
+106B;Apple Inc.;pci.ids 2026.10.01
+106C;Hynix Semiconductor;pci.ids 2026.10.01
+106D;Sequent Computer Systems;pci.ids 2026.10.01
+106E;DFI, Inc;pci.ids 2026.10.01
+106F;City Gate Development Ltd;pci.ids 2026.10.01
+1070;Daewoo Telecom Ltd;pci.ids 2026.10.01
+1071;Mitac;pci.ids 2026.10.01
+1072;GIT Co Ltd;pci.ids 2026.10.01
+1073;Yamaha Corporation;pci.ids 2026.10.01
+1074;NexGen Microsystems;pci.ids 2026.10.01
+1075;Advanced Integrations Research;pci.ids 2026.10.01
+1076;Chaintech Computer Co. Ltd;pci.ids 2026.10.01
+1077;QLogic Corp.;pci.ids 2026.10.01
+1078;Cyrix Corporation;pci.ids 2026.10.01
+1079;I-Bus;pci.ids 2026.10.01
+107A;NetWorth;pci.ids 2026.10.01
+107B;Gateway, Inc.;pci.ids 2026.10.01
+107C;LG Electronics [Lucky Goldstar Co. Ltd];pci.ids 2026.10.01
+107D;LeadTek Research Inc.;pci.ids 2026.10.01
+107E;Interphase Corporation;pci.ids 2026.10.01
+107F;Data Technology Corporation;pci.ids 2026.10.01
+1080;Contaq Microsystems;pci.ids 2026.10.01
+1081;Supermac Technology;pci.ids 2026.10.01
+1082;EFA Corporation of America;pci.ids 2026.10.01
+1083;Forex Computer Corporation;pci.ids 2026.10.01
+1084;Parador;pci.ids 2026.10.01
+1086;J. Bond Computer Systems;pci.ids 2026.10.01
+1087;Cache Computer;pci.ids 2026.10.01
+1088;Microcomputer Systems (M) Son;pci.ids 2026.10.01
+1089;Data General Corporation;pci.ids 2026.10.01
+108A;SBS Technologies;pci.ids 2026.10.01
+108C;Oakleigh Systems Inc.;pci.ids 2026.10.01
+108D;Olicom;pci.ids 2026.10.01
+108E;Oracle/SUN;pci.ids 2026.10.01
+108F;Systemsoft;pci.ids 2026.10.01
+1090;Compro Computer Services, Inc.;pci.ids 2026.10.01
+1091;Intergraph Corporation;pci.ids 2026.10.01
+1092;Diamond Multimedia Systems;pci.ids 2026.10.01
+1093;National Instruments;pci.ids 2026.10.01
+1094;First International Computers [FIC];pci.ids 2026.10.01
+1095;Silicon Image, Inc.;pci.ids 2026.10.01
+1096;Alacron;pci.ids 2026.10.01
+1097;Appian Technology;pci.ids 2026.10.01
+1098;Quantum Designs (H.K.) Ltd;pci.ids 2026.10.01
+1099;Samsung Electronics Co., Ltd;pci.ids 2026.10.01
+109A;Packard Bell;pci.ids 2026.10.01
+109B;Gemlight Computer Ltd.;pci.ids 2026.10.01
+109C;Megachips Corporation;pci.ids 2026.10.01
+109D;Zida Technologies Ltd.;pci.ids 2026.10.01
+109E;Brooktree Corporation;pci.ids 2026.10.01
+109F;Trigem Computer Inc.;pci.ids 2026.10.01
+10A0;Meidensha Corporation;pci.ids 2026.10.01
+10A1;Juko Electronics Ind. Co. Ltd;pci.ids 2026.10.01
+10A2;Quantum Corporation;pci.ids 2026.10.01
+10A3;Everex Systems Inc;pci.ids 2026.10.01
+10A4;Globe Manufacturing Sales;pci.ids 2026.10.01
+10A5;Smart Link Ltd.;pci.ids 2026.10.01
+10A6;Informtech Industrial Ltd.;pci.ids 2026.10.01
+10A7;Benchmarq Microelectronics;pci.ids 2026.10.01
+10A8;Sierra Semiconductor;pci.ids 2026.10.01
+10A9;Silicon Graphics Intl. Corp.;pci.ids 2026.10.01
+10AA;ACC Microelectronics;pci.ids 2026.10.01
+10AB;Digicom;pci.ids 2026.10.01
+10AC;Honeywell IAC;pci.ids 2026.10.01
+10AD;Winbond Electronics Corp / Symphony Labs;pci.ids 2026.10.01
+10AE;Cornerstone Technology;pci.ids 2026.10.01
+10AF;Micro Computer Systems Inc;pci.ids 2026.10.01
+10B0;CardExpert Technology;pci.ids 2026.10.01
+10B1;Cabletron Systems Inc;pci.ids 2026.10.01
+10B2;Raytheon Company;pci.ids 2026.10.01
+10B3;Databook Inc;pci.ids 2026.10.01
+10B4;STB Systems Inc;pci.ids 2026.10.01
+10B5;PLX Technology, Inc.;pci.ids 2026.10.01
+10B6;Madge Networks;pci.ids 2026.10.01
+10B7;3Com Corporation;pci.ids 2026.10.01
+10B8;Standard Microsystems Corp [SMC];pci.ids 2026.10.01
+10B9;ULi Electronics Inc.;pci.ids 2026.10.01
+10BA;Mitsubishi Electric Corp.;pci.ids 2026.10.01
+10BB;Dapha Electronics Corporation;pci.ids 2026.10.01
+10BC;Advanced Logic Research;pci.ids 2026.10.01
+10BD;Surecom Technology;pci.ids 2026.10.01
+10BE;Tseng Labs International Co.;pci.ids 2026.10.01
+10BF;Most Inc;pci.ids 2026.10.01
+10C0;Boca Research Inc.;pci.ids 2026.10.01
+10C1;ICM Co., Ltd.;pci.ids 2026.10.01
+10C2;Auspex Systems Inc.;pci.ids 2026.10.01
+10C3;Samsung Semiconductors, Inc.;pci.ids 2026.10.01
+10C4;Award Software International Inc.;pci.ids 2026.10.01
+10C5;Xerox Corporation;pci.ids 2026.10.01
+10C6;Rambus Inc.;pci.ids 2026.10.01
+10C7;Media Vision;pci.ids 2026.10.01
+10C8;Neomagic Corporation;pci.ids 2026.10.01
+10C9;Dataexpert Corporation;pci.ids 2026.10.01
+10CA;Fujitsu Microelectr., Inc.;pci.ids 2026.10.01
+10CB;Omron Corporation;pci.ids 2026.10.01
+10CC;Mai Logic Incorporated;pci.ids 2026.10.01
+10CD;Advanced System Products, Inc;pci.ids 2026.10.01
+10CE;Radius;pci.ids 2026.10.01
+10CF;Fujitsu Limited.;pci.ids 2026.10.01
+10D1;FuturePlus Systems Corp.;pci.ids 2026.10.01
+10D2;Molex Incorporated;pci.ids 2026.10.01
+10D3;Jabil Circuit Inc;pci.ids 2026.10.01
+10D4;Hualon Microelectronics;pci.ids 2026.10.01
+10D5;Autologic Inc.;pci.ids 2026.10.01
+10D6;Cetia;pci.ids 2026.10.01
+10D7;BCM Advanced Research;pci.ids 2026.10.01
+10D8;Advanced Peripherals Labs;pci.ids 2026.10.01
+10D9;Macronix, Inc. [MXIC];pci.ids 2026.10.01
+10DA;Compaq IPG-Austin;pci.ids 2026.10.01
+10DB;Rohm LSI Systems, Inc.;pci.ids 2026.10.01
+10DC;CERN/ECP/EDU;pci.ids 2026.10.01
+10DD;Evans & Sutherland;pci.ids 2026.10.01
+10DE;NVIDIA Corporation;pci.ids 2026.10.01
+10DF;Emulex Corporation;pci.ids 2026.10.01
+10E0;Integrated Micro Solutions Inc.;pci.ids 2026.10.01
+10E1;Tekram Technology Co.,Ltd.;pci.ids 2026.10.01
+10E2;Aptix Corporation;pci.ids 2026.10.01
+10E3;Tundra Semiconductor Corp.;pci.ids 2026.10.01
+10E4;Tandem Computers;pci.ids 2026.10.01
+10E5;Micro Industries Corporation;pci.ids 2026.10.01
+10E6;Gainbery Computer Products Inc.;pci.ids 2026.10.01
+10E7;Vadem;pci.ids 2026.10.01
+10E8;Applied Micro Circuits Corp.;pci.ids 2026.10.01
+10E9;Alps Electric Co., Ltd.;pci.ids 2026.10.01
+10EA;Integraphics;pci.ids 2026.10.01
+10EB;Artists Graphics;pci.ids 2026.10.01
+10EC;Realtek Semiconductor Co., Ltd.;pci.ids 2026.10.01
+10ED;Ascii Corporation;pci.ids 2026.10.01
+10EE;Xilinx Corporation;pci.ids 2026.10.01
+10EF;Racore Computer Products, Inc.;pci.ids 2026.10.01
+10F0;Peritek Corporation;pci.ids 2026.10.01
+10F1;Tyan Computer;pci.ids 2026.10.01
+10F2;Achme Computer, Inc.;pci.ids 2026.10.01
+10F3;Alaris, Inc.;pci.ids 2026.10.01
+10F4;S-MOS Systems, Inc.;pci.ids 2026.10.01
+10F5;NKK Corporation;pci.ids 2026.10.01
+10F6;Creative Electronic Systems SA;pci.ids 2026.10.01
+10F7;Matsushita Electric Industrial Co., Ltd.;pci.ids 2026.10.01
+10F8;Altos India Ltd;pci.ids 2026.10.01
+10F9;PC Direct;pci.ids 2026.10.01
+10FA;Truevision;pci.ids 2026.10.01
+10FB;Thesys Gesellschaft fuer Mikroelektronik mbH;pci.ids 2026.10.01
+10FC;I-O Data Device, Inc.;pci.ids 2026.10.01
+10FD;Soyo Computer, Inc;pci.ids 2026.10.01
+10FE;Fast Multimedia AG;pci.ids 2026.10.01
+10FF;NCube;pci.ids 2026.10.01
+1100;Jazz Multimedia;pci.ids 2026.10.01
+1101;Initio Corporation;pci.ids 2026.10.01
+1102;Creative Labs;pci.ids 2026.10.01
+1103;HighPoint Technologies, Inc.;pci.ids 2026.10.01
+1104;RasterOps Corp.;pci.ids 2026.10.01
+1105;Sigma Designs, Inc.;pci.ids 2026.10.01
+1106;VIA Technologies, Inc.;pci.ids 2026.10.01
+1107;Stratus Computers;pci.ids 2026.10.01
+1108;Proteon, Inc.;pci.ids 2026.10.01
+1109;Cogent Data Technologies, Inc.;pci.ids 2026.10.01
+110A;Siemens AG;pci.ids 2026.10.01
+110B;Chromatic Research Inc.;pci.ids 2026.10.01
+110C;Mini-Max Technology, Inc.;pci.ids 2026.10.01
+110D;Znyx Advanced Systems;pci.ids 2026.10.01
+110E;CPU Technology;pci.ids 2026.10.01
+110F;Ross Technology;pci.ids 2026.10.01
+1110;Powerhouse Systems;pci.ids 2026.10.01
+1111;Santa Cruz Operation;pci.ids 2026.10.01
+1112;Osicom Technologies Inc;pci.ids 2026.10.01
+1113;Accton Technology Corporation;pci.ids 2026.10.01
+1114;Atmel Corporation;pci.ids 2026.10.01
+1115;3D Labs;pci.ids 2026.10.01
+1116;Data Translation;pci.ids 2026.10.01
+1117;Datacube, Inc;pci.ids 2026.10.01
+1118;Berg Electronics;pci.ids 2026.10.01
+1119;ICP Vortex Computersysteme GmbH;pci.ids 2026.10.01
+111A;Efficient Networks, Inc;pci.ids 2026.10.01
+111B;Teledyne Electronic Systems;pci.ids 2026.10.01
+111C;Tricord Systems Inc.;pci.ids 2026.10.01
+111D;Microsemi / PMC / IDT;pci.ids 2026.10.01
+111E;Eldec;pci.ids 2026.10.01
+111F;Precision Digital Images;pci.ids 2026.10.01
+1120;Dell EMC;pci.ids 2026.10.01
+1121;Zilog;pci.ids 2026.10.01
+1122;Multi-tech Systems, Inc.;pci.ids 2026.10.01
+1123;Excellent Design, Inc.;pci.ids 2026.10.01
+1124;Leutron Vision AG;pci.ids 2026.10.01
+1125;Eurocore;pci.ids 2026.10.01
+1126;Vigra;pci.ids 2026.10.01
+1127;FORE Systems Inc;pci.ids 2026.10.01
+1129;Firmworks;pci.ids 2026.10.01
+112A;Hermes Electronics Company, Ltd.;pci.ids 2026.10.01
+112B;Heidelberger Druckmaschinen AG;pci.ids 2026.10.01
+112C;Zenith Data Systems;pci.ids 2026.10.01
+112D;Ravicad;pci.ids 2026.10.01
+112E;Infomedia Microelectronics Inc.;pci.ids 2026.10.01
+112F;Dalsa Inc.;pci.ids 2026.10.01
+1130;Computervision;pci.ids 2026.10.01
+1131;NXP Semiconductors;pci.ids 2026.10.01
+1132;Mitel Corp.;pci.ids 2026.10.01
+1133;Dialogic Corporation;pci.ids 2026.10.01
+1134;Mercury Computer Systems;pci.ids 2026.10.01
+1135;FUJIFILM Business Innovation Corp.;pci.ids 2026.10.01
+1136;Momentum Data Systems;pci.ids 2026.10.01
+1137;Cisco Systems Inc;pci.ids 2026.10.01
+1138;Ziatech Corporation;pci.ids 2026.10.01
+1139;Dynamic Pictures, Inc;pci.ids 2026.10.01
+113A;FWB Inc;pci.ids 2026.10.01
+113B;Network Computing Devices;pci.ids 2026.10.01
+113C;Cyclone Microsystems, Inc.;pci.ids 2026.10.01
+113D;Leading Edge Products Inc;pci.ids 2026.10.01
+113E;Sanyo Electric Co - Computer Engineering Dept;pci.ids 2026.10.01
+113F;Equinox Systems, Inc.;pci.ids 2026.10.01
+1140;Intervoice Inc;pci.ids 2026.10.01
+1141;Crest Microsystem Inc;pci.ids 2026.10.01
+1142;Alliance Semiconductor Corporation;pci.ids 2026.10.01
+1143;NetPower, Inc;pci.ids 2026.10.01
+1144;Cincinnati Milacron;pci.ids 2026.10.01
+1145;Workbit Corporation;pci.ids 2026.10.01
+1146;Force Computers;pci.ids 2026.10.01
+1147;Interface Corp;pci.ids 2026.10.01
+1148;SysKonnect;pci.ids 2026.10.01
+1149;Win System Corporation;pci.ids 2026.10.01
+114A;VMIC;pci.ids 2026.10.01
+114B;Canopus Co., Ltd;pci.ids 2026.10.01
+114C;Annabooks;pci.ids 2026.10.01
+114D;IC Corporation;pci.ids 2026.10.01
+114E;Nikon Systems Inc;pci.ids 2026.10.01
+114F;Digi International;pci.ids 2026.10.01
+1150;Thinking Machines Corp;pci.ids 2026.10.01
+1151;JAE Electronics Inc.;pci.ids 2026.10.01
+1152;Megatek;pci.ids 2026.10.01
+1153;Land Win Electronic Corp;pci.ids 2026.10.01
+1154;Melco Inc;pci.ids 2026.10.01
+1155;Pine Technology Ltd;pci.ids 2026.10.01
+1156;Periscope Engineering;pci.ids 2026.10.01
+1157;Avsys Corporation;pci.ids 2026.10.01
+1158;Voarx R & D Inc;pci.ids 2026.10.01
+1159;MuTech Corporation;pci.ids 2026.10.01
+115A;Harlequin Ltd;pci.ids 2026.10.01
+115B;Parallax Graphics;pci.ids 2026.10.01
+115C;Photron Ltd.;pci.ids 2026.10.01
+115D;Xircom;pci.ids 2026.10.01
+115E;Peer Protocols Inc;pci.ids 2026.10.01
+115F;Maxtor Corporation;pci.ids 2026.10.01
+1160;Megasoft Inc;pci.ids 2026.10.01
+1161;PFU Limited;pci.ids 2026.10.01
+1162;OA Laboratory Co Ltd;pci.ids 2026.10.01
+1163;Rendition;pci.ids 2026.10.01
+1164;Advanced Peripherals Technologies;pci.ids 2026.10.01
+1165;Imagraph Corporation;pci.ids 2026.10.01
+1166;Broadcom;pci.ids 2026.10.01
+1167;Mutoh Industries Inc;pci.ids 2026.10.01
+1168;Thine Electronics Inc;pci.ids 2026.10.01
+1169;Centre for Development of Advanced Computing;pci.ids 2026.10.01
+116A;Luminex Software, Inc.;pci.ids 2026.10.01
+116B;Connectware Inc;pci.ids 2026.10.01
+116C;Intelligent Resources Integrated Systems;pci.ids 2026.10.01
+116D;Martin-Marietta;pci.ids 2026.10.01
+116E;Electronics for Imaging;pci.ids 2026.10.01
+116F;Workstation Technology;pci.ids 2026.10.01
+1170;Inventec Corporation;pci.ids 2026.10.01
+1171;Loughborough Sound Images Plc;pci.ids 2026.10.01
+1172;Altera Corporation;pci.ids 2026.10.01
+1173;Adobe Systems, Inc;pci.ids 2026.10.01
+1174;Bridgeport Machines;pci.ids 2026.10.01
+1175;Mitron Computer Inc.;pci.ids 2026.10.01
+1176;SBE Incorporated;pci.ids 2026.10.01
+1177;Silicon Engineering;pci.ids 2026.10.01
+1178;Alfa, Inc.;pci.ids 2026.10.01
+1179;Toshiba Corporation;pci.ids 2026.10.01
+117A;A-Trend Technology;pci.ids 2026.10.01
+117B;L G Electronics, Inc.;pci.ids 2026.10.01
+117C;ATTO Technology, Inc.;pci.ids 2026.10.01
+117D;Becton & Dickinson;pci.ids 2026.10.01
+117E;T/R Systems;pci.ids 2026.10.01
+117F;Integrated Circuit Systems;pci.ids 2026.10.01
+1180;Ricoh Co Ltd;pci.ids 2026.10.01
+1181;Telmatics International;pci.ids 2026.10.01
+1183;Fujikura Ltd;pci.ids 2026.10.01
+1184;Forks Inc;pci.ids 2026.10.01
+1185;Dataworld International Ltd;pci.ids 2026.10.01
+1186;D-Link System Inc;pci.ids 2026.10.01
+1187;Advanced Technology Laboratories, Inc.;pci.ids 2026.10.01
+1188;Shima Seiki Manufacturing Ltd.;pci.ids 2026.10.01
+1189;Matsushita Electronics Co Ltd;pci.ids 2026.10.01
+118A;Hilevel Technology;pci.ids 2026.10.01
+118B;Hypertec Pty Limited;pci.ids 2026.10.01
+118C;Corollary, Inc;pci.ids 2026.10.01
+118D;BitFlow Inc;pci.ids 2026.10.01
+118E;Hermstedt GmbH;pci.ids 2026.10.01
+118F;Green Logic;pci.ids 2026.10.01
+1190;Tripace;pci.ids 2026.10.01
+1191;Artop Electronic Corp;pci.ids 2026.10.01
+1192;Densan Company Ltd;pci.ids 2026.10.01
+1193;Zeitnet Inc.;pci.ids 2026.10.01
+1194;Toucan Technology;pci.ids 2026.10.01
+1195;Ratoc System Inc;pci.ids 2026.10.01
+1196;Hytec Electronics Ltd;pci.ids 2026.10.01
+1197;Gage Applied Sciences, Inc.;pci.ids 2026.10.01
+1198;Lambda Systems Inc;pci.ids 2026.10.01
+1199;Attachmate Corporation;pci.ids 2026.10.01
+119A;Mind Share, Inc.;pci.ids 2026.10.01
+119B;Omega Micro Inc.;pci.ids 2026.10.01
+119C;Information Technology Inst.;pci.ids 2026.10.01
+119D;Bug, Inc. Sapporo Japan;pci.ids 2026.10.01
+119E;Fujitsu Microelectronics Ltd.;pci.ids 2026.10.01
+119F;Bull HN Information Systems;pci.ids 2026.10.01
+11A0;Convex Computer Corporation;pci.ids 2026.10.01
+11A1;Hamamatsu Photonics K.K.;pci.ids 2026.10.01
+11A2;Sierra Research and Technology;pci.ids 2026.10.01
+11A3;Deuretzbacher GmbH & Co. Eng. KG;pci.ids 2026.10.01
+11A4;Barco Graphics NV;pci.ids 2026.10.01
+11A5;Microunity Systems Eng. Inc;pci.ids 2026.10.01
+11A6;Pure Data Ltd.;pci.ids 2026.10.01
+11A7;Power Computing Corp.;pci.ids 2026.10.01
+11A8;Systech Corp.;pci.ids 2026.10.01
+11A9;InnoSys Inc.;pci.ids 2026.10.01
+11AA;Actel;pci.ids 2026.10.01
+11AB;Marvell Technology Group Ltd.;pci.ids 2026.10.01
+11AC;Canon Information Systems Research Aust.;pci.ids 2026.10.01
+11AD;Lite-On Communications Inc;pci.ids 2026.10.01
+11AE;Aztech System Ltd;pci.ids 2026.10.01
+11AF;Avid Technology Inc.;pci.ids 2026.10.01
+11B0;V3 Semiconductor Inc.;pci.ids 2026.10.01
+11B1;Apricot Computers;pci.ids 2026.10.01
+11B2;Eastman Kodak;pci.ids 2026.10.01
+11B3;Barr Systems Inc.;pci.ids 2026.10.01
+11B4;Leitch Technology International;pci.ids 2026.10.01
+11B5;Radstone Technology Plc;pci.ids 2026.10.01
+11B6;United Video Corp;pci.ids 2026.10.01
+11B7;Motorola;pci.ids 2026.10.01
+11B8;XPoint Technologies, Inc;pci.ids 2026.10.01
+11B9;Pathlight Technology Inc.;pci.ids 2026.10.01
+11BA;Videotron Corp;pci.ids 2026.10.01
+11BB;Pyramid Technology;pci.ids 2026.10.01
+11BC;Network Peripherals Inc;pci.ids 2026.10.01
+11BD;Pinnacle Systems Inc.;pci.ids 2026.10.01
+11BE;International Microcircuits Inc;pci.ids 2026.10.01
+11BF;Astrodesign, Inc.;pci.ids 2026.10.01
+11C0;Hewlett Packard;pci.ids 2026.10.01
+11C1;LSI Corporation;pci.ids 2026.10.01
+11C2;Sand Microelectronics;pci.ids 2026.10.01
+11C3;NEC Corporation;pci.ids 2026.10.01
+11C4;Document Technologies, Inc;pci.ids 2026.10.01
+11C5;Shiva Corporation;pci.ids 2026.10.01
+11C6;Dainippon Screen Mfg. Co. Ltd;pci.ids 2026.10.01
+11C7;D.C.M. Data Systems;pci.ids 2026.10.01
+11C8;Dolphin Interconnect Solutions AS;pci.ids 2026.10.01
+11C9;Magma;pci.ids 2026.10.01
+11CA;IBEX Technology Co., Ltd.;pci.ids 2026.10.01
+11CB;Specialix Research Ltd.;pci.ids 2026.10.01
+11CC;Michels & Kleberhoff Computer GmbH;pci.ids 2026.10.01
+11CD;HAL Computer Systems, Inc.;pci.ids 2026.10.01
+11CE;Netaccess;pci.ids 2026.10.01
+11CF;Pioneer Electronic Corporation;pci.ids 2026.10.01
+11D0;Lockheed Martin Federal Systems-Manassas;pci.ids 2026.10.01
+11D1;Auravision;pci.ids 2026.10.01
+11D2;Intercom Inc.;pci.ids 2026.10.01
+11D3;Trancell Systems Inc;pci.ids 2026.10.01
+11D4;Analog Devices;pci.ids 2026.10.01
+11D5;Ikon Corporation;pci.ids 2026.10.01
+11D6;Tekelec Telecom;pci.ids 2026.10.01
+11D7;Trenton Technology, Inc.;pci.ids 2026.10.01
+11D8;Image Technologies Development;pci.ids 2026.10.01
+11D9;TEC Corporation;pci.ids 2026.10.01
+11DA;Novell;pci.ids 2026.10.01
+11DB;Sega Enterprises Ltd;pci.ids 2026.10.01
+11DC;Questra Corporation;pci.ids 2026.10.01
+11DD;Crosfield Electronics Limited;pci.ids 2026.10.01
+11DE;Zoran Corporation;pci.ids 2026.10.01
+11DF;New Wave PDG;pci.ids 2026.10.01
+11E0;Cray Communications A/S;pci.ids 2026.10.01
+11E1;GEC Plessey Semi Inc.;pci.ids 2026.10.01
+11E2;Samsung Information Systems America;pci.ids 2026.10.01
+11E3;Quicklogic Corporation;pci.ids 2026.10.01
+11E4;Second Wave Inc;pci.ids 2026.10.01
+11E5;IIX Consulting;pci.ids 2026.10.01
+11E6;Mitsui-Zosen System Research;pci.ids 2026.10.01
+11E7;Toshiba America, Elec. Company;pci.ids 2026.10.01
+11E8;Digital Processing Systems Inc.;pci.ids 2026.10.01
+11E9;Highwater Designs Ltd.;pci.ids 2026.10.01
+11EA;Elsag Bailey;pci.ids 2026.10.01
+11EB;Formation Inc.;pci.ids 2026.10.01
+11EC;Coreco Inc;pci.ids 2026.10.01
+11ED;Mediamatics;pci.ids 2026.10.01
+11EE;Dome Imaging Systems Inc;pci.ids 2026.10.01
+11EF;Nicolet Technologies B.V.;pci.ids 2026.10.01
+11F0;Compu-Shack;pci.ids 2026.10.01
+11F1;Symbios Logic Inc;pci.ids 2026.10.01
+11F2;Picture Tel Japan K.K.;pci.ids 2026.10.01
+11F3;Keithley Metrabyte;pci.ids 2026.10.01
+11F4;Kinetic Systems Corporation;pci.ids 2026.10.01
+11F5;Computing Devices International;pci.ids 2026.10.01
+11F6;Compex;pci.ids 2026.10.01
+11F7;Scientific Atlanta;pci.ids 2026.10.01
+11F8;Microchip Technology;pci.ids 2026.10.01
+11F9;I-Cube Inc;pci.ids 2026.10.01
+11FA;Kasan Electronics Company, Ltd.;pci.ids 2026.10.01
+11FB;Datel Inc;pci.ids 2026.10.01
+11FC;Silicon Magic;pci.ids 2026.10.01
+11FD;High Street Consultants;pci.ids 2026.10.01
+11FE;Pepperl+Fuchs;pci.ids 2026.10.01
+11FF;Scion Corporation;pci.ids 2026.10.01
+1200;CSS Corporation;pci.ids 2026.10.01
+1201;Vista Controls Corp;pci.ids 2026.10.01
+1202;Network General Corp.;pci.ids 2026.10.01
+1203;Bayer Corporation, Agfa Division;pci.ids 2026.10.01
+1204;Lattice Semiconductor Corporation;pci.ids 2026.10.01
+1205;Array Corporation;pci.ids 2026.10.01
+1206;Amdahl Corporation;pci.ids 2026.10.01
+1208;Parsytec GmbH;pci.ids 2026.10.01
+1209;SCI Systems Inc;pci.ids 2026.10.01
+120A;Synaptel;pci.ids 2026.10.01
+120B;Adaptive Solutions;pci.ids 2026.10.01
+120C;Technical Corp.;pci.ids 2026.10.01
+120D;Compression Labs, Inc.;pci.ids 2026.10.01
+120E;Cyclades Corporation;pci.ids 2026.10.01
+120F;Essential Communications;pci.ids 2026.10.01
+1210;Hyperparallel Technologies;pci.ids 2026.10.01
+1211;Braintech Inc;pci.ids 2026.10.01
+1213;Applied Intelligent Systems, Inc.;pci.ids 2026.10.01
+1214;Performance Technologies, Inc.;pci.ids 2026.10.01
+1215;Interware Co., Ltd;pci.ids 2026.10.01
+1216;Purup Prepress A/S;pci.ids 2026.10.01
+1217;O2 Micro, Inc.;pci.ids 2026.10.01
+1218;Hybricon Corp.;pci.ids 2026.10.01
+1219;First Virtual Corporation;pci.ids 2026.10.01
+121A;3Dfx Interactive, Inc.;pci.ids 2026.10.01
+121B;Advanced Telecommunications Modules;pci.ids 2026.10.01
+121C;Nippon Texaco., Ltd;pci.ids 2026.10.01
+121D;LiPPERT ADLINK Technology GmbH;pci.ids 2026.10.01
+121E;CSPI;pci.ids 2026.10.01
+121F;Arcus Technology, Inc.;pci.ids 2026.10.01
+1220;Ariel Corporation;pci.ids 2026.10.01
+1221;Contec Co., Ltd;pci.ids 2026.10.01
+1222;Ancor Communications, Inc.;pci.ids 2026.10.01
+1223;Artesyn Communication Products;pci.ids 2026.10.01
+1224;Interactive Images;pci.ids 2026.10.01
+1225;Power I/O, Inc.;pci.ids 2026.10.01
+1227;EIZO Rugged Solutions;pci.ids 2026.10.01
+1228;Norsk Elektro Optikk A/S;pci.ids 2026.10.01
+1229;Data Kinesis Inc.;pci.ids 2026.10.01
+122A;Integrated Telecom;pci.ids 2026.10.01
+122B;LG Industrial Systems Co., Ltd;pci.ids 2026.10.01
+122C;Sican GmbH;pci.ids 2026.10.01
+122D;Aztech System Ltd;pci.ids 2026.10.01
+122E;Xyratex;pci.ids 2026.10.01
+122F;Andrew Corporation;pci.ids 2026.10.01
+1230;Fishcamp Engineering;pci.ids 2026.10.01
+1231;Woodward McCoach, Inc.;pci.ids 2026.10.01
+1232;GPT Limited;pci.ids 2026.10.01
+1233;Bus-Tech, Inc.;pci.ids 2026.10.01
+1235;SMART Modular Technologies;pci.ids 2026.10.01
+1236;Sigma Designs Corporation;pci.ids 2026.10.01
+1237;Alta Technology Corporation;pci.ids 2026.10.01
+1238;Adtran;pci.ids 2026.10.01
+1239;3DO Company;pci.ids 2026.10.01
+123A;Visicom Laboratories, Inc.;pci.ids 2026.10.01
+123B;Seeq Technology, Inc.;pci.ids 2026.10.01
+123C;Century Systems, Inc.;pci.ids 2026.10.01
+123D;Engineering Design Team, Inc.;pci.ids 2026.10.01
+123E;Simutech, Inc.;pci.ids 2026.10.01
+123F;LSI Logic;pci.ids 2026.10.01
+1240;Marathon Technologies Corp.;pci.ids 2026.10.01
+1241;DSC Communications;pci.ids 2026.10.01
+1242;JNI Corporation;pci.ids 2026.10.01
+1243;Delphax;pci.ids 2026.10.01
+1244;AVM GmbH;pci.ids 2026.10.01
+1245;A.P.D., S.A.;pci.ids 2026.10.01
+1246;Dipix Technologies, Inc.;pci.ids 2026.10.01
+1247;Xylon Research, Inc.;pci.ids 2026.10.01
+1248;Central Data Corporation;pci.ids 2026.10.01
+1249;Samsung Electronics Co., Ltd.;pci.ids 2026.10.01
+124A;AEG Electrocom GmbH;pci.ids 2026.10.01
+124B;SBS/Greenspring Modular I/O;pci.ids 2026.10.01
+124C;Solitron Technologies, Inc.;pci.ids 2026.10.01
+124D;Stallion Technologies, Inc.;pci.ids 2026.10.01
+124E;Cylink;pci.ids 2026.10.01
+124F;Infortrend Technology, Inc.;pci.ids 2026.10.01
+1250;Hitachi Microcomputer System Ltd;pci.ids 2026.10.01
+1251;VLSI Solutions Oy;pci.ids 2026.10.01
+1253;Guzik Technical Enterprises;pci.ids 2026.10.01
+1254;Linear Systems Ltd.;pci.ids 2026.10.01
+1255;Optibase Ltd;pci.ids 2026.10.01
+1256;Perceptive Solutions, Inc.;pci.ids 2026.10.01
+1257;Vertex Networks, Inc.;pci.ids 2026.10.01
+1258;Gilbarco, Inc.;pci.ids 2026.10.01
+1259;Allied Telesis;pci.ids 2026.10.01
+125A;ABB Power Systems;pci.ids 2026.10.01
+125B;Asix Electronics Corporation;pci.ids 2026.10.01
+125C;Aurora Technologies, Inc.;pci.ids 2026.10.01
+125D;ESS Technology;pci.ids 2026.10.01
+125E;Specialvideo Engineering SRL;pci.ids 2026.10.01
+125F;Concurrent Technologies, Inc.;pci.ids 2026.10.01
+1260;Intersil Corporation;pci.ids 2026.10.01
+1261;Matsushita-Kotobuki Electronics Industries, Ltd.;pci.ids 2026.10.01
+1262;ES Computer Company, Ltd.;pci.ids 2026.10.01
+1263;Sonic Solutions;pci.ids 2026.10.01
+1264;Aval Nagasaki Corporation;pci.ids 2026.10.01
+1265;Casio Computer Co., Ltd.;pci.ids 2026.10.01
+1266;Microdyne Corporation;pci.ids 2026.10.01
+1267;S. A. Telecommunications;pci.ids 2026.10.01
+1268;Tektronix;pci.ids 2026.10.01
+1269;Thales;pci.ids 2026.10.01
+126A;Lexmark International, Inc.;pci.ids 2026.10.01
+126B;Adax, Inc.;pci.ids 2026.10.01
+126C;Northern Telecom;pci.ids 2026.10.01
+126D;Splash Technology, Inc.;pci.ids 2026.10.01
+126E;Sumitomo Metal Industries, Ltd.;pci.ids 2026.10.01
+126F;Silicon Motion, Inc.;pci.ids 2026.10.01
+1270;Olympus Optical Co., Ltd.;pci.ids 2026.10.01
+1271;GW Instruments;pci.ids 2026.10.01
+1272;Telematics International;pci.ids 2026.10.01
+1273;Hughes Network Systems;pci.ids 2026.10.01
+1274;Ensoniq;pci.ids 2026.10.01
+1275;Network Appliance Corporation;pci.ids 2026.10.01
+1276;Switched Network Technologies, Inc.;pci.ids 2026.10.01
+1277;Comstream;pci.ids 2026.10.01
+1278;Transtech Parallel Systems Ltd.;pci.ids 2026.10.01
+1279;Transmeta Corporation;pci.ids 2026.10.01
+127A;Rockwell International;pci.ids 2026.10.01
+127B;Pixera Corporation;pci.ids 2026.10.01
+127C;Crosspoint Solutions, Inc.;pci.ids 2026.10.01
+127D;Vela Research;pci.ids 2026.10.01
+127E;Winnov, L.P.;pci.ids 2026.10.01
+127F;Fujifilm;pci.ids 2026.10.01
+1280;Photoscript Group Ltd.;pci.ids 2026.10.01
+1281;Yokogawa Electric Corporation;pci.ids 2026.10.01
+1282;Davicom Semiconductor, Inc.;pci.ids 2026.10.01
+1283;Integrated Technology Express, Inc.;pci.ids 2026.10.01
+1284;Sahara Networks, Inc.;pci.ids 2026.10.01
+1285;Platform Technologies, Inc.;pci.ids 2026.10.01
+1286;Mazet GmbH;pci.ids 2026.10.01
+1287;M-Pact, Inc.;pci.ids 2026.10.01
+1288;Timestep Corporation;pci.ids 2026.10.01
+1289;AVC Technology, Inc.;pci.ids 2026.10.01
+128A;Asante Technologies, Inc.;pci.ids 2026.10.01
+128B;Transwitch Corporation;pci.ids 2026.10.01
+128C;Retix Corporation;pci.ids 2026.10.01
+128D;G2 Networks, Inc.;pci.ids 2026.10.01
+128E;Hoontech Corporation/Samho Multi Tech Ltd.;pci.ids 2026.10.01
+128F;Tateno Dennou, Inc.;pci.ids 2026.10.01
+1290;Sord Computer Corporation;pci.ids 2026.10.01
+1291;NCS Computer Italia;pci.ids 2026.10.01
+1292;Tritech Microelectronics Inc;pci.ids 2026.10.01
+1293;Media Reality Technology;pci.ids 2026.10.01
+1294;Rhetorex, Inc.;pci.ids 2026.10.01
+1295;Imagenation Corporation;pci.ids 2026.10.01
+1296;Kofax Image Products;pci.ids 2026.10.01
+1297;Holco Enterprise Co, Ltd/Shuttle Computer;pci.ids 2026.10.01
+1298;Spellcaster Telecommunications Inc.;pci.ids 2026.10.01
+1299;Knowledge Technology Lab.;pci.ids 2026.10.01
+129A;VMetro, inc.;pci.ids 2026.10.01
+129B;Image Access;pci.ids 2026.10.01
+129C;Jaycor;pci.ids 2026.10.01
+129D;Compcore Multimedia, Inc.;pci.ids 2026.10.01
+129E;Victor Company of Japan, Ltd.;pci.ids 2026.10.01
+129F;OEC Medical Systems, Inc.;pci.ids 2026.10.01
+12A0;Allen-Bradley Company;pci.ids 2026.10.01
+12A1;Simpact Associates, Inc.;pci.ids 2026.10.01
+12A2;Newgen Systems Corporation;pci.ids 2026.10.01
+12A3;Lucent Technologies;pci.ids 2026.10.01
+12A4;NTT Innovative Devices Corporation;pci.ids 2026.10.01
+12A5;Vision Dynamics Ltd.;pci.ids 2026.10.01
+12A6;Scalable Networks, Inc.;pci.ids 2026.10.01
+12A7;AMO GmbH;pci.ids 2026.10.01
+12A8;News Datacom;pci.ids 2026.10.01
+12A9;Xiotech Corporation;pci.ids 2026.10.01
+12AA;SDL Communications, Inc.;pci.ids 2026.10.01
+12AB;YUAN High-Tech Development Co., Ltd.;pci.ids 2026.10.01
+12AC;Measurex Corporation;pci.ids 2026.10.01
+12AD;Multidata GmbH;pci.ids 2026.10.01
+12AE;Alteon Networks Inc.;pci.ids 2026.10.01
+12AF;TDK Corporation;pci.ids 2026.10.01
+12B0;Jorge Scientific Corp;pci.ids 2026.10.01
+12B1;GammaLink;pci.ids 2026.10.01
+12B2;General Signal Networks;pci.ids 2026.10.01
+12B3;Inter-Face Co Ltd;pci.ids 2026.10.01
+12B4;FutureTel Inc;pci.ids 2026.10.01
+12B5;Granite Systems Inc.;pci.ids 2026.10.01
+12B6;Natural Microsystems;pci.ids 2026.10.01
+12B7;Cognex Corporation;pci.ids 2026.10.01
+12B8;Korg;pci.ids 2026.10.01
+12B9;3Com Corp, Modem Division;pci.ids 2026.10.01
+12BA;BittWare, Inc.;pci.ids 2026.10.01
+12BB;Nippon Unisoft Corporation;pci.ids 2026.10.01
+12BC;Array Microsystems;pci.ids 2026.10.01
+12BD;Computerm Corp.;pci.ids 2026.10.01
+12BE;Anchor Chips Inc.;pci.ids 2026.10.01
+12BF;Fujifilm Microdevices;pci.ids 2026.10.01
+12C0;Infimed;pci.ids 2026.10.01
+12C1;GMM Research Corp;pci.ids 2026.10.01
+12C2;Mentec Limited;pci.ids 2026.10.01
+12C3;Holtek Microelectronics Inc;pci.ids 2026.10.01
+12C4;Connect Tech Inc;pci.ids 2026.10.01
+12C5;Picture Elements Incorporated;pci.ids 2026.10.01
+12C6;Mitani Corporation;pci.ids 2026.10.01
+12C7;Dialogic Corp;pci.ids 2026.10.01
+12C8;G Force Co, Ltd;pci.ids 2026.10.01
+12C9;Gigi Operations;pci.ids 2026.10.01
+12CA;Integrated Computing Engines;pci.ids 2026.10.01
+12CB;Antex Electronics Corporation;pci.ids 2026.10.01
+12CC;Pluto Technologies International;pci.ids 2026.10.01
+12CD;Aims Lab;pci.ids 2026.10.01
+12CE;Netspeed Inc.;pci.ids 2026.10.01
+12CF;Prophet Systems, Inc.;pci.ids 2026.10.01
+12D0;GDE Systems, Inc.;pci.ids 2026.10.01
+12D1;PSITech;pci.ids 2026.10.01
+12D2;NVidia / SGS Thomson (Joint Venture);pci.ids 2026.10.01
+12D3;Vingmed Sound A/S;pci.ids 2026.10.01
+12D4;Ulticom (Formerly DGM&S);pci.ids 2026.10.01
+12D5;Equator Technologies Inc;pci.ids 2026.10.01
+12D6;Analogic Corp;pci.ids 2026.10.01
+12D7;Biotronic SRL;pci.ids 2026.10.01
+12D8;Pericom Semiconductor;pci.ids 2026.10.01
+12D9;Aculab PLC;pci.ids 2026.10.01
+12DA;True Time Inc.;pci.ids 2026.10.01
+12DB;Annapolis Micro Systems, Inc;pci.ids 2026.10.01
+12DC;Symicron Computer Communication Ltd.;pci.ids 2026.10.01
+12DD;Management Graphics;pci.ids 2026.10.01
+12DE;Rainbow Technologies;pci.ids 2026.10.01
+12DF;SBS Technologies Inc;pci.ids 2026.10.01
+12E0;Chase Research;pci.ids 2026.10.01
+12E1;Nintendo Co, Ltd;pci.ids 2026.10.01
+12E2;Datum Inc. Bancomm-Timing Division;pci.ids 2026.10.01
+12E3;Imation Corp - Medical Imaging Systems;pci.ids 2026.10.01
+12E4;Brooktrout Technology Inc;pci.ids 2026.10.01
+12E5;Apex Semiconductor Inc;pci.ids 2026.10.01
+12E6;Cirel Systems;pci.ids 2026.10.01
+12E7;Sunsgroup Corporation;pci.ids 2026.10.01
+12E8;Crisc Corp;pci.ids 2026.10.01
+12E9;GE Spacenet;pci.ids 2026.10.01
+12EA;Zuken;pci.ids 2026.10.01
+12EB;Aureal Semiconductor;pci.ids 2026.10.01
+12EC;3A International, Inc.;pci.ids 2026.10.01
+12ED;Optivision Inc.;pci.ids 2026.10.01
+12EE;Orange Micro;pci.ids 2026.10.01
+12EF;Vienna Systems;pci.ids 2026.10.01
+12F0;Pentek;pci.ids 2026.10.01
+12F1;Sorenson Vision Inc;pci.ids 2026.10.01
+12F2;Gammagraphx, Inc.;pci.ids 2026.10.01
+12F3;Radstone Technology;pci.ids 2026.10.01
+12F4;Megatel;pci.ids 2026.10.01
+12F5;Forks;pci.ids 2026.10.01
+12F6;Dawson France;pci.ids 2026.10.01
+12F7;Cognex;pci.ids 2026.10.01
+12F8;Electronic Design GmbH;pci.ids 2026.10.01
+12F9;Four Fold Ltd;pci.ids 2026.10.01
+12FB;Spectrum Signal Processing;pci.ids 2026.10.01
+12FC;Capital Equipment Corp;pci.ids 2026.10.01
+12FD;I2S;pci.ids 2026.10.01
+12FE;ESD Electronic System Design GmbH;pci.ids 2026.10.01
+12FF;Lexicon;pci.ids 2026.10.01
+1300;Harman International Industries Inc;pci.ids 2026.10.01
+1302;Computer Sciences Corp;pci.ids 2026.10.01
+1303;Innovative Integration;pci.ids 2026.10.01
+1304;Juniper Networks;pci.ids 2026.10.01
+1305;Netphone, Inc;pci.ids 2026.10.01
+1306;Duet Technologies;pci.ids 2026.10.01
+1307;Measurement Computing;pci.ids 2026.10.01
+1308;Jato Technologies Inc.;pci.ids 2026.10.01
+1309;AB Semiconductor Ltd;pci.ids 2026.10.01
+130A;Mitsubishi Electric Microcomputer;pci.ids 2026.10.01
+130B;Colorgraphic Communications Corp;pci.ids 2026.10.01
+130C;Ambex Technologies, Inc;pci.ids 2026.10.01
+130D;Accelerix Inc;pci.ids 2026.10.01
+130E;Yamatake-Honeywell Co. Ltd;pci.ids 2026.10.01
+130F;Advanet Inc;pci.ids 2026.10.01
+1310;Gespac;pci.ids 2026.10.01
+1311;Videoserver, Inc;pci.ids 2026.10.01
+1312;Acuity Imaging, Inc;pci.ids 2026.10.01
+1313;Yaskawa Electric Co.;pci.ids 2026.10.01
+1315;Wavesat;pci.ids 2026.10.01
+1316;Teradyne Inc;pci.ids 2026.10.01
+1317;ADMtek;pci.ids 2026.10.01
+1318;Packet Engines Inc.;pci.ids 2026.10.01
+1319;Fortemedia, Inc;pci.ids 2026.10.01
+131A;Finisar Corp.;pci.ids 2026.10.01
+131C;Nippon Electro-Sensory Devices Corp;pci.ids 2026.10.01
+131D;Sysmic, Inc.;pci.ids 2026.10.01
+131E;Xinex Networks Inc;pci.ids 2026.10.01
+131F;Siig Inc;pci.ids 2026.10.01
+1320;Crypto AG;pci.ids 2026.10.01
+1321;Arcobel Graphics BV;pci.ids 2026.10.01
+1322;MTT Co., Ltd;pci.ids 2026.10.01
+1323;Dome Inc;pci.ids 2026.10.01
+1324;Sphere Communications;pci.ids 2026.10.01
+1325;Salix Technologies, Inc;pci.ids 2026.10.01
+1326;Seachange international;pci.ids 2026.10.01
+1327;Voss scientific;pci.ids 2026.10.01
+1328;quadrant international;pci.ids 2026.10.01
+1329;Productivity Enhancement;pci.ids 2026.10.01
+132A;Microcom Inc.;pci.ids 2026.10.01
+132B;Broadband Technologies;pci.ids 2026.10.01
+132C;Micrel Inc;pci.ids 2026.10.01
+132D;Integrated Silicon Solution, Inc.;pci.ids 2026.10.01
+1330;MMC Networks;pci.ids 2026.10.01
+1331;RadiSys Corporation;pci.ids 2026.10.01
+1332;Micro Memory;pci.ids 2026.10.01
+1334;Redcreek Communications, Inc;pci.ids 2026.10.01
+1335;Videomail, Inc;pci.ids 2026.10.01
+1337;Third Planet Publishing;pci.ids 2026.10.01
+1338;BT Electronics;pci.ids 2026.10.01
+133A;Vtel Corp;pci.ids 2026.10.01
+133B;Softcom Microsystems;pci.ids 2026.10.01
+133C;Holontech Corp;pci.ids 2026.10.01
+133D;SS Technologies;pci.ids 2026.10.01
+133E;Virtual Computer Corp;pci.ids 2026.10.01
+133F;SCM Microsystems;pci.ids 2026.10.01
+1340;Atalla Corp;pci.ids 2026.10.01
+1341;Kyoto Microcomputer Co;pci.ids 2026.10.01
+1342;Promax Systems Inc;pci.ids 2026.10.01
+1343;Phylon Communications Inc;pci.ids 2026.10.01
+1344;Micron Technology Inc;pci.ids 2026.10.01
+1345;Arescom Inc;pci.ids 2026.10.01
+1347;Odetics;pci.ids 2026.10.01
+1349;Sumitomo Electric Industries, Ltd.;pci.ids 2026.10.01
+134A;DTC Technology Corp.;pci.ids 2026.10.01
+134B;ARK Research Corp.;pci.ids 2026.10.01
+134C;Chori Joho System Co. Ltd;pci.ids 2026.10.01
+134D;PCTel Inc;pci.ids 2026.10.01
+134E;CSTI;pci.ids 2026.10.01
+134F;Algo System Co Ltd;pci.ids 2026.10.01
+1350;Systec Co. Ltd;pci.ids 2026.10.01
+1351;Sonix Inc;pci.ids 2026.10.01
+1353;dbeeSet Technology;pci.ids 2026.10.01
+1354;Dwave System Inc;pci.ids 2026.10.01
+1355;Kratos Analytical Ltd;pci.ids 2026.10.01
+1356;The Logical Co;pci.ids 2026.10.01
+1359;Prisa Networks;pci.ids 2026.10.01
+135A;Brainboxes Ltd;pci.ids 2026.10.01
+135B;Giganet Inc;pci.ids 2026.10.01
+135C;Quatech Inc;pci.ids 2026.10.01
+135D;ABB Network Partner AB;pci.ids 2026.10.01
+135E;Sealevel Systems Inc;pci.ids 2026.10.01
+135F;I-Data International A-S;pci.ids 2026.10.01
+1360;Meinberg Funkuhren;pci.ids 2026.10.01
+1361;Soliton Systems K.K.;pci.ids 2026.10.01
+1362;Fujifacom Corporation;pci.ids 2026.10.01
+1363;Phoenix Technology Ltd;pci.ids 2026.10.01
+1364;ATM Communications Inc;pci.ids 2026.10.01
+1365;Hypercope GmbH;pci.ids 2026.10.01
+1366;Teijin Seiki Co. Ltd;pci.ids 2026.10.01
+1367;Hitachi Zosen Corporation;pci.ids 2026.10.01
+1368;Skyware Corporation;pci.ids 2026.10.01
+1369;Digigram;pci.ids 2026.10.01
+136A;High Soft Tech;pci.ids 2026.10.01
+136B;Kawasaki Steel Corporation;pci.ids 2026.10.01
+136C;Adtek System Science Co Ltd;pci.ids 2026.10.01
+136D;Gigalabs Inc;pci.ids 2026.10.01
+136F;Applied Magic Inc;pci.ids 2026.10.01
+1370;ATL Products;pci.ids 2026.10.01
+1371;CNet Technology Inc;pci.ids 2026.10.01
+1373;Silicon Vision Inc;pci.ids 2026.10.01
+1374;Silicom Ltd.;pci.ids 2026.10.01
+1375;Argosystems Inc;pci.ids 2026.10.01
+1376;LMC;pci.ids 2026.10.01
+1377;Electronic Equipment Production & Distribution GmbH;pci.ids 2026.10.01
+1378;Telemann Co. Ltd;pci.ids 2026.10.01
+1379;Asahi Kasei Microsystems Co Ltd;pci.ids 2026.10.01
+137A;Mark of the Unicorn Inc;pci.ids 2026.10.01
+137B;PPT Vision;pci.ids 2026.10.01
+137C;Iwatsu Electric Co Ltd;pci.ids 2026.10.01
+137D;Dynachip Corporation;pci.ids 2026.10.01
+137E;Patriot Scientific Corporation;pci.ids 2026.10.01
+137F;Japan Satellite Systems Inc;pci.ids 2026.10.01
+1380;Sanritz Automation Co Ltd;pci.ids 2026.10.01
+1381;Brains Co. Ltd;pci.ids 2026.10.01
+1382;Marian - Electronic & Software;pci.ids 2026.10.01
+1383;Controlnet Inc;pci.ids 2026.10.01
+1384;Reality Simulation Systems Inc;pci.ids 2026.10.01
+1385;Netgear;pci.ids 2026.10.01
+1386;Video Domain Technologies;pci.ids 2026.10.01
+1387;Systran Corp;pci.ids 2026.10.01
+1388;Hitachi Information Technology Co Ltd;pci.ids 2026.10.01
+1389;Applicom International;pci.ids 2026.10.01
+138A;Fusion Micromedia Corp;pci.ids 2026.10.01
+138B;Tokimec Inc;pci.ids 2026.10.01
+138C;Silicon Reality;pci.ids 2026.10.01
+138D;Future Techno Designs pte Ltd;pci.ids 2026.10.01
+138E;Basler GmbH;pci.ids 2026.10.01
+138F;Patapsco Designs Inc;pci.ids 2026.10.01
+1390;Concept Development Inc;pci.ids 2026.10.01
+1391;Development Concepts Inc;pci.ids 2026.10.01
+1392;Medialight Inc;pci.ids 2026.10.01
+1393;Moxa Technologies Co Ltd;pci.ids 2026.10.01
+1394;Level One Communications;pci.ids 2026.10.01
+1395;Ambicom Inc;pci.ids 2026.10.01
+1396;Cipher Systems Inc;pci.ids 2026.10.01
+1397;Cologne Chip Designs GmbH;pci.ids 2026.10.01
+1398;Clarion co. Ltd;pci.ids 2026.10.01
+1399;Rios systems Co Ltd;pci.ids 2026.10.01
+139A;Alacritech Inc;pci.ids 2026.10.01
+139B;Mediasonic Multimedia Systems Ltd;pci.ids 2026.10.01
+139C;Quantum 3d Inc;pci.ids 2026.10.01
+139D;EPL limited;pci.ids 2026.10.01
+139E;Media4;pci.ids 2026.10.01
+139F;Aethra s.r.l.;pci.ids 2026.10.01
+13A0;Crystal Group Inc;pci.ids 2026.10.01
+13A1;Kawasaki Heavy Industries Ltd;pci.ids 2026.10.01
+13A2;Ositech Communications Inc;pci.ids 2026.10.01
+13A3;Hifn Inc.;pci.ids 2026.10.01
+13A4;Rascom Inc;pci.ids 2026.10.01
+13A5;Audio Digital Imaging Inc;pci.ids 2026.10.01
+13A6;Videonics Inc;pci.ids 2026.10.01
+13A7;Teles AG;pci.ids 2026.10.01
+13A8;Exar Corp.;pci.ids 2026.10.01
+13A9;Siemens Medical Systems, Ultrasound Group;pci.ids 2026.10.01
+13AA;Broadband Networks Inc;pci.ids 2026.10.01
+13AB;Arcom Control Systems Ltd;pci.ids 2026.10.01
+13AC;Motion Media Technology Ltd;pci.ids 2026.10.01
+13AD;Nexus Inc;pci.ids 2026.10.01
+13AE;ALD Technology Ltd;pci.ids 2026.10.01
+13AF;T.Sqware;pci.ids 2026.10.01
+13B0;Maxspeed Corp;pci.ids 2026.10.01
+13B1;Tamura corporation;pci.ids 2026.10.01
+13B2;Techno Chips Co. Ltd;pci.ids 2026.10.01
+13B3;Lanart Corporation;pci.ids 2026.10.01
+13B4;Wellbean Co Inc;pci.ids 2026.10.01
+13B5;ARM;pci.ids 2026.10.01
+13B6;Dlog GmbH;pci.ids 2026.10.01
+13B7;Logic Devices Inc;pci.ids 2026.10.01
+13B8;Nokia Telecommunications oy;pci.ids 2026.10.01
+13B9;Elecom Co Ltd;pci.ids 2026.10.01
+13BA;Oxford Instruments;pci.ids 2026.10.01
+13BB;Sanyo Technosound Co Ltd;pci.ids 2026.10.01
+13BC;Bitran Corporation;pci.ids 2026.10.01
+13BD;Sharp corporation;pci.ids 2026.10.01
+13BE;Miroku Jyoho Service Co. Ltd;pci.ids 2026.10.01
+13BF;Sharewave Inc;pci.ids 2026.10.01
+13C0;Microgate Corporation;pci.ids 2026.10.01
+13C1;3ware Inc;pci.ids 2026.10.01
+13C2;Technotrend Systemtechnik GmbH;pci.ids 2026.10.01
+13C3;Janz Computer AG;pci.ids 2026.10.01
+13C4;Phase Metrics;pci.ids 2026.10.01
+13C5;Alphi Technology Corp;pci.ids 2026.10.01
+13C6;Condor Engineering Inc;pci.ids 2026.10.01
+13C7;Blue Chip Technology Ltd;pci.ids 2026.10.01
+13C8;Apptech Inc;pci.ids 2026.10.01
+13C9;Eaton Corporation;pci.ids 2026.10.01
+13CA;Iomega Corporation;pci.ids 2026.10.01
+13CB;Yano Electric Co Ltd;pci.ids 2026.10.01
+13CC;BARCO;pci.ids 2026.10.01
+13CD;Compatible Systems Corporation;pci.ids 2026.10.01
+13CE;Cocom A/S;pci.ids 2026.10.01
+13CF;Studio Audio & Video Ltd;pci.ids 2026.10.01
+13D0;Techsan Electronics Co Ltd;pci.ids 2026.10.01
+13D1;Abocom Systems Inc;pci.ids 2026.10.01
+13D2;Shark Multimedia Inc;pci.ids 2026.10.01
+13D4;Graphics Microsystems Inc;pci.ids 2026.10.01
+13D5;Media 100 Inc;pci.ids 2026.10.01
+13D6;K.I. Technology Co Ltd;pci.ids 2026.10.01
+13D7;Toshiba Engineering Corporation;pci.ids 2026.10.01
+13D8;Phobos corporation;pci.ids 2026.10.01
+13D9;Apex PC Solutions Inc;pci.ids 2026.10.01
+13DA;Intresource Systems pte Ltd;pci.ids 2026.10.01
+13DB;Janich & Klass Computertechnik GmbH;pci.ids 2026.10.01
+13DC;Netboost Corporation;pci.ids 2026.10.01
+13DD;Multimedia Bundle Inc;pci.ids 2026.10.01
+13DE;ABB Robotics Products AB;pci.ids 2026.10.01
+13DF;E-Tech Inc;pci.ids 2026.10.01
+13E0;GVC Corporation;pci.ids 2026.10.01
+13E1;Silicom Multimedia Systems Inc;pci.ids 2026.10.01
+13E2;Dynamics Research Corporation;pci.ids 2026.10.01
+13E3;Nest Inc;pci.ids 2026.10.01
+13E4;Calculex Inc;pci.ids 2026.10.01
+13E5;Telesoft Design Ltd;pci.ids 2026.10.01
+13E6;Argosy research Inc;pci.ids 2026.10.01
+13E7;NAC Incorporated;pci.ids 2026.10.01
+13E8;Chip Express Corporation;pci.ids 2026.10.01
+13E9;Intraserver Technology Inc;pci.ids 2026.10.01
+13EA;Dallas Semiconductor;pci.ids 2026.10.01
+13EB;Hauppauge Computer Works Inc;pci.ids 2026.10.01
+13EC;Zydacron Inc;pci.ids 2026.10.01
+13ED;Raytheion E-Systems;pci.ids 2026.10.01
+13EE;Hayes Microcomputer Products Inc;pci.ids 2026.10.01
+13EF;Coppercom Inc;pci.ids 2026.10.01
+13F0;Sundance Technology Inc / IC Plus Corp;pci.ids 2026.10.01
+13F1;Oce' - Technologies B.V.;pci.ids 2026.10.01
+13F2;Ford Microelectronics Inc;pci.ids 2026.10.01
+13F3;Brocade Communications Systems, Inc.;pci.ids 2026.10.01
+13F4;Troika Networks, Inc.;pci.ids 2026.10.01
+13F5;Kansai Electric Co. Ltd;pci.ids 2026.10.01
+13F6;C-Media Electronics Inc;pci.ids 2026.10.01
+13F7;Wildfire Communications;pci.ids 2026.10.01
+13F8;Ad Lib Multimedia Inc;pci.ids 2026.10.01
+13F9;NTT Advanced Technology Corp.;pci.ids 2026.10.01
+13FA;Pentland Systems Ltd;pci.ids 2026.10.01
+13FB;Aydin Corp;pci.ids 2026.10.01
+13FC;Computer Peripherals International;pci.ids 2026.10.01
+13FD;Micro Science Inc;pci.ids 2026.10.01
+13FE;Advantech Co. Ltd;pci.ids 2026.10.01
+13FF;Silicon Spice Inc;pci.ids 2026.10.01
+1400;Artx Inc;pci.ids 2026.10.01
+1401;CR-Systems A/S;pci.ids 2026.10.01
+1402;Meilhaus Electronic GmbH;pci.ids 2026.10.01
+1403;Ascor Inc;pci.ids 2026.10.01
+1404;Fundamental Software Inc;pci.ids 2026.10.01
+1405;Excalibur Systems Inc;pci.ids 2026.10.01
+1406;Oce' Printing Systems GmbH;pci.ids 2026.10.01
+1407;Lava Computer mfg Inc;pci.ids 2026.10.01
+1408;Aloka Co. Ltd;pci.ids 2026.10.01
+1409;Timedia Technology Co Ltd;pci.ids 2026.10.01
+140A;DSP Research Inc;pci.ids 2026.10.01
+140B;Abaco Systems, Inc.;pci.ids 2026.10.01
+140C;Elmic Systems Inc;pci.ids 2026.10.01
+140D;Matsushita Electric Works Ltd;pci.ids 2026.10.01
+140E;Goepel Electronic GmbH;pci.ids 2026.10.01
+140F;Salient Systems Corp;pci.ids 2026.10.01
+1410;Midas lab Inc;pci.ids 2026.10.01
+1411;Ikos Systems Inc;pci.ids 2026.10.01
+1412;VIA Technologies Inc.;pci.ids 2026.10.01
+1413;Addonics;pci.ids 2026.10.01
+1414;Microsoft Corporation;pci.ids 2026.10.01
+1415;Oxford Semiconductor Ltd;pci.ids 2026.10.01
+1416;Multiwave Innovation pte Ltd;pci.ids 2026.10.01
+1417;Convergenet Technologies Inc;pci.ids 2026.10.01
+1418;Kyushu electronics systems Inc;pci.ids 2026.10.01
+1419;Excel Switching Corp;pci.ids 2026.10.01
+141A;Apache Micro Peripherals Inc;pci.ids 2026.10.01
+141B;Zoom Telephonics Inc;pci.ids 2026.10.01
+141D;Digitan Systems Inc;pci.ids 2026.10.01
+141E;Fanuc Ltd;pci.ids 2026.10.01
+141F;Visiontech Ltd;pci.ids 2026.10.01
+1420;Psion Dacom plc;pci.ids 2026.10.01
+1421;Ads Technologies Inc;pci.ids 2026.10.01
+1422;Ygrec Systems Co Ltd;pci.ids 2026.10.01
+1423;Custom Technology Corp.;pci.ids 2026.10.01
+1424;Videoserver Connections;pci.ids 2026.10.01
+1425;Chelsio Communications Inc;pci.ids 2026.10.01
+1426;Storage Technology Corp.;pci.ids 2026.10.01
+1427;Better On-Line Solutions;pci.ids 2026.10.01
+1428;Edec Co Ltd;pci.ids 2026.10.01
+1429;Unex Technology Corp.;pci.ids 2026.10.01
+142A;Kingmax Technology Inc;pci.ids 2026.10.01
+142B;Radiolan;pci.ids 2026.10.01
+142C;Minton Optic Industry Co Ltd;pci.ids 2026.10.01
+142D;Pix stream Inc;pci.ids 2026.10.01
+142E;Vitec Multimedia;pci.ids 2026.10.01
+142F;Radicom Research Inc;pci.ids 2026.10.01
+1430;ITT Aerospace/Communications Division;pci.ids 2026.10.01
+1431;Gilat Satellite Networks;pci.ids 2026.10.01
+1432;Edimax Computer Co.;pci.ids 2026.10.01
+1433;Eltec Elektronik GmbH;pci.ids 2026.10.01
+1435;RTD Embedded Technologies, Inc.;pci.ids 2026.10.01
+1436;CIS Technology Inc;pci.ids 2026.10.01
+1437;Nissin Inc Co;pci.ids 2026.10.01
+1438;Atmel-dream;pci.ids 2026.10.01
+1439;Outsource Engineering & Mfg. Inc;pci.ids 2026.10.01
+143A;Stargate Solutions Inc;pci.ids 2026.10.01
+143B;Canon Research Center, America;pci.ids 2026.10.01
+143C;Amlogic Inc;pci.ids 2026.10.01
+143D;Tamarack Microelectronics Inc;pci.ids 2026.10.01
+143E;Jones Futurex Inc;pci.ids 2026.10.01
+143F;Lightwell Co Ltd - Zax Division;pci.ids 2026.10.01
+1440;ALGOL Corp.;pci.ids 2026.10.01
+1441;AGIE Ltd;pci.ids 2026.10.01
+1442;Phoenix Contact GmbH & Co.;pci.ids 2026.10.01
+1443;Unibrain S.A.;pci.ids 2026.10.01
+1444;TRW;pci.ids 2026.10.01
+1445;Logical DO Ltd;pci.ids 2026.10.01
+1446;Graphin Co Ltd;pci.ids 2026.10.01
+1447;AIM GmBH;pci.ids 2026.10.01
+1448;Alesis Studio Electronics;pci.ids 2026.10.01
+1449;TUT Systems Inc;pci.ids 2026.10.01
+144A;Adlink Technology;pci.ids 2026.10.01
+144B;Verint Systems Inc.;pci.ids 2026.10.01
+144C;Catalina Research Inc;pci.ids 2026.10.01
+144D;Samsung Electronics Co Ltd;pci.ids 2026.10.01
+144E;OLITEC;pci.ids 2026.10.01
+144F;Askey Computer Corp.;pci.ids 2026.10.01
+1450;Octave Communications Ind.;pci.ids 2026.10.01
+1451;SP3D Chip Design GmBH;pci.ids 2026.10.01
+1453;MYCOM Inc;pci.ids 2026.10.01
+1454;Altiga Networks;pci.ids 2026.10.01
+1455;Logic Plus Plus Inc;pci.ids 2026.10.01
+1456;Advanced Hardware Architectures;pci.ids 2026.10.01
+1457;Nuera Communications Inc;pci.ids 2026.10.01
+1458;Gigabyte Technology Co., Ltd;pci.ids 2026.10.01
+1459;DOOIN Electronics;pci.ids 2026.10.01
+145A;Escalate Networks Inc;pci.ids 2026.10.01
+145B;PRAIM SRL;pci.ids 2026.10.01
+145C;Cryptek;pci.ids 2026.10.01
+145D;Gallant Computer Inc;pci.ids 2026.10.01
+145E;Aashima Technology B.V.;pci.ids 2026.10.01
+145F;Baldor Electric Company;pci.ids 2026.10.01
+1460;DYNARC INC;pci.ids 2026.10.01
+1461;Avermedia Technologies Inc;pci.ids 2026.10.01
+1462;Micro-Star International Co., Ltd. [MSI];pci.ids 2026.10.01
+1463;Fast Corporation;pci.ids 2026.10.01
+1464;Interactive Circuits & Systems Ltd;pci.ids 2026.10.01
+1465;GN NETTEST Telecom DIV.;pci.ids 2026.10.01
+1466;Designpro Inc.;pci.ids 2026.10.01
+1467;DIGICOM SPA;pci.ids 2026.10.01
+1468;AMBIT Microsystem Corp.;pci.ids 2026.10.01
+1469;Cleveland Motion Controls;pci.ids 2026.10.01
+146A;Aeroflex;pci.ids 2026.10.01
+146B;Parascan Technologies Ltd;pci.ids 2026.10.01
+146C;Ruby Tech Corp.;pci.ids 2026.10.01
+146D;Tachyon, INC.;pci.ids 2026.10.01
+146E;Williams Electronics Games, Inc.;pci.ids 2026.10.01
+146F;Multi Dimensional Consulting Inc;pci.ids 2026.10.01
+1470;Bay Networks;pci.ids 2026.10.01
+1471;Integrated Telecom Express Inc;pci.ids 2026.10.01
+1472;DAIKIN Industries, Ltd;pci.ids 2026.10.01
+1473;ZAPEX Technologies Inc;pci.ids 2026.10.01
+1474;Doug Carson & Associates;pci.ids 2026.10.01
+1475;PICAZO Communications;pci.ids 2026.10.01
+1476;MORTARA Instrument Inc;pci.ids 2026.10.01
+1477;Net Insight;pci.ids 2026.10.01
+1478;DIATREND Corporation;pci.ids 2026.10.01
+1479;TORAY Industries Inc;pci.ids 2026.10.01
+147A;FORMOSA Industrial Computing;pci.ids 2026.10.01
+147B;ABIT Computer Corp.;pci.ids 2026.10.01
+147C;AWARE, Inc.;pci.ids 2026.10.01
+147D;Interworks Computer Products;pci.ids 2026.10.01
+147E;Matsushita Graphic Communication Systems, Inc.;pci.ids 2026.10.01
+147F;NIHON UNISYS, Ltd.;pci.ids 2026.10.01
+1480;SCII Telecom;pci.ids 2026.10.01
+1481;BIOPAC Systems Inc;pci.ids 2026.10.01
+1482;ISYTEC - Integrierte Systemtechnik GmBH;pci.ids 2026.10.01
+1483;LABWAY Corporation;pci.ids 2026.10.01
+1484;Logic Corporation;pci.ids 2026.10.01
+1485;ERMA - Electronic GmBH;pci.ids 2026.10.01
+1486;L3 Communications Telemetry & Instrumentation;pci.ids 2026.10.01
+1487;MARQUETTE Medical Systems;pci.ids 2026.10.01
+1489;KYE Systems Corporation;pci.ids 2026.10.01
+148A;OPTO;pci.ids 2026.10.01
+148B;INNOMEDIALOGIC Inc.;pci.ids 2026.10.01
+148C;Tul Corporation / PowerColor;pci.ids 2026.10.01
+148D;DIGICOM Systems, Inc.;pci.ids 2026.10.01
+148E;OSI Plus Corporation;pci.ids 2026.10.01
+148F;Plant Equipment, Inc.;pci.ids 2026.10.01
+1490;Stone Microsystems PTY Ltd.;pci.ids 2026.10.01
+1491;ZEAL Corporation;pci.ids 2026.10.01
+1492;Time Logic Corporation;pci.ids 2026.10.01
+1493;MAKER Communications;pci.ids 2026.10.01
+1494;WINTOP Technology, Inc.;pci.ids 2026.10.01
+1495;TOKAI Communications Industry Co. Ltd;pci.ids 2026.10.01
+1496;JOYTECH Computer Co., Ltd.;pci.ids 2026.10.01
+1497;SMA Regelsysteme GmBH;pci.ids 2026.10.01
+1498;TEWS Technologies GmbH;pci.ids 2026.10.01
+1499;EMTEC CO., Ltd;pci.ids 2026.10.01
+149A;ANDOR Technology Ltd;pci.ids 2026.10.01
+149B;SEIKO Instruments Inc;pci.ids 2026.10.01
+149C;OVISLINK Corp.;pci.ids 2026.10.01
+149D;NEWTEK Inc;pci.ids 2026.10.01
+149E;Mapletree Networks Inc.;pci.ids 2026.10.01
+149F;LECTRON Co Ltd;pci.ids 2026.10.01
+14A0;SOFTING GmBH;pci.ids 2026.10.01
+14A1;Systembase Co Ltd;pci.ids 2026.10.01
+14A2;Millennium Engineering Inc;pci.ids 2026.10.01
+14A3;Maverick Networks;pci.ids 2026.10.01
+14A4;Lite-On Technology Corporation;pci.ids 2026.10.01
+14A5;XIONICS Document Technologies Inc;pci.ids 2026.10.01
+14A6;INOVA Computers GmBH & Co KG;pci.ids 2026.10.01
+14A7;MYTHOS Systems Inc;pci.ids 2026.10.01
+14A8;FEATRON Technologies Corporation;pci.ids 2026.10.01
+14A9;HIVERTEC Inc;pci.ids 2026.10.01
+14AA;Advanced MOS Technology Inc;pci.ids 2026.10.01
+14AB;Siemens Industry Software Inc.;pci.ids 2026.10.01
+14AC;Novaweb Technologies Inc;pci.ids 2026.10.01
+14AD;Time Space Radio AB;pci.ids 2026.10.01
+14AE;CTI, Inc;pci.ids 2026.10.01
+14AF;Guillemot Corporation;pci.ids 2026.10.01
+14B0;BST Communication Technology Ltd;pci.ids 2026.10.01
+14B1;Nextcom K.K.;pci.ids 2026.10.01
+14B2;ENNOVATE Networks Inc;pci.ids 2026.10.01
+14B3;XPEED Inc;pci.ids 2026.10.01
+14B4;PHILIPS Business Electronics B.V.;pci.ids 2026.10.01
+14B5;Creamware GmBH;pci.ids 2026.10.01
+14B6;Quantum Data Corp.;pci.ids 2026.10.01
+14B7;PROXIM Inc;pci.ids 2026.10.01
+14B8;Techsoft Technology Co Ltd;pci.ids 2026.10.01
+14B9;Cisco Aironet Wireless Communications;pci.ids 2026.10.01
+14BA;INTERNIX Inc.;pci.ids 2026.10.01
+14BB;SEMTECH Corporation;pci.ids 2026.10.01
+14BC;Globespan Semiconductor Inc.;pci.ids 2026.10.01
+14BD;CARDIO Control N.V.;pci.ids 2026.10.01
+14BE;L3 Communications;pci.ids 2026.10.01
+14BF;SPIDER Communications Inc.;pci.ids 2026.10.01
+14C0;COMPAL Electronics Inc;pci.ids 2026.10.01
+14C1;MYRICOM Inc.;pci.ids 2026.10.01
+14C2;DTK Computer;pci.ids 2026.10.01
+14C3;MEDIATEK Corp.;pci.ids 2026.10.01
+14C4;IWASAKI Information Systems Co Ltd;pci.ids 2026.10.01
+14C5;Automation Products AB;pci.ids 2026.10.01
+14C6;Data Race Inc;pci.ids 2026.10.01
+14C7;Modular Technology Holdings Ltd;pci.ids 2026.10.01
+14C8;Turbocomm Tech. Inc.;pci.ids 2026.10.01
+14C9;ODIN Telesystems Inc;pci.ids 2026.10.01
+14CA;PE Logic Corp.;pci.ids 2026.10.01
+14CB;Billionton Systems Inc;pci.ids 2026.10.01
+14CC;NAKAYO Telecommunications Inc;pci.ids 2026.10.01
+14CD;Universal Global Scientific Industrial Co.,Ltd;pci.ids 2026.10.01
+14CE;Whistle Communications;pci.ids 2026.10.01
+14CF;TEK Microsystems Inc.;pci.ids 2026.10.01
+14D0;Ericsson Axe R & D;pci.ids 2026.10.01
+14D1;Computer Hi-Tech Co Ltd;pci.ids 2026.10.01
+14D2;Titan Electronics Inc;pci.ids 2026.10.01
+14D3;CIRTECH (UK) Ltd;pci.ids 2026.10.01
+14D4;Panacom Technology Corp;pci.ids 2026.10.01
+14D5;Nitsuko Corporation;pci.ids 2026.10.01
+14D6;Accusys Inc;pci.ids 2026.10.01
+14D7;Hirakawa Hewtech Corp;pci.ids 2026.10.01
+14D8;HOPF Elektronik GmBH;pci.ids 2026.10.01
+14D9;Alliance Semiconductor Corporation;pci.ids 2026.10.01
+14DA;National Aerospace Laboratories;pci.ids 2026.10.01
+14DB;AFAVLAB Technology Inc;pci.ids 2026.10.01
+14DC;Amplicon Liveline Ltd;pci.ids 2026.10.01
+14DD;Boulder Design Labs Inc;pci.ids 2026.10.01
+14DE;Applied Integration Corporation;pci.ids 2026.10.01
+14DF;ASIC Communications Corp;pci.ids 2026.10.01
+14E1;INVERTEX;pci.ids 2026.10.01
+14E2;INFOLIBRIA;pci.ids 2026.10.01
+14E3;AMTELCO;pci.ids 2026.10.01
+14E4;Broadcom Inc. and subsidiaries;pci.ids 2026.10.01
+14E5;Pixelfusion Ltd;pci.ids 2026.10.01
+14E6;SHINING Technology Inc;pci.ids 2026.10.01
+14E7;3CX;pci.ids 2026.10.01
+14E8;RAYCER Inc;pci.ids 2026.10.01
+14E9;GARNETS System CO Ltd;pci.ids 2026.10.01
+14EA;Planex Communications, Inc;pci.ids 2026.10.01
+14EB;SEIKO EPSON Corp;pci.ids 2026.10.01
+14EC;Agilent Technologies;pci.ids 2026.10.01
+14ED;DATAKINETICS Ltd;pci.ids 2026.10.01
+14EE;MASPRO KENKOH Corp;pci.ids 2026.10.01
+14EF;CARRY Computer ENG. CO Ltd;pci.ids 2026.10.01
+14F0;CANON RESEACH CENTRE FRANCE;pci.ids 2026.10.01
+14F1;Conexant Systems, Inc.;pci.ids 2026.10.01
+14F2;MOBILITY Electronics;pci.ids 2026.10.01
+14F3;BroadLogic;pci.ids 2026.10.01
+14F4;TOKYO Electronic Industry CO Ltd;pci.ids 2026.10.01
+14F5;SOPAC Ltd;pci.ids 2026.10.01
+14F6;COYOTE Technologies LLC;pci.ids 2026.10.01
+14F7;WOLF Technology Inc;pci.ids 2026.10.01
+14F8;AUDIOCODES Inc;pci.ids 2026.10.01
+14F9;AG COMMUNICATIONS;pci.ids 2026.10.01
+14FA;WANDEL & GOLTERMANN;pci.ids 2026.10.01
+14FB;TRANSAS MARINE (UK) Ltd;pci.ids 2026.10.01
+14FC;Quadrics Ltd;pci.ids 2026.10.01
+14FD;JAPAN Computer Industry Inc;pci.ids 2026.10.01
+14FE;ARCHTEK TELECOM Corp;pci.ids 2026.10.01
+14FF;TWINHEAD INTERNATIONAL Corp;pci.ids 2026.10.01
+1500;DELTA Electronics, Inc;pci.ids 2026.10.01
+1501;BANKSOFT CANADA Ltd;pci.ids 2026.10.01
+1502;MITSUBISHI ELECTRIC LOGISTICS SUPPORT Co Ltd;pci.ids 2026.10.01
+1503;KAWASAKI LSI USA Inc;pci.ids 2026.10.01
+1504;KAISER Electronics;pci.ids 2026.10.01
+1505;ITA INGENIEURBURO FUR TESTAUFGABEN GmbH;pci.ids 2026.10.01
+1506;CHAMELEON Systems Inc;pci.ids 2026.10.01
+1507;Motorola ?? / HTEC;pci.ids 2026.10.01
+1508;HONDA CONNECTORS/MHOTRONICS Inc;pci.ids 2026.10.01
+1509;FIRST INTERNATIONAL Computer Inc;pci.ids 2026.10.01
+150A;FORVUS RESEARCH Inc;pci.ids 2026.10.01
+150B;YAMASHITA Systems Corp;pci.ids 2026.10.01
+150C;KYOPAL CO Ltd;pci.ids 2026.10.01
+150D;WARPSPPED Inc;pci.ids 2026.10.01
+150E;C-PORT Corp;pci.ids 2026.10.01
+150F;INTEC GmbH;pci.ids 2026.10.01
+1510;BEHAVIOR TECH Computer Corp;pci.ids 2026.10.01
+1511;CENTILLIUM Technology Corp;pci.ids 2026.10.01
+1512;ROSUN Technologies Inc;pci.ids 2026.10.01
+1513;Raychem;pci.ids 2026.10.01
+1514;TFL LAN Inc;pci.ids 2026.10.01
+1515;Advent design;pci.ids 2026.10.01
+1516;MYSON Technology Inc;pci.ids 2026.10.01
+1517;ECHOTEK Corp;pci.ids 2026.10.01
+1518;Kontron;pci.ids 2026.10.01
+1519;TELEFON AKTIEBOLAGET LM Ericsson;pci.ids 2026.10.01
+151A;Globetek;pci.ids 2026.10.01
+151B;COMBOX Ltd;pci.ids 2026.10.01
+151C;DIGITAL AUDIO LABS Inc;pci.ids 2026.10.01
+151D;Fujitsu Computer Products Of America;pci.ids 2026.10.01
+151E;MATRIX Corp;pci.ids 2026.10.01
+151F;TOPIC SEMICONDUCTOR Corp;pci.ids 2026.10.01
+1520;CHAPLET System Inc;pci.ids 2026.10.01
+1521;BELL Corp;pci.ids 2026.10.01
+1522;MainPine Ltd;pci.ids 2026.10.01
+1523;MUSIC Semiconductors;pci.ids 2026.10.01
+1524;ENE Technology Inc;pci.ids 2026.10.01
+1525;IMPACT Technologies;pci.ids 2026.10.01
+1526;ISS, Inc;pci.ids 2026.10.01
+1527;SOLECTRON;pci.ids 2026.10.01
+1528;ACKSYS;pci.ids 2026.10.01
+1529;ON Semiconductor;pci.ids 2026.10.01
+152A;QUICKTURN DESIGN Systems;pci.ids 2026.10.01
+152B;FLYTECH Technology CO Ltd;pci.ids 2026.10.01
+152C;MACRAIGOR Systems LLC;pci.ids 2026.10.01
+152D;QUANTA Computer Inc;pci.ids 2026.10.01
+152E;MELEC Inc;pci.ids 2026.10.01
+152F;PHILIPS - CRYPTO;pci.ids 2026.10.01
+1530;ACQIS Technology Inc;pci.ids 2026.10.01
+1531;CHRYON Corp;pci.ids 2026.10.01
+1532;ECHELON Corp;pci.ids 2026.10.01
+1533;BALTIMORE;pci.ids 2026.10.01
+1534;ROAD Corp;pci.ids 2026.10.01
+1535;EVERGREEN Technologies Inc;pci.ids 2026.10.01
+1536;ACTIS Computer;pci.ids 2026.10.01
+1537;DATALEX COMMUNCATIONS;pci.ids 2026.10.01
+1538;ARALION Inc;pci.ids 2026.10.01
+1539;ATELIER INFORMATIQUES et ELECTRONIQUE ETUDES S.A.;pci.ids 2026.10.01
+153A;ONO SOKKI;pci.ids 2026.10.01
+153B;TERRATEC Electronic GmbH;pci.ids 2026.10.01
+153C;ANTAL Electronic;pci.ids 2026.10.01
+153D;FILANET Corp;pci.ids 2026.10.01
+153E;TECHWELL Inc;pci.ids 2026.10.01
+153F;MIPS Technologies, Inc.;pci.ids 2026.10.01
+1540;PROVIDEO MULTIMEDIA Co Ltd;pci.ids 2026.10.01
+1541;MACHONE Communications;pci.ids 2026.10.01
+1542;Concurrent Real-Time;pci.ids 2026.10.01
+1543;SILICON Laboratories;pci.ids 2026.10.01
+1544;DCM DATA Systems;pci.ids 2026.10.01
+1545;VISIONTEK;pci.ids 2026.10.01
+1546;IOI Technology Corp;pci.ids 2026.10.01
+1547;MITUTOYO Corp;pci.ids 2026.10.01
+1548;JET PROPULSION Laboratory;pci.ids 2026.10.01
+1549;INTERCONNECT Systems Solutions;pci.ids 2026.10.01
+154A;MAX Technologies Inc;pci.ids 2026.10.01
+154B;COMPUTEX Co Ltd;pci.ids 2026.10.01
+154C;VISUAL Technology Inc;pci.ids 2026.10.01
+154D;PAN INTERNATIONAL Industrial Corp;pci.ids 2026.10.01
+154E;SERVOTEST Ltd;pci.ids 2026.10.01
+154F;STRATABEAM Technology;pci.ids 2026.10.01
+1550;OPEN NETWORK Co Ltd;pci.ids 2026.10.01
+1551;SMART Electronic DEVELOPMENT GmBH;pci.ids 2026.10.01
+1552;RACAL AIRTECH Ltd;pci.ids 2026.10.01
+1553;CHICONY Electronics Co Ltd;pci.ids 2026.10.01
+1554;PROLINK Microsystems Corp;pci.ids 2026.10.01
+1555;GESYTEC GmBH;pci.ids 2026.10.01
+1556;PLDA;pci.ids 2026.10.01
+1557;MEDIASTAR Co Ltd;pci.ids 2026.10.01
+1558;CLEVO/KAPOK Computer;pci.ids 2026.10.01
+1559;SI LOGIC Ltd;pci.ids 2026.10.01
+155A;INNOMEDIA Inc;pci.ids 2026.10.01
+155B;PROTAC INTERNATIONAL Corp;pci.ids 2026.10.01
+155C;Cemax-Icon Inc;pci.ids 2026.10.01
+155D;Mac System Co Ltd;pci.ids 2026.10.01
+155E;LP Elektronik GmbH;pci.ids 2026.10.01
+155F;Perle Systems Ltd;pci.ids 2026.10.01
+1560;Terayon Communications Systems;pci.ids 2026.10.01
+1561;Viewgraphics Inc;pci.ids 2026.10.01
+1562;Symbol Technologies;pci.ids 2026.10.01
+1563;A-Trend Technology Co Ltd;pci.ids 2026.10.01
+1564;Yamakatsu Electronics Industry Co Ltd;pci.ids 2026.10.01
+1565;Biostar Microtech Int'l Corp;pci.ids 2026.10.01
+1566;Ardent Technologies Inc;pci.ids 2026.10.01
+1567;Jungsoft;pci.ids 2026.10.01
+1568;DDK Electronics Inc;pci.ids 2026.10.01
+1569;Palit Microsystems Inc.;pci.ids 2026.10.01
+156A;Avtec Systems;pci.ids 2026.10.01
+156B;2wire Inc;pci.ids 2026.10.01
+156C;Vidac Electronics GmbH;pci.ids 2026.10.01
+156D;Alpha-Top Corp;pci.ids 2026.10.01
+156E;Alfa Inc;pci.ids 2026.10.01
+156F;M-Systems Flash Disk Pioneers Ltd;pci.ids 2026.10.01
+1570;Teledyne Lecroy;pci.ids 2026.10.01
+1571;Contemporary Controls;pci.ids 2026.10.01
+1572;Otis Elevator Company;pci.ids 2026.10.01
+1573;Lattice - Vantis;pci.ids 2026.10.01
+1574;Fairchild Semiconductor;pci.ids 2026.10.01
+1575;Voltaire Advanced Data Security Ltd;pci.ids 2026.10.01
+1576;Viewcast COM;pci.ids 2026.10.01
+1578;HITT;pci.ids 2026.10.01
+1579;Dual Technology Corp;pci.ids 2026.10.01
+157A;Japan Elecronics Ind Inc;pci.ids 2026.10.01
+157B;Star Multimedia Corp;pci.ids 2026.10.01
+157C;Eurosoft (UK);pci.ids 2026.10.01
+157D;Gemflex Networks;pci.ids 2026.10.01
+157E;Transition Networks;pci.ids 2026.10.01
+157F;PX Instruments Technology Ltd;pci.ids 2026.10.01
+1580;Primex Aerospace Co;pci.ids 2026.10.01
+1581;SEH Computertechnik GmbH;pci.ids 2026.10.01
+1582;Cytec Corp;pci.ids 2026.10.01
+1583;Inet Technologies Inc;pci.ids 2026.10.01
+1584;Uniwill Computer Corp;pci.ids 2026.10.01
+1585;Logitron;pci.ids 2026.10.01
+1586;Lancast Inc;pci.ids 2026.10.01
+1587;Konica Corp;pci.ids 2026.10.01
+1588;Solidum Systems Corp;pci.ids 2026.10.01
+1589;Atlantek Microsystems Pty Ltd;pci.ids 2026.10.01
+158A;Digalog Systems Inc;pci.ids 2026.10.01
+158B;Allied Data Technologies;pci.ids 2026.10.01
+158C;Hitachi Semiconductor & Devices Sales Co Ltd;pci.ids 2026.10.01
+158D;Point Multimedia Systems;pci.ids 2026.10.01
+158E;Lara Technology Inc;pci.ids 2026.10.01
+158F;Ditect Coop;pci.ids 2026.10.01
+1590;Hewlett Packard Enterprise;pci.ids 2026.10.01
+1591;ARN;pci.ids 2026.10.01
+1592;Syba Tech Ltd;pci.ids 2026.10.01
+1593;Bops Inc;pci.ids 2026.10.01
+1594;Netgame Ltd;pci.ids 2026.10.01
+1595;Diva Systems Corp;pci.ids 2026.10.01
+1596;Folsom Research Inc;pci.ids 2026.10.01
+1597;Memec Design Services;pci.ids 2026.10.01
+1598;Granite Microsystems;pci.ids 2026.10.01
+1599;Delta Electronics Inc;pci.ids 2026.10.01
+159A;General Instrument;pci.ids 2026.10.01
+159B;Faraday Technology Corp;pci.ids 2026.10.01
+159C;Stratus Computer Systems;pci.ids 2026.10.01
+159D;Ningbo Harrison Electronics Co Ltd;pci.ids 2026.10.01
+159E;A-Max Technology Co Ltd;pci.ids 2026.10.01
+159F;Galea Network Security;pci.ids 2026.10.01
+15A0;Compumaster SRL;pci.ids 2026.10.01
+15A1;Geocast Network Systems;pci.ids 2026.10.01
+15A2;Catalyst Enterprises Inc;pci.ids 2026.10.01
+15A3;Italtel;pci.ids 2026.10.01
+15A4;X-Net OY;pci.ids 2026.10.01
+15A5;Toyota Macs Inc;pci.ids 2026.10.01
+15A6;Sunlight Ultrasound Technologies Ltd;pci.ids 2026.10.01
+15A7;SSE Telecom Inc;pci.ids 2026.10.01
+15A8;Shanghai Communications Technologies Center;pci.ids 2026.10.01
+15AA;Moreton Bay;pci.ids 2026.10.01
+15AB;Bluesteel Networks Inc;pci.ids 2026.10.01
+15AC;North Atlantic Instruments;pci.ids 2026.10.01
+15AD;VMware;pci.ids 2026.10.01
+15AE;Amersham Pharmacia Biotech;pci.ids 2026.10.01
+15B0;Zoltrix International Ltd;pci.ids 2026.10.01
+15B1;Source Technology Inc;pci.ids 2026.10.01
+15B2;Mosaid Technologies Inc;pci.ids 2026.10.01
+15B3;Mellanox Technologies;pci.ids 2026.10.01
+15B4;CCI/TRIAD;pci.ids 2026.10.01
+15B5;Cimetrics Inc;pci.ids 2026.10.01
+15B6;Texas Memory Systems Inc;pci.ids 2026.10.01
+15B7;Sandisk Corp;pci.ids 2026.10.01
+15B8;ADDI-DATA GmbH;pci.ids 2026.10.01
+15B9;Maestro Digital Communications;pci.ids 2026.10.01
+15BA;Impacct Technology Corp;pci.ids 2026.10.01
+15BB;Portwell Inc;pci.ids 2026.10.01
+15BC;Agilent Technologies;pci.ids 2026.10.01
+15BD;DFI Inc;pci.ids 2026.10.01
+15BE;Sola Electronics;pci.ids 2026.10.01
+15BF;High Tech Computer Corp (HTC);pci.ids 2026.10.01
+15C0;BVM Ltd;pci.ids 2026.10.01
+15C1;Quantel;pci.ids 2026.10.01
+15C2;Newer Technology Inc;pci.ids 2026.10.01
+15C3;Taiwan Mycomp Co Ltd;pci.ids 2026.10.01
+15C4;EVSX Inc;pci.ids 2026.10.01
+15C5;Procomp Informatics Ltd;pci.ids 2026.10.01
+15C6;Technical University of Budapest;pci.ids 2026.10.01
+15C7;Tateyama System Laboratory Co Ltd;pci.ids 2026.10.01
+15C8;Penta Media Co Ltd;pci.ids 2026.10.01
+15C9;Serome Technology Inc;pci.ids 2026.10.01
+15CA;Bitboys OY;pci.ids 2026.10.01
+15CB;AG Electronics Ltd;pci.ids 2026.10.01
+15CC;Hotrail Inc;pci.ids 2026.10.01
+15CD;Dreamtech Co Ltd;pci.ids 2026.10.01
+15CE;Genrad Inc;pci.ids 2026.10.01
+15D1;Infineon Technologies AG;pci.ids 2026.10.01
+15D2;FIC (First International Computer Inc);pci.ids 2026.10.01
+15D3;NDS Technologies Israel Ltd;pci.ids 2026.10.01
+15D4;Iwill Corp;pci.ids 2026.10.01
+15D5;Tatung Co;pci.ids 2026.10.01
+15D6;Entridia Corp;pci.ids 2026.10.01
+15D7;Rockwell-Collins Inc;pci.ids 2026.10.01
+15D8;Cybernetics Technology Co Ltd;pci.ids 2026.10.01
+15D9;Super Micro Computer Inc;pci.ids 2026.10.01
+15DA;Cyberfirm Inc;pci.ids 2026.10.01
+15DB;Applied Computing Systems Inc;pci.ids 2026.10.01
+15DC;Litronic Inc;pci.ids 2026.10.01
+15DD;Sigmatel Inc;pci.ids 2026.10.01
+15DE;Malleable Technologies Inc;pci.ids 2026.10.01
+15DF;Infinilink Corp;pci.ids 2026.10.01
+15E0;Cacheflow Inc;pci.ids 2026.10.01
+15E1;Voice Technologies Group Inc;pci.ids 2026.10.01
+15E2;Quicknet Technologies Inc;pci.ids 2026.10.01
+15E3;Networth Technologies Inc;pci.ids 2026.10.01
+15E4;VSN Systemen BV;pci.ids 2026.10.01
+15E5;Valley technologies Inc;pci.ids 2026.10.01
+15E6;Agere Inc;pci.ids 2026.10.01
+15E7;Get Engineering Corp;pci.ids 2026.10.01
+15E8;National Datacomm Corp;pci.ids 2026.10.01
+15E9;Pacific Digital Corp;pci.ids 2026.10.01
+15EA;Tokyo Denshi Sekei K.K.;pci.ids 2026.10.01
+15EB;DResearch Digital Media Systems GmbH;pci.ids 2026.10.01
+15EC;Beckhoff GmbH;pci.ids 2026.10.01
+15ED;Macrolink Inc;pci.ids 2026.10.01
+15EE;In Win Development Inc;pci.ids 2026.10.01
+15EF;Intelligent Paradigm Inc;pci.ids 2026.10.01
+15F0;B-Tree Systems Inc;pci.ids 2026.10.01
+15F1;Times N Systems Inc;pci.ids 2026.10.01
+15F2;Diagnostic Instruments Inc;pci.ids 2026.10.01
+15F3;Digitmedia Corp;pci.ids 2026.10.01
+15F4;Valuesoft;pci.ids 2026.10.01
+15F5;Power Micro Research;pci.ids 2026.10.01
+15F6;Extreme Packet Device Inc;pci.ids 2026.10.01
+15F7;Banctec;pci.ids 2026.10.01
+15F8;Koga Electronics Co;pci.ids 2026.10.01
+15F9;Zenith Electronics Corp;pci.ids 2026.10.01
+15FA;J.P. Axzam Corp;pci.ids 2026.10.01
+15FB;Zilog Inc;pci.ids 2026.10.01
+15FC;Techsan Electronics Co Ltd;pci.ids 2026.10.01
+15FD;N-CUBED.NET;pci.ids 2026.10.01
+15FE;Kinpo Electronics Inc;pci.ids 2026.10.01
+15FF;Fastpoint Technologies Inc;pci.ids 2026.10.01
+1600;Northrop Grumman - Canada Ltd;pci.ids 2026.10.01
+1601;Tenta Technology;pci.ids 2026.10.01
+1602;Prosys-tec Inc;pci.ids 2026.10.01
+1603;Nokia Wireless Communications;pci.ids 2026.10.01
+1604;Central System Research Co Ltd;pci.ids 2026.10.01
+1605;Pairgain Technologies;pci.ids 2026.10.01
+1606;Europop AG;pci.ids 2026.10.01
+1607;Lava Semiconductor Manufacturing Inc;pci.ids 2026.10.01
+1608;Automated Wagering International;pci.ids 2026.10.01
+1609;Scimetric Instruments Inc;pci.ids 2026.10.01
+1612;Telesynergy Research Inc.;pci.ids 2026.10.01
+1618;Stone Ridge Technology;pci.ids 2026.10.01
+1619;FarSite Communications Ltd;pci.ids 2026.10.01
+161F;Rioworks;pci.ids 2026.10.01
+1621;Lynx Studio Technology, Inc.;pci.ids 2026.10.01
+1626;TDK Semiconductor Corp.;pci.ids 2026.10.01
+1629;Kongsberg Spacetec AS;pci.ids 2026.10.01
+1631;Packard Bell B.V.;pci.ids 2026.10.01
+1638;Standard Microsystems Corp [SMC];pci.ids 2026.10.01
+163C;Smart Link Ltd.;pci.ids 2026.10.01
+1641;MKNet Corp.;pci.ids 2026.10.01
+1642;Bitland(ShenZhen) Information Technology Co., Ltd.;pci.ids 2026.10.01
+1657;Cavium QLogic;pci.ids 2026.10.01
+165A;Epix Inc;pci.ids 2026.10.01
+165C;Gidel Ltd.;pci.ids 2026.10.01
+165D;Hsing Tech. Enterprise Co., Ltd.;pci.ids 2026.10.01
+165F;Linux Media Labs, LLC;pci.ids 2026.10.01
+1661;Worldspace Corp.;pci.ids 2026.10.01
+1665;EDAX Inc;pci.ids 2026.10.01
+1668;Actiontec Electronics Inc;pci.ids 2026.10.01
+166D;Broadcom Corporation;pci.ids 2026.10.01
+1677;B&R Industrial Automation GmbH;pci.ids 2026.10.01
+1678;NetEffect;pci.ids 2026.10.01
+1679;Tokyo Electron Device Ltd.;pci.ids 2026.10.01
+167B;ZyDAS Technology Corp.;pci.ids 2026.10.01
+167D;Samsung Electro-Mechanics Co., Ltd.;pci.ids 2026.10.01
+167E;ONNTO Corp.;pci.ids 2026.10.01
+1681;Hercules;pci.ids 2026.10.01
+1682;XFX Pine Group Inc.;pci.ids 2026.10.01
+1688;CastleNet Technology Inc.;pci.ids 2026.10.01
+168A;Utimaco IS GmbH;pci.ids 2026.10.01
+168C;Qualcomm Atheros;pci.ids 2026.10.01
+1695;EPoX Computer Co., Ltd.;pci.ids 2026.10.01
+169C;Netcell Corporation;pci.ids 2026.10.01
+169D;Club-3D VB (Wrong ID);pci.ids 2026.10.01
+16A5;Tekram Technology Co.,Ltd.;pci.ids 2026.10.01
+16AB;Global Sun Technology Inc;pci.ids 2026.10.01
+16AE;SafeNet Inc;pci.ids 2026.10.01
+16AF;SparkLAN Communications, Inc.;pci.ids 2026.10.01
+16B4;Aspex Semiconductor Ltd;pci.ids 2026.10.01
+16B8;Sonnet Technologies, Inc.;pci.ids 2026.10.01
+16BE;Creatix Polymedia GmbH;pci.ids 2026.10.01
+16C3;Synopsys, Inc.;pci.ids 2026.10.01
+16C6;Micrel-Kendin;pci.ids 2026.10.01
+16C8;Octasic Inc.;pci.ids 2026.10.01
+16C9;EONIC B.V. The Netherlands;pci.ids 2026.10.01
+16CA;CENATEK Inc;pci.ids 2026.10.01
+16CD;Advantech Co. Ltd;pci.ids 2026.10.01
+16CE;Roland Corp.;pci.ids 2026.10.01
+16D5;Acromag, Inc.;pci.ids 2026.10.01
+16DA;Advantech Co., Ltd.;pci.ids 2026.10.01
+16DF;PIKA Technologies Inc.;pci.ids 2026.10.01
+16E2;Marvin Test Solutions;pci.ids 2026.10.01
+16E3;European Space Agency;pci.ids 2026.10.01
+16E5;Intellon Corp.;pci.ids 2026.10.01
+16EC;U.S. Robotics;pci.ids 2026.10.01
+16ED;Sycron N. V.;pci.ids 2026.10.01
+16F2;ETAS GmbH;pci.ids 2026.10.01
+16F3;Jetway Information Co., Ltd.;pci.ids 2026.10.01
+16F4;Vweb Corp;pci.ids 2026.10.01
+16F6;VideoTele.com, Inc.;pci.ids 2026.10.01
+1702;Internet Machines Corporation (IMC);pci.ids 2026.10.01
+1705;Digital First, Inc.;pci.ids 2026.10.01
+170B;NetOctave;pci.ids 2026.10.01
+170C;YottaYotta Inc.;pci.ids 2026.10.01
+1719;EZChip Technologies;pci.ids 2026.10.01
+1725;Vitesse Semiconductor;pci.ids 2026.10.01
+172A;Accelerated Encryption;pci.ids 2026.10.01
+172F;Sparkle Computer Co., Ltd.;pci.ids 2026.10.01
+1734;Fujitsu Technology Solutions;pci.ids 2026.10.01
+1735;Aten International Co. Ltd.;pci.ids 2026.10.01
+1737;Linksys;pci.ids 2026.10.01
+173B;Altima (nee Broadcom);pci.ids 2026.10.01
+1743;Peppercon AG;pci.ids 2026.10.01
+1745;ViXS Systems, Inc.;pci.ids 2026.10.01
+1749;RLX Technologies;pci.ids 2026.10.01
+174B;PC Partner Limited / Sapphire Technology;pci.ids 2026.10.01
+174D;WellX Telecom SA;pci.ids 2026.10.01
+175C;AudioScience Inc;pci.ids 2026.10.01
+175E;Sanera Systems, Inc.;pci.ids 2026.10.01
+1760;TEDIA spol. s r. o.;pci.ids 2026.10.01
+1761;Pickering Interfaces Ltd;pci.ids 2026.10.01
+1771;InnoVISION Multimedia Ltd.;pci.ids 2026.10.01
+1775;General Electric;pci.ids 2026.10.01
+177D;Cavium, Inc.;pci.ids 2026.10.01
+1787;Hightech Information System Ltd.;pci.ids 2026.10.01
+1789;Ennyah Technologies Corp.;pci.ids 2026.10.01
+1796;Research Centre Juelich;pci.ids 2026.10.01
+1797;Intersil Techwell;pci.ids 2026.10.01
+1799;Belkin;pci.ids 2026.10.01
+179A;id Quantique;pci.ids 2026.10.01
+179C;Data Patterns;pci.ids 2026.10.01
+17A0;Genesys Logic, Inc;pci.ids 2026.10.01
+17AA;Lenovo;pci.ids 2026.10.01
+17AB;Phillips Components;pci.ids 2026.10.01
+17AF;Hightech Information System Ltd.;pci.ids 2026.10.01
+17B3;Hawking Technologies;pci.ids 2026.10.01
+17B4;Indra Networks, Inc.;pci.ids 2026.10.01
+17C0;Wistron Corp.;pci.ids 2026.10.01
+17C2;Newisys, Inc.;pci.ids 2026.10.01
+17C3;Protogate, Inc.;pci.ids 2026.10.01
+17CB;Qualcomm Technologies, Inc;pci.ids 2026.10.01
+17CC;NetChip Technology, Inc;pci.ids 2026.10.01
+17CD;Cadence Design Systems, Inc.;pci.ids 2026.10.01
+17CF;Z-Com, Inc.;pci.ids 2026.10.01
+17D3;Areca Technology Corp.;pci.ids 2026.10.01
+17D5;Exar Corp.;pci.ids 2026.10.01
+17DB;Cray Inc;pci.ids 2026.10.01
+17DE;KWorld Computer Co. Ltd.;pci.ids 2026.10.01
+17DF;Dini Group;pci.ids 2026.10.01
+17E4;Sectra AB;pci.ids 2026.10.01
+17E6;MaxLinear;pci.ids 2026.10.01
+17EE;Connect Components Ltd;pci.ids 2026.10.01
+17F2;Albatron Corp.;pci.ids 2026.10.01
+17F3;RDC Semiconductor, Inc.;pci.ids 2026.10.01
+17F7;Topdek Semiconductor Inc.;pci.ids 2026.10.01
+17F9;Gemtek Technology Co., Ltd;pci.ids 2026.10.01
+17FC;IOGEAR, Inc.;pci.ids 2026.10.01
+17FE;InProComm Inc.;pci.ids 2026.10.01
+17FF;Benq Corporation;pci.ids 2026.10.01
+1800;Qualcore Logic Inc.;pci.ids 2026.10.01
+1803;ProdaSafe GmbH;pci.ids 2026.10.01
+1804;Ralink corp. (wrong ID);pci.ids 2026.10.01
+1805;Euresys S.A.;pci.ids 2026.10.01
+1809;Lumanate, Inc.;pci.ids 2026.10.01
+180C;IEI Integration Corp;pci.ids 2026.10.01
+1813;Ambient Technologies Inc;pci.ids 2026.10.01
+1814;Ralink corp.;pci.ids 2026.10.01
+1815;Devolo AG;pci.ids 2026.10.01
+1820;InfiniCon Systems Inc.;pci.ids 2026.10.01
+1822;Twinhan Technology Co. Ltd;pci.ids 2026.10.01
+182D;SiteCom Europe BV;pci.ids 2026.10.01
+182E;Raza Microelectronics, Inc.;pci.ids 2026.10.01
+182F;Broadcom;pci.ids 2026.10.01
+1830;Credence Systems Corporation;pci.ids 2026.10.01
+183B;MikroM GmbH;pci.ids 2026.10.01
+1846;Alcatel-Lucent;pci.ids 2026.10.01
+1849;ASRock Incorporation;pci.ids 2026.10.01
+184A;Thales Computers;pci.ids 2026.10.01
+1850;Advantest Corporation;pci.ids 2026.10.01
+1851;Microtune, Inc.;pci.ids 2026.10.01
+1852;Anritsu Corp.;pci.ids 2026.10.01
+1853;SMSC Automotive Infotainment System Group;pci.ids 2026.10.01
+1854;LG Electronics, Inc.;pci.ids 2026.10.01
+185B;Compro Technology, Inc.;pci.ids 2026.10.01
+185F;Wistron NeWeb Corp.;pci.ids 2026.10.01
+1864;SilverBack;pci.ids 2026.10.01
+1867;Topspin Communications;pci.ids 2026.10.01
+186C;Humusoft, s.r.o.;pci.ids 2026.10.01
+186F;WiNRADiO Communications;pci.ids 2026.10.01
+1876;L-3 Communications;pci.ids 2026.10.01
+187E;ZyXEL Communications Corporation;pci.ids 2026.10.01
+1885;Avvida Systems Inc.;pci.ids 2026.10.01
+1888;Varisys Ltd;pci.ids 2026.10.01
+188A;Ample Communications, Inc;pci.ids 2026.10.01
+1890;Egenera, Inc.;pci.ids 2026.10.01
+1894;KNC One;pci.ids 2026.10.01
+1896;B&B Electronics Manufacturing Company, Inc.;pci.ids 2026.10.01
+1897;AMtek;pci.ids 2026.10.01
+18A1;Astute Networks Inc.;pci.ids 2026.10.01
+18A2;Stretch Inc.;pci.ids 2026.10.01
+18A3;AT&T;pci.ids 2026.10.01
+18AC;DViCO Corporation;pci.ids 2026.10.01
+18B8;Ammasso;pci.ids 2026.10.01
+18BC;GeCube Technologies, Inc.;pci.ids 2026.10.01
+18C3;Micronas Semiconductor Holding AG;pci.ids 2026.10.01
+18C8;Cray Inc;pci.ids 2026.10.01
+18C9;ARVOO Engineering BV;pci.ids 2026.10.01
+18CA;XGI Technology Inc. (eXtreme Graphics Innovation);pci.ids 2026.10.01
+18D2;Sitecom Europe BV (Wrong ID);pci.ids 2026.10.01
+18D4;Celestica;pci.ids 2026.10.01
+18D8;Dialogue Technology Corp.;pci.ids 2026.10.01
+18DD;Artimi Inc;pci.ids 2026.10.01
+18DF;LeWiz Communications;pci.ids 2026.10.01
+18E6;MPL AG;pci.ids 2026.10.01
+18EB;Advance Multimedia Internet Technology, Inc.;pci.ids 2026.10.01
+18EC;Cesnet, z.s.p.o.;pci.ids 2026.10.01
+18EE;Chenming Mold Ind. Corp.;pci.ids 2026.10.01
+18F1;Spectrum GmbH;pci.ids 2026.10.01
+18F4;Napatech A/S;pci.ids 2026.10.01
+18F6;NextIO;pci.ids 2026.10.01
+18F7;Commtech, Inc.;pci.ids 2026.10.01
+18FB;Resilience Corporation;pci.ids 2026.10.01
+1904;Hangzhou Silan Microelectronics Co., Ltd.;pci.ids 2026.10.01
+1905;Micronas USA, Inc.;pci.ids 2026.10.01
+1912;Renesas Electronics Corp.;pci.ids 2026.10.01
+1919;Soltek Computer Inc.;pci.ids 2026.10.01
+1923;Sangoma Technologies Corp.;pci.ids 2026.10.01
+1924;AMD Solarflare;pci.ids 2026.10.01
+192A;BiTMICRO Networks Inc.;pci.ids 2026.10.01
+192E;TransDimension;pci.ids 2026.10.01
+1931;Option N.V.;pci.ids 2026.10.01
+1932;DiBcom;pci.ids 2026.10.01
+193C;MAXIM Integrated Products;pci.ids 2026.10.01
+193D;New H3C Technologies Co., Ltd.;pci.ids 2026.10.01
+193F;AHA Products Group;pci.ids 2026.10.01
+1942;ClearSpeed Technology plc;pci.ids 2026.10.01
+1945;MERA;pci.ids 2026.10.01
+1947;C-guys, Inc.;pci.ids 2026.10.01
+1948;Alpha Networks Inc.;pci.ids 2026.10.01
+194A;DapTechnology B.V.;pci.ids 2026.10.01
+1954;One Stop Systems, Inc.;pci.ids 2026.10.01
+1957;Freescale Semiconductor Inc;pci.ids 2026.10.01
+1958;Faster Technology, LLC.;pci.ids 2026.10.01
+1959;PA Semi, Inc;pci.ids 2026.10.01
+1966;Orad Hi-Tec Systems;pci.ids 2026.10.01
+1969;Qualcomm Atheros;pci.ids 2026.10.01
+196A;Sensory Networks Inc.;pci.ids 2026.10.01
+196D;Club-3D BV;pci.ids 2026.10.01
+196E;PNY;pci.ids 2026.10.01
+1971;AGEIA Technologies, Inc.;pci.ids 2026.10.01
+1974;Star Electronics GmbH & Co. KG;pci.ids 2026.10.01
+1976;TRENDnet;pci.ids 2026.10.01
+1977;Parsec;pci.ids 2026.10.01
+197B;JMicron Technology Corp.;pci.ids 2026.10.01
+1982;Distant Early Warning Communications Inc;pci.ids 2026.10.01
+1987;Phison Electronics Corporation;pci.ids 2026.10.01
+1989;Montilio Inc.;pci.ids 2026.10.01
+198A;Nallatech Ltd.;pci.ids 2026.10.01
+1993;Innominate Security Technologies AG;pci.ids 2026.10.01
+1998;Toyou Feiji Electronics Co., Ltd.;pci.ids 2026.10.01
+1999;A-Logics;pci.ids 2026.10.01
+199A;Pulse-LINK, Inc.;pci.ids 2026.10.01
+199D;Xsigo Systems;pci.ids 2026.10.01
+199F;Auvitek;pci.ids 2026.10.01
+19A2;Emulex Corporation;pci.ids 2026.10.01
+19A4;Owl Cyber Defense Solutions;pci.ids 2026.10.01
+19A8;DAQDATA GmbH;pci.ids 2026.10.01
+19AC;Kasten Chase Applied Research;pci.ids 2026.10.01
+19AE;Progeny Systems Corporation;pci.ids 2026.10.01
+19BA;ZyXEL Communications Corp.;pci.ids 2026.10.01
+19C1;Exegy Inc.;pci.ids 2026.10.01
+19D1;Motorola Expedience;pci.ids 2026.10.01
+19D4;Quixant Limited;pci.ids 2026.10.01
+19DA;ZOTAC International (MCO) Ltd.;pci.ids 2026.10.01
+19DE;Pico Computing;pci.ids 2026.10.01
+19E2;Vector Informatik GmbH;pci.ids 2026.10.01
+19E3;DDRdrive LLC;pci.ids 2026.10.01
+19E5;Huawei Technologies Co., Ltd.;pci.ids 2026.10.01
+19E7;NET (Network Equipment Technologies);pci.ids 2026.10.01
+19EE;Netronome Systems, Inc.;pci.ids 2026.10.01
+19F1;BFG Tech;pci.ids 2026.10.01
+19FE;ESI Audiotechnik GmbH;pci.ids 2026.10.01
+19FF;Eclipse Electronic Systems, Inc.;pci.ids 2026.10.01
+1A03;ASPEED Technology, Inc.;pci.ids 2026.10.01
+1A05;deltaww;pci.ids 2026.10.01
+1A07;Kvaser AB;pci.ids 2026.10.01
+1A08;Sierra semiconductor;pci.ids 2026.10.01
+1A0D;SEAKR Engineering;pci.ids 2026.10.01
+1A0E;DekTec Digital Video B.V.;pci.ids 2026.10.01
+1A17;Force10 Networks, Inc.;pci.ids 2026.10.01
+1A1D;GFaI e.V.;pci.ids 2026.10.01
+1A1E;3Leaf Systems, Inc.;pci.ids 2026.10.01
+1A22;Ambric Inc.;pci.ids 2026.10.01
+1A29;Fortinet, Inc.;pci.ids 2026.10.01
+1A2B;Ascom AG;pci.ids 2026.10.01
+1A30;Lantiq;pci.ids 2026.10.01
+1A32;Quanta Microsystems, Inc;pci.ids 2026.10.01
+1A3B;AzureWave;pci.ids 2026.10.01
+1A3E;Micro-Research Finland Oy;pci.ids 2026.10.01
+1A41;Tilera Corp.;pci.ids 2026.10.01
+1A4A;SLAC National Accelerator Lab TID-ID;pci.ids 2026.10.01
+1A51;Hectronic AB;pci.ids 2026.10.01
+1A55;Rohde & Schwarz DVS GmbH;pci.ids 2026.10.01
+1A56;Rivet Networks;pci.ids 2026.10.01
+1A57;Highly Reliable Systems;pci.ids 2026.10.01
+1A58;Razer USA Ltd.;pci.ids 2026.10.01
+1A5D;Celoxica;pci.ids 2026.10.01
+1A5E;Aprius Inc.;pci.ids 2026.10.01
+1A5F;System TALKS Inc.;pci.ids 2026.10.01
+1A68;VirtenSys Limited;pci.ids 2026.10.01
+1A71;XenSource, Inc.;pci.ids 2026.10.01
+1A73;Violin Memory, Inc;pci.ids 2026.10.01
+1A76;Wavesat;pci.ids 2026.10.01
+1A77;Lightfleet Corporation;pci.ids 2026.10.01
+1A78;Virident Systems Inc.;pci.ids 2026.10.01
+1A84;Commex Technologies;pci.ids 2026.10.01
+1A88;Duagon AG;pci.ids 2026.10.01
+1A8A;StarBridge, Inc.;pci.ids 2026.10.01
+1A8C;Verigy Pte. Ltd.;pci.ids 2026.10.01
+1A8E;DRS Technologies;pci.ids 2026.10.01
+1AA8;Ciprico, Inc.;pci.ids 2026.10.01
+1AA9;Schweitzer Engineering Laboratories;pci.ids 2026.10.01
+1AAB;Silver Creations AG;pci.ids 2026.10.01
+1AAE;Global Velocity, Inc.;pci.ids 2026.10.01
+1AB4;Distributed Management Task Force, Inc. (DMTF);pci.ids 2026.10.01
+1AB6;CalDigit, Inc.;pci.ids 2026.10.01
+1AB8;Parallels, Inc.;pci.ids 2026.10.01
+1AB9;Espia Srl;pci.ids 2026.10.01
+1AC1;Global Unichip Corp.;pci.ids 2026.10.01
+1AC8;Aeroflex Gaisler;pci.ids 2026.10.01
+1ACC;Point of View BV;pci.ids 2026.10.01
+1AD7;Spectracom Corporation;pci.ids 2026.10.01
+1ADE;Spin Master Ltd.;pci.ids 2026.10.01
+1AE0;Google, Inc.;pci.ids 2026.10.01
+1AE3;SANBlaze Technology, Inc.;pci.ids 2026.10.01
+1AE7;First Wise Media GmbH;pci.ids 2026.10.01
+1AE8;Basler AG;pci.ids 2026.10.01
+1AE9;Wilocity Ltd.;pci.ids 2026.10.01
+1AEA;Alcor Micro;pci.ids 2026.10.01
+1AEC;Wolfson Microelectronics;pci.ids 2026.10.01
+1AED;SanDisk;pci.ids 2026.10.01
+1AEE;Caustic Graphics Inc.;pci.ids 2026.10.01
+1AF4;Red Hat, Inc.;pci.ids 2026.10.01
+1AF5;Netezza Corp.;pci.ids 2026.10.01
+1AFA;J & W Electronics Co., Ltd.;pci.ids 2026.10.01
+1B00;Montage Technology Co., Ltd.;pci.ids 2026.10.01
+1B03;Magnum Semiconductor, Inc,;pci.ids 2026.10.01
+1B08;Tria Technologies GmbH;pci.ids 2026.10.01
+1B0A;Pegatron;pci.ids 2026.10.01
+1B13;Jaton Corp;pci.ids 2026.10.01
+1B1A;K&F Computing Research Co.;pci.ids 2026.10.01
+1B1C;Corsair;pci.ids 2026.10.01
+1B21;ASMedia Technology Inc.;pci.ids 2026.10.01
+1B26;Netcope Technologies, a.s.;pci.ids 2026.10.01
+1B2C;Opal-RT Technologies Inc.;pci.ids 2026.10.01
+1B36;Red Hat, Inc.;pci.ids 2026.10.01
+1B37;Signal Processing Devices Sweden AB;pci.ids 2026.10.01
+1B39;sTec, Inc.;pci.ids 2026.10.01
+1B3A;Westar Display Technologies;pci.ids 2026.10.01
+1B3E;Teradata Corp.;pci.ids 2026.10.01
+1B40;Schooner Information Technology, Inc.;pci.ids 2026.10.01
+1B47;Numascale AS;pci.ids 2026.10.01
+1B4B;Marvell Technology Group Ltd.;pci.ids 2026.10.01
+1B4C;GALAX;pci.ids 2026.10.01
+1B55;NetUP Inc.;pci.ids 2026.10.01
+1B59;Achronix Semiconductor Corporation;pci.ids 2026.10.01
+1B5E;STAR-Dundee Ltd.;pci.ids 2026.10.01
+1B61;Byd Precision Manufacture Co.,Ltd;pci.ids 2026.10.01
+1B66;DELTACAST;pci.ids 2026.10.01
+1B6F;Etron Technology, Inc.;pci.ids 2026.10.01
+1B73;Fresco Logic;pci.ids 2026.10.01
+1B74;OpenVox Communication Co. Ltd.;pci.ids 2026.10.01
+1B79;Absolute Analysis;pci.ids 2026.10.01
+1B85;OCZ Technology Group, Inc.;pci.ids 2026.10.01
+1B94;Signatec / Dynamic Signals Corp;pci.ids 2026.10.01
+1B96;Western Digital;pci.ids 2026.10.01
+1B9A;XAVi Technologies Corp.;pci.ids 2026.10.01
+1BAA;QNAP Systems, Inc.;pci.ids 2026.10.01
+1BAD;ReFLEX CES;pci.ids 2026.10.01
+1BB0;SimpliVity Corporation;pci.ids 2026.10.01
+1BB1;Seagate Technology PLC;pci.ids 2026.10.01
+1BB3;Bluecherry;pci.ids 2026.10.01
+1BB5;Quantenna Communications, Inc.;pci.ids 2026.10.01
+1BBF;Maxeler Technologies Ltd.;pci.ids 2026.10.01
+1BC0;Innodisk Corporation;pci.ids 2026.10.01
+1BCD;Apacer Technology;pci.ids 2026.10.01
+1BCF;NEC Corporation;pci.ids 2026.10.01
+1BD0;Astronics Corporation;pci.ids 2026.10.01
+1BD4;IEIT SYSTEMS Co., Ltd;pci.ids 2026.10.01
+1BEE;IXXAT Automation GmbH;pci.ids 2026.10.01
+1BEF;Lantiq;pci.ids 2026.10.01
+1BF4;VTI Instruments Corporation;pci.ids 2026.10.01
+1BF5;Greenliant;pci.ids 2026.10.01
+1BFC;Duagon AG;pci.ids 2026.10.01
+1BFD;EeeTOP;pci.ids 2026.10.01
+1C00;WCH (Nanjing Qinheng Microelectronics Co., Ltd.);pci.ids 2026.10.01
+1C09;CSP, Inc.;pci.ids 2026.10.01
+1C19;LaCie;pci.ids 2026.10.01
+1C1C;Symphony;pci.ids 2026.10.01
+1C1F;SoftLab-NSK;pci.ids 2026.10.01
+1C28;Lite-On IT Corp. / Plextor;pci.ids 2026.10.01
+1C2C;Silicom Denmark;pci.ids 2026.10.01
+1C32;Highland Technology, Inc.;pci.ids 2026.10.01
+1C33;Daktronics, Inc;pci.ids 2026.10.01
+1C36;Annapurna Labs Ltd.;pci.ids 2026.10.01
+1C3B;Accensus, LLC;pci.ids 2026.10.01
+1C44;Enmotus Inc;pci.ids 2026.10.01
+1C4E;TECHWAY;pci.ids 2026.10.01
+1C58;HGST, Inc.;pci.ids 2026.10.01
+1C5C;SK hynix;pci.ids 2026.10.01
+1C5F;Beijing Memblaze Technology Co. Ltd.;pci.ids 2026.10.01
+1C63;Science and Research Centre of Computer Technology (JSC "NICEVT");pci.ids 2026.10.01
+1C67;PreSonus Audio Electronics Inc.;pci.ids 2026.10.01
+1C7A;OWC;pci.ids 2026.10.01
+1C7E;TTTech Computertechnik AG;pci.ids 2026.10.01
+1C7F;Elektrobit Austria GmbH;pci.ids 2026.10.01
+1C8A;TSF5 Corporation;pci.ids 2026.10.01
+1C8C;Mobiveil, Inc.;pci.ids 2026.10.01
+1CA5;Corerise Electronics Co. Ltd.;pci.ids 2026.10.01
+1CB0;Shannon Systems;pci.ids 2026.10.01
+1CB1;Collion UG & Co.KG;pci.ids 2026.10.01
+1CB5;Focusrite Audio Engineering Ltd;pci.ids 2026.10.01
+1CB8;Dawning Information Industry Co., Ltd.;pci.ids 2026.10.01
+1CBD;novachips;pci.ids 2026.10.01
+1CC1;ADATA Technology Co., Ltd.;pci.ids 2026.10.01
+1CC4;Shenzhen Unionmemory Information System Ltd.;pci.ids 2026.10.01
+1CC5;Embedded Intelligence, Inc.;pci.ids 2026.10.01
+1CC7;Radian Memory Systems Inc.;pci.ids 2026.10.01
+1CCF;Zoom Corporation;pci.ids 2026.10.01
+1CD2;Seskion GmbH;pci.ids 2026.10.01
+1CD7;Nanjing Magewell Electronics Co., Ltd.;pci.ids 2026.10.01
+1CDD;secunet Security Networks AG;pci.ids 2026.10.01
+1CE4;Exablaze;pci.ids 2026.10.01
+1CF0;Akitio;pci.ids 2026.10.01
+1CF2;ZTE Corp.;pci.ids 2026.10.01
+1CF7;Subspace Dynamics;pci.ids 2026.10.01
+1CFA;Corsair Memory, Inc;pci.ids 2026.10.01
+1CFD;Mangstor;pci.ids 2026.10.01
+1D00;Everpure, Inc.;pci.ids 2026.10.01
+1D05;AIstone Global Limited;pci.ids 2026.10.01
+1D0F;Amazon.com, Inc.;pci.ids 2026.10.01
+1D17;Zhaoxin;pci.ids 2026.10.01
+1D18;RME;pci.ids 2026.10.01
+1D1C;Barefoot Networks, Inc.;pci.ids 2026.10.01
+1D1D;CNEX Labs;pci.ids 2026.10.01
+1D21;Allo;pci.ids 2026.10.01
+1D22;Baidu Technology;pci.ids 2026.10.01
+1D26;Kalray Inc.;pci.ids 2026.10.01
+1D2A;KAYA Instruments;pci.ids 2026.10.01
+1D37;NovaSparks;pci.ids 2026.10.01
+1D39;Baikal Electronics;pci.ids 2026.10.01
+1D40;Techman Electronics (Changshu) Co., Ltd.;pci.ids 2026.10.01
+1D44;DPT;pci.ids 2026.10.01
+1D49;Lenovo;pci.ids 2026.10.01
+1D4C;Diamanti, Inc.;pci.ids 2026.10.01
+1D5C;Fantasia Trading LLC;pci.ids 2026.10.01
+1D61;Technobox, Inc.;pci.ids 2026.10.01
+1D62;Nebbiolo Technologies;pci.ids 2026.10.01
+1D63;StorArt Technology Co., Ltd;pci.ids 2026.10.01
+1D65;Imagine Communications Corp.;pci.ids 2026.10.01
+1D69;Renesas Electronics Corp.;pci.ids 2026.10.01
+1D6A;Aquantia Corp.;pci.ids 2026.10.01
+1D6C;Atomic Rules LLC;pci.ids 2026.10.01
+1D72;Xiaomi;pci.ids 2026.10.01
+1D78;DERA Storage;pci.ids 2026.10.01
+1D79;Transcend Information, Inc.;pci.ids 2026.10.01
+1D7C;Aerotech, Inc.;pci.ids 2026.10.01
+1D82;NETINT Technologies Inc.;pci.ids 2026.10.01
+1D87;Rockchip Electronics Co., Ltd;pci.ids 2026.10.01
+1D89;YEESTOR Microelectronics Co., Ltd;pci.ids 2026.10.01
+1D8F;Exegy;pci.ids 2026.10.01
+1D92;Abaco Systems Inc.;pci.ids 2026.10.01
+1D93;YADRO;pci.ids 2026.10.01
+1D94;Chengdu Haiguang IC Design Co., Ltd.;pci.ids 2026.10.01
+1D95;Graphcore Ltd;pci.ids 2026.10.01
+1D97;Shenzhen Longsys Electronics Co., Ltd.;pci.ids 2026.10.01
+1D9B;Meta Platforms, Inc.;pci.ids 2026.10.01
+1DA1;Teko Telecom S.r.l.;pci.ids 2026.10.01
+1DA2;Sapphire Technology Limited;pci.ids 2026.10.01
+1DA3;Habana Labs Ltd.;pci.ids 2026.10.01
+1DA8;Corigine, Inc.;pci.ids 2026.10.01
+1DAD;Fungible;pci.ids 2026.10.01
+1DB2;ATP Electronics, Inc.;pci.ids 2026.10.01
+1DB3;Unisoc (Shanghai) Technologies Co., Ltd.;pci.ids 2026.10.01
+1DB7;Phytium Technology Co., Ltd.;pci.ids 2026.10.01
+1DBB;NGD Systems, Inc.;pci.ids 2026.10.01
+1DBE;INNOGRIT Corporation;pci.ids 2026.10.01
+1DBF;Guizhou Huaxintong Semiconductor Technology Co., Ltd;pci.ids 2026.10.01
+1DC2;Alco Digital Devices Limited;pci.ids 2026.10.01
+1DC5;FADU Inc.;pci.ids 2026.10.01
+1DCD;Liqid Inc.;pci.ids 2026.10.01
+1DCF;Beijing Sinead Technology Co., Ltd.;pci.ids 2026.10.01
+1DD3;Sage Microelectronics Corp.;pci.ids 2026.10.01
+1DD4;Swissbit AG;pci.ids 2026.10.01
+1DD5;Manli Technology Group Limited;pci.ids 2026.10.01
+1DD8;AMD Pensando Systems;pci.ids 2026.10.01
+1DDD;Thorlabs;pci.ids 2026.10.01
+1DE0;Groq;pci.ids 2026.10.01
+1DE1;Tekram Technology Co.,Ltd.;pci.ids 2026.10.01
+1DE4;Raspberry Pi Ltd;pci.ids 2026.10.01
+1DE5;Eideticom, Inc;pci.ids 2026.10.01
+1DED;Alibaba (China) Co., Ltd.;pci.ids 2026.10.01
+1DEE;Biwin Storage Technology Co., Ltd.;pci.ids 2026.10.01
+1DEF;Ampere Computing, LLC;pci.ids 2026.10.01
+1DF3;Ethernity Networks;pci.ids 2026.10.01
+1DF5;Shenzhen TIGO Semiconductor;pci.ids 2026.10.01
+1DF7;opencpi.org;pci.ids 2026.10.01
+1DF8;V&G Information System Co.,Ltd;pci.ids 2026.10.01
+1DFA;Astera Labs, Inc.;pci.ids 2026.10.01
+1DFC;JSC NT-COM;pci.ids 2026.10.01
+1E0B;Shenzhen Decenta Technology Co.,LTD;pci.ids 2026.10.01
+1E0D;SambaNova Systems, Inc;pci.ids 2026.10.01
+1E0F;KIOXIA Corporation;pci.ids 2026.10.01
+1E17;Arnold & Richter Cine Technik GmbH & Co. Betriebs KG;pci.ids 2026.10.01
+1E18;Beijing GuangRunTong Technology Development Co.,Ltd;pci.ids 2026.10.01
+1E24;Squirrels Research Labs;pci.ids 2026.10.01
+1E26;Fujitsu Client Computing Limited;pci.ids 2026.10.01
+1E30;Sophgo;pci.ids 2026.10.01
+1E31;SORD CORPORATION;pci.ids 2026.10.01
+1E36;Shanghai Enflame Technology Co. Ltd;pci.ids 2026.10.01
+1E38;Blaize, Inc;pci.ids 2026.10.01
+1E39;MEDION AG;pci.ids 2026.10.01
+1E3A;Cactus Technologies Limited;pci.ids 2026.10.01
+1E3B;DapuStor Corporation;pci.ids 2026.10.01
+1E3D;Burlywood, Inc;pci.ids 2026.10.01
+1E3E;Shanghai Iluvatar CoreX Semiconductor Co., Ltd.;pci.ids 2026.10.01
+1E43;MaxLinear Inc;pci.ids 2026.10.01
+1E44;Valve Software;pci.ids 2026.10.01
+1E48;Aumovio;pci.ids 2026.10.01
+1E49;Yangtze Memory Technologies Co.,Ltd;pci.ids 2026.10.01
+1E4B;MAXIO Technology (Hangzhou) Ltd.;pci.ids 2026.10.01
+1E4C;GSI Technology;pci.ids 2026.10.01
+1E50;IP3 Tech (HK) Limited;pci.ids 2026.10.01
+1E52;Tenstorrent Inc;pci.ids 2026.10.01
+1E57;Beijing Panyi Technology Co., Ltd;pci.ids 2026.10.01
+1E59;Oxford Nanopore Technologies;pci.ids 2026.10.01
+1E5D;ASR Microelectronics;pci.ids 2026.10.01
+1E60;Hailo Technologies Ltd.;pci.ids 2026.10.01
+1E67;Untether AI;pci.ids 2026.10.01
+1E68;Jiangsu Xinsheng Intelligent Technology Co., Ltd;pci.ids 2026.10.01
+1E6B;Axiado Corp.;pci.ids 2026.10.01
+1E6C;Xsight Labs Ltd.;pci.ids 2026.10.01
+1E7B;Dataland;pci.ids 2026.10.01
+1E7C;Brainchip Inc;pci.ids 2026.10.01
+1E7E;Pliops;pci.ids 2026.10.01
+1E7F;Jiangsu Huacun Elec. Tech. Co., Ltd.;pci.ids 2026.10.01
+1E81;Ramaxel Technology(Shenzhen) Limited;pci.ids 2026.10.01
+1E83;Huaqin Technology Co.Ltd;pci.ids 2026.10.01
+1E85;HEITEC AG;pci.ids 2026.10.01
+1E89;ID Quantique SA;pci.ids 2026.10.01
+1E93;Beijing Bytedance Network Technology Co., Ltd.;pci.ids 2026.10.01
+1E94;Calian SED;pci.ids 2026.10.01
+1E95;Solid State Storage Technology Corporation;pci.ids 2026.10.01
+1E96;Drut Technologies Inc.;pci.ids 2026.10.01
+1E9F;Lynxi Technologies Co., Ltd.;pci.ids 2026.10.01
+1EA0;Tencent Technology (Shenzhen) Company Limited;pci.ids 2026.10.01
+1EA7;Intelliprop, Inc;pci.ids 2026.10.01
+1EAB;Hefei DATANG Storage Technology Co.,LTD.;pci.ids 2026.10.01
+1EAC;Quectel Wireless Solutions Co., Ltd.;pci.ids 2026.10.01
+1EAE;XFX Limited;pci.ids 2026.10.01
+1EB0;Shenzhen Electrical Appliances CO.;pci.ids 2026.10.01
+1EB1;VeriSilicon Inc;pci.ids 2026.10.01
+1EB4;Quantum Nebula Microelectronics Technology Co.,Ltd.;pci.ids 2026.10.01
+1EB6;Wuxi Stars Microsystem Technology Co., Ltd;pci.ids 2026.10.01
+1EB9;Senscomm Semiconductor, Inc;pci.ids 2026.10.01
+1EBD;EMERGETECH Company Ltd.;pci.ids 2026.10.01
+1EC6;Vastai Technologies;pci.ids 2026.10.01
+1EC8;Beijing Fantasy Technology Co., Ltd.;pci.ids 2026.10.01
+1EC9;Wingtech Group(HongKong)Limited;pci.ids 2026.10.01
+1ECA;Lightmatter;pci.ids 2026.10.01
+1ECC;Sunrise AI Inc.;pci.ids 2026.10.01
+1ED0;Hosin Global Electronics;pci.ids 2026.10.01
+1ED2;FuriosaAI, Inc.;pci.ids 2026.10.01
+1ED3;Yeston;pci.ids 2026.10.01
+1ED5;Moore Threads Technology Co.,Ltd;pci.ids 2026.10.01
+1ED8;Digiteq Automotive;pci.ids 2026.10.01
+1ED9;Myrtle.ai;pci.ids 2026.10.01
+1EE1;Suzhou Kuhan Information Technologies;pci.ids 2026.10.01
+1EE4;PETAIO INC;pci.ids 2026.10.01
+1EE9;SUSE LLC;pci.ids 2026.10.01
+1EEC;Viscore Technologies Ltd;pci.ids 2026.10.01
+1EED;XDX Computing Technology Ltd.;pci.ids 2026.10.01
+1EF6;GrAI Matter Labs;pci.ids 2026.10.01
+1EF7;Shenzhen Gunnir Technology Development Co., Ltd;pci.ids 2026.10.01
+1EFB;Flexxon Pte Ltd;pci.ids 2026.10.01
+1EFF;Rebellions Inc.;pci.ids 2026.10.01
+1F02;Beijing Dayu Technology;pci.ids 2026.10.01
+1F03;Shenzhen Shichuangyi Electronics Co., Ltd;pci.ids 2026.10.01
+1F0A;Motorcomm Microelectronics.;pci.ids 2026.10.01
+1F0D;DeGirum Corp.;pci.ids 2026.10.01
+1F0F;NebulaMatrix Technology;pci.ids 2026.10.01
+1F16;XConn Technologies;pci.ids 2026.10.01
+1F17;Zettastone Technology;pci.ids 2026.10.01
+1F18;c-payne GmbH;pci.ids 2026.10.01
+1F1C;Sophgo Technologies Inc.;pci.ids 2026.10.01
+1F24;xFusion Digital Technologies Co., Ltd.;pci.ids 2026.10.01
+1F2E;AzurEngine Technologies;pci.ids 2026.10.01
+1F2F;China Mobile (Hangzhou) Information Technology Co.Ltd.;pci.ids 2026.10.01
+1F31;Nextorage;pci.ids 2026.10.01
+1F32;Wuhan YuXin Semiconductor Co., Ltd.;pci.ids 2026.10.01
+1F39;Silicon Innovation Microelectronics Co. Ltd.;pci.ids 2026.10.01
+1F3F;3SNIC Ltd;pci.ids 2026.10.01
+1F40;Netac Technology Co.,Ltd;pci.ids 2026.10.01
+1F44;VVDN Technologies Private Limited;pci.ids 2026.10.01
+1F47;YUSUR Technology;pci.ids 2026.10.01
+1F49;NeuReality LTD;pci.ids 2026.10.01
+1F4B;Axera Semiconductor Co., Ltd;pci.ids 2026.10.01
+1F52;MangoBoost Inc.;pci.ids 2026.10.01
+1F56;SAPEON Inc.;pci.ids 2026.10.01
+1F60;Accelecom;pci.ids 2026.10.01
+1F67;Yunsilicon Technology;pci.ids 2026.10.01
+1F6C;CIX Technology Group Co., Ltd.;pci.ids 2026.10.01
+1F73;Shenzhen Quanxing Tech Co., Ltd.;pci.ids 2026.10.01
+1F7A;Efinix, Inc.;pci.ids 2026.10.01
+1F82;d-Matrix;pci.ids 2026.10.01
+1F8C;Exascend,INC.;pci.ids 2026.10.01
+1F90;Quside Technologies;pci.ids 2026.10.01
+1F99;Shenzhen Techwinsemi Technology Co., Ltd.;pci.ids 2026.10.01
+1F9D;Axelera AI;pci.ids 2026.10.01
+1FA4;Shandong SinoChip Semiconductors Co., Ltd;pci.ids 2026.10.01
+1FAA;Hexaflake (Shanghai) Information Technology Co., Ltd.;pci.ids 2026.10.01
+1FAB;Unifabrix Ltd.;pci.ids 2026.10.01
+1FB0;ICube Corporation Limited;pci.ids 2026.10.01
+1FBD;Shenzhen Enrigin Technology Co., Ltd.;pci.ids 2026.10.01
+1FC0;Ascom (Finland) Oy;pci.ids 2026.10.01
+1FC1;QLogic, Corp.;pci.ids 2026.10.01
+1FC3;Emerson;pci.ids 2026.10.01
+1FC9;Tehuti Networks Ltd.;pci.ids 2026.10.01
+1FCB;Varex Imaging Deutschland AG;pci.ids 2026.10.01
+1FCC;StreamLabs;pci.ids 2026.10.01
+1FCE;Cognio Inc.;pci.ids 2026.10.01
+1FD4;SUNIX Co., Ltd.;pci.ids 2026.10.01
+1FDD;Wuqi Microelectronics Co., Ltd.;pci.ids 2026.10.01
+1FDE;Kratos Defense & Security Solutions, Inc.;pci.ids 2026.10.01
+1FE0;Allwinmeta Co., Ltd.;pci.ids 2026.10.01
+1FE1;Beijing ESWIN Computing Technology Co., Ltd.;pci.ids 2026.10.01
+1FE4;HippStor Technology;pci.ids 2026.10.01
+1FE9;MemryX;pci.ids 2026.10.01
+1FF2;Linkdata;pci.ids 2026.10.01
+1FF4;DEEPX Co., Ltd.;pci.ids 2026.10.01
+1FF8;Beijing Gengtu Technology Co.Ltd;pci.ids 2026.10.01
+1FF9;Inagile Electronic Technology Co., LTD;pci.ids 2026.10.01
+1FFF;DENSO Corporation;pci.ids 2026.10.01
+2000;Smart Link Ltd.;pci.ids 2026.10.01
+2001;Temporal Research Ltd;pci.ids 2026.10.01
+2003;Smart Link Ltd.;pci.ids 2026.10.01
+2004;Smart Link Ltd.;pci.ids 2026.10.01
+201F;SpacemiT;pci.ids 2026.10.01
+202C;CAEN S.p.A.;pci.ids 2026.10.01
+2036;Netforward Microelectronics Co., Ltd.;pci.ids 2026.10.01
+203B;XTX Markets Technologies Ltd.;pci.ids 2026.10.01
+2042;Xi'an UniIC Semiconductors Co., Ltd;pci.ids 2026.10.01
+2044;Shenzhen Jiahua Zhongli Technology Co., LTD.;pci.ids 2026.10.01
+2046;GXMICRO Technology (Shanghai) Co., Ltd.;pci.ids 2026.10.01
+2048;Beijing SpaceControl Technology Co.Ltd;pci.ids 2026.10.01
+2052;Frontgrade Gaisler AB;pci.ids 2026.10.01
+2058;Lime Microsystems Ltd.;pci.ids 2026.10.01
+205C;Zhejiang VMing Semiconductor Co., Ltd.;pci.ids 2026.10.01
+205D;Shanghai Zijing Xinjie Intelligent Technology Co., Ltd.;pci.ids 2026.10.01
+205E;SDTECH;pci.ids 2026.10.01
+2061;Unis Flash Memory;pci.ids 2026.10.01
+2063;Hubei Yangtze Mason Semiconductor Technology Co., Ltd.;pci.ids 2026.10.01
+206D;GigaIO Networks, Inc.;pci.ids 2026.10.01
+2077;OpenAI;pci.ids 2026.10.01
+207D;HRDT;pci.ids 2026.10.01
+208A;MICIUS Laboratory;pci.ids 2026.10.01
+2090;Rivian Automotive;pci.ids 2026.10.01
+2094;Shenzhen Wodposit Electronics Co., Ltd.;pci.ids 2026.10.01
+2096;Kaitian Information Technology Co., Ltd.;pci.ids 2026.10.01
+2099;Rolling Wireless S.a.r.l.;pci.ids 2026.10.01
+209B;BitIntelligence Technology;pci.ids 2026.10.01
+209F;Mobilint, Inc.;pci.ids 2026.10.01
+20A1;Etched, Inc.;pci.ids 2026.10.01
+20A6;XCENA, Inc.;pci.ids 2026.10.01
+20A7;EEVengers Inc.;pci.ids 2026.10.01
+20A8;Rayson HI-TECH(SZ) Co., Ltd.;pci.ids 2026.10.01
+20A9;LDA Technologies Ltd.;pci.ids 2026.10.01
+20B4;Genstoraige Technology Co., Ltd.;pci.ids 2026.10.01
+20B5;Shanghai StarFive Technology Co., Ltd.;pci.ids 2026.10.01
+20BA;Hangzhou Hikstorage Technology Co., Ltd.;pci.ids 2026.10.01
+20BB;Quantum Machines;pci.ids 2026.10.01
+20BC;Xinsheng Technology Co., Ltd.;pci.ids 2026.10.01
+20C0;ExpectedIT GmbH;pci.ids 2026.10.01
+20C1;Suzhou Yige Technology Co., Ltd.;pci.ids 2026.10.01
+20D0;Telin Semiconductor (Wuhan) Co., Ltd.;pci.ids 2026.10.01
+20D2;Awide Labs LTD.;pci.ids 2026.10.01
+20D8;EHTech (Beijing) Co. Ltd.;pci.ids 2026.10.01
+20DC;Sharetronic Data Technology Co., Ltd.;pci.ids 2026.10.01
+20E1;CECloud Computing Technology Co., Ltd.;pci.ids 2026.10.01
+20E3;Elix Systems SA;pci.ids 2026.10.01
+20E7;TOPSSD;pci.ids 2026.10.01
+20F4;TRENDnet;pci.ids 2026.10.01
+20F6;Shenzhen Zhishi Network Technology Co., Ltd.;pci.ids 2026.10.01
+20F9;Shenzhen Silicon Dynamic Networks Co., Ltd.;pci.ids 2026.10.01
+2100;Shenzhen Kimviking Semiconductor Co., Ltd.;pci.ids 2026.10.01
+2105;Shanghai Timar Integrated Circuit Co., LTD;pci.ids 2026.10.01
+2106;ZCHL Technology Co., Ltd;pci.ids 2026.10.01
+2108;HuiLink Technologies (Xiamen) Co., Ltd.;pci.ids 2026.10.01
+2114;EigenQ, Inc.;pci.ids 2026.10.01
+2116;ZyDAS Technology Corp.;pci.ids 2026.10.01
+2123;Shanghai Warpdrive Technology Co., Ltd;pci.ids 2026.10.01
+212B;Flumeio;pci.ids 2026.10.01
+212D;APEX Technologies;pci.ids 2026.10.01
+2136;Dongguan Xincun Chengbang Technology Co., Ltd.;pci.ids 2026.10.01
+214D;Equalizer Technologies;pci.ids 2026.10.01
+2155;Hubei Zhuanwei Technology Co., Ltd.;pci.ids 2026.10.01
+2159;AIC Semiconductor (Shanghai) Co., Ltd.;pci.ids 2026.10.01
+215A;Suzhou Ruixin Integrated Circuit Technology Co., Ltd.;pci.ids 2026.10.01
+2165;Dnotitia Inc.;pci.ids 2026.10.01
+21B4;Hunan Goke Microelectronics Co., Ltd;pci.ids 2026.10.01
+21C3;21st Century Computer Corp.;pci.ids 2026.10.01
+22B8;Flex-Logix Technologies;pci.ids 2026.10.01
+22DB;Missing Link Electronics, Inc.;pci.ids 2026.10.01
+2304;Colorgraphic Communications Corp.;pci.ids 2026.10.01
+2321;Bruker AXS Inc.;pci.ids 2026.10.01
+2348;Racore;pci.ids 2026.10.01
+256C;Graphics Technology (HK) Co., Ltd.;pci.ids 2026.10.01
+2646;Kingston Technology Company, Inc.;pci.ids 2026.10.01
+270B;Xantel Corporation;pci.ids 2026.10.01
+270F;Chaintech Computer Co. Ltd;pci.ids 2026.10.01
+2711;AVID Technology Inc.;pci.ids 2026.10.01
+2782;Emdoor Digital Technology Co., Ltd;pci.ids 2026.10.01
+2955;Connectix Virtual PC;pci.ids 2026.10.01
+2A15;3D Vision(???);pci.ids 2026.10.01
+2A18;Video Transcode Controller;pci.ids 2026.10.01
+2BD8;ROPEX Industrie-Elektronik GmbH;pci.ids 2026.10.01
+2FF1;Maginfra Co., LTD;pci.ids 2026.10.01
+3000;Hansol Electronics Inc.;pci.ids 2026.10.01
+30C9;Luxvisions Innovation Technology Ltd.;pci.ids 2026.10.01
+3100;Dynabook Inc.;pci.ids 2026.10.01
+3112;Satelco Ingenieria S.A.;pci.ids 2026.10.01
+3130;AUDIOTRAK;pci.ids 2026.10.01
+3142;Post Impression Systems.;pci.ids 2026.10.01
+31AB;Zonet;pci.ids 2026.10.01
+328F;Shenzhen EMEET Technology Co., Ltd.;pci.ids 2026.10.01
+3388;Hint Corp;pci.ids 2026.10.01
+3411;Quantum Designs (H.K.) Inc;pci.ids 2026.10.01
+3442;Bihl+Wiedemann GmbH;pci.ids 2026.10.01
+3475;Arista Networks, Inc.;pci.ids 2026.10.01
+34BA;Ice Lake-LP PCI Express Root Port #3;pci.ids 2026.10.01
+3513;ARCOM Control Systems Ltd;pci.ids 2026.10.01
+3633;DeepCool;pci.ids 2026.10.01
+369A;HighSecLabs, Ltd.;pci.ids 2026.10.01
+37D9;ITD Firm ltd.;pci.ids 2026.10.01
+3842;EVGA Corporation;pci.ids 2026.10.01
+38EF;4Links;pci.ids 2026.10.01
+393E;Lenovo (wrong ID);pci.ids 2026.10.01
+3D3D;3DLabs;pci.ids 2026.10.01
+3E08;Sinead Tech Co., Ltd;pci.ids 2026.10.01
+4005;Avance Logic Inc.;pci.ids 2026.10.01
+4033;Addtron Technology Co, Inc.;pci.ids 2026.10.01
+4040;NetXen Incorporated;pci.ids 2026.10.01
+4143;Digital Equipment Corp;pci.ids 2026.10.01
+4144;Alpha Data;pci.ids 2026.10.01
+4149;AIMOTIVE Kft.;pci.ids 2026.10.01
+4150;ONA Electroerosion;pci.ids 2026.10.01
+415A;Auzentech, Inc.;pci.ids 2026.10.01
+416C;Aladdin Knowledge Systems;pci.ids 2026.10.01
+4242;Universall Answer Generators;pci.ids 2026.10.01
+4254;DVBSky;pci.ids 2026.10.01
+4321;Tata Power Strategic Electronics Division;pci.ids 2026.10.01
+4348;WCH.CN;pci.ids 2026.10.01
+434E;Cornelis Networks;pci.ids 2026.10.01
+4444;Internext Compression Inc;pci.ids 2026.10.01
+4468;Bridgeport machines;pci.ids 2026.10.01
+4594;Cogetec Informatique Inc;pci.ids 2026.10.01
+45FB;Baldor Electric Company;pci.ids 2026.10.01
+4624;Budker Institute of Nuclear Physics;pci.ids 2026.10.01
+4651;TXIC;pci.ids 2026.10.01
+4680;Umax Computer Corp;pci.ids 2026.10.01
+4843;Hercules Computer Technology Inc;pci.ids 2026.10.01
+4916;RedCreek Communications Inc;pci.ids 2026.10.01
+4943;Growth Networks;pci.ids 2026.10.01
+494F;ACCES I/O Products, Inc.;pci.ids 2026.10.01
+4978;Axil Computer Inc;pci.ids 2026.10.01
+4A14;NetVin;pci.ids 2026.10.01
+4B10;Buslogic Inc.;pci.ids 2026.10.01
+4B43;KonteX Inc.;pci.ids 2026.10.01
+4C48;LUNG HWA Electronics;pci.ids 2026.10.01
+4C4D;Liquid-Markets GmbH;pci.ids 2026.10.01
+4C52;LR-LINK;pci.ids 2026.10.01
+4C53;SBS Technologies;pci.ids 2026.10.01
+4C54;Lisuan Technology Co., Ltd.;pci.ids 2026.10.01
+4CA1;Seanix Technology Inc;pci.ids 2026.10.01
+4D51;MediaQ Inc.;pci.ids 2026.10.01
+4D54;Microtechnica Co Ltd;pci.ids 2026.10.01
+4D56;Balluff MV GmbH;pci.ids 2026.10.01
+4DDC;ILC Data Device Corp;pci.ids 2026.10.01
+4E4C;NieL TechSolution;pci.ids 2026.10.01
+4E58;Nutanix, Inc.;pci.ids 2026.10.01
+5045;University of Toronto;pci.ids 2026.10.01
+5046;GemTek Technology Corporation;pci.ids 2026.10.01
+5053;Voyetra Technologies;pci.ids 2026.10.01
+50B2;TerraTec Electronic GmbH;pci.ids 2026.10.01
+50CE;System-on-Chip Engineering S.L.;pci.ids 2026.10.01
+5136;S S Technologies;pci.ids 2026.10.01
+5143;Qualcomm Inc;pci.ids 2026.10.01
+5145;Ensoniq (Old);pci.ids 2026.10.01
+5168;Animation Technologies Inc.;pci.ids 2026.10.01
+5301;Alliance Semiconductor Corp.;pci.ids 2026.10.01
+5333;S3 Graphics Ltd.;pci.ids 2026.10.01
+5431;AuzenTech, Inc.;pci.ids 2026.10.01
+544C;Teralogic Inc;pci.ids 2026.10.01
+544D;TBS Technologies;pci.ids 2026.10.01
+5452;SCANLAB AG;pci.ids 2026.10.01
+5455;Technische Universitaet Berlin;pci.ids 2026.10.01
+5456;GoTView;pci.ids 2026.10.01
+5519;Cnet Technologies, Inc.;pci.ids 2026.10.01
+5544;Dunord Technologies;pci.ids 2026.10.01
+5555;Genroco, Inc;pci.ids 2026.10.01
+5646;Vector Fabrics BV;pci.ids 2026.10.01
+5654;VoiceTronix Pty Ltd;pci.ids 2026.10.01
+5678;Dawicontrol Computersysteme GmbH;pci.ids 2026.10.01
+5700;Netpower;pci.ids 2026.10.01
+5845;X-ES, Inc.;pci.ids 2026.10.01
+584D;AuzenTech Co., Ltd.;pci.ids 2026.10.01
+5851;Exacq Technologies;pci.ids 2026.10.01
+5853;XenSource, Inc.;pci.ids 2026.10.01
+5854;GoTView;pci.ids 2026.10.01
+5ACE;Beholder International Ltd.;pci.ids 2026.10.01
+6205;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6209;TBS Technologies (wrong ID);pci.ids 2026.10.01
+631C;SmartInfra Ltd;pci.ids 2026.10.01
+6356;UltraStor;pci.ids 2026.10.01
+6374;c't Magazin fuer Computertechnik;pci.ids 2026.10.01
+6409;Logitec Corp.;pci.ids 2026.10.01
+6549;Teradici Corp.;pci.ids 2026.10.01
+6590;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6666;Decision Computer International Co.;pci.ids 2026.10.01
+6688;GUANGZHOU MAXSUN INFORMATION TECHNOLOGY CO., LTD.;pci.ids 2026.10.01
+6704;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6766;Glenfly Tech Co., Ltd.;pci.ids 2026.10.01
+6899;ZT Systems;pci.ids 2026.10.01
+6900;Red Hat, Inc.;pci.ids 2026.10.01
+6903;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6909;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6910;TBS Technologies (wrong ID);pci.ids 2026.10.01
+6F67;NOVAIUM Technology;pci.ids 2026.10.01
+7063;pcHDTV;pci.ids 2026.10.01
+7284;HT OMEGA Inc.;pci.ids 2026.10.01
+7357;IOxOS Technologies SA;pci.ids 2026.10.01
+7377;Shenzhen Colorful Yugong Technology and Development Co.;pci.ids 2026.10.01
+7401;EndRun Technologies;pci.ids 2026.10.01
+7470;TP-LINK Technologies Co., Ltd.;pci.ids 2026.10.01
+7526;HongQin (Beijing) Technology Co., Ltd.;pci.ids 2026.10.01
+7604;O.N. Electronic Co Ltd.;pci.ids 2026.10.01
+78C0;Herrick Technology Laboratories, Inc. [HTL];pci.ids 2026.10.01
+7BDE;MIDAC Corporation;pci.ids 2026.10.01
+7F70;Arrow Lake-S PCH CNVi WiFi;pci.ids 2026.10.01
+7FED;PowerTV;pci.ids 2026.10.01
+8008;Quancom Electronic GmbH;pci.ids 2026.10.01
+807D;Asustek Computer, Inc.;pci.ids 2026.10.01
+8080;Chengdu Storeswift Technology Co., Ltd.;pci.ids 2026.10.01
+8086;Intel Corporation;pci.ids 2026.10.01
+8088;Beijing Wangxun Technology Co., Ltd.;pci.ids 2026.10.01
+80EE;InnoTek Systemberatung GmbH;pci.ids 2026.10.01
+8164;HippStor Technology Co., Ltd;pci.ids 2026.10.01
+8322;Sodick America Corp.;pci.ids 2026.10.01
+8384;SigmaTel;pci.ids 2026.10.01
+8385;Suzhou Yige Technology Co., Ltd.;pci.ids 2026.10.01
+8401;TRENDware International Inc.;pci.ids 2026.10.01
+8412;Sharetronic Data Technology Co., Ltd.;pci.ids 2026.10.01
+8510;Sietium Semiconductor Co., Ltd.;pci.ids 2026.10.01
+8686;SAP;pci.ids 2026.10.01
+8800;Trigem Computer Inc.;pci.ids 2026.10.01
+8820;Stryker Corporation;pci.ids 2026.10.01
+8848;MUCSE;pci.ids 2026.10.01
+8866;T-Square Design Inc.;pci.ids 2026.10.01
+8888;Silicon Magic;pci.ids 2026.10.01
+8912;TRX;pci.ids 2026.10.01
+8C4A;Winbond;pci.ids 2026.10.01
+8E0E;Computone Corporation;pci.ids 2026.10.01
+8E2E;KTI;pci.ids 2026.10.01
+9000;C*Core Technology Co., Ltd.;pci.ids 2026.10.01
+9004;Adaptec;pci.ids 2026.10.01
+9005;Adaptec;pci.ids 2026.10.01
+907F;Atronics;pci.ids 2026.10.01
+919A;Gigapixel Corp;pci.ids 2026.10.01
+9412;Holtek;pci.ids 2026.10.01
+9413;Softlogic Co., Ltd.;pci.ids 2026.10.01
+9618;JusonTech Corporation;pci.ids 2026.10.01
+9699;Omni Media Technology Inc;pci.ids 2026.10.01
+9710;MosChip Semiconductor Technology Ltd.;pci.ids 2026.10.01
+9850;3Com (wrong ID);pci.ids 2026.10.01
+9902;Stargen Inc.;pci.ids 2026.10.01
+9999;MetaX Integrated Circuits (Shanghai) Co., Ltd.;pci.ids 2026.10.01
+9A11;Tiger Lake-H Gaussian & Neural Accelerator;pci.ids 2026.10.01
+9D32;Beijing Starblaze Technology Co. Ltd.;pci.ids 2026.10.01
+A000;Asix Electronics Corporation (Wrong ID);pci.ids 2026.10.01
+A0A0;AOPEN Inc.;pci.ids 2026.10.01
+A0F1;UNISYS Corporation;pci.ids 2026.10.01
+A200;NEC Corporation;pci.ids 2026.10.01
+A259;Hewlett Packard;pci.ids 2026.10.01
+A25B;Hewlett Packard GmbH PL24-MKT;pci.ids 2026.10.01
+A304;Sony;pci.ids 2026.10.01
+A727;3Com Corporation;pci.ids 2026.10.01
+AA00;iTuner;pci.ids 2026.10.01
+AA01;iTuner;pci.ids 2026.10.01
+AA02;iTuner;pci.ids 2026.10.01
+AA03;iTuner;pci.ids 2026.10.01
+AA04;iTuner;pci.ids 2026.10.01
+AA05;iTuner;pci.ids 2026.10.01
+AA06;iTuner;pci.ids 2026.10.01
+AA07;iTuner;pci.ids 2026.10.01
+AA08;iTuner;pci.ids 2026.10.01
+AA09;iTuner;pci.ids 2026.10.01
+AA0A;iTuner;pci.ids 2026.10.01
+AA0B;iTuner;pci.ids 2026.10.01
+AA0C;iTuner;pci.ids 2026.10.01
+AA0D;iTuner;pci.ids 2026.10.01
+AA0E;iTuner;pci.ids 2026.10.01
+AA0F;iTuner;pci.ids 2026.10.01
+AA42;Scitex Digital Video;pci.ids 2026.10.01
+AA55;Ncomputing X300 PCI-Engine;pci.ids 2026.10.01
+AAAA;Adnaco Technology Inc.;pci.ids 2026.10.01
+ABCD;Vadatech Inc.;pci.ids 2026.10.01
+AC1E;Digital Receiver Technology Inc;pci.ids 2026.10.01
+AC3D;Actuality Systems;pci.ids 2026.10.01
+AD00;Alta Data Technologies LLC;pci.ids 2026.10.01
+AECB;Adrienne Electronics Corporation;pci.ids 2026.10.01
+AFFE;Sirrix AG security technologies;pci.ids 2026.10.01
+B100;OpenVox Communication Co. Ltd.;pci.ids 2026.10.01
+B10B;Uakron PCI Project;pci.ids 2026.10.01
+B1B3;Shiva Europe Limited;pci.ids 2026.10.01
+B1D9;ATCOM Technology co., LTD.;pci.ids 2026.10.01
+B390;TD3-X3+;pci.ids 2026.10.01
+BD11;Pinnacle Systems, Inc. (Wrong ID);pci.ids 2026.10.01
+BDBD;Blackmagic Design;pci.ids 2026.10.01
+C001;TSI Telsys;pci.ids 2026.10.01
+C0A9;Micron/Crucial Technology;pci.ids 2026.10.01
+C0DE;Motorola;pci.ids 2026.10.01
+C0FE;Motion Engineering, Inc.;pci.ids 2026.10.01
+CA01;I-TEK OptoElectronics Co., LTD.;pci.ids 2026.10.01
+CA02;I-TEK OptoElectronics Co., LTD.;pci.ids 2026.10.01
+CA3B;Cambrionix Ltd.;pci.ids 2026.10.01
+CA50;Varian Australia Pty Ltd;pci.ids 2026.10.01
+CABC;Cambricon Technologies Corporation Limited;pci.ids 2026.10.01
+CACE;CACE Technologies, Inc.;pci.ids 2026.10.01
+CAED;Canny Edge;pci.ids 2026.10.01
+CAFE;Thales;pci.ids 2026.10.01
+CC53;ScaleFlux Inc.;pci.ids 2026.10.01
+CCCC;Catapult Communications;pci.ids 2026.10.01
+CCEC;Curtiss-Wright Controls Embedded Computing;pci.ids 2026.10.01
+CDDD;Tyzx, Inc.;pci.ids 2026.10.01
+CDFA;NextSilicon Ltd;pci.ids 2026.10.01
+CEBA;KEBA AG;pci.ids 2026.10.01
+CF86;Spectrum-4TOR;pci.ids 2026.10.01
+D063;SolidRun;pci.ids 2026.10.01
+D161;Digium, Inc.;pci.ids 2026.10.01
+D209;Ultimarc;pci.ids 2026.10.01
+D20C;Chengdu NorthLink Technology Co., Ltd.;pci.ids 2026.10.01
+D405;LeapIO;pci.ids 2026.10.01
+D4D4;Dy4 Systems Inc;pci.ids 2026.10.01
+D531;I+ME ACTIA GmbH;pci.ids 2026.10.01
+D84D;Exsys;pci.ids 2026.10.01
+DADA;Datapath Limited;pci.ids 2026.10.01
+DB10;Diablo Technologies;pci.ids 2026.10.01
+DC93;Dawicontrol GmbH;pci.ids 2026.10.01
+DCBA;Dynamic Engineering;pci.ids 2026.10.01
+DD01;Digital Devices GmbH;pci.ids 2026.10.01
+DEAD;Indigita Corporation;pci.ids 2026.10.01
+DEAF;Middle Digital Inc.;pci.ids 2026.10.01
+DEDA;XIMEA;pci.ids 2026.10.01
+E000;Winbond;pci.ids 2026.10.01
+E159;Tiger Jet Network Inc. / ICP DAS;pci.ids 2026.10.01
+E1C5;Elcus;pci.ids 2026.10.01
+E4BF;EKF Elektronik GmbH;pci.ids 2026.10.01
+E4E4;Xorcom;pci.ids 2026.10.01
+E55E;Essence Technology, Inc.;pci.ids 2026.10.01
+EA01;Eagle Technology;pci.ids 2026.10.01
+EA50;Emerson Automation Solutions;pci.ids 2026.10.01
+EA60;RME;pci.ids 2026.10.01
+EABB;Aashima Technology B.V.;pci.ids 2026.10.01
+EACE;Endace Measurement Systems, Ltd;pci.ids 2026.10.01
+EC80;Belkin Corporation;pci.ids 2026.10.01
+ECC0;Echo Digital Audio Corporation;pci.ids 2026.10.01
+EDD8;ARK Logic Inc;pci.ids 2026.10.01
+EFAB;Enfabrica;pci.ids 2026.10.01
+F043;ASUSTeK Computer Inc. (Wrong ID);pci.ids 2026.10.01
+F05B;Foxconn International, Inc. (Wrong ID);pci.ids 2026.10.01
+F111;Framework Computer Inc.;pci.ids 2026.10.01
+F117;Cerio;pci.ids 2026.10.01
+F15E;SiFive, Inc.;pci.ids 2026.10.01
+F1D0;AJA Video;pci.ids 2026.10.01
+F5F5;F5 Networks, Inc.;pci.ids 2026.10.01
+F849;ASRock Incorporation (Wrong ID);pci.ids 2026.10.01
+FA57;Interagon AS;pci.ids 2026.10.01
+FAB7;Fabric7 Systems, Inc.;pci.ids 2026.10.01
+FE19;TenaFe, Inc.;pci.ids 2026.10.01
+FEBD;Ultraview Corp.;pci.ids 2026.10.01
+FEDA;Broadcom Inc;pci.ids 2026.10.01
+FEDE;Fedetec Inc.;pci.ids 2026.10.01
+FFE1;Suzhou XiongLi Technology Inc.;pci.ids 2026.10.01
+FFFD;XenSource, Inc.;pci.ids 2026.10.01
+FFFE;VMWare Inc (temporary ID);pci.ids 2026.10.01
+FFFF;Illegal Vendor ID;pci.ids 2026.10.01

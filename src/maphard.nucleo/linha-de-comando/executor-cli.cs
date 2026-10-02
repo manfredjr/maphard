@@ -1,3 +1,4 @@
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
@@ -7,7 +8,9 @@ using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Painel;
+using MapHard.Nucleo.Rede;
 using MapHard.Nucleo.Relatorios;
+using MapHard.Nucleo.Video;
 
 namespace MapHard.Nucleo.LinhaDeComando;
 
@@ -83,7 +86,8 @@ public static class ExecutorCli
         yield return $"Computador:  {Texto(id.Computador)}";
         yield return $"Equipamento: {Texto(id.Fabricante)} {Texto(id.Modelo)}";
         yield return $"Série:       {Texto(id.NumeroSerie)}";
-        yield return $"Windows:     {Texto(id.Windows.Nome)} {Texto(id.Windows.Versao)} ({Texto(id.Windows.Compilacao)})";
+        yield return $"Windows:     {Texto(id.Windows.Nome)} {Texto(id.Windows.Versao)} ({Texto(id.Windows.Compilacao)}), {Texto(id.Windows.Arquitetura)}, {Texto(id.Windows.Ativacao)}";
+        yield return $"Windows 11:  {RegrasWindows.TextoWindows11(c.Windows11)}";
         yield return $"Processador: {Texto(p.Nome)}";
         yield return $"Núcleos:     {Texto(p.Nucleos)} núcleos, {Texto(p.Threads)} threads";
         yield return $"Clock:       base {Texto(p.Clocks.Base, v => Formatador.Mhz(v))}, máximo {Texto(p.Clocks.Maximo, v => Formatador.Mhz(v))}";
@@ -118,6 +122,9 @@ public static class ExecutorCli
         }
 
         yield return $"Dispositivos: {LinhaDispositivos(c.Dispositivos)}";
+        yield return $"Vídeo:       {LinhaVideo(c.Video)}";
+        yield return $"Bateria:     {LinhaBateria(c.Bateria)}";
+        yield return $"Rede:        {LinhaRede(c.Rede)}";
         yield return $"BIOS:        {Texto(c.Placa.BiosVersao)} de {Texto(c.Placa.BiosData, Formatador.Data)}, {Texto(c.Placa.Firmware.Modo)}";
         yield return $"Coletado em: {Formatador.DataHora(c.ColetadoEm)}{(c.Administrador ? " como administrador" : string.Empty)}";
     }
@@ -171,6 +178,36 @@ public static class ExecutorCli
             ? $"nenhum problema em {e.Dias} dias{indice}"
             : $"{string.Join(", ", partes)} em {e.Dias} dias{indice}";
     }
+
+    /// <summary>"Placa Exemplo, 4 GB; Vídeo Integrado Exemplo". A memória só entra quando é dedicada e foi lida.</summary>
+    internal static string LinhaVideo(Campo<IReadOnlyList<PlacaVideo>> placas) =>
+        !placas.FoiLido ? Texto(placas)
+        : placas.Valor!.Count == 0 ? "nenhuma placa encontrada"
+        : string.Join("; ", placas.Valor.Select(p => p.MemoriaDedicada.FoiLido ? $"{Texto(p.Nome)}, {Formatador.Bytes(p.MemoriaDedicada.Valor)}" : Texto(p.Nome)));
+
+    /// <summary>"desgaste de 12%", com o aviso quando passa do limite; sem bateria, "não disponível neste equipamento".</summary>
+    internal static string LinhaBateria(Campo<IReadOnlyList<Bateria>> baterias)
+    {
+        if (!baterias.FoiLido)
+        {
+            return Texto(baterias);
+        }
+
+        if (baterias.Valor!.Count == 0)
+        {
+            return LeitorBateria.SemBateria;
+        }
+
+        var saude = RegrasWindows.Bateria(baterias);
+        var desgaste = string.Join("; ", baterias.Valor.Select(b => b.Desgaste.FoiLido ? $"desgaste de {Formatador.Porcentagem(b.Desgaste.Valor)}" : $"desgaste {Texto(b.Desgaste)}"));
+        return saude.Estado is EstadoSaude.Atencao or EstadoSaude.Ruim ? $"{desgaste} ({MontadorSecoes.NomeSaude(saude.Estado)})" : desgaste;
+    }
+
+    /// <summary>"Ethernet desconectada; Wi-Fi 721 Mb/s".</summary>
+    internal static string LinhaRede(Campo<IReadOnlyList<PlacaRede>> rede) =>
+        !rede.FoiLido ? Texto(rede)
+        : rede.Valor!.Count == 0 ? "nenhuma placa física"
+        : string.Join("; ", rede.Valor.Select(p => $"{Texto(p.Nome)} {(p.VelocidadeBps.FoiLido ? LeitorRede.TextoVelocidade(p.VelocidadeBps.Valor) : p.Conectada.Valor ? "conectada" : "desconectada")}"));
 
     /// <summary>"1 com problema" ou "nenhum com problema".</summary>
     internal static string LinhaDispositivos(SecaoDispositivos d) =>

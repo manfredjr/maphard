@@ -1,5 +1,6 @@
 using System.Runtime.Versioning;
 using System.Security.Principal;
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Dispositivos;
@@ -7,7 +8,10 @@ using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Rede;
 using MapHard.Nucleo.Smbios;
+using MapHard.Nucleo.Video;
+using MapHard.Nucleo.Windows;
 
 namespace MapHard.Nucleo.Coleta;
 
@@ -25,6 +29,12 @@ public sealed record FontesColeta(
     IFonteEventos Eventos,
     IFonteSistema Sistema,
     IFonteDispositivos Dispositivos,
+    IFonteVideo Video,
+    IFonteMonitores Monitores,
+    IFonteBaterias Baterias,
+    IFonteRede Rede,
+    IFonteAtivacao Ativacao,
+    Func<string> LetraWindows,
     Func<bool> Administrador)
 {
     [SupportedOSPlatform("windows")]
@@ -41,6 +51,12 @@ public sealed record FontesColeta(
         new FonteEventosWindows(),
         new FonteSistemaWindows(),
         new FonteDispositivosWindows(),
+        new FonteVideoWindows(),
+        new FonteMonitoresWindows(),
+        new FonteBateriasWindows(),
+        new FonteRedeWindows(),
+        new FonteAtivacaoWindows(),
+        () => Path.GetPathRoot(Environment.SystemDirectory)?.TrimEnd('\\') ?? "C:",
         EhAdministrador);
 
     [SupportedOSPlatform("windows")]

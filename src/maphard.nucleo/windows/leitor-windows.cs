@@ -3,7 +3,8 @@ using MapHard.Nucleo.Firmware;
 
 namespace MapHard.Nucleo.Windows;
 
-public sealed record DadosWindows(Campo<string> Nome, Campo<string> Versao, Campo<string> Compilacao);
+/// <summary>R34. A ativação sai do SLIsGenuineLocal e entra pelo coletor; o leitor do registro a deixa como não lida.</summary>
+public sealed record DadosWindows(Campo<string> Nome, Campo<string> Versao, Campo<string> Compilacao, Campo<string> Arquitetura, Campo<string> Ativacao);
 
 /// <summary>
 /// Versão do Windows pelo registro, em HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion.
@@ -38,7 +39,7 @@ public static class LeitorWindows
         if (!int.TryParse(compilacaoTexto, out var compilacao) || compilacao <= 0)
         {
             var erro = Campo<string>.NaoInformado(FonteDado.Registro);
-            return new DadosWindows(erro, erro, erro);
+            return new DadosWindows(erro, erro, erro, Arquitetura(), NaoLida);
         }
 
         var familia = compilacao >= PrimeiraCompilacaoWindows11 ? "Windows 11" : "Windows 10";
@@ -52,6 +53,12 @@ public static class LeitorWindows
         return new DadosWindows(
             Campo<string>.Lido(nome, FonteDado.Registro),
             string.IsNullOrWhiteSpace(versao) ? Campo<string>.NaoInformado(FonteDado.Registro) : Campo<string>.Lido(versao, FonteDado.Registro),
-            Campo<string>.Lido($"{compilacao}{revisao}", FonteDado.Registro));
+            Campo<string>.Lido($"{compilacao}{revisao}", FonteDado.Registro),
+            Arquitetura(),
+            NaoLida);
     }
+
+    private static readonly Campo<string> NaoLida = Campo<string>.NaoInformado(FonteDado.Windows, "ativação não lida");
+
+    private static Campo<string> Arquitetura() => LeitorAtivacao.Arquitetura(System.Runtime.InteropServices.RuntimeInformation.OSArchitecture);
 }

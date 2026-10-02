@@ -1,3 +1,4 @@
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
@@ -7,6 +8,10 @@ using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Saude;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Rede;
+using MapHard.Nucleo.Video;
+using MapHard.Nucleo.Windows;
+using MapHard.Nucleo.Windows11;
 
 namespace MapHard.Nucleo.Painel;
 
@@ -35,6 +40,9 @@ public static class MontadorSecoes
     public const string Placa = "placa";
     public const string Estabilidade = "estabilidade";
     public const string Dispositivos = "dispositivos";
+    public const string Video = "video";
+    public const string Bateria = "bateria";
+    public const string Windows = "windows";
 
     public static IReadOnlyList<SecaoTela> Montar(ColetaMaquina c, DateOnly hoje) =>
     [
@@ -44,6 +52,9 @@ public static class MontadorSecoes
         new(Discos, "Discos", MontarDiscos(c.Discos)),
         new(Placa, "Placa-mãe e firmware", MontarPlaca(c.Placa, hoje)),
         new(Estabilidade, "Estabilidade", MontarEstabilidade(c.Estabilidade)),
+        new(Video, "Vídeo e monitores", MontarVideo(c.Video, c.Monitores)),
+        new(Bateria, "Bateria", MontarBateria(c.Bateria)),
+        new(Windows, "Windows", MontarWindows(c.Identificacao.Windows, c.Windows11, c.Rede)),
         new(Dispositivos, "Dispositivos", MontarDispositivos(c.Dispositivos)),
     ];
 
@@ -90,6 +101,8 @@ public static class MontadorSecoes
                 Linha("Sistema", id.Windows.Nome),
                 Linha("Versão", id.Windows.Versao),
                 Linha("Compilação", id.Windows.Compilacao),
+                Linha("Ativação", id.Windows.Ativacao),
+                LinhaWindows11(c.Windows11),
             ]),
         ];
     }
@@ -370,6 +383,134 @@ public static class MontadorSecoes
         }
 
         return cartoes;
+    }
+
+    private static LinhaTela LinhaWindows11(VerificacaoWindows11 v) =>
+        new("Windows 11", RegrasWindows.TextoWindows11(v), EstadoCampo.Lido, $"Regras do MapHard sobre a lista de processadores da Microsoft, Windows 11 {v.VersaoLista}");
+
+    /// <summary>Um cartão por placa de vídeo e um por monitor.</summary>
+    private static IReadOnlyList<CartaoTela> MontarVideo(Campo<IReadOnlyList<PlacaVideo>> placas, Campo<IReadOnlyList<MonitorVideo>> monitores)
+    {
+        var cartoes = new List<CartaoTela>();
+        if (!placas.FoiLido)
+        {
+            cartoes.Add(new("Placas de vídeo", [Linha("Placas de vídeo", placas)]));
+        }
+        else if (placas.Valor!.Count == 0)
+        {
+            cartoes.Add(new("Placas de vídeo", [new LinhaTela("Situação", "nenhuma placa de vídeo encontrada", EstadoCampo.Lido, "Fonte: Windows")]));
+        }
+        else
+        {
+            cartoes.AddRange(placas.Valor.Select((p, i) => new CartaoTela(p.Nome.Valor ?? $"Placa de vídeo {i + 1}",
+            [
+                Linha("Fabricante", p.Fabricante),
+                Linha("Memória dedicada", p.MemoriaDedicada, Formatador.Bytes),
+                Linha("Memória compartilhada", p.MemoriaCompartilhada, Formatador.Bytes),
+                Linha("Versão do driver", p.VersaoDriver),
+                Linha("Data do driver", p.DataDriver, Formatador.Data),
+            ])));
+        }
+
+        if (!monitores.FoiLido)
+        {
+            cartoes.Add(new("Monitores", [Linha("Monitores", monitores)]));
+        }
+        else if (monitores.Valor!.Count == 0)
+        {
+            cartoes.Add(new("Monitores", [new LinhaTela("Situação", "nenhum monitor informou o EDID", EstadoCampo.Lido, "Fonte: Windows")]));
+        }
+        else
+        {
+            cartoes.AddRange(monitores.Valor.Select((m, i) => new CartaoTela($"Monitor {i + 1}: {m.Modelo.Valor ?? "modelo não informado"}",
+            [
+                Linha("Fabricante", m.Fabricante),
+                Linha("Modelo", m.Modelo),
+                Linha("Número de série", m.NumeroSerie),
+                Linha("Ano de fabricação", m.AnoFabricacao, v => v.ToString(Formatador.PtBr)),
+                Linha("Tamanho", m.Polegadas, v => $"{v.ToString("0.0", Formatador.PtBr)} polegadas"),
+                Linha("Resolução nativa", m.ResolucaoNativa),
+            ])));
+        }
+
+        return cartoes;
+    }
+
+    /// <summary>Um cartão por bateria, com a saúde no selo. Desktop sem bateria tem uma linha só.</summary>
+    private static IReadOnlyList<CartaoTela> MontarBateria(Campo<IReadOnlyList<Bateria>> baterias)
+    {
+        var saude = RegrasWindows.Bateria(baterias);
+        if (!baterias.FoiLido)
+        {
+            return [new CartaoTela("Bateria", [Linha("Bateria", baterias)], NomeSaude(saude.Estado), TomSaude(saude.Estado))];
+        }
+
+        if (baterias.Valor!.Count == 0)
+        {
+            return [new CartaoTela("Bateria", [new LinhaTela("Situação", LeitorBateria.SemBateria, EstadoCampo.Lido, "Fonte: Windows")])];
+        }
+
+        return baterias.Valor.Select((b, i) =>
+        {
+            var desta = RegrasWindows.Bateria(Campo<IReadOnlyList<Bateria>>.Lido([b], baterias.Fonte));
+            return new CartaoTela(baterias.Valor.Count == 1 ? "Bateria" : $"Bateria {i + 1}",
+            [
+                new LinhaTela("Saúde", desta.Motivos.Count == 0 ? "nenhum problema encontrado" : string.Join("; ", desta.Motivos), EstadoCampo.Lido, "Regras de saúde do MapHard sobre a capacidade da bateria"),
+                Linha("Desgaste", b.Desgaste, v => Formatador.Porcentagem(v)),
+                Linha("Capacidade de projeto", b.CapacidadeProjetoMwh, Wh),
+                Linha("Carga total hoje", b.CapacidadeAtualMwh, Wh),
+                Linha("Ciclos de carga", b.Ciclos, v => Formatador.Numero(v)),
+                Linha("Química", b.Quimica),
+                Linha("Fabricante", b.Fabricante),
+                Linha("Nome", b.Nome),
+            ], NomeSaude(desta.Estado), TomSaude(desta.Estado));
+        }).ToList();
+    }
+
+    private static string Wh(long mwh) => $"{(mwh / 1000.0).ToString("0.0", Formatador.PtBr)} Wh";
+
+    /// <summary>Cartões "Windows", "Windows 11, item por item" (com o selo) e "Placas de rede".</summary>
+    private static IReadOnlyList<CartaoTela> MontarWindows(DadosWindows w, VerificacaoWindows11 v, Campo<IReadOnlyList<PlacaRede>> rede)
+    {
+        var saude = RegrasWindows.Windows11(v);
+        var dica = $"Lista de processadores da Microsoft, Windows 11 {v.VersaoLista}, e as leituras das outras seções";
+        var itens = new List<LinhaTela> { LinhaWindows11(v) };
+        itens.AddRange(v.Itens.Select(i => new LinhaTela(i.Item, $"{TextoRequisito(i.Estado)}: {i.Detalhe}", EstadoCampo.Lido, dica)));
+
+        IReadOnlyList<LinhaTela> placas = !rede.FoiLido ? [Linha("Placas de rede", rede)]
+            : rede.Valor!.Count == 0 ? [new LinhaTela("Situação", "nenhuma placa de rede física", EstadoCampo.Lido, "Fonte: Windows")]
+            : rede.Valor.Select(LinhaRede).ToList();
+
+        return
+        [
+            new("Windows",
+            [
+                Linha("Sistema", w.Nome),
+                Linha("Versão", w.Versao),
+                Linha("Compilação", w.Compilacao),
+                Linha("Arquitetura", w.Arquitetura),
+                Linha("Ativação", w.Ativacao),
+            ]),
+            new("Windows 11, item por item", itens, NomeSaude(saude.Estado), TomSaude(saude.Estado)),
+            new("Placas de rede", placas),
+        ];
+    }
+
+    public static string TextoRequisito(EstadoRequisito estado) => estado switch
+    {
+        EstadoRequisito.Atende => "atende",
+        EstadoRequisito.Configuracao => "ajustar no firmware",
+        EstadoRequisito.NaoAtende => "não atende",
+        _ => "não confirmado",
+    };
+
+    /// <summary>"Ethernet" e "Wi-Fi, 02-00-5E-10-20-AB, 721 Mb/s" ou "..., desconectada".</summary>
+    private static LinhaTela LinhaRede(PlacaRede p)
+    {
+        var partes = new List<string> { p.Tipo.Valor ?? "tipo não informado" };
+        partes.Add(p.Mac.FoiLido ? p.Mac.Valor! : "MAC não informado");
+        partes.Add(p.VelocidadeBps.FoiLido ? LeitorRede.TextoVelocidade(p.VelocidadeBps.Valor) : p.Conectada.Valor ? "velocidade não informada" : "desconectada");
+        return new LinhaTela(p.Nome.Valor ?? "placa sem nome", string.Join(", ", partes), EstadoCampo.Lido, $"Fonte: Windows. {p.Descricao.Valor ?? "sem descrição"}");
     }
 
     public static string NomeSaude(EstadoSaude estado) => estado switch

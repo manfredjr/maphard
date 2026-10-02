@@ -1,3 +1,4 @@
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Discos;
@@ -6,8 +7,11 @@ using MapHard.Nucleo.Eventos;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Rede;
 using MapHard.Nucleo.Smbios;
+using MapHard.Nucleo.Video;
 using MapHard.Nucleo.Windows;
+using MapHard.Nucleo.Windows11;
 
 namespace MapHard.Nucleo.Coleta;
 
@@ -78,10 +82,15 @@ public sealed record ColetaMaquina(
     SecaoDiscos Discos,
     SecaoPlaca Placa,
     SecaoEstabilidade Estabilidade,
-    SecaoDispositivos Dispositivos)
+    SecaoDispositivos Dispositivos,
+    Campo<IReadOnlyList<PlacaVideo>> Video,
+    Campo<IReadOnlyList<MonitorVideo>> Monitores,
+    Campo<IReadOnlyList<Bateria>> Bateria,
+    Campo<IReadOnlyList<PlacaRede>> Rede,
+    VerificacaoWindows11 Windows11)
 {
     public const string NomeFormato = "maphard-coleta";
 
-    /// <summary>4 a partir da fatia 4, que acrescenta Estabilidade, Dispositivos e o chipset na placa-mãe.</summary>
-    public const int VersaoAtual = 4;
+    /// <summary>5 a partir da fatia 5, que acrescenta vídeo, monitores, bateria, rede, a verificação do Windows 11 e a ativação.</summary>
+    public const int VersaoAtual = 5;
 }

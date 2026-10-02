@@ -6,7 +6,7 @@ using System.Text;
 namespace MapHard.Nucleo.Dispositivos;
 
 /// <summary>Um dispositivo presente, como a SetupAPI o entrega. Propriedade que não veio fica nula.</summary>
-public sealed record DispositivoBruto(string? Nome, string? Classe, IReadOnlyList<string> IdsHardware, uint? CodigoProblema, string? VersaoDriver);
+public sealed record DispositivoBruto(string? Nome, string? Classe, IReadOnlyList<string> IdsHardware, uint? CodigoProblema, string? VersaoDriver, DateOnly? DataDriver = null);
 
 /// <summary>Leitura dos dispositivos presentes. Os testes trocam por uma lista.</summary>
 public interface IFonteDispositivos
@@ -19,8 +19,8 @@ public interface IFonteDispositivos
 /// (SetupAPI.h), e as propriedades pelo SetupDiGetDevicePropertyW com as chaves do devpkey.h:
 /// DEVPKEY_Device_FriendlyName (14) e DeviceDesc (2), Class (9), HardwareIds (3), na categoria
 /// a45c254e-df1c-4efd-8020-67d146a850e0; DEVPKEY_Device_ProblemCode (3) na 4340a6c5-93fa-4706-972c-7b648008a5a7;
-/// DEVPKEY_Device_DriverVersion (3) na a8b865dd-2e3d-4094-ad97-e593a70c75d6. Tipos pelo devpropdef.h:
-/// UINT32 0x7, STRING 0x12, STRING_LIST 0x2012. Código de problema 0 é "sem problema" ("Retrieving the
+/// DEVPKEY_Device_DriverDate (2) e DriverVersion (3) na a8b865dd-2e3d-4094-ad97-e593a70c75d6. Tipos pelo devpropdef.h:
+/// UINT32 0x7, FILETIME 0x10, STRING 0x12, STRING_LIST 0x2012. Código de problema 0 é "sem problema" ("Retrieving the
 /// Status and Problem Code for a Device Instance", learn.microsoft.com).
 /// </summary>
 [SupportedOSPlatform("windows")]
@@ -31,6 +31,7 @@ public sealed partial class FonteDispositivosWindows : IFonteDispositivos
     private const uint TipoUint32 = 0x7;
     private const uint TipoTexto = 0x12;
     private const uint TipoListaTexto = 0x2012;
+    private const uint TipoDataArquivo = 0x10;
 
     private static readonly Guid Dispositivo = new("a45c254e-df1c-4efd-8020-67d146a850e0");
     private static readonly Guid Estado = new("4340a6c5-93fa-4706-972c-7b648008a5a7");
@@ -60,7 +61,10 @@ public sealed partial class FonteDispositivosWindows : IFonteDispositivos
                     Texto(lista, ref dados, Dispositivo, 9),
                     Lista(lista, ref dados, Dispositivo, 3),
                     Numero(lista, ref dados, Estado, 3),
-                    Texto(lista, ref dados, Driver, 3)));
+                    Texto(lista, ref dados, Driver, 3),
+                    Propriedade(lista, ref dados, Driver, 2, TipoDataArquivo) is { Length: >= 8 } data
+                        ? DateOnly.FromDateTime(DateTime.FromFileTimeUtc(BinaryPrimitives.ReadInt64LittleEndian(data)))
+                        : null));
             }
         }
         finally

@@ -109,6 +109,33 @@ internal static class FontesSimuladas
         ];
     }
 
+    internal sealed class Video(params byte[][] descricoes) : MapHard.Nucleo.Video.IFonteVideo
+    {
+        public IReadOnlyList<byte[]> Adaptadores() => descricoes.Length > 0 ? descricoes : [VideoTestes.Descricao("Placa de Vídeo Exemplo", 0x10DE, 0x25A2, 4L << 30)];
+    }
+
+    internal sealed class Monitores : MapHard.Nucleo.Video.IFonteMonitores
+    {
+        public IReadOnlyList<byte[]> Edids() => [EdidTestes.Exemplo];
+    }
+
+    /// <summary>Uma bateria de 56 Wh que hoje carrega 42 Wh: desgaste de 25%.</summary>
+    internal sealed class Baterias(params MapHard.Nucleo.Baterias.BateriaBruta[] baterias) : MapHard.Nucleo.Baterias.IFonteBaterias
+    {
+        public IReadOnlyList<MapHard.Nucleo.Baterias.BateriaBruta> Ler() =>
+            baterias.Length > 0 ? baterias : [new(BateriaTestes.Informacao(56000, 42000), "Bateria Exemplo", "Fabricante Exemplo")];
+    }
+
+    internal sealed class Rede : MapHard.Nucleo.Rede.IFonteRede
+    {
+        public IReadOnlyList<byte[]> Interfaces() => [RedeTestes.Linha("Ethernet"), RedeTestes.Linha("Wi-Fi", tipo: 71, velocidade: 721_000_000, meio: 9), RedeTestes.Linha("Virtual", sinais: 0)];
+    }
+
+    internal sealed class Ativacao(int estado = 0) : IFonteAtivacao
+    {
+        public int Estado() => estado;
+    }
+
     internal sealed class Registro : IFonteRegistro
     {
         private readonly Dictionary<(string, string), object> _valores = new()
@@ -173,12 +200,16 @@ internal static class FontesSimuladas
         IFonteMemoria? memoria = null,
         IFonteDiscos? discos = null,
         MapHard.Nucleo.Eventos.IFonteEventos? eventos = null,
-        MapHard.Nucleo.Dispositivos.IFonteDispositivos? dispositivos = null) => new(
+        MapHard.Nucleo.Dispositivos.IFonteDispositivos? dispositivos = null,
+        MapHard.Nucleo.Video.IFonteVideo? video = null,
+        MapHard.Nucleo.Baterias.IFonteBaterias? baterias = null,
+        IFonteAtivacao? ativacao = null,
+        IFonteFirmware? firmware = null) => new(
         smbios ?? new Smbios(() => TabelaSmbios()),
         cpuid ?? Cpuid(),
         topologia ?? new Topologia(TabelaTopologia),
         clocks ?? new Clocks(() => new AmostraDesempenho(125, [20, 40])),
-        new Firmware(),
+        firmware ?? new Firmware(),
         new Registro(),
         () => "ESTACAO-TESTE",
         memoria ?? new Memoria(),
@@ -186,5 +217,11 @@ internal static class FontesSimuladas
         eventos ?? new Eventos(),
         new Sistema(),
         dispositivos ?? new Dispositivos(),
+        video ?? new Video(),
+        new Monitores(),
+        baterias ?? new Baterias(),
+        new Rede(),
+        ativacao ?? new Ativacao(),
+        () => "C:",
         () => false);
 }

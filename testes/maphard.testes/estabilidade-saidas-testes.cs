@@ -135,7 +135,7 @@ public class EstabilidadeSaidasTestes
         var texto = ExportadorJson.Serializar(original);
         var json = JsonDocument.Parse(texto).RootElement;
 
-        Assert.Equal(4, json.GetProperty("versaoFormato").GetInt32());
+        Assert.Equal(ColetaMaquina.VersaoAtual, json.GetProperty("versaoFormato").GetInt32());
         Assert.Equal(30, json.GetProperty("estabilidade").GetProperty("dias").GetInt32());
         Assert.Equal("Alder Lake PCH eSPI Controller", json.GetProperty("placa").GetProperty("chipset").GetProperty("valor").GetString());
         Assert.Equal(texto, ExportadorJson.Serializar(ExportadorJson.Desserializar(texto)!));
