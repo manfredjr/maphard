@@ -102,4 +102,76 @@ public class RelatoriosTestes
     {
         Assert.Equal("maphard-ESTACAO-EXEMPLO-2026-09-30-1000.html", RelatorioHtml.NomePadrao(DadosDemonstracao.Coleta()));
     }
+
+    private static string[] Colunas(string linha) => linha.Split(';');
+
+    [Fact]
+    public void Csv_tem_o_cabecalho_e_uma_linha_da_maquina()
+    {
+        var texto = ExportadorCsv.Gerar(DadosDemonstracao.Coleta());
+        var linhas = texto.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
+
+        Assert.Equal(2, linhas.Length);
+        Assert.Equal(ExportadorCsv.Cabecalho, linhas[0]);
+        var cabecalho = Colunas(linhas[0]);
+        var valores = Colunas(linhas[1]);
+        Assert.Equal(cabecalho.Length, valores.Length);
+        string Valor(string coluna) => valores[Array.IndexOf(cabecalho, coluna)];
+        Assert.Equal("ESTACAO-EXEMPLO", Valor("Computador"));
+        Assert.Equal("30/09/2026 10:00", Valor("Coletado em"));
+        Assert.Equal("16", Valor("Memória instalada (GB)"));
+        Assert.Equal("Atenção", Valor("Saúde dos discos"));
+        Assert.Equal("Bom", Valor("Saúde do processador"));
+        Assert.Equal("12", Valor("Bateria (desgaste %)"));
+        Assert.Equal("ativado", Valor("Ativação"));
+        Assert.Equal("não", Valor("Administrador"));
+        Assert.Equal("15/03/2021", Valor("Data da BIOS"));
+    }
+
+    [Fact]
+    public void Campo_nao_lido_sai_em_branco_no_csv()
+    {
+        var c = DadosDemonstracao.Coleta();
+        c = c with
+        {
+            Processador = c.Processador with { Nucleos = MapHard.Nucleo.Campos.Campo<int>.Erro(MapHard.Nucleo.Campos.FonteDado.Topologia, "falhou") },
+            Bateria = MapHard.Nucleo.Campos.Campo<IReadOnlyList<MapHard.Nucleo.Baterias.Bateria>>.Lido([], MapHard.Nucleo.Campos.FonteDado.Windows),
+        };
+        var cabecalho = Colunas(ExportadorCsv.Cabecalho);
+        var valores = Colunas(ExportadorCsv.Linha(c));
+
+        Assert.Equal(string.Empty, valores[Array.IndexOf(cabecalho, "Núcleos")]);
+        Assert.Equal(string.Empty, valores[Array.IndexOf(cabecalho, "Bateria (desgaste %)")]);
+    }
+
+    [Fact]
+    public void Campo_com_ponto_e_virgula_ou_aspas_vai_entre_aspas()
+    {
+        var c = DadosDemonstracao.Coleta();
+        c = c with { Identificacao = c.Identificacao with { Modelo = MapHard.Nucleo.Campos.Campo<string>.Lido("Modelo \"X\"; 2", MapHard.Nucleo.Campos.FonteDado.Smbios) } };
+
+        Assert.Contains(";\"Modelo \"\"X\"\"; 2\";", ExportadorCsv.Linha(c), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Csv_gravado_comeca_pelo_bom()
+    {
+        var caminho = Path.Combine(Path.GetTempPath(), $"maphard-teste-{Guid.NewGuid():N}.csv");
+        try
+        {
+            ExportadorCsv.Gravar(DadosDemonstracao.Coleta(), caminho);
+
+            Assert.Equal(new byte[] { 0xEF, 0xBB, 0xBF }, File.ReadAllBytes(caminho)[..3]);
+        }
+        finally
+        {
+            File.Delete(caminho);
+        }
+    }
+
+    [Fact]
+    public void Nome_padrao_do_csv()
+    {
+        Assert.Equal("maphard-ESTACAO-EXEMPLO-2026-09-30-1000.csv", ExportadorCsv.NomePadrao(DadosDemonstracao.Coleta()));
+    }
 }
