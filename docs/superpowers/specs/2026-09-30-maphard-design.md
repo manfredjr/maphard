@@ -343,4 +343,4 @@ Decisão do Manfred em 30/09/2026: a versão 1 sai sem driver, e as leituras que
 | 3 | O JSON deve seguir o formato do projeto `inventario-estacoes`, para as coletas entrarem direto lá? |
 | 4 | Endereço da página: `maphard.manfred.com.br`? Respondida em 02/10/2026: sim, `maphard.manfred.com.br` |
 | 5 | Arte do símbolo do MapHard, no mesmo estilo dos símbolos do MapNet e do MapDisk. [PREENCHER] |
-| 6 | Quando o repositório passa a público |
+| 6 | Quando o repositório passa a público. Respondida em 02/10/2026: passou a público nesse dia, antes da publicação da página |
