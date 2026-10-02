@@ -341,6 +341,6 @@ Decisão do Manfred em 30/09/2026: a versão 1 sai sem driver, e as leituras que
 | 1 | Windows Server entra nos testes da versão 1? |
 | 2 | Abrir como usuário comum com o botão "Ler como administrador" (padrão do MapDisk) ou pedir administrador já na abertura, já que o SMART precisa? Respondida em 01/10/2026: abre como usuário comum, com o botão "Ler como administrador" |
 | 3 | O JSON deve seguir o formato do projeto `inventario-estacoes`, para as coletas entrarem direto lá? |
-| 4 | Endereço da página: `maphard.manfred.com.br`? |
+| 4 | Endereço da página: `maphard.manfred.com.br`? Respondida em 02/10/2026: sim, `maphard.manfred.com.br` |
 | 5 | Arte do símbolo do MapHard, no mesmo estilo dos símbolos do MapNet e do MapDisk. [PREENCHER] |
 | 6 | Quando o repositório passa a público |
