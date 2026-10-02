@@ -97,4 +97,62 @@ public class SaudeResumoTestes
         Assert.Equal("serviço do WSL instalado", MapHard.Nucleo.Processador.LeitorHyperV.Pedido(new RegistroCom(@"SYSTEM\CurrentControlSet\Services\WslService")).Motivo);
         Assert.False(MapHard.Nucleo.Processador.LeitorHyperV.Pedido(new RegistroCom()).Valor);
     }
+
+    [Fact]
+    public void Resumo_na_ordem_do_r1_com_a_secao_de_cada_cartao()
+    {
+        var cartoes = ResumoSaude.Montar(DadosDemonstracao.Coleta());
+
+        Assert.Equal(["Discos", "Memória", "Processador", "Estabilidade", "Dispositivos", "Windows 11", "Bateria"], cartoes.Select(c => c.Area));
+        Assert.Equal(
+            [MontadorSecoes.Discos, MontadorSecoes.Memoria, MontadorSecoes.Processador, MontadorSecoes.Estabilidade, MontadorSecoes.Dispositivos, MontadorSecoes.Windows, MontadorSecoes.Bateria],
+            cartoes.Select(c => c.Secao));
+    }
+
+    [Fact]
+    public void Demonstracao_tem_os_estados_do_plano()
+    {
+        var estados = ResumoSaude.Montar(DadosDemonstracao.Coleta()).ToDictionary(c => c.Area, c => c.Estado);
+
+        Assert.Equal(EstadoSaude.Atencao, estados["Discos"]);
+        Assert.Equal(EstadoSaude.Atencao, estados["Memória"]);
+        Assert.Equal(EstadoSaude.Bom, estados["Processador"]);
+        Assert.Equal(EstadoSaude.Atencao, estados["Estabilidade"]);
+        Assert.Equal(EstadoSaude.Atencao, estados["Dispositivos"]);
+        Assert.Equal(EstadoSaude.Atencao, estados["Windows 11"]);
+        Assert.Equal(EstadoSaude.Bom, estados["Bateria"]);
+    }
+
+    [Fact]
+    public void Frase_curta_do_cartao()
+    {
+        Assert.Equal("nenhum problema encontrado", ResumoSaude.Frase(new SaudeArea(EstadoSaude.Bom, [])));
+        Assert.Equal("3 setores realocados", ResumoSaude.Frase(new SaudeArea(EstadoSaude.Atencao, ["3 setores realocados"])));
+        Assert.Equal("1 tela azul, e mais 2", ResumoSaude.Frase(new SaudeArea(EstadoSaude.Ruim, ["1 tela azul", "b", "c"])));
+    }
+
+    [Fact]
+    public void Desktop_sem_bateria_fica_sem_o_cartao()
+    {
+        var c = DadosDemonstracao.Coleta() with { Bateria = Campo<IReadOnlyList<MapHard.Nucleo.Baterias.Bateria>>.Lido([], FonteDado.Demonstracao) };
+
+        Assert.DoesNotContain(ResumoSaude.Montar(c), k => k.Area == "Bateria");
+    }
+
+    [Fact]
+    public void Bateria_que_falhou_aparece_desconhecida()
+    {
+        var c = DadosDemonstracao.Coleta() with { Bateria = Campo<IReadOnlyList<MapHard.Nucleo.Baterias.Bateria>>.Erro(FonteDado.Windows, "falhou") };
+
+        Assert.Equal(EstadoSaude.Desconhecido, ResumoSaude.Montar(c).Single(k => k.Area == "Bateria").Estado);
+    }
+
+    [Fact]
+    public void Cartao_e_secao_tem_o_mesmo_motivo()
+    {
+        var c = DadosDemonstracao.Coleta();
+        var discos = ResumoSaude.Montar(c).Single(k => k.Area == "Discos");
+
+        Assert.Equal(c.Discos.Discos.Valor!.Where(d => d.Saude.Estado != EstadoSaude.Bom).SelectMany(d => d.Saude.Motivos.Select(m => $"Disco {d.Numero}: {m}")), discos.Motivos);
+    }
 }

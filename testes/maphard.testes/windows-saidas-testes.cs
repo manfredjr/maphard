@@ -124,13 +124,13 @@ public class WindowsSaidasTestes
     }
 
     [Fact]
-    public async Task Json_versao_5_vai_e_volta_igual()
+    public async Task Json_da_fatia_5_vai_e_volta_igual()
     {
         var original = await Coletar();
         var texto = ExportadorJson.Serializar(original);
         var json = JsonDocument.Parse(texto).RootElement;
 
-        Assert.Equal(5, json.GetProperty("versaoFormato").GetInt32());
+        Assert.Equal(ColetaMaquina.VersaoAtual, json.GetProperty("versaoFormato").GetInt32());
         Assert.Equal("ativado", json.GetProperty("identificacao").GetProperty("windows").GetProperty("ativacao").GetProperty("valor").GetString());
         Assert.Equal("configuracao", JsonDocument.Parse(ExportadorJson.Serializar(DadosDemonstracao.Coleta())).RootElement.GetProperty("windows11").GetProperty("itens")[3].GetProperty("estado").GetString());
         Assert.Equal(texto, ExportadorJson.Serializar(ExportadorJson.Desserializar(texto)!));
