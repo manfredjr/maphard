@@ -97,6 +97,13 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
         Avisar();
     }
 
+    /// <summary>A seção foi copiada: a barra de status confirma.</summary>
+    public void AvisarCopia(string secao)
+    {
+        Aviso = $"seção {secao} copiada";
+        Avisar();
+    }
+
     public async Task AtualizarAsync(CancellationToken cancelar = default)
     {
         Estado = EstadoPainel.Coletando;
@@ -122,19 +129,20 @@ public sealed class PainelPrincipal : INotifyPropertyChanged
         Avisar();
     }
 
-    /// <summary>Nome sugerido para salvar o JSON.</summary>
-    public string NomeSugeridoJson() => Coleta is null
-        ? "maphard.json"
-        : ExportadorJson.NomePadrao(Coleta.Identificacao.Computador.Valor ?? "computador", Coleta.ColetadoEm);
+    /// <summary>Nome sugerido para salvar a coleta no formato pedido.</summary>
+    public string NomeSugerido(FormatoRelatorio formato) => Coleta is null
+        ? $"maphard{Relatorios.Relatorios.Extensao(formato)}"
+        : Relatorios.Relatorios.NomePadrao(Coleta, formato);
 
-    public void SalvarJson(string caminho)
+    /// <summary>Grava a coleta no formato da extensão: HTML, JSON ou CSV.</summary>
+    public void SalvarRelatorio(string caminho)
     {
         if (Coleta is null)
         {
             throw new InvalidOperationException("Ainda não há coleta para salvar.");
         }
 
-        ExportadorJson.Gravar(Coleta, caminho);
+        Relatorios.Relatorios.Gravar(Coleta, caminho, _hoje());
     }
 
     private IEnumerable<string> PartesStatus()

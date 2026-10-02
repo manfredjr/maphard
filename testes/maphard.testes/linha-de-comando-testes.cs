@@ -195,4 +195,94 @@ public class LinhaDeComandoTestes
         Assert.Equal(string.Empty, linhas[8]);
         Assert.DoesNotContain(linhas, l => l.StartsWith("Atenção:", StringComparison.Ordinal));
     }
+
+    [Fact]
+    public void Html_csv_e_pasta_sao_interpretados()
+    {
+        var a = ArgumentosCli.Interpretar(["coletar", "--html", "estacao.html", "--csv"]);
+
+        Assert.True(a.Valido);
+        Assert.Equal("estacao.html", a.Formatos[MapHard.Nucleo.Relatorios.FormatoRelatorio.Html]);
+        Assert.Null(a.Formatos[MapHard.Nucleo.Relatorios.FormatoRelatorio.Csv]);
+        Assert.Equal([MapHard.Nucleo.Relatorios.FormatoRelatorio.Html, MapHard.Nucleo.Relatorios.FormatoRelatorio.Csv], a.Gravacoes().Select(g => g.Formato));
+    }
+
+    [Fact]
+    public void Pasta_sem_formato_grava_json_e_csv()
+    {
+        var a = ArgumentosCli.Interpretar(["coletar", "--pasta", @"\\servidor\inventario"]);
+
+        Assert.True(a.Valido);
+        Assert.Equal(@"\\servidor\inventario", a.Pasta);
+        Assert.Equal([MapHard.Nucleo.Relatorios.FormatoRelatorio.Json, MapHard.Nucleo.Relatorios.FormatoRelatorio.Csv], a.Gravacoes().Select(g => g.Formato));
+    }
+
+    [Theory]
+    [InlineData("coletar", "--pasta")]
+    [InlineData("coletar", "--pasta", "x", "--json", "a.json")]
+    [InlineData("--html")]
+    [InlineData("coletar", "--csv", "--csv")]
+    public void Combinacoes_invalidas_dao_erro(params string[] args)
+    {
+        Assert.False(ArgumentosCli.Interpretar(args).Valido);
+    }
+
+    [Fact]
+    public void Ajuda_mostra_os_exemplos_do_desenho()
+    {
+        Assert.Contains("maphard coletar --html estacao.html", ArgumentosCli.TextoAjuda, StringComparison.Ordinal);
+        Assert.Contains("maphard coletar --json estacao.json --csv estacao.csv", ArgumentosCli.TextoAjuda, StringComparison.Ordinal);
+        Assert.Contains(@"maphard coletar --pasta \\servidor\inventario", ArgumentosCli.TextoAjuda, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Coletar_com_pasta_grava_json_e_csv_com_o_nome_padrao()
+    {
+        var pasta = Path.Combine(AppContext.BaseDirectory, $"inventario-{Guid.NewGuid():N}");
+        Directory.CreateDirectory(pasta);
+        try
+        {
+            var saida = new StringWriter();
+            var codigo = await ExecutorCli.ExecutarAsync(ArgumentosCli.Interpretar(["coletar", "--pasta", pasta]), Coletar, AppContext.BaseDirectory, saida, new StringWriter());
+
+            Assert.Equal(ExecutorCli.CodigoSucesso, codigo);
+            Assert.Equal(
+                ["maphard-ESTACAO-TESTE-2026-09-30-1005.csv", "maphard-ESTACAO-TESTE-2026-09-30-1005.json"],
+                Directory.GetFiles(pasta).Select(Path.GetFileName).Order());
+        }
+        finally
+        {
+            Directory.Delete(pasta, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task Pasta_que_nao_existe_da_erro_sem_gravar_nada()
+    {
+        var pasta = Path.Combine(AppContext.BaseDirectory, $"nao-existe-{Guid.NewGuid():N}");
+        var erro = new StringWriter();
+
+        var codigo = await ExecutorCli.ExecutarAsync(ArgumentosCli.Interpretar(["coletar", "--pasta", pasta]), Coletar, AppContext.BaseDirectory, new StringWriter(), erro);
+
+        Assert.Equal(ExecutorCli.CodigoGravacao, codigo);
+        Assert.StartsWith($"Não foi possível gravar em {pasta}", erro.ToString(), StringComparison.Ordinal);
+        Assert.False(Directory.Exists(pasta));
+    }
+
+    [Fact]
+    public async Task Html_gravado_pela_linha_de_comando()
+    {
+        var arquivo = Path.Combine(AppContext.BaseDirectory, $"estacao-{Guid.NewGuid():N}.html");
+        try
+        {
+            var codigo = await ExecutorCli.ExecutarAsync(ArgumentosCli.Interpretar(["coletar", "--html", arquivo]), Coletar, AppContext.BaseDirectory, new StringWriter(), new StringWriter());
+
+            Assert.Equal(ExecutorCli.CodigoSucesso, codigo);
+            Assert.StartsWith("<!DOCTYPE html>", File.ReadAllText(arquivo), StringComparison.Ordinal);
+        }
+        finally
+        {
+            File.Delete(arquivo);
+        }
+    }
 }

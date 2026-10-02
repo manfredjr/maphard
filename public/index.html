@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MapHard - MT - o hardware do computador e o que pede atenção</title>
+<meta name="description" content="Programa para Windows que mostra o hardware do computador e aponta, na primeira tela, o que pede atenção: disco com problema, memória abaixo da velocidade, desligamentos inesperados, dispositivo sem driver e se a máquina aceita o Windows 11. Só lê, sem instalar. Software livre, da MT - Manfred Tecnologia.">
+<link rel="icon" type="image/png" href="imagens/mt-logo.png">
+<meta property="og:title" content="MapHard - MT - o hardware do computador e o que pede atenção">
+<meta property="og:description" content="Mostra o hardware de estações Windows e o que pede atenção, com relatório para o cliente. Gratuito e de código aberto.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maphard.manfred.com.br/">
+<meta property="og:image" content="https://maphard.manfred.com.br/imagens/janela.png">
+<link rel="canonical" href="https://maphard.manfred.com.br/">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<main>
+
+<header class="topo">
+  <img class="topo__simbolo" src="imagens/mt-logo.png" alt="" width="74" height="56">
+  <h1>MapHard - MT</h1>
+  <p class="topo__frase">Mostra o hardware do computador e aponta, logo na primeira tela, o que pede atenção: disco com problema, memória abaixo da velocidade, desligamentos inesperados, dispositivo sem driver e se a máquina aceita o Windows 11.</p>
+  <figure class="tela">
+    <a href="imagens/janela.png" aria-label="Ampliar a tela do programa"><img src="imagens/janela.png" width="1280" height="800" alt="Janela do MapHard - MT com os cartões de saúde do Resumo, com dados de exemplo"></a>
+  </figure>
+  <div class="acoes">
+    <a class="btn btn--primario" href="https://github.com/manfredjr/maphard/releases/latest/download/maphard.exe">Baixar para Windows</a>
+    <a class="btn btn--secundario" href="https://github.com/manfredjr/maphard">Ver o código</a>
+  </div>
+  <p class="nota">Windows 10 e 11, 64 bits. Arquivo único, sem instalar e sem precisar de administrador para abrir. Tela com dados de exemplo: clique para ampliar.</p>
+  <p class="nota">O arquivo vem do GitHub, onde ficam o código e <a href="https://github.com/manfredjr/maphard/releases">todas as versões</a>, com o SHA-256 para conferir o download.</p>
+  <p class="nota">Use só em computadores que você tem autorização para administrar ou para atender. <a href="#uso-autorizado">Veja o uso autorizado</a>.</p>
+</header>
+
+<section>
+  <h2>Por que ele existe</h2>
+  <p>No atendimento, a primeira pergunta sobre uma máquina é quase sempre a mesma: o que tem nela, e o que está dando problema? Responder pede vários programas abertos ao mesmo tempo, um para o processador, outro para a saúde dos discos, o Visualizador de Eventos, o Gerenciador de Dispositivos.</p>
+  <p>O MapHard junta tudo numa janela só e começa pelo que importa. A primeira tela tem um cartão por área, com Bom, Atenção, Ruim ou Desconhecido e o motivo numa frase. O clique no cartão abre o detalhe.</p>
+  <p>Desde o fim do suporte ao Windows 10, ele também responde a pergunta que o cliente mais faz: esta máquina aceita o Windows 11, ou é hora de trocar?</p>
+</section>
+
+<section>
+  <h2>O que ele mostra</h2>
+  <div class="itens">
+    <div><h3>Processador</h3><p>Nome, codinome, núcleos e threads, clocks, caches, instruções e virtualização.</p></div>
+    <div><h3>Memória</h3><p>Um cartão por slot, inclusive os vazios, e o aviso quando roda abaixo da velocidade ou em canal único.</p></div>
+    <div><h3>Discos</h3><p>Saúde pelo SMART, com o motivo escrito, temperatura, horas ligado e dados gravados.</p></div>
+    <div><h3>Estabilidade</h3><p>Telas azuis, desligamentos inesperados e erros de hardware dos últimos 30 ou 90 dias.</p></div>
+    <div><h3>Dispositivos</h3><p>Os que estão com problema no Gerenciador de Dispositivos, com o que o código quer dizer.</p></div>
+    <div><h3>Windows 11</h3><p>Item por item: processador, TPM, UEFI, Secure Boot, memória e disco.</p></div>
+    <div><h3>Vídeo, bateria e rede</h3><p>Placas de vídeo, monitores, desgaste da bateria e placas de rede.</p></div>
+    <div><h3>Relatórios</h3><p>HTML para o cliente, que vira PDF pelo navegador, JSON com tudo e CSV para planilha.</p></div>
+  </div>
+  <figure class="tela">
+    <a href="imagens/relatorio.png" aria-label="Ampliar o relatório"><img src="imagens/relatorio.png" width="1280" height="900" alt="Primeira página do relatório do MapHard, com os cartões de saúde, com dados de exemplo"></a>
+    <figcaption>Primeira página do relatório para o cliente, com dados de exemplo.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Como usar</h2>
+  <ol>
+    <li>Baixe o <a href="https://github.com/manfredjr/maphard/releases/latest/download/maphard.exe">maphard.exe</a> e copie para qualquer pasta, ou para um pendrive.</li>
+    <li>Dê um duplo clique nele. A leitura começa sozinha e a primeira tela mostra o que pede atenção.</li>
+    <li>O SMART dos discos SATA e o BitLocker pedem administrador: use o botão <strong>Ler como administrador</strong>. Para guardar o resultado, use <strong>Salvar relatório</strong>, e para colar num chamado, <strong>Copiar</strong>.</li>
+  </ol>
+  <p>Na primeira vez, o Windows pode exibir "O Windows protegeu o seu computador". O motivo é a falta de assinatura digital, que é um certificado pago. Clique em <strong>Mais informações</strong> e depois em <strong>Executar assim mesmo</strong>.</p>
+  <p>Pela linha de comando, que também só lê:</p>
+  <pre>maphard coletar --html estacao.html
+maphard coletar --pasta \\servidor\inventario</pre>
+  <p>Com <code>--pasta</code>, cada computador grava o JSON e o CSV com o próprio nome e a data, e vários podem gravar na mesma pasta de rede, por um roteiro de logon. O manual completo está no <a href="https://github.com/manfredjr/maphard#readme">README do projeto</a>.</p>
+</section>
+
+<section id="uso-autorizado">
+  <h2>Uso autorizado</h2>
+  <p>O MapHard - MT lê o hardware e os registros do Windows do computador em que roda e não altera nada nele. Use o programa só em computadores que você tem autorização para administrar ou para atender. Os relatórios trazem o nome do computador e números de série, que podem identificar quem usa a máquina: guarde onde só quem precisa tem acesso e apague quando não precisar mais. O programa não envia nenhuma informação para fora do computador.</p>
+  <ul>
+    <li><strong>O que ele faz:</strong> só lê. Os únicos arquivos que grava são os relatórios que você pede, na pasta que você escolher.</li>
+    <li><strong>O que ele não faz:</strong> não instala nada, não envia nada pela internet e não lê nem mostra a chave de produto. Campo que não pôde ser lido aparece com o motivo, nunca como zero.</li>
+    <li><strong>Até onde vai:</strong> a saúde dos discos vem do que o próprio disco informa no SMART e não é previsão de falha. A verificação do Windows 11 segue a lista de processadores publicada pela Microsoft para o Windows 11 25H2; a ferramenta oficial da Microsoft para essa conferência é o PC Integridade do Computador.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Código aberto</h2>
+  <p>O MapHard - MT é software livre, sob licença <a href="https://github.com/manfredjr/maphard/blob/main/LICENSE">GPL-3.0</a>. Qualquer pessoa pode usar, estudar e adaptar o programa. Quem distribuir uma versão modificada precisa abrir o código dela também.</p>
+  <p><strong>Licença e garantias.</strong> O MapHard - MT é distribuído gratuitamente sob a GPL-3.0. O que ele mostra depende do que o hardware, o firmware e o Windows informam, e alguns dados só aparecem com administrador. A saúde dos discos vem do que o próprio disco informa no SMART e não é previsão de falha. A verificação do Windows 11 segue a lista de processadores publicada pela Microsoft, e a ferramenta oficial da Microsoft para essa conferência é o PC Integridade do Computador. A licença não inclui promessa de funcionamento em todo computador nem serviço de suporte técnico. As disposições da GPL-3.0 sobre garantias e responsabilidade aplicam-se nos limites permitidos pela legislação brasileira e não restringem direitos assegurados ao consumidor por lei.</p>
+  <p>Se alguma coisa atrapalhou no seu atendimento ou você tem uma sugestão, escreva nas <a href="https://github.com/manfredjr/maphard/issues">Issues</a>.</p>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape__base">
+    <div class="rodape__credito">
+      <p>Software de apoio ao suporte de TI da plataforma <a href="https://www.manfred.com.br" target="_blank" rel="noopener"><strong>manfred.com.br</strong></a>, por <a href="https://www.manfred.com.br" target="_blank" rel="noopener"><strong>MT - Manfred Tecnologia</strong></a></p>
+      <p>
+        <a href="https://github.com/manfredjr/maphard#readme">Manual de uso</a> &middot;
+        <a href="https://github.com/manfredjr/maphard">Código-fonte</a> &middot;
+        <a href="https://github.com/manfredjr/maphard/blob/main/LICENSE">Licença GPL-3.0</a> &middot;
+        <a href="https://github.com/manfredjr/maphard/issues">Avisar um problema</a> &middot;
+        <a href="privacidade.html">Privacidade</a>
+      </p>
+    </div>
+    <a class="rodape__selo" href="https://www.manfred.com.br" target="_blank" rel="noopener" aria-label="MT - Manfred Tecnologia">
+      <img src="imagens/mt-logo.png" alt="MT - Manfred Tecnologia" width="85" height="64" loading="lazy">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>

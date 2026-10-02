@@ -27,16 +27,21 @@ Como usuário comum, o MapHard já lê a saúde dos SSDs NVMe. O SMART dos disco
 
 Campo que não pôde ser lido aparece em cinza, com o motivo: "não informado pelo fabricante", "requer administrador", "não disponível neste equipamento" ou "erro de leitura". Parando o mouse sobre um valor, a dica diz de onde ele veio (CPUID, SMBIOS, registro do Windows...).
 
-**Salvar JSON** grava a coleta completa, com o estado e a fonte de cada campo.
+**Copiar** põe a seção aberta na área de transferência, como texto, para colar em chamado ou e-mail.
+
+**Salvar relatório** grava, pela extensão escolhida: o relatório para o cliente em HTML (um arquivo só, com a marca da MT e os cartões de saúde na primeira página, que vira PDF pela impressão do navegador), a coleta completa em JSON, com o estado e a fonte de cada campo, ou uma linha da máquina em CSV, para juntar várias coletas numa planilha. No CSV, campo não lido fica em branco.
 
 Linha de comando (só lê). O resumo começa pelo bloco "Saúde", com o estado de cada área:
 
     maphard coletar
     maphard coletar --json
     maphard coletar --json estacao.json
+    maphard coletar --html estacao.html
+    maphard coletar --json estacao.json --csv estacao.csv
+    maphard coletar --pasta \\servidor\inventario
     maphard coletar --dias 90
 
-Sem nome depois de `--json`, o arquivo recebe o nome do computador e a data. No Prompt de Comando, use `start /wait maphard coletar` para o prompt esperar o fim. No PowerShell, termine a linha com `| Out-Host`.
+Sem nome depois de `--html`, `--json` ou `--csv`, o arquivo recebe o nome do computador e a data. Com `--pasta` e sem formato, grava o JSON e o CSV nessa pasta, com o nome do computador e a data, para um roteiro de logon gravar todas as estações na mesma pasta de rede sem uma sobrescrever a outra. No Prompt de Comando, use `start /wait maphard coletar` para o prompt esperar o fim. No PowerShell, termine a linha com `| Out-Host`.
 
 `maphard --demonstracao` abre a janela com uma máquina fictícia, para imagem de tela.
 
@@ -51,4 +56,4 @@ Sem nome depois de `--json`, o arquivo recebe o nome do computador e a data. No 
 | 4 | Estabilidade, erros de memória, dispositivos com problema e chipset | `estabilidade` | Plano em [#9](https://github.com/manfredjr/maphard/pull/9), código em [#10](https://github.com/manfredjr/maphard/pull/10) | Concluída em 01/10/2026 |
 | 5 | Vídeo, monitores, bateria, rede, Windows e verificação do Windows 11 | `plano-windows`, `windows` | Plano em [#11](https://github.com/manfredjr/maphard/pull/11), código em [#12](https://github.com/manfredjr/maphard/pull/12) | Concluída em 02/10/2026 |
 | 6 | Resumo com os cartões de saúde | `plano-resumo`, `resumo` | Plano em [#13](https://github.com/manfredjr/maphard/pull/13), código em [#14](https://github.com/manfredjr/maphard/pull/14) | Concluída em 02/10/2026 |
-| 7 | Relatório HTML, CSV, copiar seção, linha de comando completa e página | `plano-relatorio` | Plano em [#15](https://github.com/manfredjr/maphard/pull/15) | Plano em revisão |
+| 7 | Relatório HTML, CSV, copiar seção, linha de comando completa e página | `plano-relatorio`, `relatorio` | Plano em [#15](https://github.com/manfredjr/maphard/pull/15), código em [#16](https://github.com/manfredjr/maphard/pull/16) | Código em teste; página pronta, não publicada |

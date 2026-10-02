@@ -1,0 +1,69 @@
+/* Estilo do site do MapHard - MT, copiado do MapDisk, no mesmo padrão dos outros produtos da MT (MapNet, MapDisk):
+   coluna única e estreita, texto curto, superfícies planas. Sem script: a tela amplia por link. */
+:root {
+  --verde-escuro: #0b4d24;
+  --verde: #0F8F2F;
+  --verde-claro: #9AD52B;
+  --fundo: #f5f7f2;
+  --texto: #1f2421;
+  --suave: #5b625d;
+  --borda: #dfe4dc;
+  --grafite: #202020;
+  --branco: #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px; line-height: 1.65; color: var(--texto); background: var(--fundo);
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+main { flex: 1; width: 100%; max-width: 780px; margin: 0 auto; padding: 0 24px 56px; }
+img { max-width: 100%; display: block; height: auto; }
+a { color: var(--verde-escuro); }
+
+/* Topo */
+.topo { text-align: center; padding: 48px 0 32px; border-bottom: 1px solid var(--borda); }
+.topo__simbolo { width: 56px; height: 56px; margin: 0 auto 12px; }
+.topo h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.topo__frase { color: var(--suave); font-size: 1.08rem; max-width: 34em; margin: 0 auto 28px; }
+.tela { margin: 0 auto 28px; max-width: 680px; }
+.tela a { display: block; cursor: zoom-in; }
+.tela img { width: 100%; border-radius: 10px; border: 1px solid var(--borda); }
+.tela figcaption { font-size: 0.85rem; color: var(--suave); margin-top: 8px; text-align: center; }
+.acoes { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+.btn { display: inline-block; padding: 12px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 1px solid var(--verde-escuro); }
+.btn--primario { background: var(--verde-escuro); color: var(--branco); }
+.btn--primario:hover { background: var(--verde); border-color: var(--verde); }
+.btn--secundario { color: var(--verde-escuro); background: var(--branco); }
+.btn--secundario:hover { background: var(--fundo); }
+.nota { font-size: 0.85rem; color: var(--suave); }
+
+/* Seções */
+section { padding: 36px 0 8px; border-bottom: 1px solid var(--borda); }
+section:last-of-type { border-bottom: 0; }
+h2 { font-size: 1.45rem; font-weight: 700; margin-bottom: 14px; }
+section p { margin-bottom: 14px; }
+/* Texto corrido justificado, com hifenização pelo idioma da página (lang="pt-BR").
+   O topo e o rodapé continuam centralizados. */
+section p, section li { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+section .tela figcaption { text-align: center; }
+.itens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px; margin-bottom: 24px; }
+@media (max-width: 640px) { .itens { grid-template-columns: 1fr; } .topo h1 { font-size: 2.1rem; } }
+.itens h3 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.itens p { color: var(--suave); font-size: 0.95rem; margin: 0; text-align: left; }
+ol, ul { padding-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 6px; }
+pre { background: var(--grafite); color: #e8f5d8; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin-bottom: 16px; font: 0.9rem/1.6 Consolas, "Courier New", monospace; }
+
+/* Rodapé: fundo da página, linha fina em cima, letra pequena na cor apagada e o logo da MT ao lado */
+.rodape { border-top: 1px solid var(--borda); color: var(--suave); }
+.rodape a { color: var(--suave); text-decoration: none; }
+.rodape a:hover { text-decoration: underline; }
+.rodape__base { padding: 12px 16px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 780px; margin: 0 auto; }
+.rodape__credito { text-align: right; line-height: 1.5; }
+.rodape__credito p + p { margin-top: 2px; }
+.rodape__credito strong { color: var(--texto); font-weight: 500; }
+/* O logo tem a altura das duas linhas do crédito: 2 x 1.5em mais 2px entre elas. */
+.rodape__selo { display: flex; align-items: center; }
+.rodape__selo img { height: calc(3em + 2px); width: auto; }
+@media (max-width: 600px) { .rodape__credito { text-align: center; } .rodape__selo { order: -1; } }

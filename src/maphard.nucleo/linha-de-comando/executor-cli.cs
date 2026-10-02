@@ -57,24 +57,48 @@ public static class ExecutorCli
             await saida.WriteLineAsync(linha).ConfigureAwait(false);
         }
 
-        if (!argumentos.GravarJson)
+        var gravacoes = argumentos.Gravacoes();
+        if (gravacoes.Count == 0)
         {
             return CodigoSucesso;
         }
 
-        var nome = argumentos.ArquivoJson ?? ExportadorJson.NomePadrao(coleta.Identificacao.Computador.Valor ?? "computador", coleta.ColetadoEm);
-        var caminho = Path.GetFullPath(Path.Combine(pastaAtual, nome));
-        try
+        var pasta = Path.GetFullPath(Path.Combine(pastaAtual, argumentos.Pasta ?? string.Empty));
+        if (argumentos.Pasta is not null && !Directory.Exists(pasta))
         {
-            ExportadorJson.Gravar(coleta, caminho);
-        }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException or ArgumentException)
-        {
-            await erro.WriteLineAsync($"Não foi possível gravar {caminho}: {e.Message}").ConfigureAwait(false);
+            await erro.WriteLineAsync($"Não foi possível gravar em {pasta}: a pasta não existe ou não está acessível.").ConfigureAwait(false);
             return CodigoGravacao;
         }
 
-        await saida.WriteLineAsync($"Coleta gravada em {caminho}").ConfigureAwait(false);
+        // Grava tudo ou nada: se um arquivo falhar, os que já foram gravados nesta vez saem.
+        var hoje = DateOnly.FromDateTime(coleta.ColetadoEm.DateTime);
+        var gravados = new List<string>();
+        foreach (var (formato, arquivo) in gravacoes)
+        {
+            var nome = arquivo ?? Relatorios.Relatorios.NomePadrao(coleta, formato);
+            var caminho = Path.GetFullPath(Path.Combine(pasta, Path.GetExtension(nome).Length == 0 ? nome + Relatorios.Relatorios.Extensao(formato) : nome));
+            try
+            {
+                Relatorios.Relatorios.Gravar(coleta, caminho, hoje, formato);
+                gravados.Add(caminho);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException or ArgumentException)
+            {
+                foreach (var feito in gravados)
+                {
+                    File.Delete(feito);
+                }
+
+                await erro.WriteLineAsync($"Não foi possível gravar {caminho}: {e.Message}").ConfigureAwait(false);
+                return CodigoGravacao;
+            }
+        }
+
+        foreach (var caminho in gravados)
+        {
+            await saida.WriteLineAsync($"Coleta gravada em {caminho}").ConfigureAwait(false);
+        }
+
         return CodigoSucesso;
     }
 

@@ -3,6 +3,7 @@ using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Painel;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Relatorios;
 using MapHard.Testes.Apoio;
 
 namespace MapHard.Testes;
@@ -211,19 +212,22 @@ public class PainelTestes
         Assert.StartsWith("SERIE-TESTE", painel.Coleta.Identificacao.NumeroSerie.Valor);
     }
 
-    [Fact]
-    public async Task Nome_sugerido_e_salvar_json()
+    [Theory]
+    [InlineData(FormatoRelatorio.Html, "<!DOCTYPE html>")]
+    [InlineData(FormatoRelatorio.Json, "{")]
+    [InlineData(FormatoRelatorio.Csv, "Computador;")]
+    public async Task Nome_sugerido_e_salvar_relatorio(FormatoRelatorio formato, string comeco)
     {
         var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
-        Assert.Throws<InvalidOperationException>(() => painel.SalvarJson("x.json"));
+        Assert.Throws<InvalidOperationException>(() => painel.SalvarRelatorio("x.html"));
 
         await painel.AtualizarAsync();
-        var caminho = Path.Combine(AppContext.BaseDirectory, painel.NomeSugeridoJson());
+        var caminho = Path.Combine(AppContext.BaseDirectory, painel.NomeSugerido(formato));
         try
         {
-            painel.SalvarJson(caminho);
-            Assert.True(File.Exists(caminho));
-            Assert.Equal("maphard-ESTACAO-TESTE-2026-09-30-1005.json", Path.GetFileName(caminho));
+            painel.SalvarRelatorio(caminho);
+            Assert.Equal($"maphard-ESTACAO-TESTE-2026-09-30-1005{Relatorios.Extensao(formato)}", Path.GetFileName(caminho));
+            Assert.StartsWith(comeco, File.ReadAllText(caminho, new System.Text.UTF8Encoding(false)).TrimStart(), StringComparison.Ordinal);
         }
         finally
         {

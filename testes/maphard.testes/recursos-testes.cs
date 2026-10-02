@@ -38,7 +38,7 @@ public class RecursosTestes
         Assert.Contains("component/recursos/mt-logo.png", janela);
         Assert.Contains("Click=\"AoClicarLogo\"", janela);
         Assert.Contains("Click=\"AoAbrirSobre\"", janela);
-        Assert.Contains("Click=\"AoSalvarJson\"", janela);
+        Assert.Contains("Click=\"AoSalvarRelatorio\"", janela);
 
         var sobre = File.ReadAllText(App("janela-sobre.xaml"));
         foreach (var campo in new[] { "TextosSobre.Copyright", "TextosSobre.SoftwareLivre", "TextosSobre.Versoes", "TextosSobre.Repositorio", "CampoLicenca" })

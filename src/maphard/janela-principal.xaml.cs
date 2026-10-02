@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MapHard.Nucleo.Painel;
+using MapHard.Nucleo.Relatorios;
 using MapHard.Nucleo.Sobre;
 using Microsoft.Win32;
 
@@ -83,15 +84,26 @@ public partial class JanelaPrincipal : Window
 
     private async void AoAtualizar(object sender, RoutedEventArgs e) => await _painel.AtualizarAsync();
 
-    private void AoSalvarJson(object sender, RoutedEventArgs e)
+    /// <summary>Copia a seção aberta como texto (R37).</summary>
+    private void AoCopiar(object sender, RoutedEventArgs e)
+    {
+        if (Navegacao.SelectedItem is SecaoTela secao && _painel.Coleta is { } coleta)
+        {
+            Clipboard.SetText(TextoSecao.Gerar(secao, coleta));
+            _painel.AvisarCopia(secao.Titulo);
+        }
+    }
+
+    /// <summary>Salva a coleta em HTML (para o cliente), JSON (coleta completa) ou CSV (planilha), pela extensão.</summary>
+    private void AoSalvarRelatorio(object sender, RoutedEventArgs e)
     {
         var dialogo = new SaveFileDialog
         {
-            Title = "Salvar a coleta em JSON",
-            FileName = _painel.NomeSugeridoJson(),
-            Filter = "Coleta do MapHard (*.json)|*.json",
+            Title = "Salvar relatório",
+            FileName = _painel.NomeSugerido(FormatoRelatorio.Html),
+            Filter = "Relatório para o cliente (*.html)|*.html|Coleta completa (*.json)|*.json|Planilha (*.csv)|*.csv",
             AddExtension = true,
-            DefaultExt = ".json",
+            DefaultExt = ".html",
         };
         if (dialogo.ShowDialog(this) != true)
         {
@@ -100,7 +112,7 @@ public partial class JanelaPrincipal : Window
 
         try
         {
-            _painel.SalvarJson(dialogo.FileName);
+            _painel.SalvarRelatorio(dialogo.FileName);
         }
         catch (Exception erro) when (erro is IOException or UnauthorizedAccessException)
         {
