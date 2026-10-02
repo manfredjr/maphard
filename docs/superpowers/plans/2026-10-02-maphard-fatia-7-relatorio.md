@@ -29,7 +29,7 @@ Desenho: `docs/superpowers/specs/2026-09-30-maphard-design.md`. Requisitos desta
 
 ## Decisões que o plano pede ao Manfred
 
-O PR deste plano é o lugar de responder. Até a resposta, vale a recomendação.
+Respondidas em 02/10/2026: o Manfred aceitou as três recomendações. Vale um CSV por máquina, o `--pasta` sem formato gravando JSON e CSV, e o endereço `maphard.manfred.com.br` nos links da página.
 
 1. **CSV de várias máquinas.** Recomendação: um arquivo por máquina, com o nome do computador e a data, como o JSON. A planilha junta os arquivos (no Excel, Dados, Obter Dados, De uma Pasta). Assim duas estações gravando na mesma pasta de rede ao mesmo tempo nunca brigam pelo mesmo arquivo. A outra opção é acrescentar uma linha num CSV comum, o que pede trava de arquivo e pode perder linha se duas máquinas gravarem juntas.
 2. **`--pasta` sem formato.** Recomendação: `maphard coletar --pasta \\servidor\inventario` grava JSON e CSV, que é o que o inventário usa. Com `--html`, `--json` ou `--csv` junto, grava só os pedidos, na pasta.
