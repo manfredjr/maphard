@@ -31,7 +31,7 @@ Desenho: `docs/superpowers/specs/2026-09-30-maphard-design.md`. Requisito desta 
 
 ## Decisões que o plano pede ao Manfred
 
-O PR deste plano é o lugar de responder. Até a resposta, vale a recomendação.
+Respondidas em 02/10/2026: o Manfred aceitou as três recomendações. Vale o Hyper-V pedido pelo serviço no registro, o erro de processador do WHEA fora do cartão até a pendência da fatia 4 fechar, e o cartão Bateria fora do Resumo no desktop.
 
 1. **Processador, Atenção "quando o Hyper-V é pedido".** O Windows não diz, sem administrador, se alguém pediu o Hyper-V. Recomendação: considerar pedido quando o serviço do Hyper-V (`vmms`) ou o do WSL (`WslService`) existir no registro, em `HKLM\SYSTEM\CurrentControlSet\Services`, que o usuário comum lê. Os dois nomes ficam [CONFERIR] até serem vistos numa máquina com o recurso ligado. Sem nenhum dos dois, virtualização desligada no firmware não muda o cartão. A outra opção é avisar sempre que a virtualização estiver desligada no firmware, mesmo sem o Hyper-V.
 2. **Processador, Ruim com "erro de processador no WHEA".** O MapHard ainda não separa o componente do erro do WHEA (pendência da fatia 4). Até separar, o cartão Processador não fica Ruim por esse motivo. O erro não corrigido continua deixando a Estabilidade em Ruim.
@@ -122,7 +122,7 @@ public static SaudeArea Conjunto(SecaoDiscos discos)
 - Consome: `SecaoProcessador.VirtualizacaoNoProcessador`, `SecaoProcessador.VirtualizacaoLigada`, `IFonteRegistro`.
 - Produz: `public static SaudeArea RegrasProcessador.Processador(SecaoProcessador p)` e `SecaoProcessador.HyperVPedido`.
 
-- [ ] **Passo 1:** conferir os nomes dos serviços `vmms` e `WslService` numa máquina com Hyper-V e com WSL e anotar no comentário da fonte. Se a decisão 1 for "avisar sempre", pular este passo e o campo `HyperVPedido`.
+- [ ] **Passo 1:** conferir os nomes dos serviços `vmms` e `WslService` numa máquina com Hyper-V e com WSL e anotar no comentário da fonte.
 - [ ] **Passo 2:** escrever os testes.
 
 ```csharp
