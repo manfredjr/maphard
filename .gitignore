@@ -21,3 +21,6 @@ maphard-*.csv
 
 # Rascunhos locais
 .superpowers/
+
+# Gravado pelo PHP do cPanel; solto no clone, faz o deploy recusar por alteracao pendente
+error_log
