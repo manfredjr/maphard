@@ -65,6 +65,7 @@ public static class DadosDemonstracao
                 Campo<IReadOnlyList<double>>.Lido([10, 14, 8, 16, 12, 10, 14, 12, 10, 14, 8, 16, 12, 10, 14, 12], D)),
             Campo<bool>.Lido(true, D),
             Campo<bool>.Lido(true, D),
+            Campo<bool>.Lido(false, D),
             Campo<bool>.Lido(false, D));
 
         var placa = new SecaoPlaca(

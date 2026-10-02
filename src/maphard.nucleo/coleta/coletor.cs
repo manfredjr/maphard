@@ -87,8 +87,9 @@ public sealed class Coletor
         var rede = Ler(() => LeitorRede.Montar(_fontes.Rede.Interfaces()), cancelar);
         var ativacao = Ler(_fontes.Ativacao.Estado, cancelar);
         var letraWindows = Ler(_fontes.LetraWindows, cancelar);
+        var hyperV = Ler(() => LeitorHyperV.Pedido(_fontes.Registro), cancelar);
         await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador, discosBrutos, dispositivos).ConfigureAwait(false);
-        await Task.WhenAll(adaptadores, monitores, baterias, rede, ativacao, letraWindows).ConfigureAwait(false);
+        await Task.WhenAll(adaptadores, monitores, baterias, rede, ativacao, letraWindows, hyperV).ConfigureAwait(false);
 
         andamento?.Report("medindo clock e uso, lendo os discos...");
         var tabelaSmbios = smbios.Result;
@@ -118,7 +119,7 @@ public sealed class Coletor
             ? Campo<IReadOnlyList<PlacaVideo>>.Erro(FonteDado.Windows, adaptadores.Result.Falha!)
             : Campo<IReadOnlyList<PlacaVideo>>.Lido(LeitorVideo.Montar(adaptadores.Result.Valor!, dispositivos.Result.Valor, FabricantesPci.Embutida), FonteDado.Windows);
 
-        var processador = MontarProcessador(tabelaSmbios, id, topologia.Result, clocks, dadosFirmware);
+        var processador = MontarProcessador(tabelaSmbios, id, topologia.Result, clocks, dadosFirmware, hyperV.Result.Falhou ? Campo<bool>.Erro(FonteDado.Registro, hyperV.Result.Falha!) : hyperV.Result.Valor!);
         var memoria = LeitorMemoria.Montar(
             new LeiturasMemoria(
                 tabelaSmbios.Valor,
@@ -212,7 +213,8 @@ public sealed class Coletor
         Leitura<IdentidadeCpu?> cpuid,
         Leitura<TopologiaCpu?> topologia,
         Leitura<ClocksCpu> clocks,
-        DadosFirmware firmware)
+        DadosFirmware firmware,
+        Campo<bool> hyperV)
     {
         var id = cpuid.Valor;
         var cpuSmbios = smbios.Valor is null ? null : ProcessadorSmbios.Todos(smbios.Valor).FirstOrDefault();
@@ -291,7 +293,8 @@ public sealed class Coletor
                     ? Campo<bool>.NaoInformado(FonteDado.Cpuid, MotivoHipervisor)
                     : Campo<bool>.Lido(id.VirtualizacaoNoProcessador, FonteDado.Cpuid),
             firmware.VirtualizacaoLigada,
-            id is null ? DoCpuid<string>(_ => null).Mapear(_ => false) : Campo<bool>.Lido(id.HipervisorPresente, FonteDado.Cpuid));
+            id is null ? DoCpuid<string>(_ => null).Mapear(_ => false) : Campo<bool>.Lido(id.HipervisorPresente, FonteDado.Cpuid),
+            hyperV);
     }
 
     private static SecaoPlaca MontarPlaca(Leitura<TabelaSmbios?> smbios, DadosFirmware firmware, IdentidadeCpu? id, Campo<string> chipset)

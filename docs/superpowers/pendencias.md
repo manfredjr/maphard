@@ -69,6 +69,15 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Verificação do Windows 11 numa máquina com Windows 10 | A máquina do teste já tem Windows 11. Os casos que não atendem só foram vistos nos testes automáticos e na demonstração | Teste do Manfred numa máquina com Windows 10, comparando item por item com o PC Integridade do Computador |
 | Janela não vista na sessão | As seções novas foram conferidas pelos testes do painel e pela linha de comando | Conferência do Manfred na janela e na `--demonstracao` |
 
+## Fatia 6
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Serviços do Hyper-V e do WSL | O Hyper-V conta como pedido quando o serviço `vmms` ou o `WslService` existe no registro, decisão do Manfred de 02/10/2026. Os dois nomes foram vistos numa máquina com os dois recursos ligados; a ausência deles numa máquina sem os recursos não foi vista | Conferir numa máquina sem Hyper-V e sem WSL |
+| Processador em Ruim pelo WHEA | O desenho pede o cartão Processador em Ruim com erro de processador no WHEA. Sem saber o componente do erro (pendência da fatia 4), o cartão não usa esse motivo | Fechar a pendência da fatia 4 sobre o componente do erro |
+| JSON sem a saúde | O JSON grava as leituras; os estados do Resumo saem das regras e não vão no arquivo | Incluir os cartões no JSON, se o Manfred quiser, junto com o relatório HTML da fatia 7 |
+| Teclado no cartão | O cartão do Resumo abre a seção com Enter ou espaço, depois de receber o foco pelo Tab. Só o clique com o mouse foi visto na janela | Conferência do Manfred |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |

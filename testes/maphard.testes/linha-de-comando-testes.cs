@@ -142,7 +142,7 @@ public class LinhaDeComandoTestes
         var linhas = ExecutorCli.Resumo(MapHard.Nucleo.Painel.DadosDemonstracao.Coleta()).ToList();
 
         Assert.Contains("Memória:     16 GB DDR4-2666 (o módulo aceita 3200), 2 de 4 slots (15,75 GB utilizáveis)", linhas);
-        Assert.Contains(linhas, l => l.StartsWith("Atenção:     rodando a 2666 MT/s", StringComparison.Ordinal));
+        Assert.Contains(linhas, l => l.StartsWith("  Memória:      Atenção (rodando a 2666 MT/s", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -182,4 +182,17 @@ public class LinhaDeComandoTestes
 
     private static Task<ColetaMaquina> Coletar(CancellationToken cancelar) =>
         new Coletor(FontesSimuladas.Completas(), TimeSpan.FromSeconds(5), agora: () => new DateTimeOffset(2026, 9, 30, 10, 5, 0, TimeSpan.FromHours(-3))).ColetarAsync(cancelar: cancelar);
+
+    [Fact]
+    public void Resumo_comeca_pelo_bloco_de_saude()
+    {
+        var linhas = ExecutorCli.Resumo(MapHard.Nucleo.Painel.DadosDemonstracao.Coleta()).ToList();
+
+        Assert.Equal("Saúde", linhas[0]);
+        Assert.Equal("  Discos:       Atenção (Disco 1: 3 setores realocados)", linhas[1]);
+        Assert.Equal("  Processador:  Bom", linhas[3]);
+        Assert.Equal("  Bateria:      Bom", linhas[7]);
+        Assert.Equal(string.Empty, linhas[8]);
+        Assert.DoesNotContain(linhas, l => l.StartsWith("Atenção:", StringComparison.Ordinal));
+    }
 }

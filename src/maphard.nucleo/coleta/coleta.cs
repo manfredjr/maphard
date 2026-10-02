@@ -47,7 +47,8 @@ public sealed record SecaoProcessador(
     ClocksCpu Clocks,
     Campo<bool> VirtualizacaoNoProcessador,
     Campo<bool> VirtualizacaoLigada,
-    Campo<bool> Hipervisor);
+    Campo<bool> Hipervisor,
+    Campo<bool> HyperVPedido);
 
 /// <summary>Seção Placa-mãe e firmware (R16 a R19).</summary>
 public sealed record SecaoPlaca(
@@ -91,6 +92,6 @@ public sealed record ColetaMaquina(
 {
     public const string NomeFormato = "maphard-coleta";
 
-    /// <summary>5 a partir da fatia 5, que acrescenta vídeo, monitores, bateria, rede, a verificação do Windows 11 e a ativação.</summary>
-    public const int VersaoAtual = 5;
+    /// <summary>6 a partir da fatia 6, que acrescenta ao processador se o Hyper-V ou o WSL está instalado.</summary>
+    public const int VersaoAtual = 6;
 }

@@ -98,13 +98,15 @@ public class DiscosSaidasTestes
         // O disco travado prende uma linha do pool de threads, e o .NET leva perto de meio segundo para abrir
         // outra. Com limite menor que isso, a leitura do disco 0 fica na fila e estoura também (aconteceu no CI,
         // que roda com poucos núcleos). O limite fica bem acima desse atraso e bem abaixo da espera do disco travado.
+        // A fatia 5 pôs mais leituras na mesma fila (vídeo, monitores, bateria, rede, ativação), e 2 segundos deixaram
+        // de bastar no CI; por isso 4 segundos de limite e 10 de espera.
         var fontes = FontesSimuladas.Completas(discos: new FontesSimuladas.DiscosSimulados(_ =>
         {
-            Thread.Sleep(6000);
+            Thread.Sleep(10_000);
             return new SmartAtaBruto(null, null, null, null, null, null);
         }));
 
-        var c = await new Coletor(fontes, TimeSpan.FromSeconds(2)).ColetarAsync();
+        var c = await new Coletor(fontes, TimeSpan.FromSeconds(4)).ColetarAsync();
 
         var hdd = c.Discos.Discos.Valor![1];
         Assert.Equal(EstadoSaude.Desconhecido, hdd.Saude.Estado);
@@ -166,7 +168,7 @@ public class DiscosSaidasTestes
         var linhas = ExecutorCli.Resumo(c).ToList();
 
         Assert.Equal([EstadoSaude.Bom, EstadoSaude.Atencao], c.Discos.Discos.Valor!.Select(d => d.Saude.Estado));
-        Assert.Contains("Atenção:     3 setores realocados", linhas);
+        Assert.Contains("  Discos:       Atenção (Disco 1: 3 setores realocados)", linhas);
         Assert.All(c.Discos.Discos.Valor!, d => Assert.StartsWith("SERIE-DISCO", d.NumeroSerie.Valor));
     }
 }

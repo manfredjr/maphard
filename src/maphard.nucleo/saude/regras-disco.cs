@@ -130,4 +130,27 @@ public static class RegrasDisco
     }
 
     private static AtributoSmart? Buscar(LeituraSmartAta leitura, byte id) => leitura.Atributos.FirstOrDefault(a => a.Id == id);
+
+    /// <summary>Saúde de todos os discos: o pior manda, e cada motivo leva o número do disco.</summary>
+    public static SaudeArea Conjunto(SecaoDiscos discos)
+    {
+        if (!discos.Discos.FoiLido)
+        {
+            return new SaudeArea(EstadoSaude.Desconhecido, [discos.Discos.Motivo ?? "discos não lidos"]);
+        }
+
+        var lista = discos.Discos.Valor!;
+        if (lista.Count == 0)
+        {
+            return new SaudeArea(EstadoSaude.Desconhecido, ["nenhum disco encontrado"]);
+        }
+
+        var pior = lista.Select(d => d.Saude.Estado).MaxBy(OrdemSaude.Peso);
+        var motivos = lista
+            .Where(d => d.Saude.Estado != EstadoSaude.Bom)
+            .OrderByDescending(d => OrdemSaude.Peso(d.Saude.Estado))
+            .SelectMany(d => d.Saude.Motivos.Select(m => $"Disco {d.Numero}: {m}"))
+            .ToList();
+        return new SaudeArea(pior, motivos);
+    }
 }

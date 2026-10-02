@@ -17,7 +17,9 @@ public static class RegrasWindows
 
     public static SaudeArea Windows11(VerificacaoWindows11 v)
     {
-        IReadOnlyList<string> Detalhes(EstadoRequisito estado) => v.Itens.Where(i => i.Estado == estado).Select(i => $"{i.Item}: {i.Detalhe}").ToList();
+        // O nome do item só entra quando o detalhe ainda não começa por ele ("Secure Boot desligado: ...").
+        IReadOnlyList<string> Detalhes(EstadoRequisito estado) => v.Itens.Where(i => i.Estado == estado)
+            .Select(i => i.Detalhe.StartsWith(i.Item, StringComparison.OrdinalIgnoreCase) ? i.Detalhe : $"{i.Item}: {i.Detalhe}").ToList();
         var nao = Detalhes(EstadoRequisito.NaoAtende);
         var configuracao = Detalhes(EstadoRequisito.Configuracao);
         var desconhecido = Detalhes(EstadoRequisito.Desconhecido);
