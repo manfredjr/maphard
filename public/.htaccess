@@ -1,0 +1,11 @@
+# Pagina estatica do MapHard - MT. Sem listagem de pasta e com cabecalhos de seguranca.
+# script-src 'self': a pagina nao tem script proprio, mas o Cloudflare esconde o e-mail da
+# privacidade dos robos de spam e mostra com um script servido pelo proprio dominio (/cdn-cgi).
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Content-Security-Policy "default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+</IfModule>
