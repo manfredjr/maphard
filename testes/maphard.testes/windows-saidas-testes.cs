@@ -204,6 +204,6 @@ public class WindowsSaidasTestes
         Assert.Equal(2, c.Rede.Valor!.Count);
         Assert.Equal(EstadoSaude.Atencao, RegrasWindows.Windows11(c.Windows11).Estado);
         Assert.Equal("Atenção", Cartao(c, MontadorSecoes.Windows, "Windows 11, item por item").Selo);
-        Assert.Contains("Windows 11:  aceita depois de ajustar o firmware: Secure Boot: Secure Boot desligado: ligar no firmware", ExecutorCli.Resumo(c));
+        Assert.Contains("Windows 11:  aceita depois de ajustar o firmware: Secure Boot desligado: ligar no firmware", ExecutorCli.Resumo(c));
     }
 }

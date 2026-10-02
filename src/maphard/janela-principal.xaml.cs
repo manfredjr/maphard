@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MapHard.Nucleo.Painel;
 using MapHard.Nucleo.Sobre;
 using Microsoft.Win32;
@@ -57,6 +58,26 @@ public partial class JanelaPrincipal : Window
         if (Navegacao.SelectedItem is SecaoTela secao)
         {
             _secaoAberta = secao.Id;
+        }
+    }
+
+    /// <summary>Cartão do Resumo: o clique abre a seção da área (R1).</summary>
+    private void AoClicarCartao(object sender, MouseButtonEventArgs e) => AbrirSecaoDoCartao(sender);
+
+    private void AoTeclarCartao(object sender, KeyEventArgs e)
+    {
+        if (e.Key is Key.Enter or Key.Space)
+        {
+            AbrirSecaoDoCartao(sender);
+            e.Handled = true;
+        }
+    }
+
+    private void AbrirSecaoDoCartao(object sender)
+    {
+        if ((sender as FrameworkElement)?.DataContext is CartaoTela { Abre: { } id } && _painel.Secoes.FirstOrDefault(s => s.Id == id) is { } secao)
+        {
+            Navegacao.SelectedItem = secao;
         }
     }
 

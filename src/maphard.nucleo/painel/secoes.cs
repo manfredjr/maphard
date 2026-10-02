@@ -23,9 +23,10 @@ public sealed record LinhaTela(string Rotulo, string Texto, EstadoCampo Estado, 
 
 /// <summary>
 /// Um cartão da tela, com título e linhas. O selo, quando existe, aparece grande ao lado do título, na cor do
-/// tom ("bom", "atencao", "ruim" ou "desconhecido"): é a saúde de cada disco.
+/// tom ("bom", "atencao", "ruim" ou "desconhecido"): é a saúde de cada disco. <see cref="Abre"/> é a seção que o clique abre,
+/// nos cartões de saúde do Resumo.
 /// </summary>
-public sealed record CartaoTela(string Titulo, IReadOnlyList<LinhaTela> Linhas, string? Selo = null, string? TomSelo = null);
+public sealed record CartaoTela(string Titulo, IReadOnlyList<LinhaTela> Linhas, string? Selo = null, string? TomSelo = null, string? Abre = null);
 
 /// <summary>Uma seção da navegação à esquerda.</summary>
 public sealed record SecaoTela(string Id, string Titulo, IReadOnlyList<CartaoTela> Cartoes);
@@ -82,8 +83,15 @@ public static class MontadorSecoes
     {
         var id = c.Identificacao;
         var p = c.Processador;
+        var saude = ResumoSaude.Montar(c).Select(k => new CartaoTela(
+            k.Area,
+            [new LinhaTela("Situação", k.Frase, EstadoCampo.Lido, k.Motivos.Count > 1 ? string.Join("; ", k.Motivos) : "Regras de saúde do MapHard. Clique para abrir a seção")],
+            NomeSaude(k.Estado),
+            TomSaude(k.Estado),
+            k.Secao));
         return
         [
+            .. saude,
             new("Este computador",
             [
                 Linha("Nome", id.Computador),

@@ -58,6 +58,27 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Cartao do Resumo que abre a secao: mao no mouse, borda verde, foco pelo Tab e Enter -->
+        <Style x:Key="CartaoTela" TargetType="{x:Type Border}" BasedOn="{StaticResource Cartao}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Focusable" Value="True" />
+            <Setter Property="ToolTip" Value="Abrir a seção" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource PincelVerde}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource PincelVerde}" />
+                </Trigger>
+                <DataTrigger Binding="{Binding Abre}" Value="{x:Null}">
+                    <Setter Property="Cursor" Value="Arrow" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="ToolTip" Value="{x:Null}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PincelBorda}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- Valor de uma linha: cinza quando o campo nao foi lido, com a dica da fonte -->
         <Style x:Key="ValorLinha" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource ValorInfo}">
             <Setter Property="ToolTip" Value="{Binding Dica}" />
@@ -136,7 +157,7 @@
             <ItemsControl ItemsSource="{Binding SelectedItem.Cartoes, ElementName=Navegacao}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Style="{StaticResource Cartao}" Margin="0,0,0,12">
+                        <Border Style="{StaticResource CartaoTela}" Margin="0,0,0,12" MouseLeftButtonUp="AoClicarCartao" KeyDown="AoTeclarCartao">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
                                     <Border Style="{StaticResource BarraTitulo}" />

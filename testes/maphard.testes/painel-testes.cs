@@ -230,4 +230,20 @@ public class PainelTestes
             File.Delete(caminho);
         }
     }
+
+    [Fact]
+    public void Resumo_comeca_pelos_cartoes_de_saude_que_abrem_a_secao()
+    {
+        var resumo = MontadorSecoes.Montar(DadosDemonstracao.Coleta(), Hoje).Single(s => s.Id == MontadorSecoes.Resumo);
+
+        Assert.Equal(["Discos", "Memória", "Processador", "Estabilidade", "Dispositivos", "Windows 11", "Bateria", "Este computador", "Windows"], resumo.Cartoes.Select(c => c.Titulo));
+        var discos = resumo.Cartoes[0];
+        Assert.Equal("Atenção", discos.Selo);
+        Assert.Equal("atencao", discos.TomSelo);
+        Assert.Equal(MontadorSecoes.Discos, discos.Abre);
+        Assert.StartsWith("Disco 1: ", Assert.Single(discos.Linhas).Texto, StringComparison.Ordinal);
+        Assert.Equal("nenhum problema encontrado", resumo.Cartoes[2].Linhas[0].Texto);
+        Assert.Null(resumo.Cartoes.Single(c => c.Titulo == "Este computador").Abre);
+        Assert.All(resumo.Cartoes.Where(c => c.Abre is not null), c => Assert.Contains(MontadorSecoes.Montar(DadosDemonstracao.Coleta(), Hoje), s => s.Id == c.Abre));
+    }
 }
