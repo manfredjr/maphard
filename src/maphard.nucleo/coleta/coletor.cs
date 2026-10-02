@@ -1,4 +1,5 @@
 using System.Reflection;
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Cpuid;
 using MapHard.Nucleo.Discos;
@@ -8,9 +9,12 @@ using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Formatacao;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Rede;
 using MapHard.Nucleo.Smbios;
 using MapHard.Nucleo.Tabelas;
+using MapHard.Nucleo.Video;
 using MapHard.Nucleo.Windows;
+using MapHard.Nucleo.Windows11;
 
 namespace MapHard.Nucleo.Coleta;
 
@@ -77,7 +81,14 @@ public sealed class Coletor
         var administrador = Ler(_fontes.Administrador, cancelar);
         var discosBrutos = Ler(_fontes.Discos.Discos, cancelar);
         var dispositivos = Ler(_fontes.Dispositivos.Ler, cancelar);
+        var adaptadores = Ler(_fontes.Video.Adaptadores, cancelar);
+        var monitores = Ler<IReadOnlyList<MonitorVideo>>(() => _fontes.Monitores.Edids().Select(LeitorEdid.Interpretar).OfType<MonitorVideo>().ToList(), cancelar);
+        var baterias = Ler(() => LeitorBateria.Montar(_fontes.Baterias.Ler()), cancelar);
+        var rede = Ler(() => LeitorRede.Montar(_fontes.Rede.Interfaces()), cancelar);
+        var ativacao = Ler(_fontes.Ativacao.Estado, cancelar);
+        var letraWindows = Ler(_fontes.LetraWindows, cancelar);
         await Task.WhenAll(smbios, cpuid, topologia, firmware, windows, computador, instalada, estadoMemoria, administrador, discosBrutos, dispositivos).ConfigureAwait(false);
+        await Task.WhenAll(adaptadores, monitores, baterias, rede, ativacao, letraWindows).ConfigureAwait(false);
 
         andamento?.Report("medindo clock e uso, lendo os discos...");
         var tabelaSmbios = smbios.Result;
@@ -99,7 +110,13 @@ public sealed class Coletor
         var chipset = dispositivos.Result.Valor is { } lista ? _chipsets.Identificar(lista) : Campo<string>.Erro(FonteDado.Windows, dispositivos.Result.Falha ?? "lista de dispositivos indisponível");
 
         var dadosFirmware = OcultoPeloHipervisor(firmware.Result.Valor ?? FirmwareEmErro(firmware.Result.Falha!), id.Valor);
-        var dadosWindows = windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!);
+        var dadosWindows = (windows.Result.Valor ?? WindowsEmErro(windows.Result.Falha!)) with
+        {
+            Ativacao = ativacao.Result.Falhou ? Campo<string>.Erro(FonteDado.Windows, ativacao.Result.Falha!) : LeitorAtivacao.Interpretar(ativacao.Result.Valor),
+        };
+        var video = adaptadores.Result.Falhou
+            ? Campo<IReadOnlyList<PlacaVideo>>.Erro(FonteDado.Windows, adaptadores.Result.Falha!)
+            : Campo<IReadOnlyList<PlacaVideo>>.Lido(LeitorVideo.Montar(adaptadores.Result.Valor!, dispositivos.Result.Valor, FabricantesPci.Embutida), FonteDado.Windows);
 
         var processador = MontarProcessador(tabelaSmbios, id, topologia.Result, clocks, dadosFirmware);
         var memoria = LeitorMemoria.Montar(
@@ -113,6 +130,10 @@ public sealed class Coletor
             _fabricantesMemoria);
         var placa = MontarPlaca(tabelaSmbios, dadosFirmware, id.Valor, chipset);
         var identificacao = MontarIdentificacao(computador.Result, memoria, secaoDiscos, placa, processador, dadosWindows);
+        var discoWindows = letraWindows.Result.Valor is { } letra
+            ? VerificadorWindows11.DiscoDoWindows(secaoDiscos, letra)
+            : Campo<long>.Erro(FonteDado.Windows, letraWindows.Result.Falha ?? "letra do Windows não lida");
+        var windows11 = VerificadorWindows11.Verificar(processador.Nome, dadosFirmware, memoria.Instalada, discoWindows, TabelaWindows11.Embutida);
 
         andamento?.Report("coleta concluída");
         return new ColetaMaquina(
@@ -127,7 +148,12 @@ public sealed class Coletor
             secaoDiscos,
             placa,
             estabilidade,
-            secaoDispositivos);
+            secaoDispositivos,
+            video,
+            Lista(monitores.Result),
+            Lista(baterias.Result),
+            Lista(rede.Result),
+            windows11);
     }
 
     /// <summary>
@@ -156,6 +182,9 @@ public sealed class Coletor
 
         return LeitorDiscos.Montar(leituras, null, volumes.Valor ?? [], _atributosSmart);
     }
+
+    private static Campo<IReadOnlyList<T>> Lista<T>(Leitura<IReadOnlyList<T>> leitura) =>
+        leitura.Falhou ? Campo<IReadOnlyList<T>>.Erro(FonteDado.Windows, leitura.Falha!) : Campo<IReadOnlyList<T>>.Lido(leitura.Valor!, FonteDado.Windows);
 
     private async Task<Leitura<T>> Ler<T>(Func<T> ler, CancellationToken cancelar, TimeSpan? tempoLimite = null)
     {
@@ -368,7 +397,7 @@ public sealed class Coletor
     private static DadosWindows WindowsEmErro(string motivo)
     {
         var texto = Campo<string>.Erro(FonteDado.Registro, motivo);
-        return new DadosWindows(texto, texto, texto);
+        return new DadosWindows(texto, texto, texto, texto, texto);
     }
 
     private static ClocksCpu ClocksEmErro(string motivo) => new(

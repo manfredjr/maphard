@@ -5,7 +5,7 @@ using MapHard.Nucleo.Campos;
 namespace MapHard.Nucleo.Video;
 
 /// <summary>Um monitor presente (R32).</summary>
-public sealed record Monitor(
+public sealed record MonitorVideo(
     Campo<string> Fabricante,
     Campo<string> Modelo,
     Campo<string> NumeroSerie,
@@ -27,7 +27,7 @@ public static class LeitorEdid
     private const double CentimetrosPorPolegada = 2.54;
     private static readonly byte[] _cabecalho = [0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00];
 
-    public static Monitor? Interpretar(byte[]? edid)
+    public static MonitorVideo? Interpretar(byte[]? edid)
     {
         if (edid is null || edid.Length < TamanhoBloco || !edid.AsSpan(0, 8).SequenceEqual(_cabecalho))
         {
@@ -74,7 +74,7 @@ public static class LeitorEdid
         }
 
         var observacao = (soma & 0xFF) == 0 ? null : "soma de verificação do EDID não confere";
-        return new Monitor(
+        return new MonitorVideo(
             fabricante is null ? Campo<string>.NaoInformado(f) : Campo<string>.Lido(fabricante, f, observacao),
             nome is not null ? Campo.Texto(nome, f) : Campo<string>.Lido($"produto {produto:X4}", f, "o monitor não grava o nome no EDID"),
             Campo.Texto(serie, f),

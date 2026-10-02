@@ -1,3 +1,4 @@
+using MapHard.Nucleo.Baterias;
 using MapHard.Nucleo.Campos;
 using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
@@ -9,7 +10,10 @@ using MapHard.Nucleo.Tabelas;
 using MapHard.Nucleo.Firmware;
 using MapHard.Nucleo.Memoria;
 using MapHard.Nucleo.Processador;
+using MapHard.Nucleo.Rede;
+using MapHard.Nucleo.Video;
 using MapHard.Nucleo.Windows;
+using MapHard.Nucleo.Windows11;
 
 namespace MapHard.Nucleo.Painel;
 
@@ -23,10 +27,10 @@ public static class DadosDemonstracao
 
     public static ColetaMaquina Coleta()
     {
-        var windows = new DadosWindows(Texto("Windows 11 Pro"), Texto("23H2"), Texto("22631.4169"));
+        var windows = new DadosWindows(Texto("Windows 11 Pro"), Texto("23H2"), Texto("22631.4169"), Texto("x64"), Texto("ativado"));
         var firmware = new DadosFirmware(
             Texto("UEFI"),
-            Campo<bool>.Lido(true, D),
+            Campo<bool>.Lido(false, D),
             Texto("2.0"),
             Campo<string>.RequerAdministrador(D),
             Texto("0xF4"),
@@ -109,7 +113,19 @@ public static class DadosDemonstracao
             discos,
             placa,
             Estabilidade(),
-            Dispositivos());
+            Dispositivos(),
+            Campo<IReadOnlyList<PlacaVideo>>.Lido(
+                [new PlacaVideo(Texto("Placa de Vídeo Exemplo"), Texto("Fabricante de Vídeo Exemplo"), Campo<long>.Lido(4L << 30, D), Campo<long>.Lido(8L << 30, D), Texto("32.0.15.1234"), Campo<DateOnly>.Lido(new DateOnly(2026, 3, 30), D))], D),
+            Campo<IReadOnlyList<MonitorVideo>>.Lido(
+                [new MonitorVideo(Texto("MON"), Texto("Monitor Exemplo 24"), Texto("SERIE-MONITOR-0001"), Campo<int>.Lido(2023, D), Campo<double>.Lido(23.8, D, "53 x 30 cm"), Texto("1920 x 1080"))], D),
+            Campo<IReadOnlyList<Bateria>>.Lido(
+                [new Bateria(Texto("Bateria Exemplo"), Texto("Fabricante Exemplo"), Campo<string>.Lido("íon de lítio", D, "LION"), Campo<long>.Lido(56_000, D), Campo<long>.Lido(49_280, D), Campo<double>.Lido(12, D), Campo<int>.Lido(214, D))], D),
+            Campo<IReadOnlyList<PlacaRede>>.Lido(
+            [
+                new PlacaRede(Texto("Ethernet"), Texto("Placa de Rede Exemplo"), Texto("02-00-5E-10-20-AB"), Texto("Ethernet"), Campo<long>.NaoInformado(D, "desconectada"), Campo<bool>.Lido(false, D)),
+                new PlacaRede(Texto("Wi-Fi"), Texto("Placa Sem Fio Exemplo"), Texto("02-00-5E-10-20-AC"), Texto("Wi-Fi"), Campo<long>.Lido(721_000_000, D), Campo<bool>.Lido(true, D)),
+            ], D),
+            Windows11());
     }
 
     /// <summary>
@@ -142,6 +158,17 @@ public static class DadosDemonstracao
             Campo<DateTimeOffset>.Lido(new DateTimeOffset(2026, 9, 29, 7, 30, 0, TimeSpan.FromHours(-3)), D),
             Campo<DateTimeOffset>.Lido(new DateTimeOffset(2024, 3, 2, 10, 0, 0, TimeSpan.FromHours(-3)), D));
     }
+
+    /// <summary>Windows 11 com o Secure Boot desligado, para a imagem mostrar o cartão em Atenção.</summary>
+    private static VerificacaoWindows11 Windows11() => new(
+    [
+        new("Processador", EstadoRequisito.Atende, "consta na lista do Windows 11 25H2: Série Exemplo"),
+        new("TPM", EstadoRequisito.Atende, "TPM 2.0"),
+        new("Firmware", EstadoRequisito.Atende, "UEFI"),
+        new("Secure Boot", EstadoRequisito.Configuracao, "Secure Boot desligado: ligar no firmware"),
+        new("Memória", EstadoRequisito.Atende, "16 GB instalados"),
+        new("Armazenamento", EstadoRequisito.Atende, "1 TB no disco do Windows"),
+    ], "25H2");
 
     /// <summary>Um dispositivo fictício sem driver, para a imagem mostrar o cartão Dispositivos.</summary>
     private static SecaoDispositivos Dispositivos() => new(

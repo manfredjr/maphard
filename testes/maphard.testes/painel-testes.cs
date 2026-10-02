@@ -70,7 +70,7 @@ public class PainelTestes
     }
 
     [Fact]
-    public async Task Painel_comeca_coletando_e_termina_com_as_sete_secoes()
+    public async Task Painel_comeca_coletando_e_termina_com_as_dez_secoes()
     {
         var painel = new PainelPrincipal(Coletar, hoje: () => Hoje);
         Assert.Equal(EstadoPainel.Coletando, painel.Estado);
@@ -80,7 +80,7 @@ public class PainelTestes
         await painel.AtualizarAsync();
 
         Assert.Equal(EstadoPainel.Pronto, painel.Estado);
-        Assert.Equal(["Resumo", "Processador", "Memória", "Discos", "Placa-mãe e firmware", "Estabilidade", "Dispositivos"], painel.Secoes.Select(s => s.Titulo));
+        Assert.Equal(["Resumo", "Processador", "Memória", "Discos", "Placa-mãe e firmware", "Estabilidade", "Vídeo e monitores", "Bateria", "Windows", "Dispositivos"], painel.Secoes.Select(s => s.Titulo));
         Assert.Equal("ESTACAO-TESTE   |   usuário comum   |   coletado em 30/09/2026 10:05", painel.TextoStatus);
         Assert.True(painel.PodeSalvar);
     }
