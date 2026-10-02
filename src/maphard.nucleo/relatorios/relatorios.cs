@@ -32,9 +32,12 @@ public static class Relatorios
     public static string NomePadrao(ColetaMaquina c, FormatoRelatorio formato) =>
         Path.ChangeExtension(ExportadorJson.NomePadrao(c.Identificacao.Computador.Valor ?? "computador", c.ColetadoEm), Extensao(formato));
 
-    public static void Gravar(ColetaMaquina c, string caminho, DateOnly hoje)
+    public static void Gravar(ColetaMaquina c, string caminho, DateOnly hoje) => Gravar(c, caminho, hoje, FormatoDe(caminho));
+
+    /// <summary>Grava no formato pedido, qualquer que seja a extensão do arquivo.</summary>
+    public static void Gravar(ColetaMaquina c, string caminho, DateOnly hoje, FormatoRelatorio formato)
     {
-        switch (FormatoDe(caminho))
+        switch (formato)
         {
             case FormatoRelatorio.Json:
                 ExportadorJson.Gravar(c, caminho);
