@@ -94,15 +94,16 @@ public partial class JanelaPrincipal : Window
         }
     }
 
-    private void AoSalvarJson(object sender, RoutedEventArgs e)
+    /// <summary>Salva a coleta em HTML (para o cliente), JSON (coleta completa) ou CSV (planilha), pela extensão.</summary>
+    private void AoSalvarRelatorio(object sender, RoutedEventArgs e)
     {
         var dialogo = new SaveFileDialog
         {
-            Title = "Salvar a coleta em JSON",
-            FileName = _painel.NomeSugeridoJson(),
-            Filter = "Coleta do MapHard (*.json)|*.json",
+            Title = "Salvar relatório",
+            FileName = _painel.NomeSugerido(FormatoRelatorio.Html),
+            Filter = "Relatório para o cliente (*.html)|*.html|Coleta completa (*.json)|*.json|Planilha (*.csv)|*.csv",
             AddExtension = true,
-            DefaultExt = ".json",
+            DefaultExt = ".html",
         };
         if (dialogo.ShowDialog(this) != true)
         {
@@ -111,7 +112,7 @@ public partial class JanelaPrincipal : Window
 
         try
         {
-            _painel.SalvarJson(dialogo.FileName);
+            _painel.SalvarRelatorio(dialogo.FileName);
         }
         catch (Exception erro) when (erro is IOException or UnauthorizedAccessException)
         {
