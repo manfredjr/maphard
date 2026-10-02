@@ -89,6 +89,12 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Arte do símbolo do MapHard | A página e o ícone usam o logo da MT, como a janela, até a arte chegar (pergunta 5 do desenho) | Arte do Manfred |
 | Imagem do relatório na página | Feita pelo Edge sem janela, a partir do relatório da demonstração | Nada, se o Manfred aprovar a imagem |
 
+## Licença e titularidade
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Cessão do autor para a MT | O aviso de copyright põe a MANFRED TECNOLOGIA LTDA como titular, mas a transferência dos direitos patrimoniais do Manfred para a empresa exige documento escrito (Lei nº 9.610/1998, arts. 49 e 50). A licença GPL-3.0 não muda: a cessão muda quem é o titular, não a licença livre já concedida | Cessão única de todos os produtos, assinada antes da primeira venda, com o MapHard no Anexo I |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |

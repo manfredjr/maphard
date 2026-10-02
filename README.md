@@ -45,6 +45,23 @@ Sem nome depois de `--html`, `--json` ou `--csv`, o arquivo recebe o nome do com
 
 `maphard --demonstracao` abre a janela com uma máquina fictícia, para imagem de tela.
 
+## Publicação
+
+O programa sai pelo GitHub Releases, com a marca de versão, e a página sai pelo Git do cPanel para `maphard.manfred.com.br`. O passo a passo está em [`docs/publicacao.md`](docs/publicacao.md).
+
+### Antes de publicar
+
+- Notas da versão em `docs/versoes/vX.Y.Z.md`, em português.
+- Autorização do Manfred no chat, para a marca de versão e para a página.
+- Repositório público antes da página, para o botão de download funcionar para todos.
+- Cessão dos direitos do autor para a MT assinada, como registrado nas pendências.
+
+### Depois de publicar
+
+- Baixar a Release, comparar o SHA-256 e rodar `maphard.exe --versao`.
+- Purgar o cache da Cloudflare e conferir a página de fora.
+- Atualizar a "Situação do projeto" e as pendências.
+
 ## Situação do projeto
 
 | Fatia | Conteúdo | Ramo | Pull Request | Situação |
