@@ -3,7 +3,8 @@
 #
 # Quando uma marca de versao (v0.1.0, por exemplo) chega ao GitHub, o mesmo
 # fluxo publica a Release com o maphard.exe anexado. E dessa Release que a
-# pagina maphard.manfred.com.br baixa o programa.
+# pagina maphard.manfred.com.br baixa o programa. As notas da Release saem de
+# docs/versoes/<marca>.md, em portugues; sem esse arquivo, a publicacao para.
 name: testes
 
 on:
@@ -70,6 +71,9 @@ jobs:
           if ($versao -ne $marca) {
             throw "A marca $marca nao bate com a versao $versao do Directory.Build.props."
           }
+          if (-not (Test-Path "docs/versoes/${{ github.ref_name }}.md")) {
+            throw "Faltam as notas da versao em docs/versoes/${{ github.ref_name }}.md."
+          }
 
       - name: Publicar a Release
         if: startsWith(github.ref, 'refs/tags/v')
@@ -79,4 +83,4 @@ jobs:
           files: |
             publicar/maphard.exe
             publicar/maphard.exe.sha256.txt
-          generate_release_notes: true
+          body_path: docs/versoes/${{ github.ref_name }}.md
