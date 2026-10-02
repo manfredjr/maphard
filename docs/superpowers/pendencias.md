@@ -78,6 +78,17 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | JSON sem a saúde | O JSON grava as leituras; os estados do Resumo saem das regras e não vão no arquivo | Incluir os cartões no JSON, se o Manfred quiser, junto com o relatório HTML da fatia 7 |
 | Teclado no cartão | O cartão do Resumo abre a seção com Enter ou espaço, depois de receber o foco pelo Tab. Só o clique com o mouse foi visto na janela | Conferência do Manfred |
 
+## Fatia 7
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Publicação da página | A página em `public/` está pronta para `maphard.manfred.com.br`, mas publicar é ação que pede autorização | Frase do Manfred para publicar, pelo roteiro do cPanel, depois da primeira versão no GitHub Releases, que o botão de download usa |
+| Primeira versão no GitHub Releases | O link "Baixar para Windows" aponta para a última versão publicada, que ainda não existe | Autorização do Manfred para criar a marca `v1.0.0` |
+| Inventário em cliente pela pasta de rede | A verificação jurídica (`docs/legal/verificacao-pagina-maphard.md`, seção 4.2) recomenda, fora do programa, registrar o pedido do cliente na ordem de serviço, gravar numa pasta com acesso restrito e entregar o relatório só ao contato que pediu | Decisão de processo do Manfred |
+| Biblioteca da `legal-br` sem relatório de fontes | A cópia clonada não tem o `STATUS-FONTES.md` e a última coleta é de 21/08/2026. Os artigos citados foram conferidos direto no Planalto em 02/10/2026 | Rodar o `VERIFICAR-FONTES.bat` no repositório da `legal-br` |
+| Arte do símbolo do MapHard | A página e o ícone usam o logo da MT, como a janela, até a arte chegar (pergunta 5 do desenho) | Arte do Manfred |
+| Imagem do relatório na página | Feita pelo Edge sem janela, a partir do relatório da demonstração | Nada, se o Manfred aprovar a imagem |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |
