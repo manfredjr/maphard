@@ -83,6 +83,13 @@ public static class ExecutorCli
     {
         var id = c.Identificacao;
         var p = c.Processador;
+        yield return "Saúde";
+        foreach (var cartao in ResumoSaude.Montar(c))
+        {
+            yield return LinhaSaude(cartao);
+        }
+
+        yield return string.Empty;
         yield return $"Computador:  {Texto(id.Computador)}";
         yield return $"Equipamento: {Texto(id.Fabricante)} {Texto(id.Modelo)}";
         yield return $"Série:       {Texto(id.NumeroSerie)}";
@@ -92,11 +99,6 @@ public static class ExecutorCli
         yield return $"Núcleos:     {Texto(p.Nucleos)} núcleos, {Texto(p.Threads)} threads";
         yield return $"Clock:       base {Texto(p.Clocks.Base, v => Formatador.Mhz(v))}, máximo {Texto(p.Clocks.Maximo, v => Formatador.Mhz(v))}";
         yield return $"Memória:     {LinhaMemoria(c.Memoria)} ({Texto(id.MemoriaUtilizavel, Formatador.Bytes)} utilizáveis)";
-        foreach (var alerta in c.Memoria.Alertas)
-        {
-            yield return $"Atenção:     {alerta.Texto}";
-        }
-
         if (!c.Discos.Discos.FoiLido)
         {
             yield return $"Discos:      {Texto(c.Discos.Discos)}";
@@ -105,21 +107,10 @@ public static class ExecutorCli
         foreach (var d in c.Discos.Discos.Valor ?? [])
         {
             yield return $"Disco {d.Numero}:     {LinhaDisco(d)}";
-            if (d.Saude.Estado is EstadoSaude.Atencao or EstadoSaude.Ruim)
-            {
-                foreach (var motivo in d.Saude.Motivos)
-                {
-                    yield return $"Atenção:     {motivo}";
-                }
-            }
         }
 
         yield return $"Placa-mãe:   {Texto(c.Placa.PlacaFabricante)} {Texto(c.Placa.PlacaModelo)}, chipset {Texto(c.Placa.Chipset)}";
         yield return $"Estabilidade: {LinhaEstabilidade(c.Estabilidade)}";
-        foreach (var motivo in RegrasEstabilidade.Estabilidade(c.Estabilidade) is { Estado: EstadoSaude.Ruim } e ? e.Motivos : [])
-        {
-            yield return $"Atenção:     {motivo}";
-        }
 
         yield return $"Dispositivos: {LinhaDispositivos(c.Dispositivos)}";
         yield return $"Vídeo:       {LinhaVideo(c.Video)}";
@@ -177,6 +168,13 @@ public static class ExecutorCli
         return partes.Count == 0
             ? $"nenhum problema em {e.Dias} dias{indice}"
             : $"{string.Join(", ", partes)} em {e.Dias} dias{indice}";
+    }
+
+    /// <summary>"  Discos:       Atenção (Disco 1: 3 setores realocados)" ou "  Bateria:      Bom".</summary>
+    internal static string LinhaSaude(CartaoSaude c)
+    {
+        var estado = MontadorSecoes.NomeSaude(c.Estado);
+        return $"  {c.Area + ":",-14}{(c.Estado == EstadoSaude.Bom ? estado : $"{estado} ({c.Frase})")}";
     }
 
     /// <summary>"Placa Exemplo, 4 GB; Vídeo Integrado Exemplo". A memória só entra quando é dedicada e foi lida.</summary>

@@ -166,7 +166,7 @@ public class DiscosSaidasTestes
         var linhas = ExecutorCli.Resumo(c).ToList();
 
         Assert.Equal([EstadoSaude.Bom, EstadoSaude.Atencao], c.Discos.Discos.Valor!.Select(d => d.Saude.Estado));
-        Assert.Contains("Atenção:     3 setores realocados", linhas);
+        Assert.Contains("  Discos:       Atenção (Disco 1: 3 setores realocados)", linhas);
         Assert.All(c.Discos.Discos.Valor!, d => Assert.StartsWith("SERIE-DISCO", d.NumeroSerie.Valor));
     }
 }
