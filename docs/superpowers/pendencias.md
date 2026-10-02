@@ -56,6 +56,19 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Índice de estabilidade pela API de script | O provedor de confiabilidade só entrega as propriedades do primeiro item da consulta; a leitura vai em janelas crescentes e lê o primeiro item da menor janela com resultado | Ler pela API COM do WMI, se o valor divergir do Monitor de Confiabilidade |
 | Comparação com o Visualizador de Eventos, o Monitor de Confiabilidade e o Gerenciador de Dispositivos | Feita na máquina do teste com o WMI e o `Get-WinEvent`; sem tela azul, desligamento ou dispositivo com problema reais | Teste do Manfred numa máquina com esses casos |
 
+## Fatia 5
+
+| Item | Motivo | O que fecha |
+|---|---|---|
+| Identificador do Windows na consulta da ativação | O identificador de aplicativo do Windows (55c92734-d682-4d71-983e-d6ec3f16059f) não está na página do SLIsGenuineLocal. Foi conferido numa máquina ativada, onde é o ApplicationID das licenças do Windows e a consulta devolve "ativado" | Conferir numa máquina não ativada (deve dar "licença inválida") e achar uma fonte oficial |
+| Nome do valor do EDID no registro | A página "Overriding monitor EDIDs" diz que o EDID fica na chave de hardware do monitor, mas não dá o nome do valor; "EDID" só aparece em fórum. A tela embutida do notebook do teste foi lida certo | Teste do Manfred num desktop com monitor externo, comparando com a etiqueta |
+| Lista de processadores do Windows 11 por série | Na versão 25H2, a Microsoft publica a lista por série ("12th Generation Core i5", "Ryzen 7000 Series"), não por modelo. O MapHard segue a lista ao pé da letra. Processador lançado depois da lista fica "não consta na lista do MapHard", nunca "não aceita" | Rodar `ferramentas\gerar-processadores-windows11.ps1` a cada versão nova do Windows 11 |
+| Secure Boot desligado | O plano pede Secure Boot ligado; a Microsoft pede a máquina capaz de Secure Boot. Desligado com UEFI fica em Atenção, com "ligar no firmware", nunca em Ruim | Revisão do Manfred |
+| Velocidade da rede sem fio | A velocidade mostrada é a de recepção. No Wi-Fi, a de envio pode ser outra, e é a que o `Get-NetAdapter` mostra | Nada, se a de recepção bastar; senão mostrar as duas |
+| Ciclos de carga | Bateria que não conta ciclos devolve zero, e o campo fica "a bateria não informa" | Comparar com o `powercfg /batteryreport` em outros notebooks |
+| Verificação do Windows 11 numa máquina com Windows 10 | A máquina do teste já tem Windows 11. Os casos que não atendem só foram vistos nos testes automáticos e na demonstração | Teste do Manfred numa máquina com Windows 10, comparando item por item com o PC Integridade do Computador |
+| Janela não vista na sessão | As seções novas foram conferidas pelos testes do painel e pela linha de comando | Conferência do Manfred na janela e na `--demonstracao` |
+
 ## Depois da versão 1
 
 | Item | Motivo | O que fecha |
