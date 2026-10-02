@@ -47,7 +47,8 @@ public sealed record SecaoProcessador(
     ClocksCpu Clocks,
     Campo<bool> VirtualizacaoNoProcessador,
     Campo<bool> VirtualizacaoLigada,
-    Campo<bool> Hipervisor);
+    Campo<bool> Hipervisor,
+    Campo<bool> HyperVPedido);
 
 /// <summary>Seção Placa-mãe e firmware (R16 a R19).</summary>
 public sealed record SecaoPlaca(

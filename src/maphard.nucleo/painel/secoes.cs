@@ -144,6 +144,7 @@ public static class MontadorSecoes
                 Linha("Suporte no processador", p.VirtualizacaoNoProcessador, SimNao),
                 Linha("Ligada no firmware", p.VirtualizacaoLigada, SimNao),
                 Linha("Hipervisor ativo", p.Hipervisor, SimNao),
+                Linha("Hyper-V ou WSL instalado", p.HyperVPedido, SimNao),
             ]),
         ];
     }

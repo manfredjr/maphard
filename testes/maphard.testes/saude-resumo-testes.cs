@@ -1,4 +1,5 @@
 using MapHard.Nucleo.Campos;
+using MapHard.Nucleo.Coleta;
 using MapHard.Nucleo.Discos;
 using MapHard.Nucleo.Painel;
 using MapHard.Nucleo.Saude;
@@ -48,5 +49,52 @@ public class SaudeResumoTestes
         Assert.Equal(EstadoSaude.Desconhecido, s.Estado);
         Assert.Equal(["lista de discos indisponível"], s.Motivos);
         Assert.Equal(EstadoSaude.Desconhecido, RegrasDisco.Conjunto(Discos()).Estado);
+    }
+
+    private static SecaoProcessador Processador(bool suporte, bool ligada, bool hyperV) =>
+        DadosDemonstracao.Coleta().Processador with
+        {
+            VirtualizacaoNoProcessador = Campo<bool>.Lido(suporte, FonteDado.Demonstracao),
+            VirtualizacaoLigada = Campo<bool>.Lido(ligada, FonteDado.Demonstracao),
+            HyperVPedido = Campo<bool>.Lido(hyperV, FonteDado.Demonstracao),
+        };
+
+    [Fact]
+    public void Virtualizacao_desligada_com_hyperv_pedido_e_atencao()
+    {
+        var s = RegrasProcessador.Processador(Processador(suporte: true, ligada: false, hyperV: true));
+
+        Assert.Equal(EstadoSaude.Atencao, s.Estado);
+        Assert.Equal(["virtualização desligada no firmware, e o Hyper-V ou o WSL está instalado: ligar no firmware"], s.Motivos);
+    }
+
+    [Theory]
+    [InlineData(true, false, false)]
+    [InlineData(true, true, true)]
+    [InlineData(false, false, true)]
+    public void Sem_os_tres_juntos_o_processador_e_bom(bool suporte, bool ligada, bool hyperV)
+    {
+        Assert.Equal(EstadoSaude.Bom, RegrasProcessador.Processador(Processador(suporte, ligada, hyperV)).Estado);
+    }
+
+    [Fact]
+    public void Processador_nao_lido_fica_desconhecido()
+    {
+        var p = Processador(suporte: true, ligada: true, hyperV: false) with { Nome = Campo<string>.Erro(FonteDado.Cpuid, "falhou") };
+
+        Assert.Equal(EstadoSaude.Desconhecido, RegrasProcessador.Processador(p).Estado);
+    }
+
+    private sealed class RegistroCom(params string[] chaves) : MapHard.Nucleo.Firmware.IFonteRegistro
+    {
+        public object? Ler(string chave, string valor) => chaves.Contains(chave) && valor == "Start" ? 2 : null;
+    }
+
+    [Fact]
+    public void Hyperv_pedido_pelo_servico_do_hyperv_ou_do_wsl()
+    {
+        Assert.True(MapHard.Nucleo.Processador.LeitorHyperV.Pedido(new RegistroCom(@"SYSTEM\CurrentControlSet\Services\vmms")).Valor);
+        Assert.Equal("serviço do WSL instalado", MapHard.Nucleo.Processador.LeitorHyperV.Pedido(new RegistroCom(@"SYSTEM\CurrentControlSet\Services\WslService")).Motivo);
+        Assert.False(MapHard.Nucleo.Processador.LeitorHyperV.Pedido(new RegistroCom()).Valor);
     }
 }
