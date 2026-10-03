@@ -8,7 +8,7 @@ Programa para Windows que mostra o hardware do computador em que roda e aponta, 
 
 Desenho em `docs/superpowers/specs/2026-09-30-maphard-design.md`.
 
-O código segue a licença GPL-3.0, no mesmo modelo do MapNet e do MapDisk, por decisão do Manfred em 30/09/2026. O repositório `manfredjr/maphard` nasceu privado e passa a público quando o Manfred decidir. Desde já, tudo que entra no repositório, inclusive o histórico, é escrito como se fosse público.
+O código segue a licença GPL-3.0, no mesmo modelo do MapNet e do MapDisk, por decisão do Manfred em 30/09/2026. O repositório `manfredjr/maphard` nasceu privado e passou a público em 02/10/2026, por decisão do Manfred, para a página e o download da versão 1.0.0. Tudo que entra no repositório, inclusive o histórico, é público.
 
 "CPU-Z" é marca da CPUID e "CrystalDiskInfo" é programa do Crystal Dew World. O MapHard não usa esses nomes na tela, no código do programa, no relatório, na página nem no README. Nos documentos de desenho e nas análises jurídicas, os nomes aparecem só como referência factual do ponto de partida.
 
