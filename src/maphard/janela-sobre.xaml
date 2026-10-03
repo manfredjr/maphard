@@ -4,7 +4,8 @@
         xmlns:sobre="clr-namespace:MapHard.Nucleo.Sobre;assembly=maphard.nucleo"
         Style="{StaticResource JanelaMT}"
         Title="Sobre o MapHard - MT" Width="600" SizeToContent="Height" ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Icon="pack://application:,,,/maphard;component/recursos/maphard.ico">
 
     <DockPanel>
         <!-- Faixa do topo com o nome e a versao -->

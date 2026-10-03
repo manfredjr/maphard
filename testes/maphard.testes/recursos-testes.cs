@@ -31,6 +31,19 @@ public class RecursosTestes
     }
 
     [Fact]
+    public void Exe_e_janelas_usam_o_logo_e_o_icone_do_maphard()
+    {
+        Assert.True(File.Exists(App(Path.Combine("recursos", "maphard-logo.png"))));
+        Assert.True(File.Exists(App(Path.Combine("recursos", "maphard.ico"))));
+        Assert.Contains("<ApplicationIcon>recursos\\maphard.ico</ApplicationIcon>", File.ReadAllText(App("maphard.csproj")), StringComparison.Ordinal);
+        Assert.Contains("component/recursos/maphard-logo.png", File.ReadAllText(App("janela-principal.xaml")), StringComparison.Ordinal);
+        foreach (var janela in new[] { "janela-principal.xaml", "janela-sobre.xaml" })
+        {
+            Assert.Contains("component/recursos/maphard.ico", File.ReadAllText(App(janela)), StringComparison.Ordinal);
+        }
+    }
+
+    [Fact]
     public void Janela_mostra_o_logo_da_mt_e_o_botao_sobre()
     {
         Assert.True(File.Exists(App(Path.Combine("recursos", "mt-logo.png"))));

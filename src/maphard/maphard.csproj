@@ -9,6 +9,7 @@
     <Description>MapHard - MT: o hardware deste computador.</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>recursos\maphard.ico</ApplicationIcon>
 
     <!-- Entrega: um .exe unico, autocontido, para Windows 64 bits -->
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
@@ -18,9 +19,11 @@
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
 
-  <!-- Fonte e logo da MT embutidos no .exe e lidos pela tela com pack://. Sem icone proprio ate chegar a arte do MapHard -->
+  <!-- Fonte, logo da MT e logo e icone do MapHard embutidos no .exe e lidos pela tela com pack:// -->
   <ItemGroup>
     <Resource Include="recursos\mt-logo.png" />
+    <Resource Include="recursos\maphard-logo.png" />
+    <Resource Include="recursos\maphard.ico" />
     <Resource Include="recursos\fontes\*.ttf" />
     <Resource Include="recursos\fontes\ofl.txt" />
   </ItemGroup>

@@ -24,6 +24,7 @@ a { color: var(--verde-escuro); }
 /* Topo */
 .topo { text-align: center; padding: 48px 0 32px; border-bottom: 1px solid var(--borda); }
 .topo__simbolo { width: 56px; height: 56px; margin: 0 auto 12px; }
+.topo__logo { display: block; width: 285px; max-width: 100%; height: auto; margin: 0 auto 12px; }
 .topo h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
 .topo__frase { color: var(--suave); font-size: 1.08rem; max-width: 34em; margin: 0 auto 28px; }
 .tela { margin: 0 auto 28px; max-width: 680px; }
