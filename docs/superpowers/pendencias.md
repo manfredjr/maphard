@@ -21,7 +21,7 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Comparação com o programa de referência | Na máquina do primeiro teste da fase desktop, o programa de referência não estava instalado. A comparação foi feita com o msinfo32, o registro e o WMI | Repetir o teste da fatia 1 com o programa de referência instalado |
 | Janela WPF não compila na nuvem | O SDK do .NET 8 do Ubuntu não traz o Microsoft.NET.Sdk.WindowsDesktop, e o SDK da Microsoft vem de um endereço bloqueado pela rede da sessão. Na nuvem, os testes rodam pelo projeto de testes (`dotnet test testes/maphard.testes/maphard.testes.csproj`), e a janela compila só no CI em Windows | Decidido pelo Manfred em 30/09/2026: segue só com o CI em Windows até a fase desktop, sem liberar o SDK da Microsoft na nuvem. Fecha na fase desktop |
 | Texto "Licença e garantias" da janela Sobre | No MapDisk, esse texto saiu da verificação jurídica dele. Texto jurídico não sai de memória, então a Sobre do MapHard traz só o aviso de software livre da GPL-3.0 | Verificação da `legal-br` para o MapHard, junto com o texto de uso autorizado |
-| Ícone do `.exe` | Sem a arte do MapHard, o programa sai sem ícone próprio e a faixa mostra só o nome | Arte do Manfred |
+| Ícone do `.exe` | Sem a arte do MapHard, o programa saía sem ícone próprio e a faixa mostrava só o nome | Fechado em 02/10/2026: logo do Manfred no ícone do `.exe`, nas janelas e na faixa do topo |
 | Site da DMTF e documentação da Microsoft fora do alcance | A rede da sessão bloqueia `dmtf.org` e `learn.microsoft.com`. A documentação da Microsoft foi lida pelo repositório `MicrosoftDocs/sdk-api` no GitHub, e os deslocamentos do SMBIOS pelo `dmidecode` | Liberar os dois domínios nas configurações de rede do ambiente, ou conferir na fase desktop |
 
 ## Fatia 2
@@ -86,7 +86,7 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Primeira versão no GitHub Releases | O link "Baixar para Windows" aponta para a última versão publicada, que ainda não existe | Autorização do Manfred para criar a marca `v1.0.0` |
 | Inventário em cliente pela pasta de rede | A verificação jurídica (`docs/legal/verificacao-pagina-maphard.md`, seção 4.2) recomenda, fora do programa, registrar o pedido do cliente na ordem de serviço, gravar numa pasta com acesso restrito e entregar o relatório só ao contato que pediu | Decisão de processo do Manfred |
 | Biblioteca da `legal-br` sem relatório de fontes | A cópia clonada não tem o `STATUS-FONTES.md` e a última coleta é de 21/08/2026. Os artigos citados foram conferidos direto no Planalto em 02/10/2026 | Rodar o `VERIFICAR-FONTES.bat` no repositório da `legal-br` |
-| Arte do símbolo do MapHard | A página e o ícone usam o logo da MT, como a janela, até a arte chegar (pergunta 5 do desenho) | Arte do Manfred |
+| Arte do símbolo do MapHard | A página e o ícone usavam o logo da MT até a arte chegar (pergunta 5 do desenho) | Fechado em 02/10/2026: logo entregue pelo Manfred, na janela, no `.exe` e na página |
 | Imagem do relatório na página | Feita pelo Edge sem janela, a partir do relatório da demonstração | Nada, se o Manfred aprovar a imagem |
 
 ## Licença e titularidade
