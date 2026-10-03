@@ -4,7 +4,8 @@
         xmlns:painel="clr-namespace:MapHard.Nucleo.Painel;assembly=maphard.nucleo"
         Style="{StaticResource JanelaMT}"
         Title="MapHard - MT" Width="1100" Height="760" MinWidth="760" MinHeight="480"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="pack://application:,,,/maphard;component/recursos/maphard.ico">
 
     <Window.Resources>
         <!-- Item da navegacao a esquerda -->
@@ -96,11 +97,11 @@
         <!-- Faixa do topo: nome, comandos e a marca da MT -->
         <Border DockPanel.Dock="Top" Background="{StaticResource GradienteFaixa}" Padding="14,10">
             <DockPanel>
-                <!-- Selo do MapHard: so o nome, ate chegar a arte do simbolo (pendencia) -->
+                <!-- Logo do MapHard sobre fundo branco, para o verde do logo nao sumir no verde da faixa -->
                 <Border DockPanel.Dock="Left" Background="White" CornerRadius="8" Padding="12,5"
                         VerticalAlignment="Center" Margin="0,0,18,0">
-                    <TextBlock Text="MapHard" Foreground="{StaticResource PincelVerdeEscuro}" FontSize="20"
-                               FontWeight="ExtraBold" VerticalAlignment="Center" />
+                    <Image Source="pack://application:,,,/maphard;component/recursos/maphard-logo.png" Height="30"
+                           RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="MapHard - MT" />
                 </Border>
                 <Border DockPanel.Dock="Right" Background="White" CornerRadius="8" Padding="6,2" VerticalAlignment="Center" Margin="12,0,0,0">
                     <Button Style="{StaticResource BotaoMarca}" Click="AoClicarLogo"
