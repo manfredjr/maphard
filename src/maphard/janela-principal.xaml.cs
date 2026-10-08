@@ -19,6 +19,7 @@ public partial class JanelaPrincipal : Window
     public JanelaPrincipal(PainelPrincipal painel)
     {
         InitializeComponent();
+        AjustarATela();
         _painel = painel;
         DataContext = painel;
         if (painel.Demonstracao)
@@ -29,6 +30,17 @@ public partial class JanelaPrincipal : Window
         _painel.PropertyChanged += AoMudarPainel;
         PeriodoEventos.SelectedItem = _painel.DiasEventos;
         Loaded += async (_, _) => await _painel.AtualizarAsync();
+    }
+
+    /// <summary>Encolhe a janela quando a área de trabalho é menor que o tamanho do desenho.</summary>
+    private void AjustarATela()
+    {
+        var area = SystemParameters.WorkArea;
+        var t = TamanhoJanela.Ajustar(Width, Height, MinWidth, MinHeight, area.Width, area.Height);
+        MinWidth = t.LarguraMinima;
+        MinHeight = t.AlturaMinima;
+        Width = t.Largura;
+        Height = t.Altura;
     }
 
     private async void AoEscolherPeriodo(object sender, SelectionChangedEventArgs e)
