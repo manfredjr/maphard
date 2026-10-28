@@ -1,0 +1,9 @@
+#!/bin/sh
+# Repassa para a trava global da MT: segredo (regra 4), commit direto no main (regra 5)
+# e sinal mecanico de IA nas linhas novas de .md, .txt e .rst (regra 3).
+global="C:/COWORK/.githooks-mt/pre-commit"
+if [ -f "$global" ]; then
+  exec sh "$global" "$@"
+fi
+echo "Aviso: a trava global $global nao foi encontrada." >&2
+exit 0
