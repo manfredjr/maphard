@@ -7,4 +7,10 @@ if sed -e 's/[Cc][Ll][Aa][Uu][Dd][Ee]\.[Mm][Dd]//g' -e 's/\.[Cc][Ll][Aa][Uu][Dd]
   echo "Regra matriz MT: autor Manfred Heil Junior, titular MANFRED TECNOLOGIA LTDA. Tire essas linhas e refaca o commit." >&2
   exit 1
 fi
+# Regra matriz 3 (nivel 1): com core.hooksPath proprio, a trava global nao roda sozinha.
+# Repassa a mensagem ao mesmo verificador de texto da trava global.
+verificador="C:/COWORK/.githooks-mt/verificar-texto.py"
+if [ -f "$verificador" ] && command -v python >/dev/null 2>&1; then
+  python -I -X utf8 "$verificador" msg "$1" || exit 1
+fi
 exit 0

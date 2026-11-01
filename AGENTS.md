@@ -157,7 +157,7 @@ Inclusive quando a mudança é só em documentação, a partir do momento em que
 
 1. `dotnet build maphard.sln -c Release` sem aviso (os avisos viram erro).
 2. `dotnet test maphard.sln -c Release` com todos os testes verdes, inclusive o de caracteres proibidos e o de nome de arquivo. Na nuvem, vale o CI em Windows depois do envio.
-3. Busca por menção a ferramenta de IA no repositório e no texto do commit, com `git grep -i` pelos nomes das ferramentas usadas. Os nomes vão só no comando digitado na hora, nunca em arquivo do repositório, nem em plano ou roteiro.
+3. Busca por menção a ferramenta de IA no repositório e no texto do commit, com `git grep -i` pelos nomes das ferramentas usadas. Os nomes vão só no comando digitado na hora, nunca em arquivo do repositório, nem em plano ou roteiro. A exceção é o gancho `.githooks/commit-msg`, exigido pela regra matriz 1 do Manfred (22/10/2026), que precisa dos nomes para recusar o crédito.
 4. Conferência de que só os arquivos previstos entram no commit e de que o commit chegou ao GitHub.
 5. Depois de criar ou editar um Pull Request, reler o corpo no GitHub. Se a ferramenta tiver acrescentado um rodapé com o nome dela ou um link de sessão, retirar na hora.
 
