@@ -1,0 +1,10 @@
+#!/bin/sh
+# Trava MT: recusa credito de ferramenta de IA na mensagem de commit.
+# Regra matriz 1 do Manfred (22/10/2026): autoria so humana.
+# Nomes de arquivo e pasta (CLAUDE.md, .claude/) nao contam como credito.
+if sed -e 's/[Cc][Ll][Aa][Uu][Dd][Ee]\.[Mm][Dd]//g' -e 's/\.[Cc][Ll][Aa][Uu][Dd][Ee]//g' "$1" | grep -qiE 'co-authored-by|generated with|gerado com|claude|anthropic'; then
+  echo "COMMIT RECUSADO: a mensagem credita ferramenta de IA (Co-Authored-By, 'Generated with' ou o nome da ferramenta)." >&2
+  echo "Regra matriz MT: autor Manfred Heil Junior, titular MANFRED TECNOLOGIA LTDA. Tire essas linhas e refaca o commit." >&2
+  exit 1
+fi
+exit 0
