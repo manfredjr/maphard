@@ -94,6 +94,7 @@ O que ficou de fora, com o motivo e o que fecha o item.
 | Item | Motivo | O que fecha |
 |---|---|---|
 | Cessão do autor para a MT | O aviso de copyright põe a MANFRED TECNOLOGIA LTDA como titular, mas a transferência dos direitos patrimoniais do Manfred para a empresa exige documento escrito (Lei nº 9.610/1998, arts. 49 e 50). A licença GPL-3.0 não muda: a cessão muda quem é o titular, não a licença livre já concedida | Cessão única de todos os produtos, sem pressa: o MapHard é gratuito e GPL-3.0, e a MT o distribui como divulgação. A cessão só faz diferença se a MT um dia vender o programa com licença fechada, mudar a sociedade ou houver disputa sobre o dono. O Manfred decidiu em 03/10/2026 manter a MT como titular e deixar a cessão para quando assinar o documento único. O MapHard já está na Parte A do Anexo I da minuta; falta o valor da cláusula 6, com o contador, e a assinatura |
+| Tela de aceite da licença no primeiro uso | Pedido do Manfred, levado pelo controlador em 01/11/2026. A consulta ao advogado do MapCache apontou que o aceite só pelo uso do programa é frágil. Entra na fatia que troca a GPL-3.0 pela licença fechada da MT (decisão de 25/10/2026), não antes | Na fatia da troca de licença, reaproveitar a implementação do PR manfredjr/MapCache-MT#6, com o texto do aceite pela `legal-br` |
 
 ## Depois da versão 1
 
