@@ -72,6 +72,17 @@ public partial class PaginaTestes
     }
 
     [Fact]
+    public void Paginas_seguem_o_padrao_da_familia_map()
+    {
+        Assert.All(Paginas(), arquivo => Assert.DoesNotContain("familia-map", File.ReadAllText(arquivo), StringComparison.Ordinal));
+
+        var inicio = File.ReadAllText(Path.Combine(Raiz, "public", "index.html"));
+        Assert.Contains("Faz parte da família MAP - MT, programas gratuitos da MT para quem trabalha com infraestrutura e suporte de TI. A maioria é de código aberto, e cada página diz a licença do programa.", inicio, StringComparison.Ordinal);
+        Assert.Contains("<strong>Conteúdo deste site.</strong>", inicio, StringComparison.Ordinal);
+        Assert.Contains("Isso não vale para o código do programa. Ele continua sob a GPL-3.0", inicio, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Pagina_tem_os_textos_da_verificacao_juridica()
     {
         var pagina = File.ReadAllText(Path.Combine(Raiz, "public", "index.html"));
