@@ -79,6 +79,7 @@ public partial class PaginaTestes
         var inicio = File.ReadAllText(Path.Combine(Raiz, "public", "index.html"));
         Assert.Contains("Faz parte da família MAP - MT, programas gratuitos da MT para quem trabalha com infraestrutura e suporte de TI. A maioria é de código aberto, e cada página diz a licença do programa.", inicio, StringComparison.Ordinal);
         Assert.Contains("<strong>Conteúdo deste site.</strong>", inicio, StringComparison.Ordinal);
+        Assert.Contains("Isso não vale para o código do programa. Ele continua sob a GPL-3.0", inicio, StringComparison.Ordinal);
     }
 
     [Fact]
