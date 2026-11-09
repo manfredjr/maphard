@@ -23,11 +23,6 @@ public partial class PaginaTestes
         "https://www.manfred.com.br",
         "https://www.cloudflare.com/pt-br/privacypolicy/",
         "https://docs.github.com/pt/site-policy/",
-        "https://manfred.com.br/produtos#familia-map",
-        "https://mapcache.manfred.com.br",
-        "https://mapdesk.manfred.com.br",
-        "https://mapdisk.manfred.com.br",
-        "https://mapnet.manfred.com.br",
     ];
 
     private static IEnumerable<string> Paginas() => Directory.EnumerateFiles(Path.Combine(Raiz, "public"), "*.html");
@@ -79,15 +74,7 @@ public partial class PaginaTestes
     [Fact]
     public void Paginas_seguem_o_padrao_da_familia_map()
     {
-        foreach (var arquivo in Paginas())
-        {
-            var pagina = File.ReadAllText(arquivo);
-            var faixas = pagina.Split("https://manfred.com.br/produtos#familia-map").Length - 1;
-
-            Assert.True(faixas == 2, $"{Path.GetFileName(arquivo)}: {faixas} links da família");
-            Assert.All(new[] { "mapcache", "mapdesk", "mapdisk", "mapnet" },
-                n => Assert.Contains($"https://{n}.manfred.com.br", pagina, StringComparison.Ordinal));
-        }
+        Assert.All(Paginas(), arquivo => Assert.DoesNotContain("familia-map", File.ReadAllText(arquivo), StringComparison.Ordinal));
 
         var inicio = File.ReadAllText(Path.Combine(Raiz, "public", "index.html"));
         Assert.Contains("Faz parte da família MAP - MT, programas gratuitos da MT para quem trabalha com infraestrutura e suporte de TI. A maioria é de código aberto, e cada página diz a licença do programa.", inicio, StringComparison.Ordinal);

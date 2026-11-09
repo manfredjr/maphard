@@ -22,9 +22,6 @@ img { max-width: 100%; display: block; height: auto; }
 a { color: var(--verde-escuro); }
 
 /* Topo */
-.familia { text-align: center; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid var(--borda); }
-.familia a { color: var(--verde-escuro); text-decoration: none; }
-.familia a:hover { text-decoration: underline; }
 .topo { text-align: center; padding: 48px 0 32px; border-bottom: 1px solid var(--borda); }
 .topo__simbolo { width: 56px; height: 56px; margin: 0 auto 12px; }
 .topo__logo { display: block; width: 285px; max-width: 100%; height: auto; margin: 0 auto 12px; }
